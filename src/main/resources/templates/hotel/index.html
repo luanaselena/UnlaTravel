@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Index Hotel</title>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+        <header>
+            <div class="headerbg">
+
+                <h3>Unla Travel</h3>
+
+            </div>
+        </header>
+
+        <div class="divPrincipal">
+            <table border="1px">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Calificación</th>
+                        <th>Servicio</th>
+                        <th>Tipo de Habitaciones</th>
+                        <th>Regimen</th>
+                        <th>Accesibilidad</th>
+                        <th>Cantidad de Personas</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="hotel : ${hoteles}">
+                        <td><span th:text="${hotel.nombre}"></span></td>
+                        <td><span th:text="${hotel.cantEstrellas}"></span></td>
+                        <td><span th:text="${hotel.tipoServicio}"></span></td>
+                        <td><span th:text="${hotel.tipoHabitaciones}"></span></td>
+                        <td><span th:text="${hotel.tipoRegimen}"></span></td>
+                        <td><span th:text="${hotel.accesibilidad}"></span></td>
+                        <td><span th:text="${hotel.cantPersonas}"></span></td>
+                        <td><span th:text="${hotel.id}"></span></td>
+                        <td><a th:href="@{/hotel/{id}(id=${hotel.id})}">Ver</a>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+                <br> <a class="btn btn-primary" style="background-color: #f16108" href="/hotel/new">Crear nuevo hotelito</a>
+        </div>
+    </body>
+</html>
