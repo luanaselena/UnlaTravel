@@ -1,7 +1,5 @@
 package com.unla.travelweb.entities;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 
 
@@ -17,7 +15,7 @@ public class Hotel {
 	@Column(name="nombre", nullable=true, length=30)
 	private String nombre;
 
-	@Column (name= "cantEstrellas", nullable=false)
+	@Column (name= "cantEstrellas", nullable=true)
 	private int cantEstrellas;
 	
     @Column(name="tipoServicio", nullable=true, length=30)
@@ -29,10 +27,10 @@ public class Hotel {
     @Column(name="tipoRegimen", nullable=true, length=30)
     private String tipoRegimen;
     
-    @Column(name= "accesibilidad", nullable=false)
+    @Column(name= "accesibilidad", nullable=true)
     private boolean accesibilidad;
     
-    @Column(name= "cantPersonas", nullable=false)
+    @Column(name= "cantPersonas", nullable=true)
     private int cantPersonas;
     
     public Hotel() {}
