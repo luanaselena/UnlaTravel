@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -21,7 +22,7 @@ public class Paquete {
 	@JoinColumn(name = "vueloId", referencedColumnName = "id")
 	private Vuelo vuelo;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "hotelId", referencedColumnName = "id")
 	private Hotel hotel;
 	
