@@ -17,5 +17,9 @@ public class ViewRouteHelper {
     public final static String VUELO_UPDATE = "vuelo/update";
     public final static String VUELO_ROOT = "/vuelo";
     
+    public final static String PAQUETE_INDEX = "paquete/index";
+    public final static String PAQUETE_NEW = "paquete/new";
+    public final static String PAQUETE_UPDATE = "paquete/update";
+    public final static String PAQUETE_ROOT = "/paquete";
     
 }
