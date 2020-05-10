@@ -23,10 +23,16 @@
             <form action="#" th:action="@{/paquete/create}"
                   th:object="${paquete}" method="post">
                 <p>
-                    Hotel: <input type="text" th:field="*{hotel.id}" />
+                    Hotel: 
+                    <select th:field="*{hotel.id}">
+                    	<option th:each="data : ${hoteles}" th:value="${data.id}" th:text="${data.nombre}" />
+                    </select>
                 </p>
                 <p>
-                    Vuelo: <input type="text" th:field="*{vuelo.id}" />
+                    Vuelo Ida: <input type="date" th:field="*{vuelo.fechaIda}" />
+                </p>
+                <p>
+                    Vuelo Ida: <input type="date" th:field="*{vuelo.fechaVuelta}" />
                 </p>
                 <input class="btn btn-primary" style="background-color: #f16108" type="submit" value="Crear" />
             </form>

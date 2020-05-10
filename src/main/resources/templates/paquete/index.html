@@ -24,7 +24,8 @@
                     <tr>
                         <th>Paquete ID</th>
                         <th>Hotel Nombre</th>
-                        <th>Vuelo ID</th>
+                        <th>Vuelo Ida</th>
+                        <th>Vuelo Vuelta</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -32,7 +33,8 @@
                     <tr th:each="paquete : ${paquetes}">
                         <td><span th:text="${paquete.id}"></span></td>
                         <td><span th:text="${paquete.hotel.nombre}"></span></td>
-                        <td><span th:text="${paquete.vuelo.id}"></span></td>
+                        <td><span th:text="${paquete.vuelo.fechaIda}"></span></td>
+                        <td><span th:text="${paquete.vuelo.fechaVuelta}"></span></td>
                         <td><a th:href="@{/paquete/{id}(id=${paquete.id})}">Ver</a>
                         </td>
                     </tr>
