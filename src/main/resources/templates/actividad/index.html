@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Index Actividad</title>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+        <header>
+            <div class="headerbg">
+
+                <h3>Unla Travel</h3>
+
+            </div>
+        </header>
+
+        <div class="divPrincipal">
+            <table border="1px">
+                <thead>
+                    <tr>
+                        <th>Actividad</th>
+                        <th>Fecha</th>
+                        <th>Valoración</th>
+                        <th>Accesibilidad</th>
+                        <th>Ubicación</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="actividad : ${actividad}">
+                        <td><span th:text="${actividad.nombre}"></span></td>
+                        <td><span th:text="${actividad.fecha}"></span></td>
+                        <td><span th:text="${actividad.valoracion}"></span></td>
+                        <td><span th:text="${actividad.accesibilidad}"></span></td>
+                        <td><span th:text="${actividad.destino}"></span></td>
+                        <td><span th:text="${actividad.id}"></span></td>
+                        <td><a th:href="@{/actividad/{id}(id=${actividad.id})}">Ver</a>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+                <br> <a class="btn btn-primary" style="background-color: #f16108" href="/actividad/new">Crear nueva Actividad</a>
+        </div>
+    </body>
+</html>
