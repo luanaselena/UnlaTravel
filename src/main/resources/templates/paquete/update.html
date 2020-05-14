@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Actualizar Direccion</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/css/style.css}"/>
+
+    </head>
+    <body>
+        <header>
+            <div class="headerbg">
+
+                <h3>Unla Travel</h3>
+
+            </div>
+        </header>
+
+        <div class="divPrincipal">
+            <form action="#" th:action="@{/paquete/update}" th:object="${paquete}" method="post">
+               <p>
+                    Hotel: <input type="text" th:field="*{hotel.id}" />
+                </p>
+                <p>
+                    Vuelo: <input type="text" th:field="*{vuelo.id}" />
+                </p>
+
+                <input class="btn btn-success" style="background-color: #f16108" type="submit" value="Editar"/>
+            </form>
+            <br>
+            <br>
+            <form action="#" th:action="@{/paquete/delete/{id}(id=${paquete.id})}" method="post">
+                <input class="btn btn-danger" type="submit" value="Eliminar paquete" />
+            </form>
+        </div>
+    </body>
+</html>
