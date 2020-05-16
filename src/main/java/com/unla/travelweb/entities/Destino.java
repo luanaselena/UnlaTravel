@@ -1,20 +1,21 @@
 package com.unla.travelweb.entities;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import java.time.LocalDate;
+
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
-import java.util.HashSet;
 
+
+@Entity
+@Table(name="destino")
 public class Destino {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-	private int id;
+	private long id;
 	
 	@Column(name="nombre", nullable=false)
 	private String nombre;
@@ -22,32 +23,30 @@ public class Destino {
 	@Column(name="pais", nullable=false)
 	private String pais;
 	
-	@OneToMany(mappedBy="destino")
-	private Set<Actividad> actividades;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="destino")
+	private Set<Actividad> actividades = new HashSet<Actividad>();
 
 	public Destino() {
 	}
 	
-	public Destino(String nombre, String pais, Set<Actividad> actividades) {
+	public Destino(String nombre, String pais) {
 		super();
 		this.nombre = nombre;
 		this.pais = pais;
-		this.actividades = actividades;
 	}
 	
-	public Destino(int id, String nombre, String pais, Set<Actividad> actividades) {
+	public Destino(long id, String nombre, String pais) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.pais = pais;
-		this.actividades = actividades;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

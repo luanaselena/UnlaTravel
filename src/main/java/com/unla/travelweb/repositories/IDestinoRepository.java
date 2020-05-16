@@ -8,5 +8,6 @@ import java.io.Serializable;
 
 @Repository("destinoRepository")
 public interface IDestinoRepository extends JpaRepository <Destino, Serializable>{
-	public abstract Destino findById(long idDestino);
+	public abstract Destino findById(long id);
+	public abstract Destino findByNombre(String nombre);
 }

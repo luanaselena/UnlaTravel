@@ -31,13 +31,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="actividad : ${actividad}">
+                    <tr th:each="actividad : ${actividades}">
                         <td><span th:text="${actividad.nombre}"></span></td>
                         <td><span th:text="${actividad.fecha}"></span></td>
                         <td><span th:text="${actividad.valoracion}"></span></td>
                         <td><span th:text="${actividad.accesibilidad}"></span></td>
-                        <td><span th:text="${actividad.destino}"></span></td>
-                        <td><span th:text="${actividad.id}"></span></td>
+                        <td><span th:text="${actividad.destino.nombre}"></span></td>
                         <td><a th:href="@{/actividad/{id}(id=${actividad.id})}">Ver</a>
                         </td>
                     </tr>

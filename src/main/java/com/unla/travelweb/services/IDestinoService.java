@@ -12,4 +12,5 @@ public interface IDestinoService {
 	public DestinoModel insert(DestinoModel destinoModel);
 	public DestinoModel update(DestinoModel destinoModel);
 	public boolean remove(long id);
+	public DestinoModel findByNombre(String nombre);
 }

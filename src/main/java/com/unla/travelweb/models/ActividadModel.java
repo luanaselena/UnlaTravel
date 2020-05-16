@@ -1,6 +1,6 @@
 package com.unla.travelweb.models;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 import com.unla.travelweb.entities.Destino;
 
@@ -8,19 +8,19 @@ public class ActividadModel {
 	
     private long id;
 
-	private String nombre;
+    private String nombre;
+    
+	private Date fecha;
 
-	private LocalDate fecha;
-
-	private int valoracion;
+	private double valoracion;
 
     private boolean accesibilidad;
 
-    private Destino destino;
+    private DestinoModel destino;
 
     public ActividadModel() {}
     
-    public ActividadModel(String nombre, LocalDate fecha, int valoracion, boolean accesibilidad, Destino destino) {
+    public ActividadModel(String nombre, Date fecha, double valoracion, boolean accesibilidad, DestinoModel destino) {
 		super();
 		this.nombre = nombre;
 		this.fecha = fecha;
@@ -29,10 +29,10 @@ public class ActividadModel {
 		this.destino = destino;
 	}
     
-	public ActividadModel(long id, String nombre, LocalDate fecha, int valoracion, boolean accesibilidad, Destino destino) {
+	public ActividadModel(long id, String nombre, Date fecha, double valoracion, boolean accesibilidad, DestinoModel destino) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
+		this.id = id;
 		this.fecha = fecha;
 		this.valoracion = valoracion;
 		this.accesibilidad = accesibilidad;
@@ -47,27 +47,19 @@ public class ActividadModel {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public LocalDate getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
-	public int getValoracion() {
+	public double getValoracion() {
 		return valoracion;
 	}
 
-	public void setValoracion(int valoracion) {
+	public void setValoracion(double valoracion) {
 		this.valoracion = valoracion;
 	}
 
@@ -79,12 +71,20 @@ public class ActividadModel {
 		this.accesibilidad = accesibilidad;
 	}
 
-	public Destino getDestino() {
+	public DestinoModel getDestino() {
 		return destino;
 	}
 
-	public void setDestino(Destino destino) {
+	public void setDestino(DestinoModel destino) {
 		this.destino = destino;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 }
