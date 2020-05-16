@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
-        <title>Index Vuelo</title>
+        <title>Index Destino</title>
         <link rel="stylesheet"
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -22,28 +22,21 @@
             <table border="1px">
                 <thead>
                     <tr>
-                        <th>Fecha de Ida</th>
-                        <th>Fecha de Vuelta</th>
-                        <th>Valoracion de Aerolinea</th>
-                        <th>Clase</th>
-                        <th>Escala incluida</th>
+                        <th>Destino</th>
+                        <th>Pais</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="vuelo : ${vuelos}">
-                        <td><span th:text="${vuelo.fechaIda}"></span></td>
-                        <td><span th:text="${vuelo.fechaVuelta}"></span></td>
-                        <td><span th:text="${vuelo.valoracionAerolinea}"></span></td>
-                        <td><span th:text="${vuelo.clase}"></span></td>
-						<td><span th:text="${vuelo.escalaIncluida}"></span></td>
-                        <td><a th:href="@{/vuelo/{id}(id=${vuelo.id})}">Ver</a>
+                    <tr th:each="destino : ${destinos}">
+                        <td><span th:text="${destino.nombre}"></span></td>
+                        <td><span th:text="${destino.pais}"></span></td>
+                        <td><a th:href="@{/destino/{id}(id=${destino.id})}">Ver</a>
                         </td>
                     </tr>
                 </tbody>
                 </table>
-                <br> <a class="btn btn-primary" style="background-color: #EE7D00" href="/vuelo/new">Crear
-                nuevo vuelo</a>
+                <br> <a class="btn btn-primary" style="background-color: #f16108" href="/destino/new">Crear nuevo destino</a>
         </div>
     </body>
 </html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Nuevo Paquete</title>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+
+        <header>
+            <div class="headerbg">
+
+                <h3>Unla Travel</h3>
+
+            </div>
+        </header>
+
+        <div class="divPrincipal">
+            <form action="#" th:action="@{/paquete/create}"
+                  th:object="${paquete}" method="post">
+                <p>
+                    Hotel: 
+                    <select th:field="*{hotel.id}">
+                    	<option th:each="data : ${hoteles}" th:value="${data.id}" th:text="${data.nombre}" />
+                    </select>
+                </p>
+                <p>
+                    Vuelo: 
+                    <select th:field="*{vuelo.id}">
+                    	<option th:each="v : ${vuelos}" th:value="${v.id}" th:text="${v.id}" />
+                    </select>
+                </p>
+                <input class="btn btn-primary" style="background-color: #f16108" type="submit" value="Crear" />
+            </form>
+        </div>
+    </body>
+</html>

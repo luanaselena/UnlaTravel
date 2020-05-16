@@ -8,6 +8,7 @@ public interface IHotelService {
 	
 	public List<Hotel> getAll();
 	public HotelModel findById(long id);
+	public HotelModel findByNombre(String nombre);
 	public HotelModel insert(HotelModel hotelModel);
 	public HotelModel update(HotelModel hotelModel);
 	public boolean remove(long id);

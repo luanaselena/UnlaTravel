@@ -57,4 +57,9 @@ public class HotelService implements IHotelService {
     public HotelModel findById(long id) {
         return hotelConverter.entityToModel(hotelRepository.findById(id));
     }
+
+	@Override
+	public HotelModel findByNombre(String nombre) {
+		return hotelConverter.entityToModel(hotelRepository.findByNombre(nombre));
+	}
 }

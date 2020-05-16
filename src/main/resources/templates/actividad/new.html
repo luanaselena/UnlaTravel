@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Nueva Actividad</title>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+
+        <header>
+            <div class="headerbg">
+
+                <h3>Unla Travel</h3>
+
+            </div>
+        </header>
+
+        <div class="divPrincipal">
+            <form action="#" th:action="@{/actividad/create}"
+                  th:object="${actividad}" method="post">
+ 				<p>
+                   Actividad: <input type="text" th:field="*{nombre}" />
+               	</p>
+               	<p>Ubicación: 
+                <select placeholder="Destino" th:field="*{destino.id}"> 
+					<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.nombre}"> </option>
+				</select>
+				</p>
+                <p>
+                    Fecha: <input type="date" th:field="*{fecha}" />
+                </p>
+                <p>
+                    Valoración: <input type="text" th:field="*{valoracion}" />
+                </p>
+                 <p>
+                    Accesibilidad: <input type="checkbox" th:field="*{accesibilidad}" />
+                </p>
+                <input class="btn btn-primary" style="background-color: #f16108" type="submit" value="Crear" />
+            </form>
+        </div>
+    </body>
+</html>
