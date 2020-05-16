@@ -3,7 +3,7 @@
 .headerbg{
     width: 100vw;
     height: 10vh;
-    background-color: #f16108;
+    background-color: #EE7D00;
     line-height: 10vh;
 }
 
@@ -18,7 +18,7 @@
 }
 /*-------------------------Background-------------------------------*/
 body{
-    background-color: #D0D3D2;
+    background-color: #E5E5E5;
     background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
 }
 
