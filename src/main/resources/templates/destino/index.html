@@ -24,7 +24,6 @@
                     <tr>
                         <th>Destino</th>
                         <th>Pais</th>
-                        <th>Actividades</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -32,8 +31,6 @@
                     <tr th:each="destino : ${destinos}">
                         <td><span th:text="${destino.nombre}"></span></td>
                         <td><span th:text="${destino.pais}"></span></td>
-                        <td><span th:text="${destino.actividades}"></span></td>
-                        <td><span th:text="${destino.id}"></span></td>
                         <td><a th:href="@{/destino/{id}(id=${destino.id})}">Ver</a>
                         </td>
                     </tr>

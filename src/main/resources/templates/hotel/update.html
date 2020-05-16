@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Actualizar Direccion</title>
+        <title>Actualizar Hotel</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" th:href="@{/css/style.css}"/>
 
@@ -19,12 +19,12 @@
         <div class="divPrincipal">
             <form action="#" th:action="@{/hotel/update}" th:object="${hotel}" method="post">
                 <p>Nombre: <input type="text" th:field="*{nombre}" /></p>
-                <p>Apellido: <input type="text" th:field="*{cantEstrellas}" /></p>
-                <p>Telefono: <input type="text" th:field="*{tipoServicio}" /></p>
-                <p>Domicilio: <input type="text" th:field="*{tipoHabitaciones}" /></p>
-                <p>Mail: <input type="text" th:field="*{tipoRegimen}" /></p>
-                <p>Nacionalidad: <input type="checkbox" th:field="*{accesibilidad}" /></p>
-                <p>Nacionalidad: <input type="text" th:field="*{cantPersonas}" /></p>
+                <p>Cantidad Estrellas: <input type="text" th:field="*{cantEstrellas}" /></p>
+                <p>Servicio: <input type="text" th:field="*{tipoServicio}" /></p>
+                <p>Tipo de habitacion: <input type="text" th:field="*{tipoHabitaciones}" /></p>
+                <p>Regimen: <input type="text" th:field="*{tipoRegimen}" /></p>
+                <p>Accesibilidad: <input type="checkbox" th:field="*{accesibilidad}" /></p>
+                <p>Cantidad de Personas: <input type="text" th:field="*{cantPersonas}" /></p>
                 <p>ID: <input type="text" th:field="*{id}" /></p>
 
                 <input class="btn btn-success" style="background-color: #f16108" type="submit" value="Editar"/>

@@ -1,7 +1,6 @@
 package com.unla.travelweb.entities;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import java.time.LocalDate;
+import java.sql.Date;
 
 import javax.persistence.*;
 
@@ -19,21 +18,21 @@ public class Actividad {
 	private String nombre;
 	
 	@Column(name="fecha", nullable=true)
-	private LocalDate fecha;
+	private Date fecha;
 
 	@Column (name= "valoracion", nullable=false)
-	private int valoracion;
+	private double valoracion;
 	
     @Column(name="accesibilidad", nullable=false)
     private boolean accesibilidad;
     
-    @ManyToOne
-    @JoinColumn(name="destino_id", nullable=false)
+	@ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name="destino_id")
     private Destino destino;
 
     public Actividad() {}
     
-    public Actividad(String nombre, LocalDate fecha, int valoracion, boolean accesibilidad, Destino destino) {
+    public Actividad(String nombre,Date fecha, double valoracion, boolean accesibilidad, Destino destino) {
 		super();
 		this.nombre = nombre;
 		this.fecha = fecha;
@@ -42,10 +41,10 @@ public class Actividad {
 		this.destino = destino;
 	}
     
-	public Actividad(long id, String nombre, LocalDate fecha, int valoracion, boolean accesibilidad, Destino destino) {
+	public Actividad(long id, String nombre, Date fecha, double valoracion, boolean accesibilidad, Destino destino) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
+		this.id = id;
 		this.fecha = fecha;
 		this.valoracion = valoracion;
 		this.accesibilidad = accesibilidad;
@@ -60,27 +59,27 @@ public class Actividad {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public Destino getDestino() {
+		return destino;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setDestino(Destino destino) {
+		this.destino = destino;
 	}
 
-	public LocalDate getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
-	public int getValoracion() {
+	public double getValoracion() {
 		return valoracion;
 	}
 
-	public void setValoracion(int valoracion) {
+	public void setValoracion(double valoracion) {
 		this.valoracion = valoracion;
 	}
 
@@ -92,13 +91,14 @@ public class Actividad {
 		this.accesibilidad = accesibilidad;
 	}
 
-	public Destino getDestino() {
-		return destino;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setDestino(Destino destino) {
-		this.destino = destino;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
+	
 	
 	
 }

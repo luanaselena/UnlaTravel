@@ -7,7 +7,7 @@ import com.unla.travelweb.entities.Actividad;
 
 public class DestinoModel {
 
-	private int id;
+	private long id;
 	
 	private String nombre;
 
@@ -18,26 +18,24 @@ public class DestinoModel {
 	public DestinoModel() {
 	}
 	
-	public DestinoModel(String nombre, String pais, Set<Actividad> actividades) {
+	public DestinoModel(String nombre, String pais) {
 		super();
 		this.nombre = nombre;
 		this.pais = pais;
-		this.actividades = actividades;
 	}
 	
-	public DestinoModel(int id, String nombre, String pais, Set<Actividad> actividades) {
+	public DestinoModel(long id, String nombre, String pais) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.pais = pais;
-		this.actividades = actividades;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

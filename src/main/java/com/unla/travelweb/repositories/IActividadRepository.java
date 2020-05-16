@@ -8,5 +8,5 @@ import java.io.Serializable;
 
 @Repository("actividadRepository")
 public interface IActividadRepository extends JpaRepository <Actividad, Serializable>{
-	public abstract Actividad findById(long id);
+	public abstract Actividad findById(long idActividad);
 }

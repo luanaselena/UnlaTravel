@@ -9,4 +9,5 @@ import java.io.Serializable;
 @Repository("hotelRepository")
 public interface IHotelRepository extends JpaRepository <Hotel, Serializable>{
 	public abstract Hotel findById(long idHotel);
+	public abstract Hotel findByNombre(String nombre);
 }

@@ -57,4 +57,9 @@ public class DestinoService implements IDestinoService {
     public DestinoModel findById(long id) {
         return destinoConverter.entityToModel(destinoRepository.findById(id));
     }
+    
+    @Override
+    public DestinoModel findByNombre(String nombre) {
+        return destinoConverter.entityToModel(destinoRepository.findByNombre(nombre));
+    }
 }

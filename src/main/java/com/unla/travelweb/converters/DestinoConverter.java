@@ -10,12 +10,12 @@ public class DestinoConverter
 {
 	public DestinoModel entityToModel (Destino destino) {
 		return new DestinoModel (destino.getId(), destino.getNombre(), 
-				destino.getPais(), destino.getActividades());
+				destino.getPais());
 	}
 	
 	public Destino modelToEntity (DestinoModel destinoModel) {
 		return new Destino (destinoModel.getId(), destinoModel.getNombre(), 
-				destinoModel.getPais(), destinoModel.getActividades());
+				destinoModel.getPais());
 	}
 }
 

@@ -10,7 +10,7 @@ import com.unla.travelweb.entities.Vuelo;
 @Repository("vueloRepository")
 public interface IVueloRepository extends JpaRepository<Vuelo, Serializable>{
 	
-	public abstract Vuelo findById(long id);
+	public abstract Vuelo findById(long idVuelo);
 //  public abstract Vuelo findByDestino(Destino destino);
 	
 }

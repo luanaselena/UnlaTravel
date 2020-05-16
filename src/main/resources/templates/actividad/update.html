@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Actualizar Actividad</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" th:href="@{/css/style.css}"/>
+<head>
+<meta charset="UTF-8">
+<title>Actualizar Actividad</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/style.css}" />
 
-    </head>
-    <body>
-        <header>
-            <div class="headerbg">
+</head>
+<body>
+	<header>
+		<div class="headerbg">
 
-                <h3>Unla Travel</h3>
+			<h3>Unla Travel</h3>
 
-            </div>
-        </header>
+		</div>
+	</header>
 
-        <div class="divPrincipal">
-            <form action="#" th:action="@{/actividad/update}" th:object="${actividad}" method="post">
-                <p>Nombre: <input type="text" th:field="*{nombre}" /></p>
-                <p>Fecha: <input type="date" th:field="*{fecha}" /></p>
-                <p>Calificación: <input type="number" th:field="*{calificacion}" /></p>
-                <p>Accesibilidad: <input type="checkbox" th:field="{valoracion}" /></p>
-                <p>Ubicación: <input type="text" th:field="*{destino}" /></p>
-                <p>ID: <input type="text" th:field="*{id}" /></p>
-
-                <input class="btn btn-success" style="background-color: #f16108" type="submit" value="Editar"/>
-            </form>
-            <br>
-            <br>
-            <form action="#" th:action="@{/actividad/delete/{id}(id=${actividad.id})}" method="post">
-                <input class="btn btn-danger" type="submit" value="Eliminar actividad" />
-            </form>
-        </div>
-    </body>
+	<div class="divPrincipal">
+		<form action="#" th:action="@{/actividad/update}"
+			th:object="${actividad}" method="post">
+			<p>Actividad: <input type="text" th:field="*{nombre}" /></p>
+			<p>Fecha: <input type="date" th:field="*{fecha}" /></p>
+			<p>Valoracion: <input type="text" th:field="*{valoracion}" /></p>
+			<p>Accesibilidad: <input type="checkbox" th:field="*{accesibilidad}" /></p>
+			<p>Ubicacion:
+				<select placeholder="Destino" th:field="*{destino.id}"> 
+					<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.nombre}"> </option>
+				</select>
+			</p>
+			<p>ID: <input type="text" th:field="*{id}" /></p>
+			<input class="btn btn-success" style="background-color: #f16108"
+				type="submit" value="Editar" />
+		</form>
+		<br> <br>
+		<form action="#"
+			th:action="@{/actividad/delete/{id}(id=${actividad.id})}"
+			method="post">
+			<input class="btn btn-danger" type="submit" value="Eliminar actividad" />
+		</form>
+	</div>
+</body>
 </html>

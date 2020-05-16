@@ -22,20 +22,22 @@
         <div class="divPrincipal">
             <form action="#" th:action="@{/actividad/create}"
                   th:object="${actividad}" method="post">
+ 				<p>
+                   Actividad: <input type="text" th:field="*{nombre}" />
+               	</p>
+               	<p>Ubicación: 
+                <select placeholder="Destino" th:field="*{destino.id}"> 
+					<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.nombre}"> </option>
+				</select>
+				</p>
                 <p>
-                    Nombre: <input type="text" th:field="*{nombre}" />
-                </p>
-                <p>
-                    Fecha: <input type="text" th:field="*{fecha}" />
+                    Fecha: <input type="date" th:field="*{fecha}" />
                 </p>
                 <p>
                     Valoración: <input type="text" th:field="*{valoracion}" />
                 </p>
                  <p>
-                    Accesibilidad: <input type="text" th:field="*{accesibilidad}" />
-                </p>
-                 <p>
-                    Ubicación: <input type="text" th:field="*{destino}" />
+                    Accesibilidad: <input type="checkbox" th:field="*{accesibilidad}" />
                 </p>
                 <input class="btn btn-primary" style="background-color: #f16108" type="submit" value="Crear" />
             </form>
