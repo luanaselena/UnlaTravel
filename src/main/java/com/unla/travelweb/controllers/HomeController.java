@@ -19,7 +19,7 @@ import com.unla.travelweb.helpers.ViewRouteHelper;
 public class HomeController {
 	
 	@Autowired
-	@Qualifier("personService")
+	@Qualifier("usuarioService")
 	private IUsuarioService usuarioService;
 	
 	//GET Example: SERVER/index
