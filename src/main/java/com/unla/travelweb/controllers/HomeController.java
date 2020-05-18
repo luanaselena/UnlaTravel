@@ -1,3 +1,4 @@
+package com.unla.travelweb.controllers;
 import com.unla.travelweb.services.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,7 +20,7 @@ import com.unla.travelweb.services.IUsuarioService;
 public class HomeController {
 	
 	@Autowired
-	@Qualifier("personService")
+	@Qualifier("usuarioService")
 	private IUsuarioService usuarioService;
 	
 	//GET Example: SERVER/index
