@@ -28,12 +28,12 @@ public class Vuelo {
 	private Date fechaVuelta;
 	
     @OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "origenId") 
+    @JoinColumn(name="origen_id", referencedColumnName = "id")
     private Destino origen;
 	
     @OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "destinoId")
-	private Destino destino;
+    @JoinColumn(name="destino_id", referencedColumnName = "id")
+    private Destino destino;
 	
     @Column(name="valoracionAerolinea", nullable=true) 
 	private double valoracionAerolinea;

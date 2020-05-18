@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.unla.travelweb.converters.DestinoConverter;
 import com.unla.travelweb.converters.VueloConverter;
+import com.unla.travelweb.entities.Destino;
 import com.unla.travelweb.entities.Vuelo;
 import com.unla.travelweb.models.DestinoModel;
 import com.unla.travelweb.models.VueloModel;
+import com.unla.travelweb.repositories.IDestinoRepository;
 import com.unla.travelweb.repositories.IVueloRepository;
 import com.unla.travelweb.services.IVueloService;
 
@@ -29,6 +31,10 @@ public class VueloService implements IVueloService{
 	@Qualifier("destinoConverter")
 	private DestinoConverter destinoConverter;
 	
+	@Autowired
+	@Qualifier("destinoRepository")
+	private IDestinoRepository destinoRepository;
+	
 	@Override
 	public List<Vuelo> getAll() {
 		return vueloRepository.findAll();
@@ -41,6 +47,13 @@ public class VueloService implements IVueloService{
 
 	@Override
 	public VueloModel insert(VueloModel vueloModel) {
+		
+		Destino o = destinoRepository.findById(vueloModel.getOrigen().getId());
+		Destino d = destinoRepository.findById(vueloModel.getDestino().getId());
+		DestinoModel om = destinoConverter.entityToModel(o);
+		DestinoModel dm = destinoConverter.entityToModel(d);
+		vueloModel.setOrigen(om);
+		vueloModel.setDestino(dm);
 		Vuelo vuelo = vueloRepository.save(vueloConverter.modelToEntity(vueloModel));
 		return vueloConverter.entityToModel(vuelo);
 	}
@@ -62,16 +75,16 @@ public class VueloService implements IVueloService{
 		}
 	}
 
-	@Override
-	public VueloModel findByDestino(DestinoModel destino) {
-		// TODO Auto-generated method stub
-		return vueloConverter.entityToModel(vueloRepository.findByDestino(destinoConverter.modelToEntity(destino)));
-	}
-
-	@Override
-	public VueloModel findByOrigen(DestinoModel origen) {
-		// TODO Auto-generated method stub
-		return vueloConverter.entityToModel(vueloRepository.findByDestino(destinoConverter.modelToEntity(origen)));
-	}
+//	@Override
+//	public VueloModel findByDestino(DestinoModel destino) {
+//		// TODO Auto-generated method stub
+//		return vueloConverter.entityToModel(vueloRepository.findByDestino(destinoConverter.modelToEntity(destino)));
+//	}
+//
+//	@Override
+//	public VueloModel findByOrigen(DestinoModel origen) {
+//		// TODO Auto-generated method stub
+//		return vueloConverter.entityToModel(vueloRepository.findByOrigen(destinoConverter.modelToEntity(origen)));
+//	}
 
 }

@@ -12,8 +12,8 @@ import com.unla.travelweb.entities.Vuelo;
 public interface IVueloRepository extends JpaRepository<Vuelo, Serializable>{
 	
 	public abstract Vuelo findById(long idVuelo);
-	public abstract Vuelo findByDestino(Destino destino);
-	public abstract Vuelo findByOrigen(Destino origen);
+//	public abstract Vuelo findByDestino(Destino destino);
+//	public abstract Vuelo findByOrigen(Destino origen);
 
 	
 }

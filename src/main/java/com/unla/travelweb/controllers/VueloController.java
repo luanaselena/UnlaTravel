@@ -46,6 +46,7 @@ public class VueloController {
 
     @PostMapping("/create")
     public RedirectView create(@ModelAttribute("vuelo") VueloModel vueloModel) {
+    	
     	vueloService.insert(vueloModel);
         return new RedirectView(ViewRouteHelper.VUELO_ROOT);
     }
@@ -55,7 +56,6 @@ public class VueloController {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.VUELO_UPDATE);
         mAV.addObject("vuelo", vueloService.findById(id));
         mAV.addObject("destinos", destinoService.getAll());
-
         return mAV;
     }
 
