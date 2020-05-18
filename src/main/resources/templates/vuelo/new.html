@@ -37,6 +37,16 @@
                 <p>
                     Escala incluida: <input type="checkbox" th:field="*{escalaIncluida}" />
                 </p>
+                <p>Origen:
+				<select placeholder="Destino" th:field="*{destino.id}"> 
+					<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.nombre}"> </option>
+				</select>
+				</p>
+				<p>Destino:
+					<select placeholder="Destino" th:field="*{destino.id}"> 
+						<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.nombre}"> </option>
+					</select>
+				</p>
                 <input class="btn btn-primary" style="background-color: #EE7D00" type="submit" value="Crear" />
             </form>
         </div>

@@ -1,3 +1,4 @@
+package com.unla.travelweb.controllers;
 import com.unla.travelweb.services.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.travelweb.helpers.ViewRouteHelper;
-import com.unla.travelweb.services.IUsuarioService;
 
 @Controller
 @RequestMapping("/")

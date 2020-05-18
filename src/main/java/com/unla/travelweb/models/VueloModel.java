@@ -6,8 +6,8 @@ public class VueloModel {
 	private long id;
 	private Date fechaIda;
 	private Date fechaVuelta;
-//	private Destino origen;
-//	private Destino destino;
+	private DestinoModel origen;
+	private DestinoModel destino;
 	private double valoracionAerolinea;
 	private int clase;
 	private boolean escalaIncluida;
@@ -15,7 +15,7 @@ public class VueloModel {
 	public VueloModel() {}
 
 	public VueloModel(long id, Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase,
-			boolean escalaIncluida) {
+			boolean escalaIncluida, DestinoModel origen, DestinoModel destino) {
 		super();
 		this.id = id;
 		this.fechaIda = fechaIda;
@@ -23,15 +23,19 @@ public class VueloModel {
 		this.valoracionAerolinea = valoracionAerolinea;
 		this.clase = clase;
 		this.escalaIncluida = escalaIncluida;
+		this.origen = origen;
+		this.destino = destino;
 	}
 
-	public VueloModel(Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase, boolean escalaIncluida) {
+	public VueloModel(Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase, boolean escalaIncluida, DestinoModel origen, DestinoModel destino) {
 		super();
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;
 		this.valoracionAerolinea = valoracionAerolinea;
 		this.clase = clase;
 		this.escalaIncluida = escalaIncluida;
+		this.origen = origen;
+		this.destino = destino;
 	}
 
 	public long getId() {
@@ -80,6 +84,22 @@ public class VueloModel {
 
 	public void setEscalaIncluida(boolean escalaIncluida) {
 		this.escalaIncluida = escalaIncluida;
+	}
+
+	public DestinoModel getOrigen() {
+		return origen;
+	}
+
+	public void setOrigen(DestinoModel origen) {
+		this.origen = origen;
+	}
+
+	public DestinoModel getDestino() {
+		return destino;
+	}
+
+	public void setDestino(DestinoModel destino) {
+		this.destino = destino;
 	}
 
 	

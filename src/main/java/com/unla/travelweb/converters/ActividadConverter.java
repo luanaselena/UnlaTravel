@@ -12,7 +12,7 @@ public class ActividadConverter {
 	
 	@Autowired
 	@Qualifier("destinoConverter")
-	DestinoConverter destinoConverter;
+	private DestinoConverter destinoConverter;
 	
 	public ActividadModel entityToModel (Actividad actividad) {
 		return new ActividadModel (actividad.getId(),actividad.getNombre(),actividad.getFecha(), actividad.getValoracion(), 
