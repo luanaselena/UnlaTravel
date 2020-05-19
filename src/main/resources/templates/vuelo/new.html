@@ -38,7 +38,7 @@
                     Escala incluida: <input type="checkbox" th:field="*{escalaIncluida}" />
                 </p>
                 <p>Origen:
-				<select placeholder="Destino" th:field="*{destino.id}"> 
+				<select placeholder="Destino" th:field="*{origen.id}"> 
 					<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.nombre}"> </option>
 				</select>
 				</p>
