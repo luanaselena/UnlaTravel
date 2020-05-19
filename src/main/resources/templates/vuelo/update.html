@@ -23,6 +23,16 @@
                 <p>Valoracion aerolinea: <input type="text" th:field="*{valoracionAerolinea}" /></p>
                 <p>Clase: <input type="text" th:field="*{clase}" /></p>
                 <p>Escala incluida: <input type="checkbox" th:field="*{escalaIncluida}" /></p>
+                <p>Origen:
+				<select placeholder="Destino" th:field="*{destino.id}"> 
+					<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.nombre}"> </option>
+				</select>
+				</p>
+				<p>Destino:
+					<select placeholder="Destino" th:field="*{destino.id}"> 
+						<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.nombre}"> </option>
+					</select>
+				</p>
                 <p>ID: <input type="text" th:field="*{id}" /></p>
 
                 <input class="btn btn-success" style="background-color: #EE7D00" type="submit" value="Editar"/>

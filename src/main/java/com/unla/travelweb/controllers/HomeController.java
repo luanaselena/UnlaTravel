@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.travelweb.helpers.ViewRouteHelper;
-import com.unla.travelweb.services.IUsuarioService;
 
 @Controller
 @RequestMapping("/")

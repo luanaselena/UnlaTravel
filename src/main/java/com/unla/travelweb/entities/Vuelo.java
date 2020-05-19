@@ -2,11 +2,14 @@ package com.unla.travelweb.entities;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,11 +27,13 @@ public class Vuelo {
     @Column(name="fechaVuelta", nullable=true) 
 	private Date fechaVuelta;
 	
-//  @Column(name="") 
-//	private Destino origen;
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name="origen_id", referencedColumnName = "id")
+    private Destino origen;
 	
-//  @Column(name="") 
-//	private Destino destino;
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name="destino_id", referencedColumnName = "id")
+    private Destino destino;
 	
     @Column(name="valoracionAerolinea", nullable=true) 
 	private double valoracionAerolinea;
@@ -42,7 +47,7 @@ public class Vuelo {
     
     public Vuelo(){}    
 	public Vuelo(long id, Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase,
-			boolean escalaIncluida) {
+			boolean escalaIncluida, Destino origen, Destino destino) {
 		super();
 		this.id = id;
 		this.fechaIda = fechaIda;
@@ -50,15 +55,19 @@ public class Vuelo {
 		this.valoracionAerolinea = valoracionAerolinea;
 		this.clase = clase;
 		this.escalaIncluida = escalaIncluida;
+		this.origen = origen;
+		this.destino = destino;
 	}
 
-	public Vuelo(Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase, boolean escalaIncluida) {
+	public Vuelo(Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase, boolean escalaIncluida, Destino origen, Destino destino) {
 		super();
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;
 		this.valoracionAerolinea = valoracionAerolinea;
 		this.clase = clase;
 		this.escalaIncluida = escalaIncluida;
+		this.origen = origen;
+		this.destino = destino;
 	}
 
 	public long getId() {
@@ -107,6 +116,18 @@ public class Vuelo {
 
 	public void setEscalaIncluida(boolean escalaIncluida) {
 		this.escalaIncluida = escalaIncluida;
+	}
+	public Destino getOrigen() {
+		return origen;
+	}
+	public void setOrigen(Destino origen) {
+		this.origen = origen;
+	}
+	public Destino getDestino() {
+		return destino;
+	}
+	public void setDestino(Destino destino) {
+		this.destino = destino;
 	}
 	
 	
