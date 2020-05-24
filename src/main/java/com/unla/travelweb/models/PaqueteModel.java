@@ -6,14 +6,14 @@ import com.unla.travelweb.entities.Vuelo;
 public class PaqueteModel {
 
 	private long id;
-	private Vuelo vuelo;
-	private Hotel hotel;
+	private VueloModel vuelo;
+	private HotelModel hotel;
 	
 	public PaqueteModel() {
 		
 	}
 	
-	public PaqueteModel(long id, Vuelo vuelo, Hotel hotel) {
+	public PaqueteModel(long id, VueloModel vuelo, HotelModel hotel) {
 		super();
 		this.id = id;
 		this.vuelo = vuelo;
@@ -25,16 +25,16 @@ public class PaqueteModel {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public Vuelo getVuelo() {
+	public VueloModel getVuelo() {
 		return vuelo;
 	}
-	public void setVuelo(Vuelo vuelo) {
+	public void setVuelo(VueloModel vuelo) {
 		this.vuelo = vuelo;
 	}
-	public Hotel getHotel() {
+	public HotelModel getHotel() {
 		return hotel;
 	}
-	public void setHotel(Hotel hotel) {
+	public void setHotel(HotelModel hotel) {
 		this.hotel = hotel;
 	}
 	

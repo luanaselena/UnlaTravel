@@ -7,9 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="paquete")
 public class Paquete {
 	
 	@Id
@@ -17,11 +20,11 @@ public class Paquete {
 	@Column(name="id")
 	private long id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "vueloId", referencedColumnName = "id")
 	private Vuelo vuelo;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "hotelId", referencedColumnName = "id")
 	private Hotel hotel;
 	

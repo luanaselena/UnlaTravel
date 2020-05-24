@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>UNLa</title>
+<!-- Bootstrap core CSS -->
+<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Custom styles for this template -->
+<link href="/css/modern-business.css" rel="stylesheet" />
+</head>
+<body>
+	<!-- Navigation -->
+	<nav
+		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="/index">HOME</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarNavAltMarkup"
+					aria-controls="navbarNavAltMarkup" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="#" th:href="@{/vuelo/}">Vuelos</a>
+						<a class="nav-item nav-link" href="#" th:href="@{/hotel/}">Hoteles</a>
+						<a class="nav-item nav-link" href="#" th:href="@{/actividad/}">Actividades</a>
+						<a class="nav-item nav-link" href="#" th:href="@{/paquete/}">Paquetes</a>
+						<a class="nav-item nav-link" href="#" th:href="@{/empleados/}">Destinos</a>
+					</div>
+				</div>
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search"
+						placeholder="Buscar" aria-label="Search">
+					<button class="btn btn-dark my-2 my-sm-0 " type="submit">Buscar</button>
+				</form>
+			<button aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation"
+				class="navbar-toggler navbar-toggler-right"
+				data-target="#navbarResponsive" data-toggle="collapse" type="button"></button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item dropdown"><a aria-expanded="false"
+						aria-haspopup="true" class="nav-link dropdown-toggle"
+						data-toggle="dropdown" href="#" id="navbarDropdownBlog">
+							Usuario <span th:text="${username}" />
+					</a>
+						<div aria-labelledby="navbarDropdownBlog"
+							class="dropdown-menu dropdown-menu-right">
+							<form th:action="@{/logout}" method="post">
+								<input class="dropdown-item" style="cursor: pointer"
+									type="submit" value="Salir" />
+							</form>
+						</div></li>
+				</ul>
+			</div>
+	</div>
+	</nav>
+	<header>
+		<div class="carousel slide" data-ride="carousel"
+			id="carouselExampleIndicators">
+			<ol class="carousel-indicators">
+				<li class="active" data-slide-to="0"
+					data-target="#carouselExampleIndicators">&nbsp;</li>
+				<li data-slide-to="1" data-target="#carouselExampleIndicators">&nbsp;</li>
+				<li data-slide-to="2" data-target="#carouselExampleIndicators">&nbsp;</li>
+			</ol>
+			<div class="carousel-inner" role="listbox">
+				<!-- Slide One - Set the background image for this slide in the line below -->
+				<div class="carousel-item active"
+					style="background-image: url('http://placehold.it/1900x1080')">
+					<div class="carousel-caption d-none d-md-block">
+						<h3>First Slide</h3>
+						<p>This is a description for the first slide.</p>
+					</div>
+				</div>
+				<!-- Slide Two - Set the background image for this slide in the line below -->
+				<div class="carousel-item"
+					style="background-image: url('http://placehold.it/1900x1080')">
+					<div class="carousel-caption d-none d-md-block">
+						<h3>Second Slide</h3>
+						<p>This is a description for the second slide.</p>
+					</div>
+				</div>
+				<!-- Slide Three - Set the background image for this slide in the line below -->
+				<div class="carousel-item"
+					style="background-image: url('http://placehold.it/1900x1080')">
+					<div class="carousel-caption d-none d-md-block">
+						<h3>Third Slide</h3>
+						<p>This is a description for the third slide.</p>
+					</div>
+				</div>
+			</div>
+			<a class="carousel-control-prev" data-slide="prev"
+				href="#carouselExampleIndicators" role="button"><span
+				class="sr-only">Previous</span> </a> <a class="carousel-control-next"
+				data-slide="next" href="#carouselExampleIndicators" role="button">
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</header>
+	<!-- Page Content -->
+	<div class="container">
+		<div id="div-select-person" class="row"></div>
+	</div>
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Your
+				Website 2018</p>
+		</div>
+	</footer>
+	<!-- Bootstrap core JavaScript -->
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
