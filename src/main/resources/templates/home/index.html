@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>UNLa</title>
-	<!-- Bootstrap core CSS -->
-	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-	<!-- Custom styles for this template -->
-	<link href="/css/modern-business.css" rel="stylesheet" />
+<meta charset="utf-8" />
+<title>UNLa</title>
+<!-- Bootstrap core CSS -->
+<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Custom styles for this template -->
+<link href="/css/modern-business.css" rel="stylesheet" />
 </head>
 <body>
 	<!-- Navigation -->
@@ -14,6 +14,26 @@
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
 			<a class="navbar-brand" href="/index">HOME</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarNavAltMarkup"
+					aria-controls="navbarNavAltMarkup" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="#" th:href="@{/vuelo/}">Vuelos</a>
+						<a class="nav-item nav-link" href="#" th:href="@{/hotel/}">Hoteles</a>
+						<a class="nav-item nav-link" href="#" th:href="@{/actividad/}">Actividades</a>
+						<a class="nav-item nav-link" href="#" th:href="@{/paquete/}">Paquetes</a>
+						<a class="nav-item nav-link" href="#" th:href="@{/empleados/}">Destinos</a>
+					</div>
+				</div>
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search"
+						placeholder="Buscar" aria-label="Search">
+					<button class="btn btn-dark my-2 my-sm-0 " type="submit">Buscar</button>
+				</form>
 			<button aria-controls="navbarResponsive" aria-expanded="false"
 				aria-label="Toggle navigation"
 				class="navbar-toggler navbar-toggler-right"
@@ -22,8 +42,8 @@
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item dropdown"><a aria-expanded="false"
 						aria-haspopup="true" class="nav-link dropdown-toggle"
-						data-toggle="dropdown" href="#" id="navbarDropdownBlog"> Usuario
-							<span th:text="${username}" />
+						data-toggle="dropdown" href="#" id="navbarDropdownBlog">
+							Usuario <span th:text="${username}" />
 					</a>
 						<div aria-labelledby="navbarDropdownBlog"
 							class="dropdown-menu dropdown-menu-right">
@@ -34,7 +54,7 @@
 						</div></li>
 				</ul>
 			</div>
-		</div>
+	</div>
 	</nav>
 	<header>
 		<div class="carousel slide" data-ride="carousel"
