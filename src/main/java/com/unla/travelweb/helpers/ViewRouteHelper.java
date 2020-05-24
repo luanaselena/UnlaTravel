@@ -22,4 +22,9 @@ public class ViewRouteHelper {
     public final static String PAQUETE_UPDATE = "paquete/update";
     public final static String PAQUETE_ROOT = "/paquete";
     
+    public final static String CARRITO_INDEX = "carrito/index";
+    public final static String CARRITO_NEW = "carrito/new";
+    public final static String CARRITO_UPDATE = "carrito/update";
+    public final static String CARRITO_ROOT = "/carrito";
+    
 }

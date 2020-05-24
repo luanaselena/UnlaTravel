@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Actualizar Direccion</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/css/style.css}"/>
+
+    </head>
+    <body>
+        <header>
+            <div class="headerbg">
+
+                <h3>Unla Travel</h3>
+
+            </div>
+        </header>
+
+        <div class="divPrincipal">
+            <form action="#" th:action="@{/usuario/update}" th:object="${usuario}" method="post">
+                <p>Nombre: <input type="text" th:field="*{nombre}" /></p>
+                <p>Apellido: <input type="text" th:field="*{apellido}" /></p>
+                <p>Telefono: <input type="text" th:field="*{telefono}" /></p>
+                <p>Domicilio: <input type="text" th:field="*{domicilio}" /></p>
+                <p>Mail: <input type="text" th:field="*{mail}" /></p>
+                <p>Nacionalidad: <input type="text" th:field="*{nacionalidad}" /></p>
+                <p>ID: <input type="text" th:field="*{id}" /></p>
+
+                <input class="btn btn-success" style="background-color: #f16108" type="submit" value="Editar"/>
+            </form>
+            <br>
+            <br>
+            <form action="#" th:action="@{/usuario/delete/{id}(id=${usuario.id})}" method="post">
+                <input class="btn btn-danger" type="submit" value="Eliminar usuario" />
+            </form>
+        </div>
+    </body>
+</html>
