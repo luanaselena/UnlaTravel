@@ -20,7 +20,8 @@
             <form action="#" th:action="@{/vuelo/update}" th:object="${vuelo}" method="post">
                 <p>Fecha de ida: <input type="date" th:field="*{fechaIda}" /></p>
                 <p>Fecha de vuelta: <input type="date" th:field="*{fechaVuelta}" /></p>
-                <p>Valoracion aerolinea: <input type="text" th:field="*{valoracionAerolinea}" /></p>
+                <p>Precio: <input type="text" th:field="*{precio}" /></p>
+                <p>Puntaje minimo de la Aerolinea: <input type="range" min="1.0" max="10.0" th:field="*{valoracionAerolinea}" /></p>
                 <p>Clase: <input type="text" th:field="*{clase}" /></p>
                 <p>Escala incluida: <input type="checkbox" th:field="*{escalaIncluida}" /></p>
                 <p>Origen:

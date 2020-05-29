@@ -21,14 +21,19 @@ public class Carrito {
     private long id;
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	private Set<Paquete> reservas = new HashSet<>();
+	private Set<Paquete> paquetes = new HashSet<>();
+	
+	@OneToMany(fetch = FetchType.LAZY)
+	private Set<Hotel> hoteles = new HashSet<>();
+	
+	@OneToMany(fetch = FetchType.LAZY)
+	private Set<Vuelo> vuelos = new HashSet<>();
 	
 	public Carrito() {}
 
-	public Carrito(long id, Set<Paquete> reservas) {
+	public Carrito(long id) {
 		super();
 		this.id = id;
-		this.reservas = reservas;
 	}
 
 	public long getId() {
@@ -39,12 +44,29 @@ public class Carrito {
 		this.id = id;
 	}
 
-	public Set<Paquete> getReservas() {
-		return reservas;
+	public Set<Paquete> getPaquetes() {
+		return paquetes;
 	}
 
-	public void setReservas(Set<Paquete> reservas) {
-		this.reservas = reservas;
-	}		
+	public void setPaquetes(Set<Paquete> paquetes) {
+		this.paquetes = paquetes;
+	}
+
+	public Set<Hotel> getHoteles() {
+		return hoteles;
+	}
+
+	public void setHoteles(Set<Hotel> hoteles) {
+		this.hoteles = hoteles;
+	}
+
+	public Set<Vuelo> getVuelos() {
+		return vuelos;
+	}
+
+	public void setVuelos(Set<Vuelo> vuelos) {
+		this.vuelos = vuelos;
+	}
+		
 
 }

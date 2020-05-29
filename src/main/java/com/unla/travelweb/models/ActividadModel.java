@@ -2,8 +2,6 @@ package com.unla.travelweb.models;
 
 import java.sql.Date;
 
-import com.unla.travelweb.entities.Destino;
-
 public class ActividadModel {
 	
     private long id;
@@ -18,18 +16,21 @@ public class ActividadModel {
 
     private DestinoModel destino;
 
+    private double precio;
+    
     public ActividadModel() {}
     
-    public ActividadModel(String nombre, Date fecha, double valoracion, boolean accesibilidad, DestinoModel destino) {
+    public ActividadModel(String nombre, Date fecha, double valoracion, boolean accesibilidad, DestinoModel destino, double precio) {
 		super();
 		this.nombre = nombre;
 		this.fecha = fecha;
 		this.valoracion = valoracion;
 		this.accesibilidad = accesibilidad;
 		this.destino = destino;
+		this.precio = precio;
 	}
     
-	public ActividadModel(long id, String nombre, Date fecha, double valoracion, boolean accesibilidad, DestinoModel destino) {
+	public ActividadModel(long id, String nombre, Date fecha, double valoracion, boolean accesibilidad, DestinoModel destino, double precio) {
 		super();
 		this.nombre = nombre;
 		this.id = id;
@@ -37,6 +38,7 @@ public class ActividadModel {
 		this.valoracion = valoracion;
 		this.accesibilidad = accesibilidad;
 		this.destino = destino;
+		this.precio = precio;
 	}
 
 	public long getId() {
@@ -86,5 +88,15 @@ public class ActividadModel {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+	
+	
 
 }

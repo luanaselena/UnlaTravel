@@ -22,27 +22,14 @@
         <div class="divPrincipal">
             <form action="#" th:action="@{/hotel/create}"
                   th:object="${hotel}" method="post">
-                <p>
-                    Nombre: <input type="text" th:field="*{nombre}" />
-                </p>
-                <p>
-                    Cantidad Estrellas: <input type="text" th:field="*{cantEstrellas}" />
-                </p>
-                <p>
-                    Servicio: <input type="text" th:field="*{tipoServicio}" />
-                </p>
-                <p>
-                    Tipo de Habitacion: <input type="text" th:field="*{tipoHabitaciones}" />
-                </p>
-                <p>
-                    Regimen: <input type="text" th:field="*{tipoRegimen}" />
-                </p>
-                <p>
-                    Accesibilidad: <input type="checkbox" th:field="*{accesibilidad}" />
-                </p>
-                <p>
-                    Cantidad de Personas: <input type="text" th:field="*{cantPersonas}" />
-                </p>
+                <p>Nombre: <input type="text" th:field="*{nombre}" /></p>
+                <p>Precio por noche: <input type="text" th:field="*{precio}" /></p>
+                <p>Cantidad Estrellas: <input type="number" th:field="*{cantEstrellas}" min="1" max="5"/></p>
+                <p>Servicio: <input type="text" th:field="*{tipoServicio}" /></p>
+                <p>Tipo de Habitacion: <input type="text" th:field="*{tipoHabitaciones}" /></p>
+                <p>Regimen: <input type="text" th:field="*{tipoRegimen}" /></p>
+                <p>Accesibilidad: <input type="checkbox" th:field="*{accesibilidad}" /></p>
+                <p>Cantidad de Personas: <input type="text" th:field="*{cantPersonas}" /></p>
                 <input class="btn btn-primary" style="background-color: #EE7D00" type="submit" value="Crear" />
             </form>
         </div>

@@ -23,6 +23,7 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
+                        <th>Precio por noche</th>
                         <th>Calificación</th>
                         <th>Servicio</th>
                         <th>Tipo de Habitaciones</th>
@@ -35,6 +36,7 @@
                 <tbody>
                     <tr th:each="hotel : ${hoteles}">
                         <td><span th:text="${hotel.nombre}"></span></td>
+                        <td><p>$<span th:text="${hotel.precio}"></span></p></td>
                         <td><span th:text="${hotel.cantEstrellas}"></span></td>
                         <td><span th:text="${hotel.tipoServicio}"></span></td>
                         <td><span th:text="${hotel.tipoHabitaciones}"></span></td>

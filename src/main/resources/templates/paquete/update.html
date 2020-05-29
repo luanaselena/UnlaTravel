@@ -26,7 +26,7 @@
                
                <p>
                    Vuelo: <select placeholder="Vuelo" th:field="*{vuelo.id}"> 
-					<option th:each="v : ${vuelos}" th:value="${v.id}" th:text="${v.id}"> </option>
+					<option th:each="v : ${vuelos}" th:value="${v.id}" th:text="${v.Origen.nombre}+'-'+${v.Destino.nombre}" />
 					</select>
                </p>
                <p>ID: <input type="text" th:field="*{id}" /></p>
