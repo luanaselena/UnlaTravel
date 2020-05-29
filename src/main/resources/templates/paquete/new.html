@@ -31,7 +31,7 @@
                 <p>
                     Vuelo: 
                     <select th:field="*{vuelo.id}">
-                    	<option th:each="v : ${vuelos}" th:value="${v.id}" th:text="${v.id}" />
+                    	<option th:each="v : ${vuelos}" th:value="${v.id}" th:text="${v.Origen.nombre}+'-'+${v.Destino.nombre}" />
                     </select>
                 </p>
                 <input class="btn btn-primary" style="background-color: #f16108" type="submit" value="Crear" />

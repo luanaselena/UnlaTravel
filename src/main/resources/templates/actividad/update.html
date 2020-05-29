@@ -23,15 +23,16 @@
 		<form action="#" th:action="@{/actividad/update}"
 			th:object="${actividad}" method="post">
 			<p>Actividad: <input type="text" th:field="*{nombre}" /></p>
+			<p>Precio: <input type="text" th:field="*{precio}" /></p>
 			<p>Fecha: <input type="date" th:field="*{fecha}" /></p>
-			<p>Valoracion: <input type="text" th:field="*{valoracion}" /></p>
+			<p>Valoración: <input type="range" min="1.0" max="10.0" th:field="*{valoracion}" /></p>
 			<p>Accesibilidad: <input type="checkbox" th:field="*{accesibilidad}" /></p>
 			<p>Ubicacion:
 				<select placeholder="Destino" th:field="*{destino.id}"> 
 					<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.nombre}"> </option>
 				</select>
-			</p>
-			<p>ID: <input type="text" th:field="*{id}" /></p>
+			</p>			
+			<p>ID: <input hidden="true" type="text" th:field="*{id}" /></p>
 			<input class="btn btn-success" style="background-color: #f16108"
 				type="submit" value="Editar" />
 		</form>

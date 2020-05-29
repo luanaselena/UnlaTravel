@@ -24,6 +24,7 @@
                     <tr>
                         <th>Fecha de Ida</th>
                         <th>Fecha de Vuelta</th>
+						<th>Precio</th>
                         <th>Valoracion de Aerolinea</th>
                         <th>Clase</th>
                         <th>Escala incluida</th>
@@ -36,11 +37,12 @@
                     <tr th:each="vuelo : ${vuelos}">
                         <td><span th:text="${vuelo.fechaIda}"></span></td>
                         <td><span th:text="${vuelo.fechaVuelta}"></span></td>
+                        <td><p>$<span th:text="${vuelo.precio}"></span></p></td>
                         <td><span th:text="${vuelo.valoracionAerolinea}"></span></td>
                         <td><span th:text="${vuelo.clase}"></span></td>
 						<td><span th:text="${vuelo.escalaIncluida}"></span></td>
-						<td><span th:text="${vuelo.origen.nombre}"></span></td>
-						<td><span th:text="${vuelo.destino.nombre}"></span></td>
+						<td><span th:text="${vuelo.origen.nombre} +' '+ ${vuelo.origen.pais}"></span></td>
+						<td><span th:text="${vuelo.destino.nombre} +' '+ ${vuelo.destino.pais}"></span></td>
                         <td><a th:href="@{/vuelo/{id}(id=${vuelo.id})}">Ver</a>
                         </td>
                     </tr>

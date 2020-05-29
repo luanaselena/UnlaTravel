@@ -19,6 +19,7 @@
         <div class="divPrincipal">
             <form action="#" th:action="@{/hotel/update}" th:object="${hotel}" method="post">
                 <p>Nombre: <input type="text" th:field="*{nombre}" /></p>
+                <p>Precio: <input type="text" th:field="*{precio}" /></p>
                 <p>Cantidad Estrellas: <input type="text" th:field="*{cantEstrellas}" /></p>
                 <p>Servicio: <input type="text" th:field="*{tipoServicio}" /></p>
                 <p>Tipo de habitacion: <input type="text" th:field="*{tipoHabitaciones}" /></p>

@@ -9,9 +9,7 @@ import javax.persistence.*;
 @Table(name="hotel")
 public class Hotel implements Serializable{
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -40,10 +38,13 @@ public class Hotel implements Serializable{
     @Column(name= "cantPersonas", nullable=true)
     private int cantPersonas;
     
+    @Column(name= "precio", nullable=false)
+    private double precio;
+    
     public Hotel() {}
 
 	public Hotel(long id,String nombre, int cantEstrellas, String tipoServicio, String tipoHabitaciones, String tipoRegimen,
-			boolean accesibilidad, int cantPersonas) {
+			boolean accesibilidad, int cantPersonas, double precio) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -53,10 +54,11 @@ public class Hotel implements Serializable{
 		this.tipoRegimen = tipoRegimen;
 		this.accesibilidad = accesibilidad;
 		this.cantPersonas = cantPersonas;
+		this.precio = precio;
 	}
 	
 	public Hotel(String nombre, int cantEstrellas, String tipoServicio, String tipoHabitaciones, String tipoRegimen,
-			boolean accesibilidad, int cantPersonas) {
+			boolean accesibilidad, int cantPersonas, double precio) {
 		super();
 		this.nombre = nombre;
 		this.cantEstrellas = cantEstrellas;
@@ -65,6 +67,7 @@ public class Hotel implements Serializable{
 		this.tipoRegimen = tipoRegimen;
 		this.accesibilidad = accesibilidad;
 		this.cantPersonas = cantPersonas;
+		this.precio = precio;
 	}
 
 	public long getId() {
@@ -130,8 +133,14 @@ public class Hotel implements Serializable{
 	public void setCantPersonas(int cantPersonas) {
 		this.cantPersonas = cantPersonas;
 	}
-	
-	
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
     
     
 }

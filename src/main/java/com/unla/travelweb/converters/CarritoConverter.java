@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 public class CarritoConverter {
 	
 	public CarritoModel entityToModel (Carrito carrito) {
-		return new CarritoModel (carrito.getId(), carrito.getReservas());
+		return new CarritoModel (carrito.getId());
 	}
 	
 	public Carrito modelToEntity (CarritoModel carritoModel) {
-		return new Carrito (carritoModel.getId(), carritoModel.getReservas());
+		return new Carrito (carritoModel.getId());
 	}
 }

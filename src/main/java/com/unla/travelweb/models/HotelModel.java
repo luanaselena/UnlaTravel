@@ -19,11 +19,13 @@ public class HotelModel {
     
     private int cantPersonas;
     
+    private double precio;
+    
     public HotelModel() {}
 
 	public HotelModel(long id, String nombre, int cantEstrellas, String tipoServicio, 
 			String tipoHabitaciones, String tipoRegimen,
-			boolean accesibilidad, int cantPersonas) {
+			boolean accesibilidad, int cantPersonas, double precio) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -33,13 +35,13 @@ public class HotelModel {
 		this.tipoRegimen = tipoRegimen;
 		this.accesibilidad = accesibilidad;
 		this.cantPersonas = cantPersonas;
+		this.precio = precio;
 	}
 	
 	public HotelModel(String nombre, int cantEstrellas, String tipoServicio, 
 			String tipoHabitaciones, String tipoRegimen,
-			boolean accesibilidad, int cantPersonas) {
+			boolean accesibilidad, int cantPersonas, double precio) {
 		super();
-		
 		this.nombre = nombre;
 		this.cantEstrellas = cantEstrellas;
 		this.tipoServicio = tipoServicio;
@@ -47,6 +49,7 @@ public class HotelModel {
 		this.tipoRegimen = tipoRegimen;
 		this.accesibilidad = accesibilidad;
 		this.cantPersonas = cantPersonas;
+		this.precio = precio;
 	}
 
 	public long getId() {
@@ -112,8 +115,13 @@ public class HotelModel {
 	public void setCantPersonas(int cantPersonas) {
 		this.cantPersonas = cantPersonas;
 	}
-	
-	
-    
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
     
 }

@@ -22,21 +22,12 @@
         <div class="divPrincipal">
             <form action="#" th:action="@{/vuelo/create}"
                   th:object="${vuelo}" method="post">
-                <p>
-                    Fecha de Ida: <input type="date" th:field="*{fechaIda}" />
-                </p>
-                <p>
-                    Fecha de Vuelta: <input type="date" th:field="*{fechaVuelta}" />
-                </p>
-                <p>
-                    Valoracion Aerolinea: <input type="text" th:field="*{valoracionAerolinea}" />
-                </p>
-                <p>
-                    Clase: <input type="text" th:field="*{clase}" />
-                </p>
-                <p>
-                    Escala incluida: <input type="checkbox" th:field="*{escalaIncluida}" />
-                </p>
+                <p>Fecha de Ida: <input type="date" th:field="*{fechaIda}" /></p>
+                <p>Fecha de Vuelta: <input type="date" th:field="*{fechaVuelta}" /></p>
+                <p>Precio: <input type="text" th:field="*{precio}" /></p>
+                <p>Puntaje minimo de la Aerolinea: <input type="range" min="1.0" max="10.0" th:field="*{valoracionAerolinea}" /></p>
+                <p>Clase: <input type="text" th:field="*{clase}" /></p>
+                <p>Escala incluida: <input type="checkbox" th:field="*{escalaIncluida}" /></p>
                 <p>Origen:
 				<select placeholder="Destino" th:field="*{origen.id}"> 
 					<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.nombre}"> </option>

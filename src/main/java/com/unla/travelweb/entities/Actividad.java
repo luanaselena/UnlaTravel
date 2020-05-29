@@ -17,10 +17,10 @@ public class Actividad {
 	@Column(name="nombre", nullable=false)
 	private String nombre;
 	
-	@Column(name="fecha", nullable=true)
+	@Column(name="fecha", nullable=false)
 	private Date fecha;
 
-	@Column (name= "valoracion", nullable=false)
+	@Column (name= "valoracion", nullable=true)
 	private double valoracion;
 	
     @Column(name="accesibilidad", nullable=false)
@@ -30,18 +30,22 @@ public class Actividad {
     @JoinColumn(name="destino_id")
     private Destino destino;
 
+	@Column (name= "precio", nullable=false)
+	private double precio;
+	
     public Actividad() {}
     
-    public Actividad(String nombre,Date fecha, double valoracion, boolean accesibilidad, Destino destino) {
+    public Actividad(String nombre,Date fecha, double valoracion, boolean accesibilidad, Destino destino, double precio) {
 		super();
 		this.nombre = nombre;
 		this.fecha = fecha;
 		this.valoracion = valoracion;
 		this.accesibilidad = accesibilidad;
 		this.destino = destino;
+		this.precio = precio;
 	}
     
-	public Actividad(long id, String nombre, Date fecha, double valoracion, boolean accesibilidad, Destino destino) {
+	public Actividad(long id, String nombre, Date fecha, double valoracion, boolean accesibilidad, Destino destino, double precio) {
 		super();
 		this.nombre = nombre;
 		this.id = id;
@@ -49,6 +53,7 @@ public class Actividad {
 		this.valoracion = valoracion;
 		this.accesibilidad = accesibilidad;
 		this.destino = destino;
+		this.precio = precio;
 	}
 
 	public long getId() {
@@ -97,6 +102,14 @@ public class Actividad {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
 	}
 	
 	

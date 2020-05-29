@@ -11,11 +11,12 @@ public class VueloModel {
 	private double valoracionAerolinea;
 	private int clase;
 	private boolean escalaIncluida;
+	private double precio;
 	
 	public VueloModel() {}
 
 	public VueloModel(long id, Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase,
-			boolean escalaIncluida, DestinoModel origen, DestinoModel destino) {
+			boolean escalaIncluida, DestinoModel origen, DestinoModel destino, double precio) {
 		super();
 		this.id = id;
 		this.fechaIda = fechaIda;
@@ -25,9 +26,10 @@ public class VueloModel {
 		this.escalaIncluida = escalaIncluida;
 		this.origen = origen;
 		this.destino = destino;
+		this.precio = precio;
 	}
 
-	public VueloModel(Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase, boolean escalaIncluida, DestinoModel origen, DestinoModel destino) {
+	public VueloModel(Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase, boolean escalaIncluida, DestinoModel origen, DestinoModel destino, double precio) {
 		super();
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;
@@ -36,6 +38,7 @@ public class VueloModel {
 		this.escalaIncluida = escalaIncluida;
 		this.origen = origen;
 		this.destino = destino;
+		this.precio = precio;
 	}
 
 	public long getId() {
@@ -102,7 +105,12 @@ public class VueloModel {
 		this.destino = destino;
 	}
 
-	
-	
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
 	
 }

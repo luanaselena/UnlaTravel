@@ -23,6 +23,7 @@
                 <thead>
                     <tr>
                         <th>Actividad</th>
+                        <th>Precio</th>
                         <th>Fecha</th>
                         <th>Valoración</th>
                         <th>Accesibilidad</th>
@@ -33,10 +34,11 @@
                 <tbody>
                     <tr th:each="actividad : ${actividades}">
                         <td><span th:text="${actividad.nombre}"></span></td>
+                        <td><p>$<span th:text="${actividad.precio}"></span></p></td>
                         <td><span th:text="${actividad.fecha}"></span></td>
                         <td><span th:text="${actividad.valoracion}"></span></td>
                         <td><span th:text="${actividad.accesibilidad}"></span></td>
-                        <td><span th:text="${actividad.destino.nombre}"></span></td>
+                        <td><span th:text="${actividad.destino.pais}"></span></td>
                         <td><a th:href="@{/actividad/{id}(id=${actividad.id})}">Ver</a>
                         </td>
                     </tr>
