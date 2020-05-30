@@ -1,0 +1,56 @@
+package com.unla.travelweb.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="clase")
+public class Clase {
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+	private long id;
+	
+    @Column(name="nombre")
+	private String nombre;
+    
+    @Column(name="porcentajeAumento")
+	private double porcentajeAumento;
+
+	public Clase(String nombre, double porcentajeAumento) {
+		this.nombre = nombre;
+		this.porcentajeAumento = porcentajeAumento;
+	}
+
+	public long getIdClase() {
+		return id;
+	}
+
+	public void setIdClase(long idClase) {
+		this.id = idClase;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public double getPorcentajeAumento() {
+		return porcentajeAumento;
+	}
+
+	public void setPorcentajeAumento(double porcentajeAumento) {
+		this.porcentajeAumento = porcentajeAumento;
+	}
+	
+	
+	
+}
