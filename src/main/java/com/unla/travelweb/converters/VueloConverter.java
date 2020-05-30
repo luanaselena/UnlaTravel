@@ -13,16 +13,24 @@ public class VueloConverter {
 	@Autowired
 	@Qualifier("destinoConverter")
 	private DestinoConverter destinoConverter;
+	
+	@Autowired
+	@Qualifier("claseConverter")
+	private ClaseConverter claseConverter;
+	
+	@Autowired
+	@Qualifier("aerolineaConverter")
+	private AerolineaConverter aerolineaConverter;
 
 	public VueloModel entityToModel(Vuelo vuelo) {
 		return new VueloModel(vuelo.getId(), vuelo.getFechaIda(), vuelo.getFechaVuelta(),
-				vuelo.getValoracionAerolinea(), vuelo.getClase(), vuelo.isEscalaIncluida(),
+				aerolineaConverter.entityToModel(vuelo.getAerolinea()), claseConverter.entityToModel(vuelo.getClase()), vuelo.isEscalaIncluida(),
 				destinoConverter.entityToModel(vuelo.getOrigen()), destinoConverter.entityToModel(vuelo.getDestino()), vuelo.getPrecio());
 	}
 
 	public Vuelo modelToEntity(VueloModel vueloModel) {
 		return new Vuelo(vueloModel.getId(), vueloModel.getFechaIda(), vueloModel.getFechaVuelta(),
-				vueloModel.getValoracionAerolinea(), vueloModel.getClase(), vueloModel.isEscalaIncluida(),
+				aerolineaConverter.modelToEntity(vueloModel.getAerolinea()), claseConverter.modelToEntity(vueloModel.getClase()), vueloModel.isEscalaIncluida(),
 				destinoConverter.modelToEntity(vueloModel.getOrigen()),
 				destinoConverter.modelToEntity(vueloModel.getDestino()), vueloModel.getPrecio());
 	}

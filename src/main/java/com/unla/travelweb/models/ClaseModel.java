@@ -8,7 +8,15 @@ public class ClaseModel {
 	
 	private double porcentajeAumento;
 
+	public ClaseModel() {}
+	
 	public ClaseModel(String nombre, double porcentajeAumento) {
+		this.nombre = nombre;
+		this.porcentajeAumento = porcentajeAumento;
+	}
+	
+	public ClaseModel(long id, String nombre, double porcentajeAumento) {
+		this.id = id;
 		this.nombre = nombre;
 		this.porcentajeAumento = porcentajeAumento;
 	}

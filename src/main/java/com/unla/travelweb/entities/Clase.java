@@ -19,10 +19,18 @@ public class Clase {
     @Column(name="nombre")
 	private String nombre;
     
-    @Column(name="porcentajeAumento")
+    @Column(name="porcentaje_aumento")
 	private double porcentajeAumento;
 
+    public Clase() {}
+    
 	public Clase(String nombre, double porcentajeAumento) {
+		this.nombre = nombre;
+		this.porcentajeAumento = porcentajeAumento;
+	}
+	
+	public Clase(long id, String nombre, double porcentajeAumento) {
+		this.id = id;
 		this.nombre = nombre;
 		this.porcentajeAumento = porcentajeAumento;
 	}

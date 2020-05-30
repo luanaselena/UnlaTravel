@@ -35,11 +35,13 @@ public class Vuelo {
     @JoinColumn(name="destino_id", referencedColumnName = "id")
     private Destino destino;
 	
-    @Column(name="valoracionAerolinea", nullable=true) 
-	private double valoracionAerolinea;
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name="aerolinea", referencedColumnName = "id")
+	private Aerolinea aerolinea;
 	
-    @Column(name="clase") 
-	private int clase;
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name="clase", referencedColumnName = "id")
+	private Clase clase;
 	
     @Column(name="escalaIncluida") 
 	private boolean escalaIncluida;
@@ -48,13 +50,13 @@ public class Vuelo {
     private double precio;
     
     public Vuelo(){}    
-	public Vuelo(long id, Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase,
+	public Vuelo(long id, Date fechaIda, Date fechaVuelta, Aerolinea aerolinea, Clase clase,
 			boolean escalaIncluida, Destino origen, Destino destino, double precio) {
 		super();
 		this.id = id;
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;
-		this.valoracionAerolinea = valoracionAerolinea;
+		this.aerolinea = aerolinea;
 		this.clase = clase;
 		this.escalaIncluida = escalaIncluida;
 		this.origen = origen;
@@ -62,11 +64,11 @@ public class Vuelo {
 		this.precio = precio;
 	}
 
-	public Vuelo(Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase, boolean escalaIncluida, Destino origen, Destino destino, double precio) {
+	public Vuelo(Date fechaIda, Date fechaVuelta, Aerolinea aerolinea, Clase clase, boolean escalaIncluida, Destino origen, Destino destino, double precio) {
 		super();
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;
-		this.valoracionAerolinea = valoracionAerolinea;
+		this.aerolinea = aerolinea;
 		this.clase = clase;
 		this.escalaIncluida = escalaIncluida;
 		this.origen = origen;
@@ -98,19 +100,19 @@ public class Vuelo {
 		this.fechaVuelta = fechaVuelta;
 	}
 
-	public double getValoracionAerolinea() {
-		return valoracionAerolinea;
+	public Aerolinea getAerolinea() {
+		return aerolinea;
 	}
 
-	public void setValoracionAerolinea(double valoracionAerolinea) {
-		this.valoracionAerolinea = valoracionAerolinea;
+	public void setAerolinea(Aerolinea aerolinea) {
+		this.aerolinea = aerolinea;
 	}
 
-	public int getClase() {
+	public Clase getClase() {
 		return clase;
 	}
 
-	public void setClase(int clase) {
+	public void setClase(Clase clase) {
 		this.clase = clase;
 	}
 

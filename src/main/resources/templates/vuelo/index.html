@@ -38,8 +38,8 @@
                         <td><span th:text="${vuelo.fechaIda}"></span></td>
                         <td><span th:text="${vuelo.fechaVuelta}"></span></td>
                         <td><p>$<span th:text="${vuelo.precio}"></span></p></td>
-                        <td><span th:text="${vuelo.valoracionAerolinea}"></span></td>
-                        <td><span th:text="${vuelo.clase}"></span></td>
+                        <td><span th:text="${vuelo.aerolinea.nombre}  +' '+ ${vuelo.aerolinea.valoracion}"></span></td>
+                        <td><span th:text="${vuelo.clase.nombre}"></span></td>
 						<td><span th:text="${vuelo.escalaIncluida}"></span></td>
 						<td><span th:text="${vuelo.origen.nombre} +' '+ ${vuelo.origen.pais}"></span></td>
 						<td><span th:text="${vuelo.destino.nombre} +' '+ ${vuelo.destino.pais}"></span></td>

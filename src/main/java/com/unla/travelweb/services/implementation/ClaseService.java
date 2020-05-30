@@ -4,13 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import com.unla.travelweb.converters.ClaseConverter;
 import com.unla.travelweb.entities.Clase;
+import com.unla.travelweb.entities.Destino;
 import com.unla.travelweb.models.ClaseModel;
 import com.unla.travelweb.repositories.IClaseRepository;
 import com.unla.travelweb.services.IClaseService;
 
+@Service("claseService")
 public class ClaseService implements IClaseService{
 
 	@Autowired
@@ -23,32 +26,35 @@ public class ClaseService implements IClaseService{
 	
 	@Override
 	public List<Clase> getAll() {
-		// TODO Auto-generated method stub
 		return claseRepository.findAll();
 	}
 
 	@Override
 	public ClaseModel findById(long idClase) {
-		// TODO Auto-generated method stub
 		return claseConverter.entityToModel(claseRepository.findById(idClase));
 	}
 
 	@Override
 	public ClaseModel insert(ClaseModel claseModel) {
-		// TODO Auto-generated method stub
-		return null;
+		Clase clase= claseRepository.save(claseConverter.modelToEntity(claseModel));
+        return claseConverter.entityToModel(clase);
 	}
 
 	@Override
 	public ClaseModel update(ClaseModel claseModel) {
-		// TODO Auto-generated method stub
-		return null;
+		Clase clase= claseRepository.save(claseConverter.modelToEntity(claseModel));
+        return claseConverter.entityToModel(clase);
 	}
 
 	@Override
 	public boolean remove(long id) {
-		// TODO Auto-generated method stub
-		return false;
+		try{
+			claseRepository.deleteById(id);
+			return true;
+		}
+		catch(Exception e){
+			return false;
+		}
 	}
 
 }

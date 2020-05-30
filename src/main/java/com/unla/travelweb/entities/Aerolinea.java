@@ -29,7 +29,12 @@ public class Aerolinea {
 		this.nombre = nombre;
 		this.valoracion = valoracion;
 	}
-
+	
+	public Aerolinea(long id, String nombre, int valoracion) {
+		this.id = id;
+		this.nombre = nombre;
+		this.valoracion = valoracion;
+	}
 
 	public long getIdAerolinea() {
 		return id;

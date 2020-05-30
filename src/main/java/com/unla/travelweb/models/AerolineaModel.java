@@ -6,11 +6,19 @@ public class AerolineaModel {
 	private String nombre;
 	private int valoracion;
 	
+	public AerolineaModel() {}
+
 	public AerolineaModel(String nombre, int valoracion) {
 		this.nombre = nombre;
 		this.valoracion = valoracion;
 	}
 
+	public AerolineaModel(long id, String nombre, int valoracion) {
+		this.id = id;
+		this.nombre = nombre;
+		this.valoracion = valoracion;
+	}
+	
 	public long getIdAerolinea() {
 		return id;
 	}

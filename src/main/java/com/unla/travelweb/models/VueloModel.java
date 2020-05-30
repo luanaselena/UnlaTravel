@@ -8,20 +8,20 @@ public class VueloModel {
 	private Date fechaVuelta;
 	private DestinoModel origen;
 	private DestinoModel destino;
-	private double valoracionAerolinea;
-	private int clase;
+	private AerolineaModel aerolinea;
+	private ClaseModel clase;
 	private boolean escalaIncluida;
 	private double precio;
 	
 	public VueloModel() {}
 
-	public VueloModel(long id, Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase,
+	public VueloModel(long id, Date fechaIda, Date fechaVuelta, AerolineaModel aerolinea, ClaseModel clase,
 			boolean escalaIncluida, DestinoModel origen, DestinoModel destino, double precio) {
 		super();
 		this.id = id;
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;
-		this.valoracionAerolinea = valoracionAerolinea;
+		this.aerolinea = aerolinea;
 		this.clase = clase;
 		this.escalaIncluida = escalaIncluida;
 		this.origen = origen;
@@ -29,11 +29,11 @@ public class VueloModel {
 		this.precio = precio;
 	}
 
-	public VueloModel(Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase, boolean escalaIncluida, DestinoModel origen, DestinoModel destino, double precio) {
+	public VueloModel(Date fechaIda, Date fechaVuelta, AerolineaModel aerolinea, ClaseModel clase, boolean escalaIncluida, DestinoModel origen, DestinoModel destino, double precio) {
 		super();
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;
-		this.valoracionAerolinea = valoracionAerolinea;
+		this.aerolinea = aerolinea;
 		this.clase = clase;
 		this.escalaIncluida = escalaIncluida;
 		this.origen = origen;
@@ -65,19 +65,19 @@ public class VueloModel {
 		this.fechaVuelta = fechaVuelta;
 	}
 
-	public double getValoracionAerolinea() {
-		return valoracionAerolinea;
+	public AerolineaModel getAerolinea() {
+		return aerolinea;
 	}
 
-	public void setValoracionAerolinea(double valoracionAerolinea) {
-		this.valoracionAerolinea = valoracionAerolinea;
+	public void setAerolinea(AerolineaModel aerolinea) {
+		this.aerolinea = aerolinea;
 	}
 
-	public int getClase() {
+	public ClaseModel getClase() {
 		return clase;
 	}
 
-	public void setClase(int clase) {
+	public void setClase(ClaseModel clase) {
 		this.clase = clase;
 	}
 

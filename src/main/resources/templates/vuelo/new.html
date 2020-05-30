@@ -25,8 +25,16 @@
                 <p>Fecha de Ida: <input type="date" th:field="*{fechaIda}" /></p>
                 <p>Fecha de Vuelta: <input type="date" th:field="*{fechaVuelta}" /></p>
                 <p>Precio: <input type="text" th:field="*{precio}" /></p>
-                <p>Puntaje minimo de la Aerolinea: <input type="range" min="1.0" max="10.0" th:field="*{valoracionAerolinea}" /></p>
-                <p>Clase: <input type="text" th:field="*{clase}" /></p>
+                <p>Aerolinea: 
+                <select placeholder="Aerolinea" th:field="*{aerolinea.id}"> 
+					<option th:each="a : ${aerolineas}" th:value="${a.id}" th:text="${a.nombre}+' '+ ${a.valoracion}"> </option>
+				</select>
+				</p>
+                <p>Clase: 
+                <select placeholder="Clase" th:field="*{clase.id}"> 
+					<option th:each="c : ${clases}" th:value="${c.id}" th:text="${c.nombre}"> </option>
+				</select>
+				</p>
                 <p>Escala incluida: <input type="checkbox" th:field="*{escalaIncluida}" /></p>
                 <p>Origen:
 				<select placeholder="Destino" th:field="*{origen.id}"> 

@@ -40,10 +40,10 @@ INSERT INTO aerolinea (id,nombre,valoracion) VALUES (8,"Gol",2);
 INSERT INTO aerolinea (id,nombre,valoracion) VALUES (9,"Aerolineas Argentinas",5);
 INSERT INTO aerolinea (id,nombre,valoracion) VALUES (10,"Delta Airlines",4);
 
-INSERT INTO clase (id,nombre,porcentajeAumento) values (1,"Economica",0.05);
-INSERT INTO clase (id,nombre,porcentajeAumento) values (2,"Premium Economy",0.15);
-INSERT INTO clase (id,nombre,porcentajeAumento) values (3,"Ejecutiva/Business",0.20);
-INSERT INTO clase (id,nombre,porcentajeAumento) values (4,"Primera Clase",0.30);
+INSERT INTO clase (id,nombre,porcentaje_aumento) values (1,"Economica",0.05);
+INSERT INTO clase (id,nombre,porcentaje_aumento) values (2,"Premium Economy",0.15);
+INSERT INTO clase (id,nombre,porcentaje_aumento) values (3,"Ejecutiva/Business",0.20);
+INSERT INTO clase (id,nombre,porcentaje_aumento) values (4,"Primera Clase",0.30);
 
 
 
