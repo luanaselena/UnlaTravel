@@ -9,7 +9,7 @@ public interface IAerolineaService {
 
 	public List<Aerolinea> getAll();
 	public AerolineaModel findById(long idAerolinea);
-	public AerolineaModel insert(AerolineaModel aerolineaModel);
+	/*public AerolineaModel insert(AerolineaModel aerolineaModel);*/
 	public AerolineaModel update(AerolineaModel aerolineaModel);
 	public boolean remove(long id);
 

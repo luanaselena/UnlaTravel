@@ -39,11 +39,11 @@ public class Vuelo {
     @JoinColumn(name="destino_id", referencedColumnName = "id")
     private Destino destino;
 	
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToOne(cascade = {CascadeType.MERGE/*, CascadeType.PERSIST*/})
     @JoinColumn(name="aerolinea_id", referencedColumnName = "id")
 	private Aerolinea aerolinea;
 	
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToOne(cascade = {CascadeType.MERGE/*, CascadeType.PERSIST*/})
     @JoinColumn(name="clase_id", referencedColumnName = "id")
 	private Clase clase;
 	

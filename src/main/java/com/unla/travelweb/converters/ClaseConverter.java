@@ -9,11 +9,11 @@ import com.unla.travelweb.models.ClaseModel;
 public class ClaseConverter {
 	
 	public ClaseModel entityToModel (Clase clase) {
-		return new ClaseModel(clase.getNombre(), clase.getPorcentajeAumento());
+		return new ClaseModel(clase.getId(), clase.getNombre(), clase.getPorcentajeAumento());
 	}
 	
 	public Clase modelToEntity (ClaseModel clase) {
-		return new Clase(clase.getNombre(),clase.getPorcentajeAumento());
+		return new Clase(clase.getId(), clase.getNombre(),clase.getPorcentajeAumento());
 	}
 	
 }

@@ -9,7 +9,7 @@ public interface IClaseService {
 
 	public List<Clase> getAll();
 	public ClaseModel findById(long idClase);
-	public ClaseModel insert(ClaseModel claseModel);
+	/*public ClaseModel insert(ClaseModel claseModel);*/
 	public ClaseModel update(ClaseModel claseModel);
 	public boolean remove(long id);
 
