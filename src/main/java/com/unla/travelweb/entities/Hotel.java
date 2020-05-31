@@ -23,14 +23,17 @@ public class Hotel implements Serializable{
 	@Column (name= "cantEstrellas", nullable=true)
 	private int cantEstrellas;
 	
-    @Column(name="tipoServicio", nullable=true, length=30)
+    @Column(name="tipoServicio", nullable=true)
     private String tipoServicio;
     
-    @Column(name= "tipoHabitaciones", nullable= true, length=30)
+    @Column(name= "tipoHabitaciones", nullable= true)
     private String tipoHabitaciones;
     
-    @Column(name="tipoRegimen", nullable=true, length=30)
+    @Column(name="tipoRegimen", nullable=true)
     private String tipoRegimen;
+    
+    @Column(name="tipoAlojamiento", nullable=true)
+    private String tipoAlojamiento;
     
     @Column(name= "accesibilidad", nullable=true)
     private boolean accesibilidad;
