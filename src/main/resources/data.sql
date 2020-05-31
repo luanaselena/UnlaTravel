@@ -28,3 +28,23 @@ INSERT INTO destino (id,nombre,pais) VALUES (22,"Aeropuerto El Dorado","Colombia
 INSERT INTO destino (id,nombre,pais) VALUES (23,"Aeropuerto Internacional de Oruro","Bolivia");
 INSERT INTO destino (id,nombre,pais) VALUES (24,"Aeropuerto Internacional de Cancún","Mexico");
 INSERT INTO destino (id,nombre,pais) VALUES (25,"Aeropuerto Internacional de Carrasco","Uruguay");
+
+INSERT INTO aerolinea (id,nombre,valoracion) VALUES (1,"LATAM",7);
+INSERT INTO aerolinea (id,nombre,valoracion) VALUES (2,"KLM",8);
+INSERT INTO aerolinea (id,nombre,valoracion) VALUES (3,"Avianca Airlines",9);
+INSERT INTO aerolinea (id,nombre,valoracion) VALUES (4,"Flybondi",1);
+INSERT INTO aerolinea (id,nombre,valoracion) VALUES (5,"Qatar Airways",10);
+INSERT INTO aerolinea (id,nombre,valoracion) VALUES (6,"United Airlines",3);
+INSERT INTO aerolinea (id,nombre,valoracion) VALUES (7,"Aeromexico",6);
+INSERT INTO aerolinea (id,nombre,valoracion) VALUES (8,"Gol",2);
+INSERT INTO aerolinea (id,nombre,valoracion) VALUES (9,"Aerolineas Argentinas",5);
+INSERT INTO aerolinea (id,nombre,valoracion) VALUES (10,"Delta Airlines",4);
+
+INSERT INTO clase (id,nombre,porcentaje_aumento) values (1,"Economica",0.05);
+INSERT INTO clase (id,nombre,porcentaje_aumento) values (2,"Premium Economy",0.15);
+INSERT INTO clase (id,nombre,porcentaje_aumento) values (3,"Ejecutiva/Business",0.20);
+INSERT INTO clase (id,nombre,porcentaje_aumento) values (4,"Primera Clase",0.30);
+
+
+
+

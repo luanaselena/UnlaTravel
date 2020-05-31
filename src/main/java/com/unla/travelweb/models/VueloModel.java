@@ -2,26 +2,30 @@ package com.unla.travelweb.models;
 
 import java.sql.Date;
 
+import org.springframework.lang.Nullable;
+
+
 public class VueloModel {
 	private long id;
 	private Date fechaIda;
+	@Nullable
 	private Date fechaVuelta;
 	private DestinoModel origen;
 	private DestinoModel destino;
-	private double valoracionAerolinea;
-	private int clase;
+	private AerolineaModel aerolinea;
+	private ClaseModel clase;
 	private boolean escalaIncluida;
 	private double precio;
 	
 	public VueloModel() {}
 
-	public VueloModel(long id, Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase,
+	public VueloModel(long id, Date fechaIda, Date fechaVuelta, AerolineaModel aerolinea, ClaseModel clase,
 			boolean escalaIncluida, DestinoModel origen, DestinoModel destino, double precio) {
 		super();
 		this.id = id;
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;
-		this.valoracionAerolinea = valoracionAerolinea;
+		this.aerolinea = aerolinea;
 		this.clase = clase;
 		this.escalaIncluida = escalaIncluida;
 		this.origen = origen;
@@ -29,11 +33,11 @@ public class VueloModel {
 		this.precio = precio;
 	}
 
-	public VueloModel(Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase, boolean escalaIncluida, DestinoModel origen, DestinoModel destino, double precio) {
+	public VueloModel(Date fechaIda, Date fechaVuelta, AerolineaModel aerolinea, ClaseModel clase, boolean escalaIncluida, DestinoModel origen, DestinoModel destino, double precio) {
 		super();
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;
-		this.valoracionAerolinea = valoracionAerolinea;
+		this.aerolinea = aerolinea;
 		this.clase = clase;
 		this.escalaIncluida = escalaIncluida;
 		this.origen = origen;
@@ -63,22 +67,6 @@ public class VueloModel {
 
 	public void setFechaVuelta(Date fechaVuelta) {
 		this.fechaVuelta = fechaVuelta;
-	}
-
-	public double getValoracionAerolinea() {
-		return valoracionAerolinea;
-	}
-
-	public void setValoracionAerolinea(double valoracionAerolinea) {
-		this.valoracionAerolinea = valoracionAerolinea;
-	}
-
-	public int getClase() {
-		return clase;
-	}
-
-	public void setClase(int clase) {
-		this.clase = clase;
 	}
 
 	public boolean isEscalaIncluida() {
@@ -112,5 +100,23 @@ public class VueloModel {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
+
+	public AerolineaModel getAerolinea() {
+		return aerolinea;
+	}
+
+	public void setAerolinea(AerolineaModel aerolinea) {
+		this.aerolinea = aerolinea;
+	}
+
+	public ClaseModel getClase() {
+		return clase;
+	}
+
+	public void setClase(ClaseModel clase) {
+		this.clase = clase;
+	}
+	
+	
 	
 }

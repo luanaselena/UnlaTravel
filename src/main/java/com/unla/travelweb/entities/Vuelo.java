@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.lang.Nullable;
+
+
 @Entity
 @Table(name="vuelo")
 public class Vuelo {
@@ -23,7 +26,8 @@ public class Vuelo {
 	
     @Column(name="fechaIda")
 	private Date fechaIda;
-    
+
+    @Nullable
     @Column(name="fechaVuelta", nullable=true) 
 	private Date fechaVuelta;
 	
@@ -35,11 +39,13 @@ public class Vuelo {
     @JoinColumn(name="destino_id", referencedColumnName = "id")
     private Destino destino;
 	
-    @Column(name="valoracionAerolinea", nullable=true) 
-	private double valoracionAerolinea;
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name="aerolinea_id", referencedColumnName = "id")
+	private Aerolinea aerolinea;
 	
-    @Column(name="clase") 
-	private int clase;
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name="clase_id", referencedColumnName = "id")
+	private Clase clase;
 	
     @Column(name="escalaIncluida") 
 	private boolean escalaIncluida;
@@ -48,13 +54,13 @@ public class Vuelo {
     private double precio;
     
     public Vuelo(){}    
-	public Vuelo(long id, Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase,
+	public Vuelo(long id, Date fechaIda, Date fechaVuelta, Aerolinea aerolinea, Clase clase,
 			boolean escalaIncluida, Destino origen, Destino destino, double precio) {
 		super();
 		this.id = id;
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;
-		this.valoracionAerolinea = valoracionAerolinea;
+		this.aerolinea = aerolinea;
 		this.clase = clase;
 		this.escalaIncluida = escalaIncluida;
 		this.origen = origen;
@@ -62,11 +68,11 @@ public class Vuelo {
 		this.precio = precio;
 	}
 
-	public Vuelo(Date fechaIda, Date fechaVuelta, double valoracionAerolinea, int clase, boolean escalaIncluida, Destino origen, Destino destino, double precio) {
+	public Vuelo(Date fechaIda, Date fechaVuelta, Aerolinea aerolinea, Clase clase, boolean escalaIncluida, Destino origen, Destino destino, double precio) {
 		super();
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;
-		this.valoracionAerolinea = valoracionAerolinea;
+		this.aerolinea = aerolinea;
 		this.clase = clase;
 		this.escalaIncluida = escalaIncluida;
 		this.origen = origen;
@@ -98,22 +104,6 @@ public class Vuelo {
 		this.fechaVuelta = fechaVuelta;
 	}
 
-	public double getValoracionAerolinea() {
-		return valoracionAerolinea;
-	}
-
-	public void setValoracionAerolinea(double valoracionAerolinea) {
-		this.valoracionAerolinea = valoracionAerolinea;
-	}
-
-	public int getClase() {
-		return clase;
-	}
-
-	public void setClase(int clase) {
-		this.clase = clase;
-	}
-
 	public boolean isEscalaIncluida() {
 		return escalaIncluida;
 	}
@@ -138,6 +128,18 @@ public class Vuelo {
 	}
 	public void setPrecio(double precio) {
 		this.precio = precio;
+	}
+	public Aerolinea getAerolinea() {
+		return aerolinea;
+	}
+	public void setAerolinea(Aerolinea aerolinea) {
+		this.aerolinea = aerolinea;
+	}
+	public Clase getClase() {
+		return clase;
+	}
+	public void setClase(Clase clase) {
+		this.clase = clase;
 	}
 	
 	

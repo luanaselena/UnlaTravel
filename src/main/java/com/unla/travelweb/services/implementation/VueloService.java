@@ -6,12 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.unla.travelweb.converters.AerolineaConverter;
+import com.unla.travelweb.converters.ClaseConverter;
 import com.unla.travelweb.converters.DestinoConverter;
 import com.unla.travelweb.converters.VueloConverter;
 import com.unla.travelweb.entities.Destino;
 import com.unla.travelweb.entities.Vuelo;
+import com.unla.travelweb.models.AerolineaModel;
+import com.unla.travelweb.models.ClaseModel;
 import com.unla.travelweb.models.DestinoModel;
 import com.unla.travelweb.models.VueloModel;
+import com.unla.travelweb.repositories.IAerolineaRepository;
+import com.unla.travelweb.repositories.IClaseRepository;
 import com.unla.travelweb.repositories.IDestinoRepository;
 import com.unla.travelweb.repositories.IVueloRepository;
 import com.unla.travelweb.services.IVueloService;
@@ -35,6 +41,23 @@ public class VueloService implements IVueloService{
 	@Qualifier("destinoRepository")
 	private IDestinoRepository destinoRepository;
 	
+	@Autowired
+	@Qualifier("claseConverter")
+	private ClaseConverter claseConverter;
+	
+	@Autowired
+	@Qualifier("claseRepository")
+	private IClaseRepository claseRepository;
+	
+	@Autowired
+	@Qualifier("aerolineaConverter")
+	private AerolineaConverter aerolineaConverter;
+	
+	@Autowired
+	@Qualifier("aerolineaRepository")
+	private IAerolineaRepository aerolineaRepository;
+	
+	
 	@Override
 	public List<Vuelo> getAll() {
 		return vueloRepository.findAll();
@@ -47,13 +70,6 @@ public class VueloService implements IVueloService{
 
 	@Override
 	public VueloModel insert(VueloModel vueloModel) {
-		
-		Destino o = destinoRepository.findById(vueloModel.getOrigen().getId());
-		Destino d = destinoRepository.findById(vueloModel.getDestino().getId());
-		DestinoModel om = destinoConverter.entityToModel(o);
-		DestinoModel dm = destinoConverter.entityToModel(d);
-		vueloModel.setOrigen(om);
-		vueloModel.setDestino(dm);
 		Vuelo vuelo = vueloRepository.save(vueloConverter.modelToEntity(vueloModel));
 		return vueloConverter.entityToModel(vuelo);
 	}
