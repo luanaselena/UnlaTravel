@@ -35,12 +35,12 @@ public class Clase {
 		this.porcentajeAumento = porcentajeAumento;
 	}
 
-	public long getIdClase() {
+	public long getId() {
 		return id;
 	}
 
-	public void setIdClase(long idClase) {
-		this.id = idClase;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getNombre() {

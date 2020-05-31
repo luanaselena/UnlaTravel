@@ -36,12 +36,12 @@ public class Aerolinea {
 		this.valoracion = valoracion;
 	}
 
-	public long getIdAerolinea() {
+	public long getId() {
 		return id;
 	}
 
 
-	public void setIdAerolinea(long idAerolinea) {
+	public void setId(long idAerolinea) {
 		this.id = idAerolinea;
 	}
 

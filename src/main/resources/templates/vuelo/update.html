@@ -23,7 +23,7 @@
                 <p>Precio: <input type="text" th:field="*{precio}" /></p>
                 <p>Aerolinea: 
                 <select placeholder="Aerolinea" th:field="*{aerolinea.id}"> 
-					<option th:each="a : ${aerolineas}" th:value="${a.id}" th:text="${a.nombre}+' '+ ${a.valoracion}"> </option>
+						<option th:each="a : ${aerolineas}" th:value="${a.id}" th:text="${a.nombre}+' - Valoracion: '+ ${a.valoracion}"> </option>
 				</select>
 				</p>
                 <p>Clase: 
@@ -33,7 +33,7 @@
 				</p>
                 <p>Escala incluida: <input type="checkbox" th:field="*{escalaIncluida}" /></p>
                 <p>Origen:
-				<select placeholder="Destino" th:field="*{destino.id}"> 
+				<select placeholder="Destino" th:field="*{origen.id}"> 
 					<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.nombre}"> </option>
 				</select>
 				</p>
@@ -42,7 +42,7 @@
 						<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.nombre}"> </option>
 					</select>
 				</p>
-                <p>ID: <input type="text" th:field="*{id}" /></p>
+                <p><input hidden="true" type="text" th:field="*{id}" /></p>
 
                 <input class="btn btn-success" style="background-color: #EE7D00" type="submit" value="Editar"/>
             </form>

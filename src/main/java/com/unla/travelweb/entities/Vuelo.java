@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.lang.Nullable;
+
+
 @Entity
 @Table(name="vuelo")
 public class Vuelo {
@@ -23,7 +26,8 @@ public class Vuelo {
 	
     @Column(name="fechaIda")
 	private Date fechaIda;
-    
+
+    @Nullable
     @Column(name="fechaVuelta", nullable=true) 
 	private Date fechaVuelta;
 	
@@ -35,12 +39,12 @@ public class Vuelo {
     @JoinColumn(name="destino_id", referencedColumnName = "id")
     private Destino destino;
 	
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name="aerolinea", referencedColumnName = "id")
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name="aerolinea_id", referencedColumnName = "id")
 	private Aerolinea aerolinea;
 	
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name="clase", referencedColumnName = "id")
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name="clase_id", referencedColumnName = "id")
 	private Clase clase;
 	
     @Column(name="escalaIncluida") 
@@ -100,22 +104,6 @@ public class Vuelo {
 		this.fechaVuelta = fechaVuelta;
 	}
 
-	public Aerolinea getAerolinea() {
-		return aerolinea;
-	}
-
-	public void setAerolinea(Aerolinea aerolinea) {
-		this.aerolinea = aerolinea;
-	}
-
-	public Clase getClase() {
-		return clase;
-	}
-
-	public void setClase(Clase clase) {
-		this.clase = clase;
-	}
-
 	public boolean isEscalaIncluida() {
 		return escalaIncluida;
 	}
@@ -140,6 +128,18 @@ public class Vuelo {
 	}
 	public void setPrecio(double precio) {
 		this.precio = precio;
+	}
+	public Aerolinea getAerolinea() {
+		return aerolinea;
+	}
+	public void setAerolinea(Aerolinea aerolinea) {
+		this.aerolinea = aerolinea;
+	}
+	public Clase getClase() {
+		return clase;
+	}
+	public void setClase(Clase clase) {
+		this.clase = clase;
 	}
 	
 	

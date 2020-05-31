@@ -61,7 +61,10 @@ public class VueloController {
 
     @PostMapping("/create")
     public RedirectView create(@ModelAttribute("vuelo") VueloModel vueloModel) {
-    	
+    	vueloModel.setOrigen(destinoService.findById(vueloModel.getOrigen().getId()));
+    	vueloModel.setDestino(destinoService.findById(vueloModel.getDestino().getId()));
+    	vueloModel.setAerolinea(aerolineaService.findById(vueloModel.getAerolinea().getId()));
+    	vueloModel.setClase(claseService.findById(vueloModel.getClase().getId()));
     	vueloService.insert(vueloModel);
         return new RedirectView(ViewRouteHelper.VUELO_ROOT);
     }
@@ -76,17 +79,12 @@ public class VueloController {
         return mAV;
     }
 
-
     @PostMapping("/update")
     public RedirectView update(@ModelAttribute("vuelo") VueloModel vueloModel) {
-    	AerolineaModel a = aerolineaService.findById(vueloModel.getAerolinea().getIdAerolinea());
-    	ClaseModel c = claseService.findById(vueloModel.getClase().getIdClase());
-    	DestinoModel o = destinoService.findById(vueloModel.getOrigen().getId());
-    	DestinoModel d = destinoService.findById(vueloModel.getDestino().getId());
-    	vueloModel.setOrigen(o);
-    	vueloModel.setDestino(d);
-    	vueloModel.setAerolinea(a);
-    	vueloModel.setClase(c);
+    	vueloModel.setOrigen(destinoService.findById(vueloModel.getOrigen().getId()));
+    	vueloModel.setDestino(destinoService.findById(vueloModel.getDestino().getId()));
+    	vueloModel.setAerolinea(aerolineaService.findById(vueloModel.getAerolinea().getId()));
+    	vueloModel.setClase(claseService.findById(vueloModel.getClase().getId()));
     	vueloService.update(vueloModel);
         return new RedirectView(ViewRouteHelper.VUELO_ROOT);
     }

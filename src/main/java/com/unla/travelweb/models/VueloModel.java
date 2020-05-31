@@ -2,9 +2,13 @@ package com.unla.travelweb.models;
 
 import java.sql.Date;
 
+import org.springframework.lang.Nullable;
+
+
 public class VueloModel {
 	private long id;
 	private Date fechaIda;
+	@Nullable
 	private Date fechaVuelta;
 	private DestinoModel origen;
 	private DestinoModel destino;
@@ -65,22 +69,6 @@ public class VueloModel {
 		this.fechaVuelta = fechaVuelta;
 	}
 
-	public AerolineaModel getAerolinea() {
-		return aerolinea;
-	}
-
-	public void setAerolinea(AerolineaModel aerolinea) {
-		this.aerolinea = aerolinea;
-	}
-
-	public ClaseModel getClase() {
-		return clase;
-	}
-
-	public void setClase(ClaseModel clase) {
-		this.clase = clase;
-	}
-
 	public boolean isEscalaIncluida() {
 		return escalaIncluida;
 	}
@@ -112,5 +100,23 @@ public class VueloModel {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
+
+	public AerolineaModel getAerolinea() {
+		return aerolinea;
+	}
+
+	public void setAerolinea(AerolineaModel aerolinea) {
+		this.aerolinea = aerolinea;
+	}
+
+	public ClaseModel getClase() {
+		return clase;
+	}
+
+	public void setClase(ClaseModel clase) {
+		this.clase = clase;
+	}
+	
+	
 	
 }
