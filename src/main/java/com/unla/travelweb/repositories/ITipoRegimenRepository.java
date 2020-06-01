@@ -9,6 +9,6 @@ import com.unla.travelweb.entities.TipoRegimen;
 
 @Repository("tipoRegimenRepository")
 public interface ITipoRegimenRepository extends JpaRepository<TipoRegimen, Serializable>{
-	public abstract TipoRegimen findById(long idServicio);
+	public abstract TipoRegimen findById(long idRegimen);
 	public abstract TipoRegimen findByTipo(String tipo);
 }

@@ -9,6 +9,6 @@ import com.unla.travelweb.entities.TipoHabitacion;
 
 @Repository("tipoHabitacionRepository")
 public interface ITipoHabitacionRepository extends JpaRepository<TipoHabitacion, Serializable>{
-	public abstract TipoHabitacion findById(long idServicio);
+	public abstract TipoHabitacion findById(long idHabitacion);
 	public abstract TipoHabitacion findByTipo(String tipo);
 }
