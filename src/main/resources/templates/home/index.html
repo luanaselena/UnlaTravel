@@ -1,110 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<title>UNLa</title>
-<!-- Bootstrap core CSS -->
-<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-<!-- Custom styles for this template -->
-<link href="/css/modern-business.css" rel="stylesheet" />
-</head>
-<body>
-	<!-- Navigation -->
-	<nav
-		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-			<a class="navbar-brand" href="/index">HOME</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarNavAltMarkup"
-					aria-controls="navbarNavAltMarkup" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-					<div class="navbar-nav">
-						<a class="nav-item nav-link" href="#" th:href="@{/vuelo/}">Vuelos</a>
-						<a class="nav-item nav-link" href="#" th:href="@{/hotel/}">Hoteles</a>
-						<a class="nav-item nav-link" href="#" th:href="@{/actividad/}">Actividades</a>
-						<a class="nav-item nav-link" href="#" th:href="@{/paquete/}">Paquetes</a>
-						<a class="nav-item nav-link" href="#" th:href="@{/destino/}">Destinos</a>
-					</div>
-				</div>
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search"
-						placeholder="Buscar" aria-label="Search">
-					<button class="btn btn-dark my-2 my-sm-0 " type="submit">Buscar</button>
-				</form>
-			<button aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation"
-				class="navbar-toggler navbar-toggler-right"
-				data-target="#navbarResponsive" data-toggle="collapse" type="button"></button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item dropdown"><a aria-expanded="false"
-						aria-haspopup="true" class="nav-link dropdown-toggle"
-						data-toggle="dropdown" href="#" id="navbarDropdownBlog">
-							Usuario <span th:text="${username}" />
-					</a>
-						<div aria-labelledby="navbarDropdownBlog"
-							class="dropdown-menu dropdown-menu-right">
-							<form th:action="@{/logout}" method="post">
-								<input class="dropdown-item" style="cursor: pointer"
-									type="submit" value="Salir" />
-							</form>
-						</div></li>
-				</ul>
-			</div>
-	</div>
-	</nav>
-	<header>
-		<div class="carousel slide" data-ride="carousel"
-			id="carouselExampleIndicators">
-			<ol class="carousel-indicators">
-				<li class="active" data-slide-to="0"
-					data-target="#carouselExampleIndicators">&nbsp;</li>
-				<li data-slide-to="1" data-target="#carouselExampleIndicators">&nbsp;</li>
-				<li data-slide-to="2" data-target="#carouselExampleIndicators">&nbsp;</li>
-			</ol>
-			<div class="carousel-inner" role="listbox">
-				<!-- Slide One - Set the background image for this slide in the line below -->
-				<div class="carousel-item active"
-					style="background-image: url('https://fondosmil.com/fondo/1143.jpg')">
-					<div class="carousel-caption d-none d-md-block">
-						<h3>Viajes baratos, experiencias únicas</h3>
-						<p>Crea un paquete a tu medida</p>
-					</div>
-				</div>
-				<!-- Slide Two - Set the background image for this slide in the line below -->
-				<div class="carousel-item"
-					style="background-image: url('https://wallpaperaccess.com/full/123346.jpg')">
-					<div class="carousel-caption d-none d-md-block">
-						<h3>Volvé a soñar con tu próximo viaje</h3>
-						<p>Soñá con tranquilidad</p>
-					</div>
-				</div>
-				<!-- Slide Three - Set the background image for this slide in the line below -->
-				<div class="carousel-item"
-					style="background-image: url('https://images.alphacoders.com/439/thumb-1920-439191.jpg')">
-					<div class="carousel-caption d-none d-md-block">
-						<h3>Encontrá hoteles al mejor precio</h3>
-						<p>Accedé ya</p>
-					</div>
-				</div>
-			</div>
-			<a class="carousel-control-prev" data-slide="prev"
-				href="#carouselExampleIndicators" role="button"><span
-				class="sr-only">Previous</span> </a> <a class="carousel-control-next"
-				data-slide="next" href="#carouselExampleIndicators" role="button">
-				<span class="sr-only">Next</span>
-			</a>
-		</div>
-	</header>
-	<!-- Page Content -->
-	<div class="container">
-		<div id="div-select-person" class="row"></div>
-	</div>
-	<!-- Bootstrap core JavaScript -->
-	<script src="/vendor/jquery/jquery.min.js"></script>
-	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>UNLa Travel</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">UNLa Travel</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ml-auto">
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/actividad">Actividades</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/destino">Destinos</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/vuelo">Vuelos</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/hotel">Hoteles</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/paquete">Paquetes</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/carrito">Carrito</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- header -->
+        <header class="masthead">
+            <div class="container">
+                    <div class="masthead-subheading">Programa tu próximo viaje</div>
+                <div class="masthead-heading text-uppercase">Los mejores precios</div>
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#servicios">Saber más</a>
+            </div>
+        </header>
+        <!-- Servicios -->
+        <section class="page-section" id="servicios">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Servicios</h2>
+                    <h3 class="section-subheading text-muted"></h3>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x"><i class="fas fa-circle fa-stack-2x text-primary"></i><i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i></span>
+                        <h4 class="my-3">E-Commerce</h4>
+                        <p class="text-muted">Realizá tus reservas de paquetes, vuelos y hoteles sin salir de casa.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x"><i class="fas fa-circle fa-stack-2x text-primary"></i><i class="fas fa-laptop fa-stack-1x fa-inverse"></i></span>
+                        <h4 class="my-3">Paquetes Personalizados</h4>
+                        <p class="text-muted">Encontrá el paquete ideal que mas cumpla tus necesidades.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x"><i class="fas fa-circle fa-stack-2x text-primary"></i><i class="fas fa-lock fa-stack-1x fa-inverse"></i></span>
+                        <h4 class="my-3">Seguridad</h4>
+                        <p class="text-muted">Transacciones web seguras por el medio de pago que prefieras.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Actividades -->
+        <section class="page-section bg-light" id="actividades">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Actividades</h2>
+                    <h3 class="section-subheading text-muted">Enterate de las actividades disponibles en cada destino.</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1"
+                                ><div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/actividades/01-thumbnail.jpg" alt=""
+                            /></a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Fashion Week</div>
+                                <div class="portfolio-caption-subheading text-muted">São Paulo</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2"
+                                ><div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/actividades/02-thumbnail.jpg" alt=""
+                            /></a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Esquiar</div>
+                                <div class="portfolio-caption-subheading text-muted">Canadá</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3"
+                                ><div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/actividades/03-thumbnail.jpg" alt=""
+                            /></a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Fiestas</div>
+                                <div class="portfolio-caption-subheading text-muted">Ibiza</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4"
+                                ><div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/actividades/04-thumbnail.jpg" alt=""
+                            /></a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Museos</div>
+                                <div class="portfolio-caption-subheading text-muted">Italia</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5"
+                                ><div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/actividades/05-thumbnail.jpg" alt=""
+                            /></a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Tango</div>
+                                <div class="portfolio-caption-subheading text-muted">Buenos Aires</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6"
+                                ><div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/actividades/06-thumbnail.jpg" alt=""
+                            /></a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Playas</div>
+                                <div class="portfolio-caption-subheading text-muted">Rio de Janeiro</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Calificaciones (vuelos y hoteles) -->
+        <section class="page-section" id="vuelo">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Calificaciones</h2>
+                    <h3 class="section-subheading text-muted">Elegí tus servicios en base a las experiencias de otras personas.</h3>
+                </div>
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/vuelosHoteles/1.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="subheading">Qatar Airways</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">Elegida con 10 puntos de valoración por nuestros clientes, Qatar Airways es la aerolínea de mejor reputación en la página!</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/vuelosHoteles/2.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="subheading">Avianca Airlines</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">Con 9 puntos de valoración, Avianca Airlines es la segunda aerolínea con mejor reputación de la página, y cuenta con promociones imperdibles.</p></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/vuelosHoteles/3.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="subheading">Hotel Desconocido 1</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">La red de hoteles 5 estrellas Hotel Desconocido 1 son los mas elegidos por los compradores!</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/vuelosHoteles/4.jpg" alt="" /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="subheading">Hotel Desconocido 2</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">Los hoteles familiares Hotel Desconocidos 2 tienen 4 estrellas y precios increíbles.</p></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- Paquetes -->
+        <section class="page-section bg-light" id="paquete">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Paquetes personalizados</h2>
+                    <h3 class="section-subheading text-muted">Los paquetes completos incluyen hotel, vuelos y actividades para el destino que prefieras.</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/paquetes/1.jpg" alt="" />
+                            <h4>Rio de Janeiro</h4>
+                            <p class="text-muted">El destino mas elegido entre nuestros clientes</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/paquetes/2.jpg" alt="" />
+                            <h4>Nueva Delhi</h4>
+                            <p class="text-muted">Este paquete incluye excursiones con guias turísticos</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/paquetes/3.jpg" alt="" />
+                            <h4>Tokio</h4>
+                            <p class="text-muted">Paquete lleno de actividades únicas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contacto-->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Contactanos</h2>
+                    <h3 class="section-subheading text-muted">Manda tu sugerencia o crítica.</h3>
+                </div>
+                <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                    <div class="row align-items-stretch mb-5">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input class="form-control" id="name" type="text" placeholder="Nombre" required="required" data-validation-required-message="Ingresá tu nombre." />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" id="email" type="email" placeholder="Email" required="required" data-validation-required-message="Ingresá tu email." />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group mb-md-0">
+                                <input class="form-control" id="phone" type="tel" placeholder="Telefono" required="required" data-validation-required-message="Ingresá tu teléfono." />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-group-textarea mb-md-0">
+                                <textarea class="form-control" id="message" placeholder="Mensaje" required="required" data-validation-required-message="Ingresá el mensaje que quieras."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div id="success"></div>
+                        <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Mandar mensage</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- Actividades  Modals--><!-- Modal 1-->
+        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <h2 class="text-uppercase">São Paulo</h2>
+                                    <p class="item-intro text-muted">Fashion Week.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/actividades/01-full.jpg" alt="" />
+                                    <p>En las actividades para realizar en São Paulo se encuentran varios desfiles y muestras culturales.</p>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 2-->
+        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <h2 class="text-uppercase">Canadá</h2>
+                                    <p class="item-intro text-muted">Actividades en la nieve</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/actividades/02-full.jpg" alt="" />
+                                    <p>En canadá ademas de actividades hay muchas actividades en la naturaleza.</p>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 3-->
+        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <h2 class="text-uppercase">Ibiza</h2>
+                                    <p class="item-intro text-muted">Fiestas al aire libre.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/actividades/03-full.jpg" alt="" />
+                                    <p>Encontrá en Ibiza las mejores fiestas y festivales musicales.</p>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 4-->
+        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <h2 class="text-uppercase">Italia</h2>
+                                    <p class="item-intro text-muted">Museos</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/actividades/04-full.jpg" alt="" />
+                                    <p>Italia es rica en arte y se encuentran los mejores museos y exposiciones culturales.</p>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 5-->
+        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <h2 class="text-uppercase">Buenos Aires</h2>
+                                    <p class="item-intro text-muted">Tango en la calle.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/actividades/05-full.jpg" alt="" />
+                                    <p>En varias calles de Buenos Aires se pueden escontrar una de las actividades culturales mas interesantes y gratis, el tango callejero.</p>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 6-->
+        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <h2 class="text-uppercase">Rio de Janeiro</h2>
+                                    <p class="item-intro text-muted">Playas</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/actividades/06-full.jpg" alt="" />
+                                    <p>En Rio de Janeiro se encuentran actividades únicas en algunas de las playas mas lindas del mundo.</p>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <!-- Contact form JS-->
+        <script src="assets/mail/jqBootstrapValidation.js"></script>
+        <script src="assets/mail/contact_me.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
 </html>
