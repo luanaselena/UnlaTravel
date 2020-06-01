@@ -19,7 +19,7 @@ public class HomeController {
 	@Autowired
 	@Qualifier("usuarioService")
 	private IUsuarioService usuarioService;
-	
+
 	//GET Example: SERVER/index
 	@GetMapping("/index")
 	public ModelAndView index() {
