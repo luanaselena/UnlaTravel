@@ -41,6 +41,9 @@ public class Hotel implements Serializable{
     @Column(name= "precio", nullable=false)
     private double precio;
     
+    @Column(name= "imgPath", nullable=false)
+    private String imgPath;
+    
     public Hotel() {}
 
 	public Hotel(long id,String nombre, int cantEstrellas, String tipoServicio, String tipoHabitaciones, String tipoRegimen,

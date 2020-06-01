@@ -47,8 +47,23 @@
                         </td>
                     </tr>
                 </tbody>
-                </table>
+                </table>                
                 <br> <a class="btn btn-primary" style="background-color: #EE7D00" href="/hotel/new">Crear</a>
         </div>
+        <div class="container">                
+                <div class="row">
+	                <div th:each="hotel : ${hoteles}" class="col-6 mt-4">
+		                <div class="card mx-auto" style="width: 18rem;">
+						  <img src="https://www.cronista.com/__export/1585750913800/sites/diarioelcronista/img/2020/04/01/cataratas_sin_agua.jpg" class="card-img-top" alt="...">
+						  <div class="card-body">
+						    <span th:text="${hotel.nombre}"></span><br/>
+						    <span th:text="${hotel.cantEstrellas}"></span><br/>
+						    <p>$<span th:text="${hotel.precio}"></span></p>
+						    <a class="btn btn-primary" style="background-color: #EE7D00" href="#">Elegir Hotel</a>
+						  </div>
+						</div>
+	                </div>
+                </div>
+         </div>
     </body>
 </html>
