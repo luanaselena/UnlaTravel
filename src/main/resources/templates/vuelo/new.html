@@ -24,7 +24,6 @@
                   th:object="${vuelo}" method="post">
                 <p>Fecha de Ida: <input type="date" th:field="*{fechaIda}" /></p>
                 <p>Fecha de Vuelta: <input type="date" th:field="*{fechaVuelta}" /></p>
-                <p>Precio: <input type="text" th:field="*{precio}" /></p>
                 <p>Aerolinea: 
 	                <select placeholder="Aerolinea" th:field="*{aerolinea.id}"> 
 						<option th:each="a : ${aerolineas}" th:value="${a.id}" th:text="${a.nombre}+' - Valoracion: '+ ${a.valoracion}"> </option>

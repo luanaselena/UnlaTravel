@@ -65,6 +65,7 @@ public class VueloController {
     	vueloModel.setDestino(destinoService.findById(vueloModel.getDestino().getId()));
     	vueloModel.setAerolinea(aerolineaService.findById(vueloModel.getAerolinea().getId()));
     	vueloModel.setClase(claseService.findById(vueloModel.getClase().getId()));
+    	vueloModel.setPrecio(Math.round(vueloService.calcularPrecio(100, vueloModel.getOrigen(), vueloModel.getDestino(), vueloModel.getClase())));
     	vueloService.insert(vueloModel);
         return new RedirectView(ViewRouteHelper.VUELO_ROOT);
     }

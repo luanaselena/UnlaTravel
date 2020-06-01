@@ -25,21 +25,31 @@ public class Destino {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="destino")
 	private Set<Actividad> actividades = new HashSet<Actividad>();
+	
+	@Column(name="latitud", nullable=true)
+	private long latitud;
+	
+	@Column(name="longitud", nullable=true)
+	private long longitud;
 
 	public Destino() {
 	}
 	
-	public Destino(String nombre, String pais) {
-		super();
+	public Destino(String nombre, String pais, long latitud, long longitud) {
 		this.nombre = nombre;
 		this.pais = pais;
+		this.latitud = latitud;
+		this.longitud = longitud;
 	}
 	
-	public Destino(long id, String nombre, String pais) {
-		super();
+	
+
+	public Destino(long id, String nombre, String pais, long latitud, long longitud) {
 		this.id = id;
 		this.nombre = nombre;
 		this.pais = pais;
+		this.latitud = latitud;
+		this.longitud = longitud;
 	}
 
 	public long getId() {
@@ -73,5 +83,23 @@ public class Destino {
 	public void setActividades(Set<Actividad> actividades) {
 		this.actividades = actividades;
 	}
+
+	public long getLatitud() {
+		return latitud;
+	}
+
+	public void setLatitud(long latitud) {
+		this.latitud = latitud;
+	}
+
+	public long getLongitud() {
+		return longitud;
+	}
+
+	public void setLongitud(long longitud) {
+		this.longitud = longitud;
+	}
+	
+	
 	
 }
