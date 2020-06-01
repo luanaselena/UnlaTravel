@@ -91,6 +91,17 @@ public class VueloService implements IVueloService{
 		}
 	}
 
+	@Override
+	public float calcularDistancia(DestinoModel origen, DestinoModel destino) {
+		return (float) Math.sqrt((Math.pow((origen.getLatitud() - destino.getLatitud()), 2) +
+				((Math.pow((origen.getLongitud() - destino.getLongitud()), 2)))));
+	}
+
+	@Override
+	public double calcularPrecio(int constante, DestinoModel origen, DestinoModel destino, ClaseModel clase) {
+		return (double) this.calcularDistancia(origen, destino)*constante*(clase.getPorcentajeAumento()+1);
+	}
+
 //	@Override
 //	public VueloModel findByDestino(DestinoModel destino) {
 //		// TODO Auto-generated method stub

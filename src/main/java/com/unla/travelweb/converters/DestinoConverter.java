@@ -9,13 +9,11 @@ import com.unla.travelweb.models.DestinoModel;
 public class DestinoConverter
 {
 	public DestinoModel entityToModel (Destino destino) {
-		return new DestinoModel (destino.getId(), destino.getNombre(), 
-				destino.getPais());
+		return new DestinoModel(destino.getId(), destino.getNombre(), destino.getPais(), destino.getLatitud(), destino.getLongitud());
 	}
 	
 	public Destino modelToEntity (DestinoModel destinoModel) {
-		return new Destino (destinoModel.getId(), destinoModel.getNombre(), 
-				destinoModel.getPais());
+		return new Destino(destinoModel.getId(), destinoModel.getNombre(), destinoModel.getPais(), destinoModel.getLatitud(), destinoModel.getLongitud());
 	}
 }
 
