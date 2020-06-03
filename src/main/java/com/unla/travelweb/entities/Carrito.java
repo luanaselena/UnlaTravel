@@ -1,7 +1,7 @@
 package com.unla.travelweb.entities;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,13 +21,16 @@ public class Carrito {
     private long id;
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	private Set<Paquete> paquetes = new HashSet<>();
+	private List<Paquete> paquetes = new ArrayList<Paquete>();
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	private Set<Hotel> hoteles = new HashSet<>();
+	private List<Hotel> hoteles = new ArrayList<Hotel>();
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	private Set<Vuelo> vuelos = new HashSet<>();
+	private List<Vuelo> vuelos = new ArrayList<Vuelo>();
+	
+	@OneToMany(fetch = FetchType.LAZY)
+	private List<Actividad> actividades = new ArrayList<Actividad>();
 	
 	public Carrito() {}
 
@@ -44,29 +47,39 @@ public class Carrito {
 		this.id = id;
 	}
 
-	public Set<Paquete> getPaquetes() {
+	public List<Paquete> getPaquetes() {
 		return paquetes;
 	}
 
-	public void setPaquetes(Set<Paquete> paquetes) {
+	public void setPaquetes(List<Paquete> paquetes) {
 		this.paquetes = paquetes;
 	}
 
-	public Set<Hotel> getHoteles() {
+	public List<Hotel> getHoteles() {
 		return hoteles;
 	}
 
-	public void setHoteles(Set<Hotel> hoteles) {
+	public void setHoteles(List<Hotel> hoteles) {
 		this.hoteles = hoteles;
 	}
 
-	public Set<Vuelo> getVuelos() {
+	public List<Vuelo> getVuelos() {
 		return vuelos;
 	}
 
-	public void setVuelos(Set<Vuelo> vuelos) {
+	public void setVuelos(List<Vuelo> vuelos) {
 		this.vuelos = vuelos;
 	}
+
+	public List<Actividad> getActividades() {
+		return actividades;
+	}
+
+	public void setActividades(List<Actividad> actividades) {
+		this.actividades = actividades;
+	}
+
+	
 		
 
 }

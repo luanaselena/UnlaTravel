@@ -65,7 +65,7 @@ public class VueloController {
     	vueloModel.setDestino(destinoService.findById(vueloModel.getDestino().getId()));
     	vueloModel.setAerolinea(aerolineaService.findById(vueloModel.getAerolinea().getId()));
     	vueloModel.setClase(claseService.findById(vueloModel.getClase().getId()));
-    	vueloModel.setPrecio(Math.round(vueloService.calcularPrecio(100, vueloModel.getOrigen(), vueloModel.getDestino(), vueloModel.getClase())));
+    	vueloModel.setPrecio(Math.round(vueloService.calcularPrecio(4, vueloModel.getOrigen(), vueloModel.getDestino(), vueloModel.getClase(),vueloModel.getCantPersonas())));
     	vueloService.insert(vueloModel);
         return new RedirectView(ViewRouteHelper.VUELO_ROOT);
     }
@@ -86,6 +86,7 @@ public class VueloController {
     	vueloModel.setDestino(destinoService.findById(vueloModel.getDestino().getId()));
     	vueloModel.setAerolinea(aerolineaService.findById(vueloModel.getAerolinea().getId()));
     	vueloModel.setClase(claseService.findById(vueloModel.getClase().getId()));
+    	vueloModel.setPrecio(Math.round(vueloService.calcularPrecio(4, vueloModel.getOrigen(), vueloModel.getDestino(), vueloModel.getClase(),vueloModel.getCantPersonas())));
     	vueloService.update(vueloModel);
         return new RedirectView(ViewRouteHelper.VUELO_ROOT);
     }

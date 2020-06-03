@@ -16,5 +16,5 @@ public interface IVueloService {
     public VueloModel update(VueloModel vueloModel);
     public boolean remove(long id);
     public float calcularDistancia(DestinoModel origen, DestinoModel destino);
-    public double calcularPrecio(int constante, DestinoModel origen, DestinoModel destino, ClaseModel clase);
+    public double calcularPrecio(int constante, DestinoModel origen, DestinoModel destino, ClaseModel clase, int cantPersonas);
 }

@@ -3,17 +3,14 @@ package com.unla.travelweb.models;
 public class TipoAlojamientoModel {
 
 	private long id;
-	private double porcentajeAumento;
 	private String tipo;
 	
-	public TipoAlojamientoModel(long id, double porcentajeAumento, String tipo) {
+	public TipoAlojamientoModel(long id, String tipo) {
 		this.id = id;
-		this.porcentajeAumento = porcentajeAumento;
 		this.tipo = tipo;
 	}
 		
-	public TipoAlojamientoModel(double porcentajeAumento, String tipo) {
-		this.porcentajeAumento = porcentajeAumento;
+	public TipoAlojamientoModel(String tipo) {
 		this.tipo = tipo;
 	}
 
@@ -26,12 +23,7 @@ public class TipoAlojamientoModel {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public double getPorcentajeAumento() {
-		return porcentajeAumento;
-	}
-	public void setPorcentajeAumento(double porcentajeAumento) {
-		this.porcentajeAumento = porcentajeAumento;
-	}
+
 	public String getTipo() {
 		return tipo;
 	}

@@ -45,6 +45,28 @@ INSERT INTO clase (id,nombre,porcentaje_aumento) values (2,"Premium Economy",0.1
 INSERT INTO clase (id,nombre,porcentaje_aumento) values (3,"Ejecutiva/Business",0.20);
 INSERT INTO clase (id,nombre,porcentaje_aumento) values (4,"Primera Clase",0.30);
 
+INSERT INTO tipoAlojamiento (id,tipo) values (1,"Hotel");
+INSERT INTO tipoAlojamiento (id,tipo) values (2,"Hostel");
+INSERT INTO tipoAlojamiento (id,tipo) values (3,"Apart-hotel");
+INSERT INTO tipoAlojamiento (id,tipo) values (4,"Business Hotel");
+INSERT INTO tipoAlojamiento (id,tipo) values (5,"Resort");
+INSERT INTO tipoAlojamiento (id,tipo) values (6,"Hotel Boutique");
+INSERT INTO tipoAlojamiento (id,tipo) values (7,"Resorts");
+INSERT INTO tipoAlojamiento (id,tipo) values (8,"Bed&Breakfast");
+INSERT INTO tipoAlojamiento (id,tipo) values (9,"Cabaña");
 
+INSERT INTO tipoHabitacion (id,tipo,porcentaje_aumento) values (1,"Habitacion Estandar",0);
+INSERT INTO tipoHabitacion (id,tipo,porcentaje_aumento) values (2,"Junior Suite",0.1);
+INSERT INTO tipoHabitacion (id,tipo,porcentaje_aumento) values (3,"Suite",0.3);
+INSERT INTO tipoHabitacion (id,tipo,porcentaje_aumento) values (4,"Grand Suite",0.5);
 
+INSERT INTO tipoRegimen (id,tipo,porcentaje_aumento) values (1,"Solo alojamiento",0.1);
+INSERT INTO tipoRegimen (id,tipo,porcentaje_aumento) values (2,"Alojamiento y Desayuno",0.2);
+INSERT INTO tipoRegimen (id,tipo,porcentaje_aumento) values (3,"Media Pension",0.4);
+INSERT INTO tipoRegimen (id,tipo,porcentaje_aumento) values (4,"Pension Completa",0.8);
+INSERT INTO tipoRegimen (id,tipo,porcentaje_aumento) values (5,"Todo Incluido",0.1);
+
+INSERT INTO tipoServicio (id,tipo,porcentaje_aumento) values (1,"Wifi");
+INSERT INTO tipoServicio (id,tipo,porcentaje_aumento) values (2,"Limpieza");
+INSERT INTO tipoServicio (id,tipo,porcentaje_aumento) values (3,"Atencion al cliente");
 

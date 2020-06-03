@@ -14,14 +14,14 @@ public class DestinoModel {
 
 	private Set<Actividad> actividades;
 
-	private long latitud;
+	private double latitud;
 	
-	private long longitud;
+	private double longitud;
 
 	public DestinoModel() {
 	}
 	
-	public DestinoModel(String nombre, String pais, long latitud, long longitud) {
+	public DestinoModel(String nombre, String pais, double latitud, double longitud) {
 		this.nombre = nombre;
 		this.pais = pais;
 		this.latitud = latitud;
@@ -30,7 +30,7 @@ public class DestinoModel {
 	
 	
 
-	public DestinoModel(long id, String nombre, String pais, long latitud, long longitud) {
+	public DestinoModel(long id, String nombre, String pais, double latitud, double longitud) {
 		this.id = id;
 		this.nombre = nombre;
 		this.pais = pais;
@@ -70,19 +70,19 @@ public class DestinoModel {
 		this.actividades = actividades;
 	}
 
-	public long getLatitud() {
+	public double getLatitud() {
 		return latitud;
 	}
 
-	public void setLatitud(long latitud) {
+	public void setLatitud(double latitud) {
 		this.latitud = latitud;
 	}
 
-	public long getLongitud() {
+	public double getLongitud() {
 		return longitud;
 	}
 
-	public void setLongitud(long longitud) {
+	public void setLongitud(double longitud) {
 		this.longitud = longitud;
 	}
 	

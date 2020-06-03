@@ -19,18 +19,15 @@ public class TipoAlojamiento {
     @Column(name="tipo")
 	private String tipo;
 	
-    @Column(name="porcentaje_aumento")
-	private double porcentajeAumento;
 
-	public TipoAlojamiento(long id, String tipo, double porcentajeAumento) {
+
+	public TipoAlojamiento(long id, String tipo) {
 		this.id = id;
 		this.tipo = tipo;
-		this.porcentajeAumento = porcentajeAumento;
 	}
 
 	public TipoAlojamiento(String tipo, double porcentajeAumento) {
 		this.tipo = tipo;
-		this.porcentajeAumento = porcentajeAumento;
 	}
 
 	public TipoAlojamiento() {}
@@ -49,14 +46,6 @@ public class TipoAlojamiento {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
-	}
-
-	public double getPorcentajeAumento() {
-		return porcentajeAumento;
-	}
-
-	public void setPorcentajeAumento(double porcentajeAumento) {
-		this.porcentajeAumento = porcentajeAumento;
 	}
     
     

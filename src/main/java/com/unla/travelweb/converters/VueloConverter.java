@@ -25,14 +25,14 @@ public class VueloConverter {
 	public VueloModel entityToModel(Vuelo vuelo) {
 		return new VueloModel(vuelo.getId(), vuelo.getFechaIda(), vuelo.getFechaVuelta(),
 				aerolineaConverter.entityToModel(vuelo.getAerolinea()), claseConverter.entityToModel(vuelo.getClase()), vuelo.isEscalaIncluida(),
-				destinoConverter.entityToModel(vuelo.getOrigen()), destinoConverter.entityToModel(vuelo.getDestino()), vuelo.getPrecio());
+				destinoConverter.entityToModel(vuelo.getOrigen()), destinoConverter.entityToModel(vuelo.getDestino()), vuelo.getPrecio(),vuelo.getCantPersonas());
 	}
 
 	public Vuelo modelToEntity(VueloModel vueloModel) {
 		return new Vuelo(vueloModel.getId(), vueloModel.getFechaIda(), vueloModel.getFechaVuelta(),
 				aerolineaConverter.modelToEntity(vueloModel.getAerolinea()), claseConverter.modelToEntity(vueloModel.getClase()), vueloModel.isEscalaIncluida(),
 				destinoConverter.modelToEntity(vueloModel.getOrigen()),
-				destinoConverter.modelToEntity(vueloModel.getDestino()), vueloModel.getPrecio());
+				destinoConverter.modelToEntity(vueloModel.getDestino()), vueloModel.getPrecio(),vueloModel.getCantPersonas());
 	}
 
 }

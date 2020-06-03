@@ -10,10 +10,10 @@ public class TipoAlojamientoConverter {
 
 	
 	public TipoAlojamientoModel entityToModel (TipoAlojamiento alojamiento) {
-		return new TipoAlojamientoModel(alojamiento.getId(), alojamiento.getPorcentajeAumento(), alojamiento.getTipo());
+		return new TipoAlojamientoModel(alojamiento.getId(), alojamiento.getTipo());
 	}
 	
 	public TipoAlojamiento modelToEntity (TipoAlojamientoModel alojamiento) {
-		return new TipoAlojamiento(alojamiento.getId(), alojamiento.getTipo(), alojamiento.getPorcentajeAumento());
+		return new TipoAlojamiento(alojamiento.getId(), alojamiento.getTipo());
 	}
 }

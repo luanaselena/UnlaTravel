@@ -93,13 +93,23 @@ public class VueloService implements IVueloService{
 
 	@Override
 	public float calcularDistancia(DestinoModel origen, DestinoModel destino) {
-		return (float) Math.sqrt((Math.pow((origen.getLatitud() - destino.getLatitud()), 2) +
-				((Math.pow((origen.getLongitud() - destino.getLongitud()), 2)))));
+		
+		double radioTierra = 6371; //en kilómetros
+		double dLat = Math.toRadians(destino.getLatitud() - origen.getLatitud());
+		double dLng = Math.toRadians(destino.getLongitud() - origen.getLongitud());
+		double sindLat = Math.sin(dLat / 2);
+		double sindLng = Math.sin(dLng / 2);
+		double va1 = Math.pow(sindLat, 2)
+		+ Math.pow(sindLng, 2) * Math.cos(Math.toRadians(origen.getLatitud())) * Math.cos(Math.toRadians(destino.getLatitud()));
+		double va2 = 2 * Math.atan2(Math.sqrt(va1), Math.sqrt(1 - va1));
+		return (float) (radioTierra * va2);
 	}
 
 	@Override
-	public double calcularPrecio(int constante, DestinoModel origen, DestinoModel destino, ClaseModel clase) {
-		return (double) this.calcularDistancia(origen, destino)*constante*(clase.getPorcentajeAumento()+1);
+	public double calcularPrecio(int constante, DestinoModel origen, DestinoModel destino, ClaseModel clase, int cantPersonas) {
+		double precio = this.calcularDistancia(origen, destino)*constante;
+		double aumento = clase.getPorcentajeAumento()*precio;
+		return (double) (precio+aumento)*cantPersonas;
 	}
 
 //	@Override

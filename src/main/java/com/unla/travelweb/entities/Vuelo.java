@@ -53,9 +53,12 @@ public class Vuelo {
     @Column(name= "precio", nullable=false)
     private double precio;
     
+    @Column(name="cantPersonas")
+    private int cantPersonas;
+    
     public Vuelo(){}    
 	public Vuelo(long id, Date fechaIda, Date fechaVuelta, Aerolinea aerolinea, Clase clase,
-			boolean escalaIncluida, Destino origen, Destino destino, double precio) {
+			boolean escalaIncluida, Destino origen, Destino destino, double precio, int cantPersonas) {
 		super();
 		this.id = id;
 		this.fechaIda = fechaIda;
@@ -66,9 +69,10 @@ public class Vuelo {
 		this.origen = origen;
 		this.destino = destino;
 		this.precio = precio;
+		this.cantPersonas = cantPersonas;
 	}
 
-	public Vuelo(Date fechaIda, Date fechaVuelta, Aerolinea aerolinea, Clase clase, boolean escalaIncluida, Destino origen, Destino destino, double precio) {
+	public Vuelo(Date fechaIda, Date fechaVuelta, Aerolinea aerolinea, Clase clase, boolean escalaIncluida, Destino origen, Destino destino, double precio, int cantPersonas) {
 		super();
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;
@@ -78,6 +82,7 @@ public class Vuelo {
 		this.origen = origen;
 		this.destino = destino;
 		this.precio = precio;
+		this.cantPersonas = cantPersonas;
 	}
 
 	public long getId() {
@@ -140,6 +145,12 @@ public class Vuelo {
 	}
 	public void setClase(Clase clase) {
 		this.clase = clase;
+	}
+	public int getCantPersonas() {
+		return cantPersonas;
+	}
+	public void setCantPersonas(int cantPersonas) {
+		this.cantPersonas = cantPersonas;
 	}
 	
 	

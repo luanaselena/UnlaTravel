@@ -24,6 +24,7 @@
                     <tr>
                         <th>Fecha de Ida</th>
                         <th>Fecha de Vuelta</th>
+                        <th>Cantidad de personas</th>
 						<th>Precio</th>
                         <th>Valoracion de Aerolinea</th>
                         <th>Clase</th>
@@ -37,6 +38,7 @@
                     <tr th:each="vuelo : ${vuelos}">
                         <td><span th:text="${vuelo.fechaIda}"></span></td>
                         <td><span th:if="${vuelo.fechaVuelta}" th:text="${vuelo.fechaVuelta}"></span></td>
+                        <td><span th:text="${vuelo.cantPersonas}"></span></td>
                         <td><p>$<span th:text="${vuelo.precio}"></span></p></td>
                         <td><span th:text="${vuelo.Aerolinea.nombre}"></span></td>
                         <td><span th:text="${vuelo.clase.nombre}"></span></td>

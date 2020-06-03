@@ -27,15 +27,15 @@ public class Destino {
 	private Set<Actividad> actividades = new HashSet<Actividad>();
 	
 	@Column(name="latitud", nullable=true)
-	private long latitud;
+	private double latitud;
 	
 	@Column(name="longitud", nullable=true)
-	private long longitud;
+	private double longitud;
 
 	public Destino() {
 	}
 	
-	public Destino(String nombre, String pais, long latitud, long longitud) {
+	public Destino(String nombre, String pais, double latitud, double longitud) {
 		this.nombre = nombre;
 		this.pais = pais;
 		this.latitud = latitud;
@@ -44,7 +44,7 @@ public class Destino {
 	
 	
 
-	public Destino(long id, String nombre, String pais, long latitud, long longitud) {
+	public Destino(long id, String nombre, String pais, double latitud, double longitud) {
 		this.id = id;
 		this.nombre = nombre;
 		this.pais = pais;
@@ -84,19 +84,19 @@ public class Destino {
 		this.actividades = actividades;
 	}
 
-	public long getLatitud() {
+	public double getLatitud() {
 		return latitud;
 	}
 
-	public void setLatitud(long latitud) {
+	public void setLatitud(double latitud) {
 		this.latitud = latitud;
 	}
 
-	public long getLongitud() {
+	public double getLongitud() {
 		return longitud;
 	}
 
-	public void setLongitud(long longitud) {
+	public void setLongitud(double longitud) {
 		this.longitud = longitud;
 	}
 	
