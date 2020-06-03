@@ -16,11 +16,12 @@ public class VueloModel {
 	private ClaseModel clase;
 	private boolean escalaIncluida;
 	private double precio;
+	private int cantPersonas;
 	
 	public VueloModel() {}
 
 	public VueloModel(long id, Date fechaIda, Date fechaVuelta, AerolineaModel aerolinea, ClaseModel clase,
-			boolean escalaIncluida, DestinoModel origen, DestinoModel destino, double precio) {
+			boolean escalaIncluida, DestinoModel origen, DestinoModel destino, double precio,int cantPersonas) {
 		super();
 		this.id = id;
 		this.fechaIda = fechaIda;
@@ -31,9 +32,11 @@ public class VueloModel {
 		this.origen = origen;
 		this.destino = destino;
 		this.precio = precio;
+		this.cantPersonas = cantPersonas;
 	}
 
-	public VueloModel(Date fechaIda, Date fechaVuelta, AerolineaModel aerolinea, ClaseModel clase, boolean escalaIncluida, DestinoModel origen, DestinoModel destino, double precio) {
+	public VueloModel(Date fechaIda, Date fechaVuelta, AerolineaModel aerolinea, ClaseModel clase, boolean escalaIncluida, DestinoModel origen, DestinoModel destino, double precio,
+			int cantPersonas) {
 		super();
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;
@@ -43,6 +46,7 @@ public class VueloModel {
 		this.origen = origen;
 		this.destino = destino;
 		this.precio = precio;
+		this.cantPersonas = cantPersonas;
 	}
 
 	public long getId() {
@@ -115,6 +119,14 @@ public class VueloModel {
 
 	public void setClase(ClaseModel clase) {
 		this.clase = clase;
+	}
+
+	public int getCantPersonas() {
+		return cantPersonas;
+	}
+
+	public void setCantPersonas(int cantPersonas) {
+		this.cantPersonas = cantPersonas;
 	}
 	
 	

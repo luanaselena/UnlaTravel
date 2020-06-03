@@ -3,31 +3,31 @@ INSERT INTO user (id,createdat,enabled,password,updatedat, username) VALUES(2, "
 INSERT INTO user_role (id,createdat,role,updatedat,user_id) VALUES(1, "2020-03-22 00:00:01", "ROLE_USER", "2020-03-22 00:00:01", 1);
 INSERT INTO user_role (id,createdat,role,updatedat,user_id) VALUES(2, "2020-03-22 00:00:01", "ROLE_ADMIN", "2020-03-22 00:00:01", 2);
 
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (1,"Aeropuerto de Londres Heathrow","Reino Unido",20,20);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (2,"Aeropuerto de Frankfurt","Alemania",25,25);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (3,"Aeropuerto Amsterdam Schiphol","Paises Bajos",30,30);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (4,"Aeropuerto de Madrid-Barajas Adolfo Suárez","España",35,35);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (5,"Aeropuerto de Estambul","Turquia",40,40);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (6,"Aeropuerto Roma Fiumicino","Italia",45,45);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (7,"Aeropuerto Internacional Jorge Newbery","Argentina",50,50);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (8,"Aeropuerto Internacional Ezeiza","Argentina",55,55);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (9,"Aeropuerto de Zúrich","Suiza",60,60);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (10,"Aeropuerto Internacional de Tokio","Japon",65,65);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (11,"Aeropuerto Internacional de Hong Kong","China",70,70);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (12,"Aeropuerto Internacional de Singapur","Singapur",75,75);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (13,"Aeropuerto Internacional Kingsford Smith","Australia",80,80);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (14,"Aeropuerto Internacional de Dubái","Emiratos Arabes Unidos",85,85);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (15,"Aeropuerto de la Ciudad de Londres","Reino Unido",90,90);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (16,"Aeropuerto de París-Charles de Gaulle","Francia",10,10);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (17,"Atenas-Eleftherios Venizelos","Grecia",15,15);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (18,"Aeropuerto Internacional de San Francisco","Estados Unidos",30,20);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (19,"Aeropuerto Internacional Mariscal Sucre","Ecuador",20,30);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (20,"Aeropuerto Arturo Merino Benítez","Chile",25,45);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (21,"Aeropuerto Internacional Jorge Chávez","Perú",45,25);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (22,"Aeropuerto El Dorado","Colombia",30,50);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (23,"Aeropuerto Internacional de Oruro","Bolivia",50,20);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (24,"Aeropuerto Internacional de Cancún","Mexico",50,30);
-INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (25,"Aeropuerto Internacional de Carrasco","Uruguay",10,80);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (1,"Aeropuerto de Londres Heathrow","Reino Unido",51.46,-0.44);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (2,"Aeropuerto de Frankfurt","Alemania",50.02,8.52);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (3,"Aeropuerto Amsterdam Schiphol","Paises Bajos",52.32,4.74);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (4,"Aeropuerto de Madrid-Barajas Adolfo Suárez","España",40.49,-3.56);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (5,"Aeropuerto de Estambul","Turquia",41.27,28.72);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (6,"Aeropuerto Roma Fiumicino","Italia",41.81,12.22);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (7,"Aeropuerto Internacional Jorge Newbery","Argentina",-36.60,-64.27);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (8,"Aeropuerto Internacional Ezeiza","Argentina",-34.81,-58.54);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (9,"Aeropuerto de Zúrich","Suiza",43.11,-77.05);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (10,"Aeropuerto Internacional de Tokio","Japon",14.51,121.02);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (11,"Aeropuerto Internacional de Hong Kong","China",22.30,113.91);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (12,"Aeropuerto Internacional de Singapur","Singapur",1.35,103.98);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (13,"Aeropuerto Internacional Kingsford Smith","Australia",-33.93,151.17);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (14,"Aeropuerto Internacional de Dubái","Emiratos Arabes Unidos",40.42,-3.56);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (15,"Aeropuerto de la Ciudad de Londres","Reino Unido",51.50,0.04);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (16,"Aeropuerto de París-Charles de Gaulle","Francia",49,2.54);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (17,"Atenas-Eleftherios Venizelos","Grecia",37.93,23.94);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (18,"Aeropuerto Internacional de San Francisco","Estados Unidos",37.62,-122.37);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (19,"Aeropuerto Internacional Mariscal Sucre","Ecuador",-0.12,-78.35);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (20,"Aeropuerto Arturo Merino Benítez","Chile",-33.39,-70.79);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (21,"Aeropuerto Internacional Jorge Chávez","Perú",-12.02,-77.11);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (22,"Aeropuerto El Dorado","Colombia",-12.04,-77.08);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (23,"Aeropuerto Internacional de Oruro","Bolivia",-17.95,-67.07);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (24,"Aeropuerto Internacional de Cancún","Mexico",21.04,-86.87);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (25,"Aeropuerto Internacional de Carrasco","Uruguay",-34.83,-56.01);
 
 INSERT INTO aerolinea (id,nombre,valoracion) VALUES (1,"LATAM",7);
 INSERT INTO aerolinea (id,nombre,valoracion) VALUES (2,"KLM",8);
@@ -45,6 +45,28 @@ INSERT INTO clase (id,nombre,porcentaje_aumento) values (2,"Premium Economy",0.1
 INSERT INTO clase (id,nombre,porcentaje_aumento) values (3,"Ejecutiva/Business",0.20);
 INSERT INTO clase (id,nombre,porcentaje_aumento) values (4,"Primera Clase",0.30);
 
+INSERT INTO tipoAlojamiento (id,tipo) values (1,"Hotel");
+INSERT INTO tipoAlojamiento (id,tipo) values (2,"Hostel");
+INSERT INTO tipoAlojamiento (id,tipo) values (3,"Apart-hotel");
+INSERT INTO tipoAlojamiento (id,tipo) values (4,"Business Hotel");
+INSERT INTO tipoAlojamiento (id,tipo) values (5,"Resort");
+INSERT INTO tipoAlojamiento (id,tipo) values (6,"Hotel Boutique");
+INSERT INTO tipoAlojamiento (id,tipo) values (7,"Resorts");
+INSERT INTO tipoAlojamiento (id,tipo) values (8,"Bed&Breakfast");
+INSERT INTO tipoAlojamiento (id,tipo) values (9,"Cabaña");
 
+INSERT INTO tipoHabitacion (id,tipo,porcentaje_aumento) values (1,"Habitacion Estandar",0);
+INSERT INTO tipoHabitacion (id,tipo,porcentaje_aumento) values (2,"Junior Suite",0.1);
+INSERT INTO tipoHabitacion (id,tipo,porcentaje_aumento) values (3,"Suite",0.3);
+INSERT INTO tipoHabitacion (id,tipo,porcentaje_aumento) values (4,"Grand Suite",0.5);
 
+INSERT INTO tipoRegimen (id,tipo,porcentaje_aumento) values (1,"Solo alojamiento",0.1);
+INSERT INTO tipoRegimen (id,tipo,porcentaje_aumento) values (2,"Alojamiento y Desayuno",0.2);
+INSERT INTO tipoRegimen (id,tipo,porcentaje_aumento) values (3,"Media Pension",0.4);
+INSERT INTO tipoRegimen (id,tipo,porcentaje_aumento) values (4,"Pension Completa",0.8);
+INSERT INTO tipoRegimen (id,tipo,porcentaje_aumento) values (5,"Todo Incluido",0.1);
+
+INSERT INTO tipoServicio (id,tipo,porcentaje_aumento) values (1,"Wifi");
+INSERT INTO tipoServicio (id,tipo,porcentaje_aumento) values (2,"Limpieza");
+INSERT INTO tipoServicio (id,tipo,porcentaje_aumento) values (3,"Atencion al cliente");
 
