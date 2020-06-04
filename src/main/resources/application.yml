@@ -3,7 +3,7 @@ spring:
     url: jdbc:mysql://localhost:3306/unlatravel?serverTimezone=UTC
     username: root
     password: root
-    initialization-mode: never
+    initialization-mode: always
     #password:
   jpa:
     show-sql: true

@@ -33,6 +33,7 @@ public class CalificacionAerolinea {
 	public CalificacionAerolinea(long id, double valoracion, Aerolinea aerolinea) {
 		this.id = id;
 		this.valoracion = valoracion;
+		this.aerolinea = aerolinea;
 	}
 
 	public long getId() {

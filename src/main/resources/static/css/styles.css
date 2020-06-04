@@ -10533,7 +10533,7 @@ section#contact form#contactForm :-ms-input-placeholder {
   padding:10px;
 }
 
-.formulario-popup{
+.formulario{
     width: 32%;
     padding: 20px;
     background-color: white;
@@ -10541,4 +10541,9 @@ section#contact form#contactForm :-ms-input-placeholder {
     margin-right: auto;
     margin-top: 40px;
     box-shadow: 0 0 1.4rem rgba(53, 49, 49, 0.40);
+}
+
+.btn-success, .btn-success, .btn-success:active, .btn-success:visited {
+    background-color: #06623b !important;
+    border: none !important;
 }

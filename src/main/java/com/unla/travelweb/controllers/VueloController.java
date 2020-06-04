@@ -1,5 +1,7 @@
 package com.unla.travelweb.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -11,12 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.unla.travelweb.entities.Aerolinea;
+import com.unla.travelweb.entities.CalificacionAerolinea;
 import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.models.AerolineaModel;
 import com.unla.travelweb.models.ClaseModel;
 import com.unla.travelweb.models.DestinoModel;
 import com.unla.travelweb.models.VueloModel;
 import com.unla.travelweb.services.IAerolineaService;
+import com.unla.travelweb.services.ICalificacionAerolineaService;
 import com.unla.travelweb.services.IClaseService;
 import com.unla.travelweb.services.IDestinoService;
 import com.unla.travelweb.services.IVueloService;
@@ -40,6 +45,10 @@ public class VueloController {
 	@Autowired
 	@Qualifier("aerolineaService")
 	private IAerolineaService aerolineaService;
+	
+	@Autowired
+	@Qualifier("calificacionAerolineaService")
+	private ICalificacionAerolineaService calificacionAerolineaService;
 	
 	@GetMapping("")
     public ModelAndView index() {
@@ -97,4 +106,5 @@ public class VueloController {
         return new RedirectView(ViewRouteHelper.VUELO_ROOT);
     }
 
+    
 }

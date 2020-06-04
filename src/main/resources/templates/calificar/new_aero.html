@@ -30,12 +30,14 @@
                 </div>
             </div>
         </nav>
-        <form action="#" class="formulario-popup" th:action="@{/calificar/aerolinea}" th:object="${calificacionAerolinea}" method="post">
-                <p>Califique a la aerolinea segun su experiencia: <input type="range" min="1.0" max="10.0" th:field="*{valoracion}" /></p>
-                <p>¿Que aerolinea quiere calificar?: 
-	                <select placeholder="Aerolinea" th:field="*{aerolinea.id}"> 
-						<option th:each="a : ${aerolineas}" th:value="${a.id}" th:text="${a.nombre}"> </option>
-					</select>
-				</p>
-                <input class="btn btn-primary" style="background-color: #EE7D00" type="submit" value="Enviar" />
-            </form>
+        <div class="divPrincipal">
+	        <form action="#" class="formulario" th:action="@{/calificar/create_aero}" th:object="${calificacionAerolinea}" method="post">
+	                <p>Califique la aerolinea  de 1 a 100 segun su experiencia: <input type="number" min="1" max="100" th:field="*{valoracion}" /></p>
+	                <p>¿Que aerolinea quiere calificar?: 
+		                <select placeholder="Aerolinea" th:field="*{aerolinea.id}"> 
+							<option th:each="a : ${aerolineas}" th:value="${a.id}" th:text="${a.nombre}"> </option>
+						</select>
+					</p>
+	                <input class="btn btn-primary" style="background-color: #EE7D00" type="submit" value="Enviar" />
+			</form>
+		</div>

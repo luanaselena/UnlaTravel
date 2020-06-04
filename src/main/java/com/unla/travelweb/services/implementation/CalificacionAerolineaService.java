@@ -30,7 +30,6 @@ public class CalificacionAerolineaService implements ICalificacionAerolineaServi
 
 	@Override
 	public CalificacionAerolineaModel findById(long idCalificacion) {
-		// TODO Auto-generated method stub
 		return calificacionAerolineaConverter.entityToModel(calificacionAerolineaRepository.findById(idCalificacion));
 	}
 

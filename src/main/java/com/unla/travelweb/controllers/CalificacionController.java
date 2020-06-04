@@ -8,12 +8,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.models.CalificacionActividadModel;
 import com.unla.travelweb.models.CalificacionAerolineaModel;
+import com.unla.travelweb.services.IActividadService;
 import com.unla.travelweb.services.ICalificacionActividadService;
+import com.unla.travelweb.services.ICalificacionAerolineaService;
 import com.unla.travelweb.services.implementation.ActividadService;
 import com.unla.travelweb.services.implementation.AerolineaService;
 
@@ -27,11 +30,16 @@ public class CalificacionController {
 	
 	@Autowired
 	@Qualifier("actividadService")
-	private ActividadService actividadService;
+	private IActividadService actividadService;
 	
 	@Autowired
 	@Qualifier("calificacionActividadService")
 	private ICalificacionActividadService calificacionActividadService;
+	
+	@Autowired
+	@Qualifier("calificacionAerolineaService")
+	private ICalificacionAerolineaService calificacionAerolineaService;
+	
 	
 	
 	@GetMapping("")
@@ -40,34 +48,39 @@ public class CalificacionController {
         return mAV;
     }
 
-    @GetMapping("/calificacion_actividad")
+    @GetMapping("/new_act")
     public ModelAndView createCalificacionActividad() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.CALIFICAR_ACTIVIDAD);
         mAV.addObject("actividades", actividadService.getAll());
         mAV.addObject("calificacionActividad", new CalificacionActividadModel());
-
         return mAV;
     }
     
-    @GetMapping("/calificacion_aerolinea")
+    @GetMapping("/new_aero")
     public ModelAndView createCalificacionAerolinea() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.CALIFICAR_AEROLINEA);
         mAV.addObject("aerolineas", aerolineaService.getAll());
         mAV.addObject("calificacionAerolinea", new CalificacionAerolineaModel());
-
+        
         return mAV;
     }
 
-    @PostMapping("/actividad")
-    public RedirectView createCalificacionAct(@ModelAttribute("calificacionActividad") CalificacionActividadModel calificacionActividad){
+    @PostMapping("/create_act")
+    public RedirectView createCalificacionAct(@ModelAttribute("calificacionActividad") CalificacionActividadModel calificacionActividad, RedirectAttributes redirectAttrs){
     	calificacionActividad.setActividad(actividadService.findById(calificacionActividad.getActividad().getId()));
-        return new RedirectView(ViewRouteHelper.CALIFICAR_ROOT);
+        calificacionActividadService.insert(calificacionActividad);
+		redirectAttrs.addFlashAttribute("mensaje", "Su calificacion fue enviada exitosamente.");
+		redirectAttrs.addFlashAttribute("clase", "success");
+        return new RedirectView("redirect:/home/index");
     }
     
-    @PostMapping("/aerolinea")
-    public RedirectView createCalificacionAero(@ModelAttribute("calificacionAerolinea") CalificacionAerolineaModel calificacionAerolinea) {
+    @PostMapping("/create_aero")
+    public RedirectView createCalificacionAero(@ModelAttribute("calificacionAerolinea") CalificacionAerolineaModel calificacionAerolinea, RedirectAttributes redirectAttrs) {
     	calificacionAerolinea.setAerolinea(aerolineaService.findById(calificacionAerolinea.getAerolinea().getId()));
-        return new RedirectView(ViewRouteHelper.CALIFICAR_ROOT);
+    	calificacionAerolineaService.insert(calificacionAerolinea);
+		redirectAttrs.addFlashAttribute("mensaje", "Su calificacion fue enviada exitosamente.");
+		redirectAttrs.addFlashAttribute("clase", "success");
+        return new RedirectView("redirect:/home/index");
     }
     
     
