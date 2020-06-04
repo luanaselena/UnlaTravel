@@ -41,4 +41,11 @@ public class ViewRouteHelper {
     public final static String CARRITO_NEW = "carrito/new";
     public final static String CARRITO_UPDATE = "carrito/update";
     public final static String CARRITO_ROOT = "/carrito";
+    
+    public final static String CALIFICAR_INDEX = "calificar/index";
+    public final static String CALIFICAR_ACTIVIDAD = "calificar/new_act";
+    public final static String CALIFICAR_AEROLINEA = "calificar/new_aero";
+    public final static String CALIFICAR_ROOT = "/calificar";
+
+
 }
