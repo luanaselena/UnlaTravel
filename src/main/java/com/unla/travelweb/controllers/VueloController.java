@@ -19,6 +19,7 @@ import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.models.AerolineaModel;
 import com.unla.travelweb.models.ClaseModel;
 import com.unla.travelweb.models.DestinoModel;
+import com.unla.travelweb.models.Functions;
 import com.unla.travelweb.models.VueloModel;
 import com.unla.travelweb.services.IAerolineaService;
 import com.unla.travelweb.services.ICalificacionAerolineaService;
@@ -50,6 +51,8 @@ public class VueloController {
 	@Qualifier("calificacionAerolineaService")
 	private ICalificacionAerolineaService calificacionAerolineaService;
 	
+	
+	
 	@GetMapping("")
     public ModelAndView index() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.VUELO_INDEX);
@@ -62,6 +65,9 @@ public class VueloController {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.VUELO_NEW);
         mAV.addObject("vuelo", new VueloModel());
         mAV.addObject("destinos", destinoService.getAll());
+        for(Aerolinea a : aerolineaService.getAll()) {
+        	a.setValoracion(Functions.valoracionesXaerolinea(a, calificacionAerolineaService.getAll()));;
+        }
         mAV.addObject("aerolineas", aerolineaService.getAll());
         mAV.addObject("clases", claseService.getAll());
 
@@ -105,6 +111,7 @@ public class VueloController {
     	vueloService.remove(id);
         return new RedirectView(ViewRouteHelper.VUELO_ROOT);
     }
-
+    
+   
     
 }

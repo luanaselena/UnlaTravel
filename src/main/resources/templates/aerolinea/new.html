@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Nueva Aerolinea</title>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    </head>
+    <body>
+
+        <header>
+            <div class="headerbg">
+
+                <h3>Unla Travel</h3>
+
+            </div>
+        </header>
+
+        <div class="divPrincipal">
+            <form action="#" th:action="@{/aerolinea/create}"
+                  th:object="${aerolinea}" method="post">
+ 				<p>Nombre de la Aerolinea: <input type="text" th:field="*{nombre}" /></p>
+             	<p>Valoracion inicial (del 1 al 10): <input type="text" th:field="*{valoracion}" /></p>               
+                <input class="btn btn-primary" style="background-color: #f16108" type="submit" value="Crear" />
+            </form>
+        </div>
+    </body>
+</html>

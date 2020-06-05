@@ -12,5 +12,6 @@ public interface IAerolineaService {
 	/*public AerolineaModel insert(AerolineaModel aerolineaModel);*/
 	public AerolineaModel update(AerolineaModel aerolineaModel);
 	public boolean remove(long id);
+	AerolineaModel insert(AerolineaModel aerolineaModel);
 
 }

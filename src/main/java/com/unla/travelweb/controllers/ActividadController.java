@@ -20,6 +20,7 @@ import com.unla.travelweb.entities.CalificacionActividad;
 import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.models.ActividadModel;
 import com.unla.travelweb.models.DestinoModel;
+import com.unla.travelweb.models.Functions;
 import com.unla.travelweb.services.IActividadService;
 import com.unla.travelweb.services.ICalificacionActividadService;
 import com.unla.travelweb.services.IDestinoService;
@@ -45,7 +46,7 @@ public class ActividadController {
 	public ModelAndView index() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.ACTIVIDAD_INDEX);
         for(Actividad a : actividadService.getAll()) {
-        	a.setValoracion(valoracionesXactividad(a, calificacionActividadService.getAll()));;
+        	a.setValoracion(Functions.valoracionesXactividad(a, calificacionActividadService.getAll()));;
         }
         mAV.addObject("actividades", actividadService.getAll());
         return mAV;
@@ -87,19 +88,7 @@ public class ActividadController {
         return new RedirectView(ViewRouteHelper.ACTIVIDAD_ROOT);
     }
 	    
-	public double valoracionesXactividad(Actividad a, List<CalificacionActividad> calificaciones) {
-		int cnt=0;double totalv=0;
-		for(CalificacionActividad c : calificaciones) {
-			if(c.getActividad().getId()==a.getId()) {
-				cnt++;
-				totalv+=c.getValoracion();
-			}
-		}
-		if(cnt==0) {
-			return 7.0;
-		}
-		else return (totalv/cnt);
-	}
+	
 	    
 	    
 }

@@ -31,7 +31,7 @@
 					<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.nombre}"> </option>
 				</select>
 			</p>			
-			<p>ID: <input hidden="true" type="text" th:field="*{id}" /></p>
+			<input hidden="true" type="text" th:field="*{id}" />
 			<input class="btn btn-success" style="background-color: #f16108"
 				type="submit" value="Editar" />
 		</form>
