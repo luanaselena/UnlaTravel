@@ -44,7 +44,7 @@ public class Hotel implements Serializable{
     @Column(name= "precio", nullable=false)
     private double precio;
     
-    @Column(name = "imgPath", nullable = true)
+    @Column(name = "imgPath", nullable=true)
     private String imgPath;
     
     public Hotel() {}

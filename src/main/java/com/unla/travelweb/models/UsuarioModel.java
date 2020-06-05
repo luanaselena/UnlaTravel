@@ -2,6 +2,8 @@ package com.unla.travelweb.models;
 
 import java.util.Date;
 
+import com.unla.travelweb.entities.Carrito;
+
 public class UsuarioModel {
 
     private long id;
@@ -13,10 +15,11 @@ public class UsuarioModel {
     private String nacionalidad;
     //private Date fechaDeNacimiento;
     private long dni;
+    private Carrito carrito;
 
     public UsuarioModel(){}
 
-    public UsuarioModel(long id, String nombre, String apellido, String telefono, String domicilio, String mail, String nacionalidad, long dni) {
+    public UsuarioModel(long id, String nombre, String apellido, String telefono, String domicilio, String mail, String nacionalidad, long dni, Carrito carrito) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -26,6 +29,7 @@ public class UsuarioModel {
         this.nacionalidad = nacionalidad;
         //this.fechaDeNacimiento = fechaDeNacimiento;
         this.dni = dni;
+        this.carrito = carrito;
     }
 
     public long getId() {
@@ -98,5 +102,13 @@ public class UsuarioModel {
 
     public void setDni(long dni) {
         this.dni = dni;
+    }
+    
+    public Carrito getCarrito() {
+        return carrito;
+    }
+
+    public void setCarrito(Carrito carrito) {
+        this.carrito = carrito;
     }
 }

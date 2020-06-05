@@ -20,18 +20,29 @@
         <div class="container">
         	<div class="row">
         		<div class="col-12 text-center mt-5 mb-3">
-        			<h2>Hoteles disponibles</h2>
+        			<h2>Confirmar Reserva</h2>
         		</div>
-        		<div th:each="hotel : ${hoteles}" class="col-4 mt-3 mb-3">
+        		<div class="col-4 mt-3 mb-3">
 	        		<div class="card" style="width: 18rem;">
 	  					<img th:src="@{ ${hotel.imgPath} }" class="card-img-top" alt="...">
 	  					<div class="card-body">
 	    					<h5 class="card-title" th:text="${hotel.nombre}">Card title</h5>
 	    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel.cantEstrellas}"></p>
 	    					<p class="card-text" th:text="${'PRECIO: $' + hotel.precio}"></p>
-	    					<a th:href="@{/hotelUsuario/hotelReserva/{id}(id=${hotel.id})}" target="_blank" class="btn btn-primary">Reservar</a>
 	  					</div>
 					</div>
+				</div>
+				<div class="col-8">
+					<form action="#" th:action="@{/hotelUsuario/create}"
+		                  th:object="${hotel}" method="post">
+	                  	<input type="hidden" th:field="${hotel.id}" id="id" name="id" />
+		                <p>Servicio: <input type="text" th:field="*{tipoServicio}" /></p>
+		                <p>Tipo de Habitacion: <input type="text" th:field="*{tipoHabitaciones}" /></p>
+		                <p>Regimen: <input type="text" th:field="*{tipoRegimen}" /></p>
+		                <p>Accesibilidad: <input type="checkbox" th:field="*{accesibilidad}" /></p>
+		                <p>Cantidad de Personas: <input type="text" th:field="*{cantPersonas}" /></p>
+		                <input class="btn btn-primary" style="background-color: #EE7D00" type="submit" value="Confirmar Reserva" />
+		            </form>
 				</div>
         	</div>           
         </div>
