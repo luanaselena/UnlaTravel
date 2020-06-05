@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Nueva Actividad</title>
+        <title>Nueva Aerolinea</title>
         <link rel="stylesheet"
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -20,18 +20,10 @@
         </header>
 
         <div class="divPrincipal">
-            <form action="#" th:action="@{/actividad/create}"
-                  th:object="${actividad}" method="post">
- 				<p>Actividad: <input type="text" th:field="*{nombre}" /></p>
-             	<p>Precio: <input type="text" th:field="*{precio}" /></p>
-               	<p>Fecha: <input type="date" th:field="*{fecha}" /></p>
-                <p>Accesibilidad: <input type="checkbox" th:field="*{accesibilidad}" /></p>
-               	<p>Ubicación: 
-                <select placeholder="Destino" th:field="*{destino.id}"> 
-					<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.pais}"> </option>
-				</select>
-				</p>
-                
+            <form action="#" th:action="@{/aerolinea/create}"
+                  th:object="${aerolinea}" method="post">
+ 				<p>Nombre de la Aerolinea: <input type="text" th:field="*{nombre}" /></p>
+             	<p>Valoracion inicial (del 1 al 10): <input type="text" th:field="*{valoracion}" /></p>               
                 <input class="btn btn-primary" style="background-color: #f16108" type="submit" value="Crear" />
             </form>
         </div>

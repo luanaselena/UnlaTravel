@@ -1,17 +1,29 @@
 package com.unla.travelweb.controllers;
 
-import com.unla.travelweb.helpers.ViewRouteHelper;
-import com.unla.travelweb.models.ActividadModel;
-import com.unla.travelweb.models.DestinoModel;
-import com.unla.travelweb.services.IActividadService;
-import com.unla.travelweb.services.IDestinoService;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+
+import com.unla.travelweb.entities.Actividad;
+import com.unla.travelweb.entities.CalificacionActividad;
+import com.unla.travelweb.helpers.ViewRouteHelper;
+import com.unla.travelweb.models.ActividadModel;
+import com.unla.travelweb.models.DestinoModel;
+import com.unla.travelweb.models.Functions;
+import com.unla.travelweb.services.IActividadService;
+import com.unla.travelweb.services.ICalificacionActividadService;
+import com.unla.travelweb.services.IDestinoService;
 
 
 @Controller
@@ -26,9 +38,16 @@ public class ActividadController {
 	@Qualifier ("destinoService")
 	private IDestinoService destinoService;
 	
+	@Autowired
+	@Qualifier("calificacionActividadService")
+	private ICalificacionActividadService calificacionActividadService;
+	
 	@GetMapping ("")
 	public ModelAndView index() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.ACTIVIDAD_INDEX);
+        for(Actividad a : actividadService.getAll()) {
+        	a.setValoracion(Functions.valoracionesXactividad(a, calificacionActividadService.getAll()));;
+        }
         mAV.addObject("actividades", actividadService.getAll());
         return mAV;
     }
@@ -63,9 +82,13 @@ public class ActividadController {
 	        return new RedirectView(ViewRouteHelper.ACTIVIDAD_ROOT);
 	    }
 
-	    @PostMapping("/delete/{id}")
-	    public RedirectView delete(@PathVariable("id") long id) {
-	        actividadService.remove(id);
-	        return new RedirectView(ViewRouteHelper.ACTIVIDAD_ROOT);
-	    }
+    @PostMapping("/delete/{id}")
+    public RedirectView delete(@PathVariable("id") long id) {
+        actividadService.remove(id);
+        return new RedirectView(ViewRouteHelper.ACTIVIDAD_ROOT);
+    }
+	    
+	
+	    
+	    
 }

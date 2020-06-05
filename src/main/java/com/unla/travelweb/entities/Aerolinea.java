@@ -21,16 +21,16 @@ public class Aerolinea {
 	private String nombre;
     
     @Column(name="valoracion")
-	private int valoracion;
+	private double valoracion;
 	
 	public Aerolinea() {}
 	
-	public Aerolinea(String nombre, int valoracion) {
+	public Aerolinea(String nombre, double valoracion) {
 		this.nombre = nombre;
 		this.valoracion = valoracion;
 	}
 	
-	public Aerolinea(long id, String nombre, int valoracion) {
+	public Aerolinea(long id, String nombre, double valoracion) {
 		this.id = id;
 		this.nombre = nombre;
 		this.valoracion = valoracion;
@@ -56,13 +56,13 @@ public class Aerolinea {
 	}
 
 
-	public int getValoracion() {
+	public double getValoracion() {
 		return valoracion;
 	}
 
 
-	public void setValoracion(int valoracion) {
-		this.valoracion = valoracion;
+	public void setValoracion(double d) {
+		this.valoracion = d;
 	}
 	
 	

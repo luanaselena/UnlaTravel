@@ -36,11 +36,11 @@ public class AerolineaService implements IAerolineaService{
 		return aerolineaConverter.entityToModel(aerolineaRepository.findById(idAerolinea));
 	}
 
-	/*@Override
+	@Override
 	public AerolineaModel insert(AerolineaModel aerolineaModel) {
 		Aerolinea aerolinea= aerolineaRepository.save(aerolineaConverter.modelToEntity(aerolineaModel));
         return aerolineaConverter.entityToModel(aerolinea);
-	}*/
+	}
 
 	@Override
 	public AerolineaModel update(AerolineaModel aerolineaModel) {

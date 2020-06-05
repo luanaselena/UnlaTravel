@@ -4,16 +4,16 @@ public class AerolineaModel {
 	
 	private long id;
 	private String nombre;
-	private int valoracion;
+	private double valoracion;
 	
 	public AerolineaModel() {}
 
-	public AerolineaModel(String nombre, int valoracion) {
+	public AerolineaModel(String nombre, double valoracion) {
 		this.nombre = nombre;
 		this.valoracion = valoracion;
 	}
 
-	public AerolineaModel(long id, String nombre, int valoracion) {
+	public AerolineaModel(long id, String nombre, double valoracion) {
 		this.id = id;
 		this.nombre = nombre;
 		this.valoracion = valoracion;
@@ -35,11 +35,11 @@ public class AerolineaModel {
 		this.nombre = nombre;
 	}
 
-	public int getValoracion() {
+	public double getValoracion() {
 		return valoracion;
 	}
 
-	public void setValoracion(int valoracion) {
+	public void setValoracion(double valoracion) {
 		this.valoracion = valoracion;
 	}
 	
