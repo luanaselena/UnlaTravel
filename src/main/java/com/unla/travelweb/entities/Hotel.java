@@ -44,10 +44,13 @@ public class Hotel implements Serializable{
     @Column(name= "precio", nullable=false)
     private double precio;
     
+    @Column(name = "imgPath", nullable = true)
+    private String imgPath;
+    
     public Hotel() {}
 
 	public Hotel(long id,String nombre, int cantEstrellas, String tipoServicio, String tipoHabitaciones, String tipoRegimen,
-			boolean accesibilidad, int cantPersonas, double precio) {
+			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -58,10 +61,11 @@ public class Hotel implements Serializable{
 		this.accesibilidad = accesibilidad;
 		this.cantPersonas = cantPersonas;
 		this.precio = precio;
+		this.imgPath = imgPath;
 	}
 	
 	public Hotel(String nombre, int cantEstrellas, String tipoServicio, String tipoHabitaciones, String tipoRegimen,
-			boolean accesibilidad, int cantPersonas, double precio) {
+			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
 		super();
 		this.nombre = nombre;
 		this.cantEstrellas = cantEstrellas;
@@ -71,6 +75,7 @@ public class Hotel implements Serializable{
 		this.accesibilidad = accesibilidad;
 		this.cantPersonas = cantPersonas;
 		this.precio = precio;
+		this.imgPath = imgPath;
 	}
 
 	public long getId() {
@@ -144,6 +149,23 @@ public class Hotel implements Serializable{
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
+
+	public String getTipoAlojamiento() {
+		return tipoAlojamiento;
+	}
+
+	public void setTipoAlojamiento(String tipoAlojamiento) {
+		this.tipoAlojamiento = tipoAlojamiento;
+	}
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
     
     
+	
 }
