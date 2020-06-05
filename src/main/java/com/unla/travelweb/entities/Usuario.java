@@ -29,8 +29,8 @@ public class Usuario {
     @Column(name="telefono", nullable=false, length=20)
     private String telefono;
 
-    //@OneToOne(cascade = CascadeType.MERGE)
-    //private Carrito carrito;
+    @OneToOne(cascade = CascadeType.MERGE)
+    private Carrito carrito;
 
     @Column(name="dni")
     private long dni;
@@ -38,7 +38,7 @@ public class Usuario {
     public Usuario(){}
 
     public Usuario(long id, String nombre, String apellido, String telefono, String domicilio, String nacionalidad, String mail,
-                    long dni) {
+                    long dni, Carrito carrito) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -48,10 +48,11 @@ public class Usuario {
         this.mail = mail;
         //this.fechaDeNacimiento = fechaDeNacimiento;
         this.dni = dni;
+        this.carrito = carrito;
     }
 
     public Usuario(String nombre, String apellido, String telefono, String domicilio, String nacionalidad, String mail,
-                   long dni) {
+                   long dni, Carrito carrito) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
@@ -60,6 +61,7 @@ public class Usuario {
         this.mail = mail;
         //this.fechaDeNacimiento = fechaDeNacimiento;
         this.dni = dni;
+        this.carrito = carrito;
     }
 
     public long getId() {
@@ -132,5 +134,13 @@ public class Usuario {
 
     public void setDni(long dni) {
         this.dni = dni;
+    }
+    
+    public Carrito getCarrito() {
+        return carrito;
+    }
+
+    public void setCarrito(Carrito carrito) {
+        this.carrito = carrito;
     }
 }
