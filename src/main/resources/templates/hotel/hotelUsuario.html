@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Index Hotel</title>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    </head>
+    <body>
+        <header>
+            <div class="headerbg">
+
+                <h3>Unla Travel</h3>
+
+            </div>
+        </header>
+
+        <div class="divPrincipal caontainer">
+        	<div class="row">
+        		<div class="col-md-4 ml-auto">
+        		<div class="card" style="width: 18rem;">
+  					<img th:src="@{ ${hotel1.imgPath} }" class="card-img-top" alt="...">
+  					<div class="card-body">
+    					<h5 class="card-title" th:text="${hotel1.nombre}">Card title</h5>
+    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel1.cantEstrellas}"></p>
+    					<p class="card-text" th:text="${'PRECIO: $' + hotel1.precio}"></p>
+    					<a href="#" class="btn btn-primary">Reservar</a>
+  					</div>
+				</div>
+				</div>
+				
+				<div class="col-md-4 ml-auto">
+				<div class="card" style="width: 18rem;">
+  					<img th:src="@{ ${hotel2.imgPath} }" class="card-img-top" alt="...">
+  					<div class="card-body">
+    					<h5 class="card-title" th:text="${hotel2.nombre}">Card title</h5>
+    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel2.cantEstrellas}"></p>
+    					<p class="card-text" th:text="${'PRECIO: $' + hotel2.precio}"></p>
+    					<a href="#" class="btn btn-primary">Reservar</a>
+  					</div>
+				</div>
+				</div>
+				
+				<div class="col-md-4 ml-auto">
+				<div class="card" style="width: 18rem;">
+  					<img th:src="@{ ${hotel3.imgPath} }" class="card-img-top" alt="...">
+  					<div class="card-body">
+    					<h5 class="card-title" th:text="${hotel3.nombre}">Card title</h5>
+    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel3.cantEstrellas}"></p>
+    					<p class="card-text" th:text="${'PRECIO: $' + hotel3.precio}"></p>
+    					<a href="#" class="btn btn-primary">Reservar</a>
+  					</div>
+				</div>
+				</div>
+				
+				<div class="col-md-4 ml-auto">
+				<div class="card" style="width: 18rem;">
+  					<img th:src="@{ ${hotel4.imgPath} }" class="card-img-top" alt="...">
+  					<div class="card-body">
+    					<h5 class="card-title" th:text="${hotel4.nombre}">Card title</h5>
+    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel4.cantEstrellas}"></p>
+    					<p class="card-text" th:text="${'PRECIO: $' + hotel4.precio}"></p>
+    					<a href="#" class="btn btn-primary">Reservar</a>
+  					</div>
+				</div>
+				</div>
+				
+				<div class="col-md-4 ml-auto">
+				<div class="card" style="width: 18rem;">
+  					<img th:src="@{ ${hotel5.imgPath} }" class="card-img-top" alt="...">
+  					<div class="card-body">
+    					<h5 class="card-title" th:text="${hotel5.nombre}">Card title</h5>
+    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel5.cantEstrellas}"></p>
+    					<p class="card-text" th:text="${'PRECIO: $' + hotel5.precio}"></p>
+    					<a href="#" class="btn btn-primary">Reservar</a>
+  					</div>
+				</div>
+				</div>
+				
+				<div class="col-md-4 ml-auto">
+				<div class="card" style="width: 18rem;">
+  					<img th:src="@{ ${hotel6.imgPath} }" class="card-img-top" alt="...">
+  					<div class="card-body">
+    					<h5 class="card-title" th:text="${hotel6.nombre}">Card title</h5>
+    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel6.cantEstrellas}"></p>
+    					<p class="card-text" th:text="${'PRECIO: $' + hotel6.precio}"></p>
+    					<a href="#" class="btn btn-primary">Reservar</a>
+  					</div>
+				</div>
+				</div>
+        	
+        	</div>
+           
+        </div>
+    </body>
+</html>

@@ -70,3 +70,9 @@ INSERT INTO tipo_servicio (id,tipo,porcentaje_aumento) values (1,"Wifi",0.02);
 INSERT INTO tipo_servicio (id,tipo,porcentaje_aumento) values (2,"Limpieza",0.05);
 INSERT INTO tipo_servicio (id,tipo,porcentaje_aumento) values (3,"Atencion al cliente",0.05);
 
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,cant_personas,precio,img_path) VALUES (1,"Hotel 1",true,5,10,2000,"assets/img/hoteles/1.jpg");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,cant_personas,precio,img_path) VALUES (2,"Hotel 2",false,5,15,2500,"assets/img/hoteles/2.jpg");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,cant_personas,precio,img_path) VALUES (3,"Hotel 3",false,5,20,1000,"assets/img/hoteles/3.jpg");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,cant_personas,precio,img_path) VALUES (4,"Hotel 4",true,5,15,1500,"assets/img/hoteles/4.jpg");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,cant_personas,precio,img_path) VALUES (5,"Hotel 5",true,5,20,3000,"assets/img/hoteles/5.jpg");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,cant_personas,precio,img_path) VALUES (6,"Telo",false,1,10,50,"assets/img/hoteles/6.jpg");

@@ -21,11 +21,13 @@ public class HotelModel {
     
     private double precio;
     
+    private String imgPath;
+    
     public HotelModel() {}
 
 	public HotelModel(long id, String nombre, int cantEstrellas, String tipoServicio, 
 			String tipoHabitaciones, String tipoRegimen,
-			boolean accesibilidad, int cantPersonas, double precio) {
+			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -36,11 +38,12 @@ public class HotelModel {
 		this.accesibilidad = accesibilidad;
 		this.cantPersonas = cantPersonas;
 		this.precio = precio;
+		this.imgPath = imgPath;
 	}
 	
 	public HotelModel(String nombre, int cantEstrellas, String tipoServicio, 
 			String tipoHabitaciones, String tipoRegimen,
-			boolean accesibilidad, int cantPersonas, double precio) {
+			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
 		super();
 		this.nombre = nombre;
 		this.cantEstrellas = cantEstrellas;
@@ -50,6 +53,7 @@ public class HotelModel {
 		this.accesibilidad = accesibilidad;
 		this.cantPersonas = cantPersonas;
 		this.precio = precio;
+		this.imgPath = imgPath;
 	}
 
 	public long getId() {
@@ -123,5 +127,15 @@ public class HotelModel {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+	
+	
     
 }

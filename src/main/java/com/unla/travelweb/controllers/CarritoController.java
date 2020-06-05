@@ -13,6 +13,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.models.CarritoModel;
+import com.unla.travelweb.models.HotelModel;
 import com.unla.travelweb.services.ICarritoService;
 
 @Controller
@@ -33,6 +34,7 @@ public class CarritoController {
     public ModelAndView create() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.CARRITO_NEW);
         mAV.addObject("carrito", new CarritoModel());
+        mAV.addObject("hotel", new HotelModel());
         return mAV;
     }
 	
