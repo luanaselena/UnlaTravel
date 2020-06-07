@@ -20,13 +20,21 @@
             <form action="#" th:action="@{/hotel/update}" th:object="${hotel}" method="post">
                 <p>Nombre: <input type="text" th:field="*{nombre}" /></p>
                 <p>Precio: <input type="text" th:field="*{precio}" /></p>
-                <p>Cantidad Estrellas: <input type="text" th:field="*{cantEstrellas}" /></p>
+                
+                <p>Cantidad Estrellas: <input type="number" th:field="*{cantEstrellas}" min="1" max="5"/></p>
+                
+                <p>Tipo de Alojamiento: 
+	                <select placeholder="TipoAlojamiento" th:field="*{tipoAlojamiento.id}"> 
+						<option th:each="ta : ${tipoAlojamientos}" th:value="${ta.id}" th:text="${ta.tipo}"> </option>
+					</select>
+				</p>
                 <p>Servicio: <input type="text" th:field="*{tipoServicio}" /></p>
                 <p>Tipo de habitacion: <input type="text" th:field="*{tipoHabitaciones}" /></p>
                 <p>Regimen: <input type="text" th:field="*{tipoRegimen}" /></p>
                 <p>Accesibilidad: <input type="checkbox" th:field="*{accesibilidad}" /></p>
                 <p>Cantidad de Personas: <input type="text" th:field="*{cantPersonas}" /></p>
-                <input type="text" th:field="*{id}" />
+                <input type="hidden" th:field="*{id}" />
+                <input type="hidden" th:field="*{imgPath}" />
                 <input class="btn btn-success" style="background-color: #EE7D00" type="submit" value="Editar"/>
             </form>
             <br>

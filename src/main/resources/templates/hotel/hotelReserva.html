@@ -24,9 +24,10 @@
         		</div>
         		<div class="col-4 mt-3 mb-3">
 	        		<div class="card" style="width: 18rem;">
-	  					<img th:src="@{ ${hotel.imgPath} }" class="card-img-top" alt="...">
+	  					<img th:src="@{${hotel.imgPath} }" class="card-img-top">
 	  					<div class="card-body">
 	    					<h5 class="card-title" th:text="${hotel.nombre}">Card title</h5>
+	    					<p class="card-text" th:text="${hotel.tipoAlojamiento.tipo}"></p>
 	    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel.cantEstrellas}"></p>
 	    					<p class="card-text" th:text="${'PRECIO: $' + hotel.precio}"></p>
 	  					</div>
@@ -48,3 +49,8 @@
         </div>
     </body>
 </html>
+
+
+
+
+
