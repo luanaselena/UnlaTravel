@@ -3,8 +3,11 @@ package com.unla.travelweb.services.implementation;
 import com.unla.travelweb.converters.HotelConverter;
 import com.unla.travelweb.entities.Hotel;
 import com.unla.travelweb.models.HotelModel;
+import com.unla.travelweb.entities.TipoAlojamiento;
+import com.unla.travelweb.models.TipoAlojamientoModel;
 import com.unla.travelweb.repositories.IHotelRepository;
 import com.unla.travelweb.services.IHotelService;
+import com.unla.travelweb.services.ITipoAlojamientoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -21,6 +24,10 @@ public class HotelService implements IHotelService {
 	@Autowired
     @Qualifier("hotelConverter")
     private HotelConverter hotelConverter;
+	
+	@Autowired
+    @Qualifier("tipoAlojamientoService")
+	private ITipoAlojamientoService tipoAlojamientoService;
 
     @Override
     public List<Hotel> getAll(){
@@ -29,7 +36,7 @@ public class HotelService implements IHotelService {
 
     @Override
     public HotelModel insert(HotelModel hotelModel) {
-
+    	hotelModel.setTipoAlojamiento(tipoAlojamientoService.findById(hotelModel.getTipoAlojamiento().getId()));
     	Hotel hotel = hotelRepository.save(hotelConverter.modelToEntity(hotelModel));
         return hotelConverter.entityToModel(hotel);
 
@@ -38,6 +45,7 @@ public class HotelService implements IHotelService {
     @Override
     public HotelModel update(HotelModel hotelModel) {
 
+    	hotelModel.setTipoAlojamiento(tipoAlojamientoService.findById(hotelModel.getTipoAlojamiento().getId()));
     	Hotel hotel = hotelRepository.save(hotelConverter.modelToEntity(hotelModel));
         return hotelConverter.entityToModel(hotel);
     }
