@@ -28,11 +28,8 @@
 						<option th:each="ta : ${tipoAlojamientos}" th:value="${ta.id}" th:text="${ta.tipo}"> </option>
 					</select>
 				</p>
-                <p>Servicio: <input type="text" th:field="*{tipoServicio}" /></p>
-                <p>Tipo de habitacion: <input type="text" th:field="*{tipoHabitaciones}" /></p>
-                <p>Regimen: <input type="text" th:field="*{tipoRegimen}" /></p>
                 <p>Accesibilidad: <input type="checkbox" th:field="*{accesibilidad}" /></p>
-                <p>Cantidad de Personas: <input type="text" th:field="*{cantPersonas}" /></p>
+                <input type="hidden" th:field="*{cantPersonas}" />
                 <input type="hidden" th:field="*{id}" />
                 <input type="hidden" th:field="*{imgPath}" />
                 <input class="btn btn-success" style="background-color: #EE7D00" type="submit" value="Editar"/>
