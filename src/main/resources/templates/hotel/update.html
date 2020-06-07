@@ -21,6 +21,11 @@
                 <p>Nombre: <input type="text" th:field="*{nombre}" /></p>
                 <p>Precio: <input type="text" th:field="*{precio}" /></p>
                 <p>Cantidad Estrellas: <input type="text" th:field="*{cantEstrellas}" /></p>
+                <p>Tipo de Alojamiento: 
+	                <select placeholder="Alojamiento" th:field="*{tipoAlojamiento.id}"> 
+						<option th:each="ta : ${tipoAlojamientos}" th:value="${ta.id}" th:text="${ta.tipo}"> </option>
+					</select>
+				</p>
                 <p>Servicio: <input type="text" th:field="*{tipoServicio}" /></p>
                 <p>Tipo de habitacion: <input type="text" th:field="*{tipoHabitaciones}" /></p>
                 <p>Regimen: <input type="text" th:field="*{tipoRegimen}" /></p>

@@ -27,6 +27,7 @@
 	  					<img th:src="@{ ${hotel.imgPath} }" class="card-img-top" alt="...">
 	  					<div class="card-body">
 	    					<h5 class="card-title" th:text="${hotel.nombre}">Card title</h5>
+	    					<p class="card-text" th:text="${hotel.tipoAlojamiento.tipo}"></p>
 	    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel.cantEstrellas}"></p>
 	    					<p class="card-text" th:text="${'PRECIO: $' + hotel.precio}"></p>
 	    					<a th:href="@{/hotelUsuario/hotelReserva/{id}(id=${hotel.id})}" target="_blank" class="btn btn-primary">Reservar</a>
@@ -37,3 +38,19 @@
         </div>
     </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

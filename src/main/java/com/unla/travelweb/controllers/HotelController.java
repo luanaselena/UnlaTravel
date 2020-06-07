@@ -3,6 +3,9 @@ package com.unla.travelweb.controllers;
 import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.models.HotelModel;
 import com.unla.travelweb.services.IHotelService;
+
+import com.unla.travelweb.services.ITipoAlojamientoService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -19,6 +22,10 @@ public class HotelController {
 	@Qualifier ("hotelService")
 	private IHotelService hotelService;
 	
+	@Autowired
+	@Qualifier("tipoAlojamientoService")
+	private ITipoAlojamientoService tipoAlojamientoService;
+	
 	@GetMapping ("")
 	public ModelAndView index() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.HOTEL_INDEX);
@@ -29,6 +36,8 @@ public class HotelController {
 	@GetMapping("/new")
     public ModelAndView create() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.HOTEL_NEW);
+
+        mAV.addObject("tipoAlojamientos", tipoAlojamientoService.getAll());
         mAV.addObject("hotel", new HotelModel());
         return mAV;
     }
@@ -43,6 +52,8 @@ public class HotelController {
 	    public ModelAndView get(@PathVariable("id") long id) {
 	        ModelAndView mAV = new ModelAndView(ViewRouteHelper.HOTEL_UPDATE);
 	        mAV.addObject("hotel", hotelService.findById(id));
+
+	        mAV.addObject("tipoAlojamientos", tipoAlojamientoService.getAll());
 	        return mAV;
 	    }
 	 

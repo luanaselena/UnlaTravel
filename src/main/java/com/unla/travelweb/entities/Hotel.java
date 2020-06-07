@@ -23,6 +23,10 @@ public class Hotel implements Serializable{
 	@Column (name= "cantEstrellas", nullable=true)
 	private int cantEstrellas;
 	
+	@OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name="tipo_alojamiento_id_tipo_alojamiento", referencedColumnName = "id")
+    private TipoAlojamiento tipoAlojamiento;
+	
     @Column(name="tipoServicio", nullable=true)
     private String tipoServicio;
     
@@ -31,9 +35,6 @@ public class Hotel implements Serializable{
     
     @Column(name="tipoRegimen", nullable=true)
     private String tipoRegimen;
-    
-    @Column(name="tipoAlojamiento", nullable=true)
-    private String tipoAlojamiento;
     
     @Column(name= "accesibilidad", nullable=true)
     private boolean accesibilidad;
@@ -49,12 +50,13 @@ public class Hotel implements Serializable{
     
     public Hotel() {}
 
-	public Hotel(long id,String nombre, int cantEstrellas, String tipoServicio, String tipoHabitaciones, String tipoRegimen,
+	public Hotel(long id, String nombre, int cantEstrellas, TipoAlojamiento tipoAlojamiento, String tipoServicio, String tipoHabitaciones, String tipoRegimen,
 			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.cantEstrellas = cantEstrellas;
+		this.tipoAlojamiento = tipoAlojamiento;
 		this.tipoServicio = tipoServicio;
 		this.tipoHabitaciones = tipoHabitaciones;
 		this.tipoRegimen = tipoRegimen;
@@ -64,11 +66,12 @@ public class Hotel implements Serializable{
 		this.imgPath = imgPath;
 	}
 	
-	public Hotel(String nombre, int cantEstrellas, String tipoServicio, String tipoHabitaciones, String tipoRegimen,
+	public Hotel(String nombre, int cantEstrellas, TipoAlojamiento tipoAlojamiento, String tipoServicio, String tipoHabitaciones, String tipoRegimen,
 			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
 		super();
 		this.nombre = nombre;
 		this.cantEstrellas = cantEstrellas;
+		this.tipoAlojamiento = tipoAlojamiento;
 		this.tipoServicio = tipoServicio;
 		this.tipoHabitaciones = tipoHabitaciones;
 		this.tipoRegimen = tipoRegimen;
@@ -100,6 +103,14 @@ public class Hotel implements Serializable{
 
 	public void setCantEstrellas(int cantEstrellas) {
 		this.cantEstrellas = cantEstrellas;
+	}
+
+	public TipoAlojamiento getTipoAlojamiento() {
+		return tipoAlojamiento;
+	}
+
+	public void setTipoAlojamiento(TipoAlojamiento tipoAlojamiento) {
+		this.tipoAlojamiento = tipoAlojamiento;
 	}
 
 	public String getTipoServicio() {
@@ -148,14 +159,6 @@ public class Hotel implements Serializable{
 
 	public void setPrecio(double precio) {
 		this.precio = precio;
-	}
-
-	public String getTipoAlojamiento() {
-		return tipoAlojamiento;
-	}
-
-	public void setTipoAlojamiento(String tipoAlojamiento) {
-		this.tipoAlojamiento = tipoAlojamiento;
 	}
 
 	public String getImgPath() {

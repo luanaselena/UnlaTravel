@@ -9,6 +9,8 @@ public class HotelModel {
 
 	private int cantEstrellas;
 	
+	private TipoAlojamientoModel tipoAlojamiento;
+	
     private String tipoServicio;
     
     private String tipoHabitaciones;
@@ -25,13 +27,14 @@ public class HotelModel {
     
     public HotelModel() {}
 
-	public HotelModel(long id, String nombre, int cantEstrellas, String tipoServicio, 
-			String tipoHabitaciones, String tipoRegimen,
+	public HotelModel(long id, String nombre, int cantEstrellas, TipoAlojamientoModel tipoAlojamiento,
+			String tipoServicio, String tipoHabitaciones, String tipoRegimen,
 			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.cantEstrellas = cantEstrellas;
+		this.tipoAlojamiento = tipoAlojamiento;
 		this.tipoServicio = tipoServicio;
 		this.tipoHabitaciones = tipoHabitaciones;
 		this.tipoRegimen = tipoRegimen;
@@ -41,12 +44,13 @@ public class HotelModel {
 		this.imgPath = imgPath;
 	}
 	
-	public HotelModel(String nombre, int cantEstrellas, String tipoServicio, 
+	public HotelModel(String nombre, int cantEstrellas, TipoAlojamientoModel tipoAlojamiento, String tipoServicio, 
 			String tipoHabitaciones, String tipoRegimen,
 			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
 		super();
 		this.nombre = nombre;
 		this.cantEstrellas = cantEstrellas;
+		this.tipoAlojamiento = tipoAlojamiento;
 		this.tipoServicio = tipoServicio;
 		this.tipoHabitaciones = tipoHabitaciones;
 		this.tipoRegimen = tipoRegimen;
@@ -78,6 +82,14 @@ public class HotelModel {
 
 	public void setCantEstrellas(int cantEstrellas) {
 		this.cantEstrellas = cantEstrellas;
+	}
+
+	public TipoAlojamientoModel getTipoAlojamiento() {
+		return tipoAlojamiento;
+	}
+
+	public void setTipoAlojamiento(TipoAlojamientoModel tipoAlojamiento) {
+		this.tipoAlojamiento = tipoAlojamiento;
 	}
 
 	public String getTipoServicio() {
