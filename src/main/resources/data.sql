@@ -70,15 +70,15 @@ INSERT INTO tipo_servicio (id,tipo,porcentaje_aumento) values (1,"Wifi",0.02);
 INSERT INTO tipo_servicio (id,tipo,porcentaje_aumento) values (2,"Limpieza",0.05);
 INSERT INTO tipo_servicio (id,tipo,porcentaje_aumento) values (3,"Atencion al cliente",0.05);
 
-INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,cant_personas,precio,img_path) VALUES (1,"Hotel 1",true,5,1,10,2000,"/assets/img/hoteles/1.jpg");
-INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,cant_personas,precio,img_path) VALUES (2,"Hotel 2",false,5,2,15,2500,"/assets/img/hoteles/2.jpg");
-INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,cant_personas,precio,img_path) VALUES (3,"Hotel 3",false,5,3,20,1000,"/assets/img/hoteles/3.jpg");
-INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,cant_personas,precio,img_path) VALUES (4,"Hotel 4",true,5,4,15,1500,"/assets/img/hoteles/4.jpg");
-INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,cant_personas,precio,img_path) VALUES (5,"Hotel 5",true,5,1,20,3000,"/assets/img/hoteles/5.jpg");
-INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,cant_personas,precio,img_path) VALUES (6,"Telo",false,1,2,10,50,"/assets/img/hoteles/6.jpg");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,cant_personas,precio,img_path) VALUES (1,"Hotel 1",true,5,1,1,2000,"/assets/img/hoteles/1.jpg");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,cant_personas,precio,img_path) VALUES (2,"Hotel 2",false,5,2,1,2500,"/assets/img/hoteles/2.jpg");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,cant_personas,precio,img_path) VALUES (3,"Hotel 3",false,5,3,1,1000,"/assets/img/hoteles/3.jpg");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,cant_personas,precio,img_path) VALUES (4,"Hotel 4",true,5,4,1,1500,"/assets/img/hoteles/4.jpg");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,cant_personas,precio,img_path) VALUES (5,"Hotel 5",true,5,1,1,3000,"/assets/img/hoteles/5.jpg");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,cant_personas,precio,img_path) VALUES (6,"Albergue transitorio",false,1,2,1,50,"/assets/img/hoteles/6.jpg");
 
 INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (1,"Esquiar",false,1500,"/assets/img/actividades/1.jpg",9,1);
 INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (2,"Acampar",false,1000,"/assets/img/actividades/2.jpg",8,2);
 INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (3,"Escalar",false,2000,"/assets/img/actividades/3.jpg",9,3);
 INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (4,"Paracaidismo",false,3500,"/assets/img/actividades/4.jpg",10,4);
-INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (5,"Ponerla",false,0,"/assets/img/actividades/5.jpg",10,5);
+INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (5,"Pasear",false,0,"/assets/img/actividades/5.jpg",10,5);
