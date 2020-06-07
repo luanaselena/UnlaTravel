@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Index Hotel</title>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    </head>
+    <body>
+        <header>
+            <div class="headerbg">
+
+                <h3>Unla Travel</h3>
+
+            </div>
+        </header>
+        <div class="container">
+        	<div class="row">
+        		<div class="col-12 text-center mt-5 mb-3">
+        			<h2>Confirmar Reserva</h2>
+        		</div>
+        		<div class="col-4 mt-3 mb-3">
+	        		<div class="card" style="width: 18rem;">
+	  					<img th:src="@{${act.imgPath} }" class="card-img-top">
+	  					<div class="card-body">
+	    					<h5 class="card-title" th:text="${act.nombre}">Card title</h5>
+	    					<p class="card-text" th:text="${act.destino.pais}"></p>
+	    					<p class="card-text" th:text="${act.valoracion}"></p>
+	    					<p class="card-text" th:text="${'PRECIO: $' + act.precio}"></p>
+	  					</div>
+					</div>
+				</div>
+				<div class="col-8">
+					<form action="#" th:action="@{/actividadUsuario/create}"
+		                  th:object="${act}" method="post">
+	                  	<input type="hidden" th:field="${act.id}" id="id" name="id" />
+		                <p>Fecha: <input type="date" th:field="*{fecha}" /></p>
+		                <input class="btn btn-primary" style="background-color: #EE7D00" type="submit" value="Confirmar Reserva" />
+		            </form>
+				</div>
+        	</div>           
+        </div>
+    </body>
+</html>
+
+

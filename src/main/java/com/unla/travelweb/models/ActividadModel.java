@@ -18,9 +18,11 @@ public class ActividadModel {
 
     private double precio;
     
+    private String imgPath;
+    
     public ActividadModel() {}
     
-    public ActividadModel(String nombre, Date fecha, double valoracion, boolean accesibilidad, DestinoModel destino, double precio) {
+    public ActividadModel(String nombre, Date fecha, double valoracion, boolean accesibilidad, DestinoModel destino, double precio, String imgPath) {
 		super();
 		this.nombre = nombre;
 		this.fecha = fecha;
@@ -28,9 +30,10 @@ public class ActividadModel {
 		this.accesibilidad = accesibilidad;
 		this.destino = destino;
 		this.precio = precio;
+		this.imgPath = imgPath;
 	}
     
-	public ActividadModel(long id, String nombre, Date fecha, double valoracion, boolean accesibilidad, DestinoModel destino, double precio) {
+	public ActividadModel(long id, String nombre, Date fecha, double valoracion, boolean accesibilidad, DestinoModel destino, double precio, String imgPath) {
 		super();
 		this.nombre = nombre;
 		this.id = id;
@@ -39,6 +42,7 @@ public class ActividadModel {
 		this.accesibilidad = accesibilidad;
 		this.destino = destino;
 		this.precio = precio;
+		this.imgPath = imgPath;
 	}
 
 	public long getId() {
@@ -95,6 +99,14 @@ public class ActividadModel {
 
 	public void setPrecio(double precio) {
 		this.precio = precio;
+	}
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
 	
 	
