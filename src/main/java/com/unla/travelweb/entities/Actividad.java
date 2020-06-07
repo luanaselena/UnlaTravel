@@ -17,7 +17,7 @@ public class Actividad {
 	@Column(name="nombre", nullable=false)
 	private String nombre;
 	
-	@Column(name="fecha", nullable=false)
+	@Column(name="fecha", nullable=true)
 	private Date fecha;
 
 	@Column (name= "valoracion", nullable=true)
@@ -33,9 +33,12 @@ public class Actividad {
 	@Column (name= "precio", nullable=false)
 	private double precio;
 	
+	@Column(name= "imgPath", nullable = true )
+	private String imgPath;
+	
     public Actividad() {}
     
-    public Actividad(String nombre,Date fecha, double valoracion, boolean accesibilidad, Destino destino, double precio) {
+    public Actividad(String nombre,Date fecha, double valoracion, boolean accesibilidad, Destino destino, double precio, String imgPath) {
 		super();
 		this.nombre = nombre;
 		this.fecha = fecha;
@@ -43,9 +46,10 @@ public class Actividad {
 		this.accesibilidad = accesibilidad;
 		this.destino = destino;
 		this.precio = precio;
+		this.imgPath = imgPath;
 	}
     
-	public Actividad(long id, String nombre, Date fecha, double valoracion, boolean accesibilidad, Destino destino, double precio) {
+	public Actividad(long id, String nombre, Date fecha, double valoracion, boolean accesibilidad, Destino destino, double precio, String imgPath) {
 		super();
 		this.nombre = nombre;
 		this.id = id;
@@ -54,6 +58,7 @@ public class Actividad {
 		this.accesibilidad = accesibilidad;
 		this.destino = destino;
 		this.precio = precio;
+		this.imgPath = imgPath;
 	}
 
 	public long getId() {
@@ -110,6 +115,14 @@ public class Actividad {
 
 	public void setPrecio(double precio) {
 		this.precio = precio;
+	}
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
 	
 	

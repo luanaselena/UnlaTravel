@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
-        <title>Reserva de Hoteles</title>
+        <title>Reserva de Actividades</title>
         <link rel="stylesheet"
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -24,24 +24,20 @@
         		</div>
         		<div class="col-4 mt-3 mb-3">
 	        		<div class="card" style="width: 18rem;">
-	  					<img th:src="@{${hotel.imgPath} }" class="card-img-top">
+	  					<img th:src="@{${act.imgPath} }" class="card-img-top">
 	  					<div class="card-body">
-	    					<h5 class="card-title" th:text="${hotel.nombre}">Card title</h5>
-	    					<p class="card-text" th:text="${hotel.tipoAlojamiento.tipo}"></p>
-	    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel.cantEstrellas}"></p>
-	    					<p class="card-text" th:text="${'PRECIO: $' + hotel.precio}"></p>
+	    					<h5 class="card-title" th:text="${act.nombre}">Card title</h5>
+	    					<p class="card-text" th:text="${act.destino.pais}"></p>
+	    					<p class="card-text" th:text="${act.valoracion}"></p>
+	    					<p class="card-text" th:text="${'PRECIO: $' + act.precio}"></p>
 	  					</div>
 					</div>
 				</div>
 				<div class="col-8">
-					<form action="#" th:action="@{/hotelUsuario/create}"
-		                  th:object="${hotel}" method="post">
-	                  	<input type="hidden" th:field="${hotel.id}" id="id" name="id" />
-		                <p>Servicio: <input type="text" th:field="*{tipoServicio}" /></p>
-		                <p>Tipo de Habitacion: <input type="text" th:field="*{tipoHabitaciones}" /></p>
-		                <p>Regimen: <input type="text" th:field="*{tipoRegimen}" /></p>
-		                <p>Accesibilidad: <input type="checkbox" th:field="*{accesibilidad}" /></p>
-		                <p>Cantidad de Personas: <input type="text" th:field="*{cantPersonas}" /></p>
+					<form action="#" th:action="@{/actividadUsuario/create}"
+		                  th:object="${act}" method="post">
+	                  	<input type="hidden" th:field="${act.id}" id="id" name="id" />
+		                <p>Fecha: <input type="date" th:field="*{fecha}" /></p>
 		                <input class="btn btn-primary" style="background-color: #EE7D00" type="submit" value="Confirmar Reserva" />
 		            </form>
 				</div>
@@ -49,8 +45,5 @@
         </div>
     </body>
 </html>
-
-
-
 
 

@@ -33,6 +33,8 @@ public class ViewRouteHelper {
     public final static String ACTIVIDAD_NEW = "actividad/new";
     public final static String ACTIVIDAD_UPDATE = "actividad/update";
     public final static String ACTIVIDAD_ROOT = "/actividad";
+    public final static String ACTIVIDAD_USUARIO = "actividad/actividadUsuario";
+    public final static String ACTIVIDAD_RESERVA = "actividad/actividadReserva";
     
     public final static String AEROLINEA_INDEX = "aerolinea/index";
     public final static String AEROLINEA_NEW = "aerolinea/new";
