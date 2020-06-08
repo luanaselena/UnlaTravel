@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.sun.istack.Nullable;
+
+
+
 
 @Entity
 @Table(name="hotel")
@@ -23,18 +27,23 @@ public class Hotel implements Serializable{
 	@Column (name= "cantEstrellas", nullable=true)
 	private int cantEstrellas;
 	
-	@OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name="tipo_alojamiento_id_tipo_alojamiento", referencedColumnName = "id")
+	@OneToOne(cascade = CascadeType.MERGE, optional=true)
+    @JoinColumn(name="tipo_alojamiento_id_tipo_alojamiento", referencedColumnName = "id", nullable=true)
     private TipoAlojamiento tipoAlojamiento;
 	
-    @Column(name="tipoServicio", nullable=true)
-    private String tipoServicio;
+//	@(cascade = CascadeType.MERGE)
+//    @JoinColumn(name="tipo_servicio_id_tipo_servicio", referencedColumnName = "id")
+//	private List<TipoServicio> tipoServicio;
     
-    @Column(name= "tipoHabitaciones", nullable= true)
-    private String tipoHabitaciones;
+	@Nullable
+	@OneToOne(cascade = CascadeType.MERGE, optional=true)
+    @JoinColumn(name="tipo_habitacion_id_tipo_habitacion", referencedColumnName = "id", nullable=true)
+    private TipoHabitacion tipoHabitacion;
     
-    @Column(name="tipoRegimen", nullable=true)
-    private String tipoRegimen;
+	@Nullable
+	@OneToOne(cascade = CascadeType.MERGE, optional=true)
+    @JoinColumn(name="tipo_regimen_id_tipo_regimen", referencedColumnName = "id", nullable=true)
+    private TipoRegimen tipoRegimen;
     
     @Column(name= "accesibilidad", nullable=true)
     private boolean accesibilidad;
@@ -50,15 +59,14 @@ public class Hotel implements Serializable{
     
     public Hotel() {}
 
-	public Hotel(long id, String nombre, int cantEstrellas, TipoAlojamiento tipoAlojamiento, String tipoServicio, String tipoHabitaciones, String tipoRegimen,
+	public Hotel(long id, String nombre, int cantEstrellas, TipoAlojamiento tipoAlojamiento, TipoHabitacion tipoHabitacion, TipoRegimen tipoRegimen,
 			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.cantEstrellas = cantEstrellas;
 		this.tipoAlojamiento = tipoAlojamiento;
-		this.tipoServicio = tipoServicio;
-		this.tipoHabitaciones = tipoHabitaciones;
+		this.tipoHabitacion = tipoHabitacion;
 		this.tipoRegimen = tipoRegimen;
 		this.accesibilidad = accesibilidad;
 		this.cantPersonas = cantPersonas;
@@ -66,14 +74,13 @@ public class Hotel implements Serializable{
 		this.imgPath = imgPath;
 	}
 	
-	public Hotel(String nombre, int cantEstrellas, TipoAlojamiento tipoAlojamiento, String tipoServicio, String tipoHabitaciones, String tipoRegimen,
+	public Hotel(String nombre, int cantEstrellas, TipoAlojamiento tipoAlojamiento, TipoHabitacion tipoHabitacion, TipoRegimen tipoRegimen,
 			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
 		super();
 		this.nombre = nombre;
 		this.cantEstrellas = cantEstrellas;
 		this.tipoAlojamiento = tipoAlojamiento;
-		this.tipoServicio = tipoServicio;
-		this.tipoHabitaciones = tipoHabitaciones;
+		this.tipoHabitacion = tipoHabitacion;
 		this.tipoRegimen = tipoRegimen;
 		this.accesibilidad = accesibilidad;
 		this.cantPersonas = cantPersonas;
@@ -113,27 +120,27 @@ public class Hotel implements Serializable{
 		this.tipoAlojamiento = tipoAlojamiento;
 	}
 
-	public String getTipoServicio() {
-		return tipoServicio;
+//	public List<TipoServicio> getTipoServicio() {
+//		return tipoServicio;
+//	}
+//
+//	public void setTipoServicio(List<TipoServicio> tipoServicio) {
+//		this.tipoServicio = tipoServicio;
+//	}
+
+	public TipoHabitacion getTipoHabitacion() {
+		return tipoHabitacion;
 	}
 
-	public void setTipoServicio(String tipoServicio) {
-		this.tipoServicio = tipoServicio;
+	public void setTipoHabitacion(@Nullable TipoHabitacion tipoHabitacion) {
+		this.tipoHabitacion = tipoHabitacion;
 	}
 
-	public String getTipoHabitaciones() {
-		return tipoHabitaciones;
-	}
-
-	public void setTipoHabitaciones(String tipoHabitaciones) {
-		this.tipoHabitaciones = tipoHabitaciones;
-	}
-
-	public String getTipoRegimen() {
+	public TipoRegimen getTipoRegimen() {
 		return tipoRegimen;
 	}
 
-	public void setTipoRegimen(String tipoRegimen) {
+	public void setTipoRegimen(@Nullable TipoRegimen tipoRegimen) {
 		this.tipoRegimen = tipoRegimen;
 	}
 

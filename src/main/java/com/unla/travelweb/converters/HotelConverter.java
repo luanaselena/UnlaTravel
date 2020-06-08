@@ -14,18 +14,25 @@ public class HotelConverter
 	@Autowired
 	@Qualifier("tipoAlojamientoConverter")
 	private TipoAlojamientoConverter tipoAlojamientoConverter;
+	@Autowired
+	@Qualifier("tipoHabitacionConverter")
+	private TipoHabitacionConverter tipoHabitacionConverter;
+	@Autowired
+	@Qualifier("tipoRegimenConverter")
+	private TipoRegimenConverter tipoRegimenConverter;
 	
 	public HotelModel entityToModel (Hotel hotel) {
 		return new HotelModel (hotel.getId(), hotel.getNombre(), 
-				hotel.getCantEstrellas(), tipoAlojamientoConverter.entityToModel(hotel.getTipoAlojamiento()), hotel.getTipoServicio(), hotel.getTipoHabitaciones(), 
-				hotel.getTipoRegimen(), hotel.isAccesibilidad(), hotel.getCantPersonas(), hotel.getPrecio(), hotel.getImgPath());
+				hotel.getCantEstrellas(), tipoAlojamientoConverter.entityToModel(hotel.getTipoAlojamiento()),
+				tipoHabitacionConverter.entityToModel(hotel.getTipoHabitacion()),  tipoRegimenConverter.entityToModel(hotel.getTipoRegimen()), 
+				hotel.isAccesibilidad(), hotel.getCantPersonas(), hotel.getPrecio(), hotel.getImgPath());
 
 	}
 	
 	public Hotel modelToEntity (HotelModel hotelModel) {
 		return new Hotel (hotelModel.getId(), hotelModel.getNombre(), 
-				hotelModel.getCantEstrellas(), tipoAlojamientoConverter.modelToEntity(hotelModel.getTipoAlojamiento()),hotelModel.getTipoServicio(), 
-				hotelModel.getTipoHabitaciones(), hotelModel.getTipoRegimen(), 
+				hotelModel.getCantEstrellas(), tipoAlojamientoConverter.modelToEntity(hotelModel.getTipoAlojamiento()), 
+				tipoHabitacionConverter.modelToEntity(hotelModel.getTipoHabitacion()), tipoRegimenConverter.modelToEntity(hotelModel.getTipoRegimen()), 
 				hotelModel.isAccesibilidad(), hotelModel.getCantPersonas(), hotelModel.getPrecio(), hotelModel.getImgPath());
 	}
 }

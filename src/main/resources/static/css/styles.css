@@ -10547,7 +10547,29 @@ section#contact form#contactForm :-ms-input-placeholder {
   box-shadow: 0 0 1.4rem rgba(53, 49, 49, 0.40);
 }
 
+.btn-info, .btn-info:hover, .btn-info:active, .btn-info:visited {
+    background-color: #035aa6 !important;
+    border: none !important;
+}
+
 .btn-success, .btn-success, .btn-success:active, .btn-success:visited {
-  background-color: #06623b !important;
-  border: none !important;
+    background-color: #06623b !important;
+    border: none !important;
+}
+
+.btn-danger, .btn-danger, .btn-danger:active, .btn-danger:visited {
+    background-color: #9d0b0b !important;
+    border: none !important;
+}
+
+.btn-warning, .btn-warning, .btn-warning:active, .btn-danger:visited {
+    background-color: #46185f !important;
+    color: white !important;
+    border: none !important;
+}
+
+.btn-dark, .btn-dark, .btn-dark:active, .btn-dark:visited {
+    background-color: #000000 !important;
+    color: white !important;
+    border: none !important;
 }

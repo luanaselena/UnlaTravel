@@ -14,6 +14,9 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.models.HotelModel;
 import com.unla.travelweb.services.IHotelService;
+import com.unla.travelweb.services.ITipoHabitacionService;
+import com.unla.travelweb.services.ITipoRegimenService;
+import com.unla.travelweb.services.ITipoServicioService;
 
 @Controller
 @RequestMapping("/hotelUsuario")
@@ -22,6 +25,15 @@ public class HotelUsuarioController {
 	@Autowired
 	@Qualifier ("hotelService")
 	private IHotelService hotelService;
+	@Autowired
+	@Qualifier("tipoHabitacionService")
+	private ITipoHabitacionService tipoHabitacionService;
+	@Autowired
+	@Qualifier("tipoServicioService")
+	private ITipoServicioService tipoServicioService;
+	@Autowired
+	@Qualifier("tipoRegimenService")
+	private ITipoRegimenService tipoRegimenService;
 	
 	@GetMapping ("")
 	public ModelAndView index() {
@@ -34,6 +46,8 @@ public class HotelUsuarioController {
 	public ModelAndView reservar(@PathVariable("id") int id) {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.HOTEL_RESERVA);
         mAV.addObject("hotel", hotelService.getAll().get(id-1));
+        mAV.addObject("habitaciones", tipoHabitacionService.getAll());
+        mAV.addObject("regimenes", tipoRegimenService.getAll());
         return mAV;
     }
 	
