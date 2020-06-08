@@ -17,3 +17,5 @@
 -paqueteUsuario
 
 -vueloUsuario
+
+-filtro de busqueda
