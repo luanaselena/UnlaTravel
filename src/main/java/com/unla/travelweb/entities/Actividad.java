@@ -33,7 +33,7 @@ public class Actividad {
 	@Column (name= "precio", nullable=false)
 	private double precio;
 	
-	@Column(name= "imgPath", nullable = true )
+	@Column(name= "img_path", nullable = true )
 	private String imgPath;
 	
     public Actividad() {}

@@ -37,13 +37,9 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Precio por noche</th>
-                        <th>Calificación</th>
-                        <th>Servicio</th>
-                        <th>Tipo de Habitaciones</th>
-                        <th>Regimen</th>
+                        <th>Cantidad de estrellas</th>
+                        <th>Tipo de alojamiento</th>
                         <th>Accesibilidad</th>
-                        <th>Cantidad de Personas</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,13 +48,7 @@
                         <td><p>$<span th:text="${hotel.precio}"></span></p></td>
                         <td><span th:text="${hotel.cantEstrellas}"></span></td>
                         <td><span th:text="${hotel.tipoAlojamiento.tipo}"></span></td>
-                        <td><span th:text="${hotel.tipoServicio}"></span></td>
-                        <td><span th:text="${hotel.tipoRegimen}"></span></td>
-                        <td><span th:text="${hotel.tipoHabitaciones}"></span></td>
                         <td><span th:text="${hotel.accesibilidad}"></span></td>
-                        <td><span th:text="${hotel.cantPersonas}"></span></td>
-                        <td><a th:href="@{/hotel/{id}(id=${hotel.id})}">Ver</a>
-                        </td>
                     </tr>
                 </tbody>
                 </table>                
@@ -75,6 +65,10 @@
 						    <span th:text="${hotel.tipoAlojamiento.tipo}"></span><br/>
 						    <p>$<span th:text="${hotel.precio}"></span></p>
 						    <a class="btn btn-primary" style="background-color: #EE7D00;margin-left:30%;" th:href="@{/hotel/{id}(id=${hotel.id})}">Elegir Hotel</a>
+						    <span th:if="${hotel.accesibilidad}" th:text="${'ACCESIBILIDAD: Si'}"></span>
+						    <span th:if="${not hotel.accesibilidad}" th:text="${'ACCESIBILIDAD: No'}"></span><br/>
+						    <br/>
+						    <a class="btn btn-primary" style="background-color: #EE7D00" th:href="@{/hotel/{id}(id=${hotel.id})}">Modificar Hotel</a>
 						  </div>
 						</div>
 	                </div>
