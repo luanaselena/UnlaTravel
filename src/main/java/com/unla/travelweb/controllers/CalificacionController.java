@@ -66,21 +66,21 @@ public class CalificacionController {
     }
 
     @PostMapping("/create_act")
-    public RedirectView createCalificacionAct(@ModelAttribute("calificacionActividad") CalificacionActividadModel calificacionActividad, RedirectAttributes redirectAttrs){
+    public ModelAndView createCalificacionAct(@ModelAttribute("calificacionActividad") CalificacionActividadModel calificacionActividad, RedirectAttributes redirectAttrs){
     	calificacionActividad.setActividad(actividadService.findById(calificacionActividad.getActividad().getId()));
         calificacionActividadService.insert(calificacionActividad);
 		redirectAttrs.addFlashAttribute("mensaje", "Su calificacion fue enviada exitosamente.");
 		redirectAttrs.addFlashAttribute("clase", "success");
-        return new RedirectView("redirect:/home/index");
+        return new ModelAndView("redirect:/calificar/new_act");
     }
     
     @PostMapping("/create_aero")
-    public RedirectView createCalificacionAero(@ModelAttribute("calificacionAerolinea") CalificacionAerolineaModel calificacionAerolinea, RedirectAttributes redirectAttrs) {
+    public ModelAndView createCalificacionAero(@ModelAttribute("calificacionAerolinea") CalificacionAerolineaModel calificacionAerolinea, RedirectAttributes redirectAttrs) {
     	calificacionAerolinea.setAerolinea(aerolineaService.findById(calificacionAerolinea.getAerolinea().getId()));
     	calificacionAerolineaService.insert(calificacionAerolinea);
 		redirectAttrs.addFlashAttribute("mensaje", "Su calificacion fue enviada exitosamente.");
 		redirectAttrs.addFlashAttribute("clase", "success");
-        return new RedirectView("redirect:/home/index");
+		return new ModelAndView("redirect:/calificar/new_aero");
     }
     
     
