@@ -39,6 +39,7 @@ public class HotelUsuarioController {
 	public ModelAndView index() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.HOTEL_USUARIO);
         mAV.addObject("hoteles", hotelService.getAll());
+        mAV.addObject("servicios", tipoServicioService.getAll());
         return mAV;
     }
 	
@@ -48,6 +49,7 @@ public class HotelUsuarioController {
         mAV.addObject("hotel", hotelService.getAll().get(id-1));
         mAV.addObject("habitaciones", tipoHabitacionService.getAll());
         mAV.addObject("regimenes", tipoRegimenService.getAll());
+        mAV.addObject("servicios", tipoServicioService.getAll());
         return mAV;
     }
 	

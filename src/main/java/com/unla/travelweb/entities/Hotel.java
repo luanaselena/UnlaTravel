@@ -1,6 +1,8 @@
 package com.unla.travelweb.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -31,9 +33,8 @@ public class Hotel implements Serializable{
     @JoinColumn(name="tipo_alojamiento_id_tipo_alojamiento", referencedColumnName = "id", nullable=true)
     private TipoAlojamiento tipoAlojamiento;
 	
-//	@(cascade = CascadeType.MERGE)
-//    @JoinColumn(name="tipo_servicio_id_tipo_servicio", referencedColumnName = "id")
-//	private List<TipoServicio> tipoServicio;
+	@ManyToMany(mappedBy = "listaHoteles")
+	private List<TipoServicio> tipoServicio = new ArrayList<TipoServicio>();
     
 	@Nullable
 	@OneToOne(cascade = CascadeType.MERGE, optional=true)
