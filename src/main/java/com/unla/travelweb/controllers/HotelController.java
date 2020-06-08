@@ -63,10 +63,12 @@ public class HotelController {
 	@Qualifier("tipoServicioConverter")
 	private TipoServicioConverter tipoServicioConverter;
 	
+	
 	@GetMapping ("")
 	public ModelAndView index() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.HOTEL_INDEX);
         mAV.addObject("hoteles", hotelService.getAll());
+        mAV.addObject("servicios", tipoServicioService.getAll());
         return mAV;
     }
 	
@@ -80,7 +82,7 @@ public class HotelController {
 	
 	@PostMapping("/create")
     public RedirectView create(@ModelAttribute("hotel") HotelModel hotelModel) {
-
+		hotelModel.setTipoServicio(pasarServicios(tipoServicioService.getAll()));
         hotelService.insert(hotelModel);
         return new RedirectView(ViewRouteHelper.HOTEL_ROOT);
     }
@@ -95,7 +97,8 @@ public class HotelController {
 	 
 	 @PostMapping("/update")
 	    public RedirectView update(@ModelAttribute("hotel") HotelModel hotelModel) {
-
+			hotelModel.setTipoServicio(pasarServicios(tipoServicioService.getAll()));
+		 	System.out.println(hotelModel.getImgPath());
 	        hotelService.update(hotelModel);
 	        return new RedirectView(ViewRouteHelper.HOTEL_ROOT);
 	    }

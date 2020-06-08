@@ -1,10 +1,16 @@
 package com.unla.travelweb.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import com.unla.travelweb.entities.Hotel;
+
 public class TipoServicioModel {
 	private long id;
 	private double porcentajeAumento;
 	private String tipo;
-	
+    private Set<Hotel> listaHoteles = new HashSet<Hotel>();
+
 	
 	public TipoServicioModel(long id, double porcentajeAumento, String tipo) {
 		this.id = id;
@@ -38,4 +44,11 @@ public class TipoServicioModel {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	public Set<Hotel> getListaHoteles() {
+		return listaHoteles;
+	}
+	public void setListaHoteles(Set<Hotel> listaHoteles) {
+		this.listaHoteles = listaHoteles;
+	}
+	
 }

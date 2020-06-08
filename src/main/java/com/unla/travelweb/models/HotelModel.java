@@ -1,5 +1,8 @@
 package com.unla.travelweb.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.sun.istack.Nullable;
 
 public class HotelModel {
@@ -12,8 +15,7 @@ public class HotelModel {
 	
 	private TipoAlojamientoModel tipoAlojamiento;
 	
-//	@Nullable
-//    private List<TipoServicioModel> tipoServicio;
+	private List<TipoServicioModel> tipoServicio = new ArrayList<TipoServicioModel>();
     
 	@Nullable
     private TipoHabitacionModel tipoHabitacion;
@@ -94,13 +96,13 @@ public class HotelModel {
 		this.tipoAlojamiento = tipoAlojamiento;
 	}
 
-//	public List<TipoServicioModel> getTipoServicio() {
-//		return tipoServicio;
-//	}
-//
-//	public void setTipoServicio(List<TipoServicioModel> tipoServicio) {
-//		this.tipoServicio = tipoServicio;
-//	}
+	public List<TipoServicioModel> getTipoServicio() {
+		return tipoServicio;
+	}
+
+	public void setTipoServicio(List<TipoServicioModel> tipoServicio) {
+		this.tipoServicio = tipoServicio;
+	}
 
 	public TipoHabitacionModel getTipoHabitacion() {
 		return tipoHabitacion;

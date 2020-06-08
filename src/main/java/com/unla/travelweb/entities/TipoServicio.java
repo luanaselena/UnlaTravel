@@ -1,10 +1,17 @@
 package com.unla.travelweb.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +28,16 @@ public class TipoServicio {
 	
     @Column(name="porcentaje_aumento")
 	private double porcentajeAumento;
+    
+	@ManyToMany(cascade = { CascadeType.ALL})
+	@JoinTable(
+			
+			name = "servicioxhotel",
+			joinColumns = { @JoinColumn(name = "id_servicio")},
+			inverseJoinColumns = { @JoinColumn(name = "id_hotel")}
+			
+	)
+    private Set<Hotel> listaHoteles = new HashSet<Hotel>();
 
 	public TipoServicio(long id, String tipo, double porcentajeAumento) {
 		super();
@@ -59,6 +76,14 @@ public class TipoServicio {
 
 	public void setPorcentajeAumento(double porcentajeAumento) {
 		this.porcentajeAumento = porcentajeAumento;
+	}
+
+	public Set<Hotel> getListaHoteles() {
+		return listaHoteles;
+	}
+
+	public void setListaHoteles(Set<Hotel> listaHoteles) {
+		this.listaHoteles = listaHoteles;
 	}
     
 	
