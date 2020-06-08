@@ -10,10 +10,16 @@ public class TipoHabitacionConverter {
 
 	
 	public TipoHabitacionModel entityToModel (TipoHabitacion habitacion) {
-		return new TipoHabitacionModel(habitacion.getId(), habitacion.getPorcentajeAumento(), habitacion.getTipo());
+		if(habitacion!=null) {
+			return new TipoHabitacionModel(habitacion.getId(), habitacion.getPorcentajeAumento(), habitacion.getTipo());
+		}
+		else return null;
 	}
 	
 	public TipoHabitacion modelToEntity (TipoHabitacionModel habitacion) {
-		return new TipoHabitacion(habitacion.getId(), habitacion.getTipo(), habitacion.getPorcentajeAumento());
+		if(habitacion!=null) {
+			return new TipoHabitacion(habitacion.getId(), habitacion.getTipo(), habitacion.getPorcentajeAumento());
+		}
+		else return null;
 	}
 }

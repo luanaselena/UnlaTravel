@@ -1,5 +1,6 @@
 package com.unla.travelweb.models;
 
+import com.sun.istack.Nullable;
 
 public class HotelModel {
 
@@ -11,11 +12,14 @@ public class HotelModel {
 	
 	private TipoAlojamientoModel tipoAlojamiento;
 	
-    private String tipoServicio;
+//	@Nullable
+//    private List<TipoServicioModel> tipoServicio;
     
-    private String tipoHabitaciones;
+	@Nullable
+    private TipoHabitacionModel tipoHabitacion;
     
-    private String tipoRegimen;
+	@Nullable
+    private TipoRegimenModel tipoRegimen;
     
     private boolean accesibilidad;
     
@@ -28,15 +32,14 @@ public class HotelModel {
     public HotelModel() {}
 
 	public HotelModel(long id, String nombre, int cantEstrellas, TipoAlojamientoModel tipoAlojamiento,
-			String tipoServicio, String tipoHabitaciones, String tipoRegimen,
+			 TipoHabitacionModel tipoHabitacion, TipoRegimenModel tipoRegimen,
 			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.cantEstrellas = cantEstrellas;
 		this.tipoAlojamiento = tipoAlojamiento;
-		this.tipoServicio = tipoServicio;
-		this.tipoHabitaciones = tipoHabitaciones;
+		this.tipoHabitacion = tipoHabitacion;
 		this.tipoRegimen = tipoRegimen;
 		this.accesibilidad = accesibilidad;
 		this.cantPersonas = cantPersonas;
@@ -44,15 +47,14 @@ public class HotelModel {
 		this.imgPath = imgPath;
 	}
 	
-	public HotelModel(String nombre, int cantEstrellas, TipoAlojamientoModel tipoAlojamiento, String tipoServicio, 
-			String tipoHabitaciones, String tipoRegimen,
+	public HotelModel(String nombre, int cantEstrellas, TipoAlojamientoModel tipoAlojamiento, 
+			TipoHabitacionModel tipoHabitacion, TipoRegimenModel tipoRegimen,
 			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
 		super();
 		this.nombre = nombre;
 		this.cantEstrellas = cantEstrellas;
 		this.tipoAlojamiento = tipoAlojamiento;
-		this.tipoServicio = tipoServicio;
-		this.tipoHabitaciones = tipoHabitaciones;
+		this.tipoHabitacion = tipoHabitacion;
 		this.tipoRegimen = tipoRegimen;
 		this.accesibilidad = accesibilidad;
 		this.cantPersonas = cantPersonas;
@@ -92,27 +94,27 @@ public class HotelModel {
 		this.tipoAlojamiento = tipoAlojamiento;
 	}
 
-	public String getTipoServicio() {
-		return tipoServicio;
+//	public List<TipoServicioModel> getTipoServicio() {
+//		return tipoServicio;
+//	}
+//
+//	public void setTipoServicio(List<TipoServicioModel> tipoServicio) {
+//		this.tipoServicio = tipoServicio;
+//	}
+
+	public TipoHabitacionModel getTipoHabitacion() {
+		return tipoHabitacion;
 	}
 
-	public void setTipoServicio(String tipoServicio) {
-		this.tipoServicio = tipoServicio;
+	public void setTipoHabitacion(@Nullable TipoHabitacionModel tipoHabitacion) {
+		this.tipoHabitacion = tipoHabitacion;
 	}
 
-	public String getTipoHabitaciones() {
-		return tipoHabitaciones;
-	}
-
-	public void setTipoHabitaciones(String tipoHabitaciones) {
-		this.tipoHabitaciones = tipoHabitaciones;
-	}
-
-	public String getTipoRegimen() {
+	public TipoRegimenModel getTipoRegimen() {
 		return tipoRegimen;
 	}
 
-	public void setTipoRegimen(String tipoRegimen) {
+	public void setTipoRegimen(@Nullable TipoRegimenModel tipoRegimen) {
 		this.tipoRegimen = tipoRegimen;
 	}
 

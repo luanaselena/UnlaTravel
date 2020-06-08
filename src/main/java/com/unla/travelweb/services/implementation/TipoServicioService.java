@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import com.unla.travelweb.converters.TipoServicioConverter;
 import com.unla.travelweb.entities.TipoServicio;
@@ -11,6 +12,7 @@ import com.unla.travelweb.models.TipoServicioModel;
 import com.unla.travelweb.repositories.ITipoServicioRepository;
 import com.unla.travelweb.services.ITipoServicioService;
 
+@Service("tipoServicioService")
 public class TipoServicioService implements ITipoServicioService{
 
 	@Autowired

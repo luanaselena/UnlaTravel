@@ -52,7 +52,7 @@
                     </tr>
                 </tbody>
                 </table>                
-                <br> <a class="btn btn-primary" style="background-color: #EE7D00;margin-left:30%;" href="/hotel/new">Crear</a>
+                <br> <a class="btn btn-primary" style="background-color: #EE7D00;margin-left:30%;" href="/hotel/new">Dar de alta un nuevo hotel</a>
         </div>
         <div class="container">                
                 <div class="row">
@@ -64,7 +64,6 @@
 						    <span th:text="${hotel.cantEstrellas}"></span><br/>
 						    <span th:text="${hotel.tipoAlojamiento.tipo}"></span><br/>
 						    <p>$<span th:text="${hotel.precio}"></span></p>
-						    <a class="btn btn-primary" style="background-color: #EE7D00;margin-left:30%;" th:href="@{/hotel/{id}(id=${hotel.id})}">Elegir Hotel</a>
 						    <span th:if="${hotel.accesibilidad}" th:text="${'ACCESIBILIDAD: Si'}"></span>
 						    <span th:if="${not hotel.accesibilidad}" th:text="${'ACCESIBILIDAD: No'}"></span><br/>
 						    <br/>

@@ -48,14 +48,21 @@
 	  					</div>
 					</div>
 				</div>
-				<div class="col-8">
+				<div class="col-8  mt-5">
 					<form action="#" th:action="@{/hotelUsuario/create}"
 		                  th:object="${hotel}" method="post">
 	                  	<input type="hidden" th:field="${hotel.id}" id="id" name="id" />
-		                <p>Servicio: <input type="text" th:field="*{tipoServicio}" /></p>
-		                <p>Tipo de Habitacion: <input type="text" th:field="*{tipoHabitaciones}" /></p>
-		                <p>Regimen: <input type="text" th:field="*{tipoRegimen}" /></p>
 		                <p>Cantidad de Personas: <input type="text" th:field="*{cantPersonas}" /></p>
+		                <p>Tipo de Habitaciones: 
+			                <select placeholder="TipoHabitacion" th:field="*{tipoHabitacion.id}"> 
+								<option th:each="h : ${habitaciones}" th:value="${h.id}" th:text="${h.tipo}"> </option>
+							</select>
+						</p>
+						<p>Tipo de Regimen: 
+			                <select placeholder="TipoRegimen" th:field="*{tipoRegimen.id}"> 
+								<option th:each="r : ${regimenes}" th:value="${r.id}" th:text="${r.tipo}"> </option>
+							</select>
+						</p>
 		                <input class="btn btn-primary" style="background-color: #EE7D00;margin-left:30%;" type="submit" value="Confirmar Reserva" />
 		            </form>
 				</div>

@@ -35,7 +35,6 @@
                   th:object="${actividad}" method="post">
  				<p>Actividad: <input type="text" th:field="*{nombre}" /></p>
              	<p>Precio: <input type="text" th:field="*{precio}" /></p>
-               	<p>Fecha: <input type="date" th:field="*{fecha}" /></p>
                 <p>Accesibilidad: <input type="checkbox" th:field="*{accesibilidad}" /></p>
                	<p>Ubicación: 
                 <select placeholder="Destino" th:field="*{destino.id}"> 

@@ -9,10 +9,18 @@ import com.unla.travelweb.models.TipoRegimenModel;
 public class TipoRegimenConverter {
 
 	public TipoRegimenModel entityToModel (TipoRegimen regimen) {
-		return new TipoRegimenModel(regimen.getId(), regimen.getPorcentajeAumento(), regimen.getTipo());
+		
+		if(regimen!=null) {
+			return new TipoRegimenModel(regimen.getId(), regimen.getPorcentajeAumento(), regimen.getTipo());
+		}
+		else return null;
 	}
 	
 	public TipoRegimen modelToEntity (TipoRegimenModel regimen) {
-		return new TipoRegimen(regimen.getId(), regimen.getTipo(), regimen.getPorcentajeAumento());
+
+		if(regimen!=null) {
+			return new TipoRegimen(regimen.getId(), regimen.getTipo(), regimen.getPorcentajeAumento());
+		}
+		else return null;
 	}
 }
