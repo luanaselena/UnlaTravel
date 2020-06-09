@@ -10,6 +10,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,13 +51,36 @@ public class UserController {
 						@RequestParam(name="error",required=false) String error,	
 						@RequestParam(name="logout", required=false) String logout) {	
 		model.addAttribute("error", error);	
-		model.addAttribute("logout", logout);	
-		return ViewRouteHelper.USER_LOGIN;	
+		model.addAttribute("logout", logout);
+		
+		String username = "";
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) {
+		  username = ((UserDetails)principal).getUsername();
+		}
+		System.out.println(username);
+		if(!username.isEmpty()) {
+			System.out.println("Ya esta logueado. Primero deberia desloguearse");
+			return "redirect:/index";
+		}
+		else {
+			return ViewRouteHelper.USER_LOGIN;
+		}
 	}	
 
 	@GetMapping("/logout")	
 	public String logout(Model model) {	
-		return ViewRouteHelper.USER_LOGOUT;	
+		String username = "";
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) {
+		  username = ((UserDetails)principal).getUsername();
+		}
+		System.out.println(username);
+		if(username.isEmpty()) {
+			System.out.println("no hay ninguna cuenta logueada");
+			return "redirect:/index";	
+		}
+		else return ViewRouteHelper.USER_LOGOUT;	
 	}	
 
 	@GetMapping("/loginsuccess")	
