@@ -21,9 +21,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.unla.travelweb.entities.Carrito;
 import com.unla.travelweb.entities.User;
 import com.unla.travelweb.entities.UserRole;
 import com.unla.travelweb.helpers.ViewRouteHelper;
+import com.unla.travelweb.repositories.ICarritoRepository;
 import com.unla.travelweb.repositories.IUserRepository;
 import com.unla.travelweb.repositories.IUserRoleRepository;
 import com.unla.travelweb.services.implementation.UserRoleService;
@@ -45,6 +47,9 @@ public class UserController {
 	@Autowired
 	@Qualifier("userRoleService")
 	private UserRoleService userRoleService;
+	@Autowired
+	@Qualifier("carritoRepository")
+	private ICarritoRepository carritoRepository;
 	
 	@GetMapping("/login")	
 	public String login(Model model,	
@@ -112,6 +117,11 @@ public class UserController {
 		userRoleService.saveUser(u);
 		listarole.add(u);
 		user.setUserRoles(listarole);
+		
+		//Le creo un carrito
+		Carrito c = new Carrito();
+		carritoRepository.save(c);
+		user.setCarrito(c);
 		
 		userService.saveUser(user);				
 		return "redirect:/login";

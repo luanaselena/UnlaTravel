@@ -67,9 +67,9 @@ public class User {
     
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
 	private Set<UserRole> userRoles = new HashSet<UserRole>();
-//	
-//    @OneToOne(cascade = CascadeType.MERGE)
-//    private Carrito carrito = new Carrito();
+	
+    @OneToOne(cascade = CascadeType.MERGE)
+    private Carrito carrito;
 
 	public User() {}
 	
@@ -213,13 +213,13 @@ public class User {
 		this.dni = dni;
 	}
 
-//	public Carrito getCarrito() {
-//		return carrito;
-//	}
-//
-//	public void setCarrito(Carrito carrito) {
-//		this.carrito = carrito;
-//	}
+	public Carrito getCarrito() {
+		return carrito;
+	}
+
+	public void setCarrito(Carrito carrito) {
+		this.carrito = carrito;
+	}
 	
 	
 	
