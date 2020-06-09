@@ -12,15 +12,10 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.unla.travelweb.entities.User;
 import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.repositories.IUserRepository;
-import com.unla.travelweb.services.IUsuarioService;
 
 @Controller
 @RequestMapping("/")
 public class HomeController {
-	
-	@Autowired
-	@Qualifier("usuarioService")
-	private IUsuarioService usuarioService;
 
 	@Autowired
 	@Qualifier("userRepository")
