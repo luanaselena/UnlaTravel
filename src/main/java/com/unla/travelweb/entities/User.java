@@ -43,6 +43,28 @@ public class User {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	
+	@Column(name="nombre", nullable=false, length=30)
+    private String nombre;
+
+    @Column(name="apellido", nullable=false, length=30)
+    private String apellido;
+
+    @Column(name="nacionalidad", nullable=false, length=30)
+    private String nacionalidad;
+
+    @Column(name="domicilio", nullable=false, length=50)
+    private String domicilio;
+
+    @Column(name="mail", nullable=false, length=30)
+    private String mail;
+
+    @Column(name="telefono", nullable=false, length=20)
+    private String telefono;
+
+    @Column(name="dni")
+    private long dni;
+    
+    
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
 	private Set<UserRole> userRoles = new HashSet<UserRole>();
 //	
@@ -51,17 +73,32 @@ public class User {
 
 	public User() {}
 	
-	public User(String username, String password, boolean enabled) {
+	public User(String username, String password, boolean enabled, String nombre, String apellido, String nacionalidad, String domicilio, String mail, String telefono, long dni) {
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.nacionalidad = nacionalidad;
+		this.domicilio = domicilio;
+		this.mail = mail;
+		this.telefono = telefono;
+		this.dni = dni;
 	}
 	
-	public User(String username, String password, boolean enabled, Set<UserRole> userRoles) {
+	public User(String username, String password, boolean enabled, Set<UserRole> userRoles,
+			String nombre, String apellido, String nacionalidad, String domicilio, String mail, String telefono, long dni) {
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
 		this.userRoles = userRoles;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.nacionalidad = nacionalidad;
+		this.domicilio = domicilio;
+		this.mail = mail;
+		this.telefono = telefono;
+		this.dni = dni;
 	}
 
 	public int getId() {
@@ -120,6 +157,62 @@ public class User {
 		this.userRoles = userRoles;
 	}
 
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public String getNacionalidad() {
+		return nacionalidad;
+	}
+
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
+	}
+
+	public String getDomicilio() {
+		return domicilio;
+	}
+
+	public void setDomicilio(String domicilio) {
+		this.domicilio = domicilio;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public long getDni() {
+		return dni;
+	}
+
+	public void setDni(long dni) {
+		this.dni = dni;
+	}
+
 //	public Carrito getCarrito() {
 //		return carrito;
 //	}
@@ -127,6 +220,8 @@ public class User {
 //	public void setCarrito(Carrito carrito) {
 //		this.carrito = carrito;
 //	}
+	
+	
 	
 	
 }
