@@ -65,8 +65,8 @@
 						    <span th:text="${hotel.tipoAlojamiento.tipo}"></span><br/>
 						    <p>$<span th:text="${hotel.precio}"></span></p>
 						    <p>SERVICIOS: | <span th:each="s : ${servicios}" th:text=" ${s.tipo}+' | '"></span></p>
-						    <span th:if="${hotel.accesibilidad}" th:text="${'ACCESIBILIDAD: Si'}"></span>
-						    <span th:if="${not hotel.accesibilidad}" th:text="${'ACCESIBILIDAD: No'}"></span><br/>
+						    <span th:if="${hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: Si'}"></span>
+						    <span th:if="${not hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: No'}"></span><br/>
 						    <br/>
 						    <a class="btn btn-primary" style="background-color: #EE7D00" th:href="@{/hotel/{id}(id=${hotel.id})}">Modificar Hotel</a>
 						  </div>
