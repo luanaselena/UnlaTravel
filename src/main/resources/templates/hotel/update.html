@@ -40,7 +40,7 @@
 						<option th:each="ta : ${tipoAlojamientos}" th:value="${ta.id}" th:text="${ta.tipo}"> </option>
 					</select>
 				</p>
-                <p>Accesibilidad: <input type="checkbox" th:field="*{accesibilidad}" /></p>
+                <p>Accesibilidad para discapacitados: <input type="checkbox" th:field="*{accesibilidad}" /></p>
                 <input type="hidden" th:field="*{cantPersonas}" />
                 <input type="hidden" th:field="*{id}" />
                 <input type="hidden" th:field="*{imgPath}" />

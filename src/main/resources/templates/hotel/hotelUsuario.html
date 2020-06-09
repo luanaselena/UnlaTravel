@@ -44,8 +44,8 @@
 	    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel.cantEstrellas}"></p>
 	    					<p class="card-text" th:text="${'PRECIO POR NOCHE DESDE: $' + hotel.precio}"></p>
 	    					<p>SERVICIOS: | <span class="card-text" th:each="s : ${servicios}" th:text=" ${s.tipo}+' | '"></span>></p>
-	    					<p class="card-text" th:if="${hotel.accesibilidad}" th:text="${'ACCESIBILIDAD: Si'}"></p>
-	    					<p class="card-text" th:if="${not hotel.accesibilidad}" th:text="${'ACCESIBILIDAD: No'}"></p>
+	    					<p class="card-text" th:if="${hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: Si'}"></p>
+	    					<p class="card-text" th:if="${not hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: No'}"></p>
 	    					<a th:href="@{/hotelUsuario/hotelReserva/{id}(id=${hotel.id})}" target="_blank" class="btn btn-primary">Reservar</a>
 	  					</div>
 					</div>

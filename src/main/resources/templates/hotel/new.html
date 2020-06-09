@@ -42,7 +42,7 @@
 						<option th:each="ta : ${tipoAlojamientos}" th:value="${ta.id}" th:text="${ta.tipo}"> </option>
 					</select>
 				</p>
-                <p>Accesibilidad: <input type="checkbox" th:field="*{accesibilidad}" /></p>
+                <p>Accesibilidad para discapacitados: <input type="checkbox" th:field="*{accesibilidad}" /></p>
                 <p>Elija la imagen para el hotel: <input type="file" name="imgPath" accept=".jpg,.png" multiple /></p>
                 <input class="btn btn-primary" style="background-color: #EE7D00" type="submit" value="Crear" />
             </form>

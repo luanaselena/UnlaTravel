@@ -10527,6 +10527,11 @@ section#contact form#contactForm :-ms-input-placeholder {
   padding:15px;
 }
 
+.col-8 form{
+  color:white;
+  margin-top:80px;
+}
+
 .divPrincipal table thead tr th{
   background-color: #a8a9a9;
   padding:10px;
