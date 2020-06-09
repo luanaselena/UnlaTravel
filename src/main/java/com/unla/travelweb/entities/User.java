@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -43,6 +45,9 @@ public class User {
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
 	private Set<UserRole> userRoles = new HashSet<UserRole>();
+//	
+//    @OneToOne(cascade = CascadeType.MERGE)
+//    private Carrito carrito = new Carrito();
 
 	public User() {}
 	
@@ -114,4 +119,14 @@ public class User {
 	public void setUserRoles(Set<UserRole> userRoles) {
 		this.userRoles = userRoles;
 	}
+
+//	public Carrito getCarrito() {
+//		return carrito;
+//	}
+//
+//	public void setCarrito(Carrito carrito) {
+//		this.carrito = carrito;
+//	}
+	
+	
 }
