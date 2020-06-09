@@ -2,7 +2,10 @@ package com.unla.travelweb.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,10 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.unla.travelweb.converters.HotelConverter;
+import com.unla.travelweb.entities.Hotel;
+import com.unla.travelweb.entities.User;
 import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.models.CarritoModel;
 import com.unla.travelweb.models.HotelModel;
+import com.unla.travelweb.repositories.IUserRepository;
 import com.unla.travelweb.services.ICarritoService;
+import com.unla.travelweb.services.IHotelService;
 
 @Controller
 @RequestMapping("/carrito")
@@ -23,25 +31,36 @@ public class CarritoController {
 	@Qualifier ("carritoService")
 	private ICarritoService carritoService;
 	
-	@GetMapping ("")
-	public ModelAndView index() {
+	@Autowired
+	@Qualifier("userRepository")
+	private IUserRepository userRepository;
+	@Autowired
+	@Qualifier ("hotelService")
+	private IHotelService hotelService;
+	@Autowired
+	@Qualifier ("hotelConverter")
+	private HotelConverter hotelConverter;
+	
+	
+//	@GetMapping ("")
+//	public ModelAndView index() {
+//        ModelAndView mAV = new ModelAndView(ViewRouteHelper.CARRITO_INDEX);
+//        mAV.addObject("carritos", carritoService.getAll());
+//        return mAV;
+//    }
+	
+	@RequestMapping ("")
+	public ModelAndView index(Model model, @AuthenticationPrincipal UserDetails currentUser) {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.CARRITO_INDEX);
-        mAV.addObject("carritos", carritoService.getAll());
+        HotelModel hotelModel = hotelService.findById(1);
+        User user = (User) userRepository.findByUsernameAndFetchUserRolesEagerly(currentUser.getUsername());
+        Hotel hotel = hotelConverter.modelToEntity(hotelModel);
+//        if(hotel!=null) {
+//			user.getCarrito().getHoteles().add(hotel);
+//		}
+        model.addAttribute("currentUser", user);
+        
         return mAV;
-    }
-	
-	@GetMapping("/new")
-    public ModelAndView create() {
-        ModelAndView mAV = new ModelAndView(ViewRouteHelper.CARRITO_NEW);
-        mAV.addObject("carrito", new CarritoModel());
-        mAV.addObject("hotel", new HotelModel());
-        return mAV;
-    }
-	
-	@PostMapping("/create")
-    public RedirectView create(@ModelAttribute("carrito") CarritoModel carritoModel) {
-        carritoService.insert(carritoModel);
-        return new RedirectView(ViewRouteHelper.CARRITO_ROOT);
     }
 	
 	@GetMapping("/{id}")

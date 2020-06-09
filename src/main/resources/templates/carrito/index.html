@@ -35,20 +35,20 @@
             <table border="1px">
                 <thead>
                     <tr>
-                        <th>Reservas</th>
+                        <th>Hoteles reservados</th>
+                        <th>Vuelo reservados</th>
+                        <th>Actividades reservadas</th>
+                        <th>Paquetes comprados</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="carrito : ${carritos}">
-                        <td><span th:text="${carrito.reservas}"></span></td>
-                        <td><span th:text="${carrito.id}"></span></td>
-                        <td><a th:href="@{/carrito/{id}(id=${carrito.id})}">Ver</a>
-                        </td>
-                    </tr>
+                	 <td><span th:if="${not #lists.isEmpty(currentUser.carrito.hoteles)}" th:text="${currentUser.carrito.hoteles}"></span></td>
+                	 <td><span th:if="${not #lists.isEmpty(currentUser.carrito.vuelos)}" th:text="${currentUser.carrito.vuelos}"></span></td>
+                	 <td><span th:if="${not #lists.isEmpty(currentUser.carrito.actividades)}" th:text="${currentUser.carrito.actividades}"></span></td>
+                	 <td><span th:if="${not #lists.isEmpty(currentUser.carrito.paquetes)}" th:text="${currentUser.carrito.paquetes}"></span></td>
                 </tbody>
                 </table>
-                <br> <a class="btn btn-primary" style="background-color: #f16108;margin-left:30%;" href="/carrito/new">Crear nuevo carrito</a>
         </div>
     </body>
 </html>

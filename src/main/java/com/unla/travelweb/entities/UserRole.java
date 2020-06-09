@@ -2,6 +2,7 @@ package com.unla.travelweb.entities;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,7 +25,7 @@ public class UserRole {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
 	@JoinColumn(name="user_id", nullable=false)
 	private User user;
 	
@@ -47,6 +48,11 @@ public class UserRole {
 		this.role = role;
 	}
 
+	public UserRole(User user, String role) {
+		this.user = user;
+		this.role = role;
+	}
+	
 	public int getId() {
 		return id;
 	}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>	
+<html lang="en">	
+	<head>	
+		<meta charset="utf-8" />	
+		<title>UNLa</title>	
+		<!-- Bootstrap core CSS -->	
+		<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />	
+		<link rel="stylesheet" th:href="@{/css/style.css}" />	
+	</head>	
+	<body>	
+		<header>	
+			<div class="headerbg">	
+				<h3>Unla Travel</h3>	
+			</div>	
+		</header>	
+
+	    <div class="divPrincipal">	
+	        <h1 class="display-5">Register</h1>	
+	        <form th:action="@{/register}" method="post">
+		        <p><input type="text" name="nombre" id="username" placeholder="Nombre" /></p>
+		        <p><input type="text" name="apellido" id="apellido" placeholder="Apellido" /></p>
+		        <p><input type="text" name="nacionalidad" id="nacionalidad" placeholder="Nacionalidad" /></p>
+		        <p><input type="text" name="domicilio" id="domicilio" placeholder="Domicilio" /></p>
+		        <p><input type="text" name="mail" id="mail" placeholder="Mail" /></p>
+		        <p><input type="text" name="telefono" id="telefono" placeholder="Telefono" /></p>	
+		      	<p><input type="text" name="dni" id="dni" placeholder="Dni" /></p>
+		      	<br/>
+		      	<p><input type="text" name="username" id="username" placeholder="Usuario" /></p>
+		      	<p><input type="password" name="password" id="password" placeholder="Contraseña" /></p>	
+				<input class="btn btn-primary" style="background-color: #EE7D00" type="submit" value="Registrarse" />
+	      	</form>		      	
+	    </div>	
+	    <!-- Bootstrap core JavaScript -->	
+	    <script src="/vendor/jquery/jquery.min.js"></script>	
+	    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>	
+	</body>	
+</html>

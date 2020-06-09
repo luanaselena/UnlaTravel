@@ -29,11 +29,12 @@ public class Usuario {
     @Column(name="telefono", nullable=false, length=20)
     private String telefono;
 
+    @Column(name="dni")
+    private long dni;
+    
     @OneToOne(cascade = CascadeType.MERGE)
     private Carrito carrito = new Carrito();
 
-    @Column(name="dni")
-    private long dni;
 
     public Usuario(){}
 

@@ -19,8 +19,10 @@
 	        <form th:action="@{/loginprocess}" method="post">	
 		      	<input type="text" name="username" id="username" placeholder="Usuario" />	
 		      	<input type="password" name="password" id="password" placeholder="Contraseña" />	
-				<input class="btn btn-primary" style="background-color: #EE7D00" type="submit" value="Entrar" />	
-	      	</form>	
+				<input class="btn btn-primary" style="background-color: #EE7D00" type="submit" value="Entrar" />
+				<br> <a href="/register"><u>No tiene cuenta? Registrese aquí<u/></a>
+	      	</form>
+	      	<br></br>		      	
 	      	<div th:if="${error != null}" class="alert alert-danger">	
 		    	Usuario o contraseña invalido.	
 		    </div>	

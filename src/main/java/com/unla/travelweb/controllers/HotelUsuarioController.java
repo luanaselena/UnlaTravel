@@ -2,6 +2,8 @@ package com.unla.travelweb.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.unla.travelweb.converters.HotelConverter;
+import com.unla.travelweb.entities.User;
 import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.models.HotelModel;
+import com.unla.travelweb.repositories.IUserRepository;
 import com.unla.travelweb.services.IHotelService;
 import com.unla.travelweb.services.ITipoHabitacionService;
 import com.unla.travelweb.services.ITipoRegimenService;
@@ -34,6 +39,13 @@ public class HotelUsuarioController {
 	@Autowired
 	@Qualifier("tipoRegimenService")
 	private ITipoRegimenService tipoRegimenService;
+	@Autowired
+	@Qualifier("userRepository")
+	private IUserRepository userRepository;
+	@Autowired
+	@Qualifier ("hotelConverter")
+	private HotelConverter hotelConverter;
+	
 	
 	@GetMapping ("")
 	public ModelAndView index() {
@@ -55,8 +67,10 @@ public class HotelUsuarioController {
 	
 	//Aca iria la logica para insertar en el carrito al confirmar la reserva
 	@PostMapping("/create")
-    public RedirectView create(@ModelAttribute("hotel") HotelModel hotelModel) {
-        hotelService.insert(hotelModel);
+    public RedirectView create(@ModelAttribute("hotel") HotelModel hotelModel,@AuthenticationPrincipal UserDetails currentUser) {
+		User user = (User) userRepository.findByUsernameAndFetchUserRolesEagerly(currentUser.getUsername());
+//		user.getCarrito().getHoteles().add(hotelConverter.modelToEntity(hotelModel));
+       
         return new RedirectView(ViewRouteHelper.HOTEL_USUARIO);
     }
 	
