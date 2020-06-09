@@ -43,8 +43,8 @@
 	    					<p class="card-text" th:text="${hotel.tipoAlojamiento.tipo}"></p>
 	    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel.cantEstrellas}"></p>
 	    					<p class="card-text" th:text="${'PRECIO: $' + hotel.precio}"></p>
-	    					<p class="card-text" th:if="${hotel.accesibilidad}" th:text="${'ACCESIBILIDAD: Si'}"></p>
-	    					<p class="card-text" th:if="${not hotel.accesibilidad}" th:text="${'ACCESIBILIDAD: No'}"></p>
+	    					<p class="card-text" th:if="${hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: Si'}"></p>
+	    					<p class="card-text" th:if="${not hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: No'}"></p>
 	  					</div>
 					</div>
 				</div>
@@ -63,7 +63,7 @@
 								<option th:each="r : ${regimenes}" th:value="${r.id}" th:text="${r.tipo}"> </option>
 							</select>
 						</p>
-		                <input class="btn btn-primary" style="background-color: #EE7D00;margin-left:30%;" type="submit" value="Confirmar Reserva" />
+		                <input class="btn btn-primary" style="background-color: #EE7D00;" type="submit" value="Confirmar Reserva" />
 		            </form>
 				</div>
         	</div>           
