@@ -30,7 +30,7 @@ public class Usuario {
     private String telefono;
 
     @OneToOne(cascade = CascadeType.MERGE)
-    private Carrito carrito;
+    private Carrito carrito = new Carrito();
 
     @Column(name="dni")
     private long dni;

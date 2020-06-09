@@ -39,7 +39,7 @@
                 <p>Domicilio: <input type="text" th:field="*{domicilio}" /></p>
                 <p>Mail: <input type="text" th:field="*{mail}" /></p>
                 <p>Nacionalidad: <input type="text" th:field="*{nacionalidad}" /></p>
-                <p>ID: <input type="text" th:field="*{id}" /></p>
+                <input type="hidden" th:field="*{id}" />
 
                 <input class="btn btn-success" style="background-color: #EE7D00;" type="submit" value="Editar"/>
             </form>
