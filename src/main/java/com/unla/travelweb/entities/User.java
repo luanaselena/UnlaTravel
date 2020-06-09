@@ -64,7 +64,6 @@ public class User {
     @Column(name="dni")
     private long dni;
     
-    
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
 	private Set<UserRole> userRoles = new HashSet<UserRole>();
 	
