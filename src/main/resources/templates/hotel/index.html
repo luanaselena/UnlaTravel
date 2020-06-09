@@ -64,6 +64,7 @@
 						    <span th:text="${hotel.cantEstrellas}"></span><br/>
 						    <span th:text="${hotel.tipoAlojamiento.tipo}"></span><br/>
 						    <p>$<span th:text="${hotel.precio}"></span></p>
+						    <p>SERVICIOS: | <span th:each="s : ${servicios}" th:text=" ${s.tipo}+' | '"></span></p>
 						    <span th:if="${hotel.accesibilidad}" th:text="${'ACCESIBILIDAD: Si'}"></span>
 						    <span th:if="${not hotel.accesibilidad}" th:text="${'ACCESIBILIDAD: No'}"></span><br/>
 						    <br/>

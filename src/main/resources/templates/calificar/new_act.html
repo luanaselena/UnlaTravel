@@ -31,6 +31,7 @@
             </div>
         </nav>
 	<div class="divPrincipal">
+	<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}" th:text="${mensaje}"class="alert mx-auto" style="width: 500px;"></div>
         <form action="#" class="formulario" th:action="@{/calificar/create_act}" th:object="${calificacionActividad}" method="post">
                 <p>Califique la actividad  de 1 a 100 segun su experiencia: <input type="number" min="1" max="100" th:field="*{valoracion}" /></p>
                 <p>¿Que actividad quiere calificar?: 
