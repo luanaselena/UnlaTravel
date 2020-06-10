@@ -8,11 +8,9 @@
 
 # PENDIENTE
 
--Agregar reserva en el Carrito
-
 -Login: Agregar botones en el home para redireccionar a la pagina del login o para desloguearte. en /login hay una redireccion por si se quiere registrar un usuario nuevo
 
--Register: Solo queda agregarle el carrito a la entidad user.
+-Register:
 
 -paqueteUsuario
 
