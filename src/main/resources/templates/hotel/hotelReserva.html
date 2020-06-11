@@ -64,6 +64,8 @@
 								<option th:each="r : ${regimenes}" th:value="${r.id}" th:text="${r.tipo}+' ('+${r.porcentajeAumento*100}+'% más)'"> </option>
 							</select>
 						</p>
+						<p>Desde: <input type="date"  th:field="*{fechaInicio}"></p>
+						<p>Hasta: <input type="date"  th:field="*{fechaFin}"></p>
 						<p><input type="hidden"  th:field="*{tipoAlojamiento.tipo}"></p>
 						<p><input type="hidden"  th:field="*{nombre}"></p>
 						<p><input type="hidden"  th:field="*{cantEstrellas}"></p>

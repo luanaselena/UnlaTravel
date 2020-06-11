@@ -1,10 +1,14 @@
 package com.unla.travelweb.controllers;
 
 import java.util.ArrayList;
+import java.sql.Date;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.unla.travelweb.converters.HotelConverter;
@@ -98,20 +103,30 @@ public class HotelUsuarioController {
         mAV.addObject("habitaciones", tipoHabitacionService.getAll());
         mAV.addObject("regimenes", tipoRegimenService.getAll());
         mAV.addObject("servicios", tipoServicioService.getAll());
+
         return mAV;
     }
 	
 	//Aca iria la logica para insertar en el carrito al confirmar la reserva
 	@PostMapping("/create")
     public ModelAndView create(@ModelAttribute("hotel") HotelModel hotelModel,@AuthenticationPrincipal UserDetails currentUser) {
-
+		System.out.println(hotelModel.getFechaFin());
 		TipoHabitacionModel t = tipoHabitacionService.findById(hotelModel.getTipoHabitacion().getId());
 		TipoRegimenModel r = tipoRegimenService.findById(hotelModel.getTipoRegimen().getId());
 		
 		User user = (User) userRepository.findByUsernameAndFetchUserRolesEagerly(currentUser.getUsername());
 		
-		ReservaHotelModel rh = new ReservaHotelModel(hotelModel.getNombre(), hotelModel.getCantEstrellas(), hotelModel.getTipoAlojamiento(), 
-				t,r, hotelModel.isAccesibilidad(), hotelModel.getCantPersonas(),hotelModel.getPrecio(), hotelModel.getImgPath());
+	    int dias=(int) ((hotelModel.getFechaFin().getTime()-hotelModel.getFechaInicio().getTime())/86400000);
+
+		double precioTotal = hotelModel.getPrecio();
+		double ph = precioTotal*t.getPorcentajeAumento();
+		double pr = precioTotal*r.getPorcentajeAumento();
+		precioTotal+=ph+pr;
+		precioTotal*=dias;
+		
+		
+		ReservaHotelModel rh = new ReservaHotelModel(hotelModel.getNombre(), hotelModel.getCantEstrellas(), hotelModel.getTipoAlojamiento(),
+				t,r, hotelModel.isAccesibilidad(), hotelModel.getCantPersonas(),precioTotal, hotelModel.getImgPath(), hotelModel.getFechaInicio(), hotelModel.getFechaFin());
 		
 		rh.setTipoServicio(pasarServicios(tipoServicioService.getAll()));
 		user.getCarrito().getHoteles().add(reservaHotelConverter.modelToEntity(rh));

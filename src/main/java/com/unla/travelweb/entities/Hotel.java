@@ -1,6 +1,7 @@
 package com.unla.travelweb.entities;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +55,12 @@ public class Hotel implements Serializable{
     
     @Column(name = "imgPath", nullable=true)
     private String imgPath;
+    
+    @Column(name = "fecha_inicio", nullable=true)
+    private Date fechaInicio;
+    
+    @Column(name = "fecha_fin", nullable=true)
+    private Date fechaFin;
     
     public Hotel() {}
 
@@ -172,6 +179,22 @@ public class Hotel implements Serializable{
 
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
+	}
+
+	public Date getFechaInicio() {
+		return fechaInicio;
+	}
+
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
 	}
     
     
