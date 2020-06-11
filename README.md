@@ -10,12 +10,12 @@
 
 -Login: Agregar botones en el home para redireccionar a la pagina del login o para desloguearte. en /login hay una redireccion por si se quiere registrar un usuario nuevo
 
--Register:
+-Register: Vistas
 
--paqueteUsuario
+-paqueteUsuario (todo)
 
--vueloUsuario
+-vueloUsuario (todo)
 
 -filtro de busqueda
 
--Logica de agregar al carrito hotel/paquete/vuelos/actividades
+-Logica de agregar al carrito paquete/vuelos ----> Copypastear la solucion de hotel y actividad
