@@ -107,7 +107,7 @@ public class UserController {
 		if (userExists != null) {
 			modelAndView.addObject("alreadyRegisteredMessage", "Ya hay un usuario registrado con ese nombre");
 			modelAndView.setViewName("register");
-		}			
+		}
 		BCryptPasswordEncoder pe = new BCryptPasswordEncoder();
 		String password = pe.encode(user.getPassword());
 		user.setPassword(password);

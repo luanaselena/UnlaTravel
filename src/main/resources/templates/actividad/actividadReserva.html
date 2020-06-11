@@ -36,20 +36,27 @@
         		</div>
         		<div class="col-4 mt-3 mb-3">
 	        		<div class="card" style="width: 18rem;">
-	  					<img th:src="@{${act.imgPath} }" class="card-img-top">
+	  					<img th:src="@{${actividad.imgPath} }" class="card-img-top">
 	  					<div class="card-body">
-	    					<h5 class="card-title" th:text="${act.nombre}">Card title</h5>
-	    					<p class="card-text" th:text="${act.destino.pais}"></p>
-	    					<p class="card-text" th:text="${act.valoracion}"></p>
-	    					<p class="card-text" th:text="${'PRECIO: $' + act.precio}"></p>
+	    					<h5 class="card-title" th:text="${actividad.nombre}">Card title</h5>
+	    					<p class="card-text" th:text="${actividad.destino.pais}"></p>
+	    					<p class="card-text" th:text="${actividad.valoracion}"></p>
+	    					<p class="card-text" th:text="${'PRECIO: $' + actividad.precio}"></p>
+	    					<p class="card-text" th:if="${actividad.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: Si'}"></p>
+	    					<p class="card-text" th:if="${not actividad.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: No'}"></p>
 	  					</div>
 					</div>
 				</div>
 				<div class="col-8">
 					<form action="#" th:action="@{/actividadUsuario/create}"
-		                  th:object="${act}" method="post">
-	                  	<input type="hidden" th:field="${act.id}" id="id" name="id" />
+		                  th:object="${actividad}" method="post">
+	                  	<input type="hidden" th:field="${actividad.id}" id="id" name="id" />
 		                <p>Fecha: <input type="date" th:field="*{fecha}" /></p>
+		                <p><input type="hidden"  th:field="*{nombre}"></p>
+		                <p><input type="hidden"  th:field="*{destino.pais}"></p>
+						<p><input type="hidden"  th:field="*{accesibilidad}"></p>
+						<p><input type="hidden"  th:field="*{precio}"></p>
+						<p><input type="hidden"  th:field="*{imgPath}"></p>
 		                <input class="btn btn-primary" style="background-color: #EE7D00" type="submit" value="Confirmar Reserva" />
 		            </form>
 				</div>

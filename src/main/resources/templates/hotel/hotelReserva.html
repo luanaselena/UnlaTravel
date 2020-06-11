@@ -43,8 +43,6 @@
 	    					<p class="card-text" th:text="${hotel.tipoAlojamiento.tipo}"></p>
 	    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel.cantEstrellas}"></p>
 	    					<p class="card-text" th:text="${'PRECIO: $' + hotel.precio}"></p>
-	    					<p class="card-text" th:if="${hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: Si'}"></p>
-	    					<p class="card-text" th:if="${not hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: No'}"></p>
 	    					<p>SERVICIOS: | <span class="card-text" th:each="s : ${servicios}" th:text=" ${s.tipo}+' | '"></span></p>
 	    					<p class="card-text" th:if="${hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: Si'}"></p>
 	    					<p class="card-text" th:if="${not hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: No'}"></p>
@@ -66,6 +64,12 @@
 								<option th:each="r : ${regimenes}" th:value="${r.id}" th:text="${r.tipo}"> </option>
 							</select>
 						</p>
+						<p><input type="hidden"  th:field="*{tipoAlojamiento.tipo}"></p>
+						<p><input type="hidden"  th:field="*{nombre}"></p>
+						<p><input type="hidden"  th:field="*{cantEstrellas}"></p>
+						<p><input type="hidden"  th:field="*{precio}"></p>
+						<p><input type="hidden"  th:field="*{accesibilidad}"></p>
+						<p><input type="hidden"  th:field="*{imgPath}"></p>
 		                <input class="btn btn-primary" style="background-color: #EE7D00;" type="submit" value="Confirmar Reserva" />
 		            </form>
 				</div>

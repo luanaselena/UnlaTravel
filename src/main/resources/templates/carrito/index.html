@@ -32,23 +32,60 @@
         </nav>
 
         <div class="divPrincipal">
-            <table border="1px">
+           <table border="1px">
                 <thead>
                     <tr>
-                        <th>Hoteles reservados</th>
-                        <th>Vuelo reservados</th>
-                        <th>Actividades reservadas</th>
-                        <th>Paquetes comprados</th>
-                        <th></th>
+                        <th>Nombre</th>
+                        <th>Precio por noche</th>
+                        <th>Cantidad de estrellas</th>
+                        <th>Tipo de alojamiento</th>
+						<th>Tipo de regimen</th>
+                        <th>Tipo de habitacion</th>                       
+                        <th>Cantidad de personas</th>
+                        <th>Accesibilidad para discapacitados</th>
                     </tr>
                 </thead>
                 <tbody>
-                	 <td><span th:if="${not #lists.isEmpty(currentUser.carrito.hoteles)}" th:text="${currentUser.carrito.hoteles}"></span></td>
-                	 <td><span th:if="${not #lists.isEmpty(currentUser.carrito.vuelos)}" th:text="${currentUser.carrito.vuelos}"></span></td>
-                	 <td><span th:if="${not #lists.isEmpty(currentUser.carrito.actividades)}" th:text="${currentUser.carrito.actividades}"></span></td>
-                	 <td><span th:if="${not #lists.isEmpty(currentUser.carrito.paquetes)}" th:text="${currentUser.carrito.paquetes}"></span></td>
+                    <tr th:each="hotel : ${hoteles}">
+                        <td><span th:text="${hotel.nombre}"></span></td>
+                        <td><p>$<span th:text="${hotel.precio}"></span></p></td>
+                        <td><span th:text="${hotel.cantEstrellas}"></span></td>
+                        <td><span th:text="${hotel.tipoAlojamiento.tipo}"></span></td>
+                        <td><span th:text="${hotel.tipoRegimen.tipo}"></span></td>
+                        <td><span th:text="${hotel.tipoHabitacion.tipo}"></span></td>
+                        <td><span th:text="${hotel.cantPersonas}"></span></td>
+                        <td><span th:switch="${hotel.accesibilidad}">
+                        	<p th:case="true">Si</p>
+    						<p th:case="false">No</p>
+                        </span></td>                        
+                    </tr>
                 </tbody>
-                </table>
+                </table>   
+        </div>
+        <div class="divPrincipal">
+           <table border="1px">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Destino</th>
+                        <th>Fecha reservada</th>
+						<th>Accesibilidad para discapacitados</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="actividad : ${actividades}">
+                        <td><span th:text="${actividad.nombre}"></span></td>
+                        <td><p>$<span th:text="${actividad.precio}"></span></p></td>
+                        <td><span th:text="${actividad.destino.pais}"></span></td>
+                        <td><span th:text="${actividad.fecha}"></span></td>
+						<td><span th:switch="${actividad.accesibilidad}">
+                        	<p th:case="true">Si</p>
+    						<p th:case="false">No</p>
+                        </span></td>       
+                    </tr>
+                </tbody>
+                </table>   
         </div>
     </body>
 </html>

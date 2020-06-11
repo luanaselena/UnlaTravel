@@ -3,6 +3,7 @@ package com.unla.travelweb.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,17 +21,17 @@ public class Carrito {
     @Column(name="id")
     private long id;
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Paquete> paquetes = new ArrayList<Paquete>();
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	private List<Hotel> hoteles = new ArrayList<Hotel>();
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<ReservaHotel> hoteles = new ArrayList<ReservaHotel>();
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Vuelo> vuelos = new ArrayList<Vuelo>();
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	private List<Actividad> actividades = new ArrayList<Actividad>();
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<ReservaActividad> actividades = new ArrayList<ReservaActividad>();
 	
 	public Carrito() {}
 
@@ -55,11 +56,11 @@ public class Carrito {
 		this.paquetes = paquetes;
 	}
 
-	public List<Hotel> getHoteles() {
+	public List<ReservaHotel> getHoteles() {
 		return hoteles;
 	}
 
-	public void setHoteles(List<Hotel> hoteles) {
+	public void setHoteles(List<ReservaHotel> hoteles) {
 		this.hoteles = hoteles;
 	}
 
@@ -71,15 +72,11 @@ public class Carrito {
 		this.vuelos = vuelos;
 	}
 
-	public List<Actividad> getActividades() {
+	public List<ReservaActividad> getActividades() {
 		return actividades;
 	}
 
-	public void setActividades(List<Actividad> actividades) {
+	public void setActividades(List<ReservaActividad> actividades) {
 		this.actividades = actividades;
 	}
-
-	
-		
-
 }

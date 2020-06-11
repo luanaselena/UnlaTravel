@@ -1,63 +1,40 @@
-package com.unla.travelweb.entities;
+package com.unla.travelweb.models;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.*;
-
 import com.sun.istack.Nullable;
 
-@Entity
-@Table(name="hotel")
-public class Hotel implements Serializable{
-	
-	
-	private static final long serialVersionUID = 1L;
+public class ReservaHotelModel {
 
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
     private long id;
-	
-	@Column(name="nombre", nullable=true, length=30)
-	private String nombre;
+    
+    private String nombre;
 
-	@Column (name= "cantEstrellas", nullable=true)
 	private int cantEstrellas;
 	
-	@OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST}, optional=true)
-    @JoinColumn(name="tipo_alojamiento_id_tipo_alojamiento", referencedColumnName = "id", nullable=true)
-    private TipoAlojamiento tipoAlojamiento;
+	private TipoAlojamientoModel tipoAlojamiento;
 	
-	@ManyToMany(mappedBy = "listaHoteles")
-	private List<TipoServicio> tipoServicio = new ArrayList<TipoServicio>();
+	private List<TipoServicioModel> tipoServicio = new ArrayList<TipoServicioModel>();
     
 	@Nullable
-	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.PERSIST}, optional=true)
-    @JoinColumn(name="tipo_habitacion_id_tipo_habitacion", referencedColumnName = "id", nullable=true)
-    private TipoHabitacion tipoHabitacion;
+    private TipoHabitacionModel tipoHabitacion;
     
 	@Nullable
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional=true)
-    @JoinColumn(name="tipo_regimen_id_tipo_regimen", referencedColumnName = "id", nullable=true)
-    private TipoRegimen tipoRegimen;
+    private TipoRegimenModel tipoRegimen;
     
-    @Column(name= "accesibilidad", nullable=true)
     private boolean accesibilidad;
     
-    @Column(name= "cantPersonas", nullable=true)
     private int cantPersonas;
     
-    @Column(name= "precio", nullable=false)
     private double precio;
     
-    @Column(name = "imgPath", nullable=true)
     private String imgPath;
     
-    public Hotel() {}
+    public ReservaHotelModel () {}
 
-	public Hotel(long id, String nombre, int cantEstrellas, TipoAlojamiento tipoAlojamiento, TipoHabitacion tipoHabitacion, TipoRegimen tipoRegimen,
+	public ReservaHotelModel (long id, String nombre, int cantEstrellas, TipoAlojamientoModel tipoAlojamiento,
+			 TipoHabitacionModel tipoHabitacion, TipoRegimenModel tipoRegimen,
 			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
 		super();
 		this.id = id;
@@ -72,7 +49,8 @@ public class Hotel implements Serializable{
 		this.imgPath = imgPath;
 	}
 	
-	public Hotel(String nombre, int cantEstrellas, TipoAlojamiento tipoAlojamiento, TipoHabitacion tipoHabitacion, TipoRegimen tipoRegimen,
+	public ReservaHotelModel (String nombre, int cantEstrellas, TipoAlojamientoModel tipoAlojamiento, 
+			TipoHabitacionModel tipoHabitacion, TipoRegimenModel tipoRegimen,
 			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
 		super();
 		this.nombre = nombre;
@@ -90,10 +68,10 @@ public class Hotel implements Serializable{
 		return id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setId(long idHotel) {
+		this.id = idHotel;
 	}
-
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -110,35 +88,35 @@ public class Hotel implements Serializable{
 		this.cantEstrellas = cantEstrellas;
 	}
 
-	public TipoAlojamiento getTipoAlojamiento() {
+	public TipoAlojamientoModel getTipoAlojamiento() {
 		return tipoAlojamiento;
 	}
 
-	public void setTipoAlojamiento(TipoAlojamiento tipoAlojamiento) {
+	public void setTipoAlojamiento(TipoAlojamientoModel tipoAlojamiento) {
 		this.tipoAlojamiento = tipoAlojamiento;
 	}
 
-	public List<TipoServicio> getTipoServicio() {
+	public List<TipoServicioModel> getTipoServicio() {
 		return tipoServicio;
 	}
 
-	public void setTipoServicio(List<TipoServicio> tipoServicio) {
+	public void setTipoServicio(List<TipoServicioModel> tipoServicio) {
 		this.tipoServicio = tipoServicio;
 	}
 
-	public TipoHabitacion getTipoHabitacion() {
+	public TipoHabitacionModel getTipoHabitacion() {
 		return tipoHabitacion;
 	}
 
-	public void setTipoHabitacion(@Nullable TipoHabitacion tipoHabitacion) {
+	public void setTipoHabitacion(@Nullable TipoHabitacionModel tipoHabitacion) {
 		this.tipoHabitacion = tipoHabitacion;
 	}
 
-	public TipoRegimen getTipoRegimen() {
+	public TipoRegimenModel getTipoRegimen() {
 		return tipoRegimen;
 	}
 
-	public void setTipoRegimen(@Nullable TipoRegimen tipoRegimen) {
+	public void setTipoRegimen(@Nullable TipoRegimenModel tipoRegimen) {
 		this.tipoRegimen = tipoRegimen;
 	}
 
@@ -173,7 +151,7 @@ public class Hotel implements Serializable{
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
-    
-    
 	
+	
+    
 }
