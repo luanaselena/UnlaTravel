@@ -21,6 +21,8 @@ public class ViewRouteHelper {
     public final static String VUELO_INDEX = "vuelo/index";
     public final static String VUELO_NEW = "vuelo/new";
     public final static String VUELO_UPDATE = "vuelo/update";
+    public final static String VUELO_USUARIO = "vuelo/vueloUsuario";
+    public final static String VUELO_RESERVA = "vuelo/vueloReserva";
     public final static String VUELO_ROOT = "/vuelo";
 
     public final static String ROUTE = "/index";
