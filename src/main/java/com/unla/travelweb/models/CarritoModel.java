@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.unla.travelweb.entities.Actividad;
-import com.unla.travelweb.entities.Hotel;
 import com.unla.travelweb.entities.Paquete;
+import com.unla.travelweb.entities.ReservaActividad;
+import com.unla.travelweb.entities.ReservaHotel;
 import com.unla.travelweb.entities.Vuelo;
 
 public class CarritoModel {
@@ -13,11 +14,11 @@ public class CarritoModel {
 	
 	private List<Paquete> paquetes = new ArrayList<Paquete>();
 	
-	private List<Hotel> hoteles = new ArrayList<Hotel>();
+	private List<ReservaHotel> hoteles = new ArrayList<ReservaHotel>();
 	
 	private List<Vuelo> vuelos =  new ArrayList<Vuelo>();
 
-	private List<Actividad> actividades = new ArrayList<Actividad>();
+	private List<ReservaActividad> actividades = new ArrayList<ReservaActividad>();
 
 	
 	public CarritoModel() {}
@@ -43,11 +44,11 @@ public class CarritoModel {
 		this.paquetes = paquetes;
 	}
 
-	public List<Hotel> getHoteles() {
+	public List<ReservaHotel> getHoteles() {
 		return hoteles;
 	}
 
-	public void setHoteles(List<Hotel> hoteles) {
+	public void setHoteles(List<ReservaHotel> hoteles) {
 		this.hoteles = hoteles;
 	}
 
@@ -59,11 +60,11 @@ public class CarritoModel {
 		this.vuelos = vuelos;
 	}
 
-	public List<Actividad> getActividades() {
+	public List<ReservaActividad> getActividades() {
 		return actividades;
 	}
 
-	public void setActividades(List<Actividad> actividades) {
+	public void setActividades(List<ReservaActividad> actividades) {
 		this.actividades = actividades;
 	}
 

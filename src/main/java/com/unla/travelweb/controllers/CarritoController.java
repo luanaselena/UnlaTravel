@@ -52,14 +52,11 @@ public class CarritoController {
 	@RequestMapping ("")
 	public ModelAndView index(Model model, @AuthenticationPrincipal UserDetails currentUser) {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.CARRITO_INDEX);
-        HotelModel hotelModel = hotelService.findById(1);
         User user = (User) userRepository.findByUsernameAndFetchUserRolesEagerly(currentUser.getUsername());
-        Hotel hotel = hotelConverter.modelToEntity(hotelModel);
-//        if(hotel!=null) {
-//			user.getCarrito().getHoteles().add(hotel);
-//		}
         model.addAttribute("currentUser", user);
-        
+        model.addAttribute("hoteles", user.getCarrito().getHoteles());
+        model.addAttribute("actividades", user.getCarrito().getActividades());
+
         return mAV;
     }
 	

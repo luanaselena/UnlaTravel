@@ -1,15 +1,14 @@
 package com.unla.travelweb.services.implementation;
 
-import com.unla.travelweb.converters.HotelConverter;
+import com.unla.travelweb.converters.ReservaHotelConverter;
 import com.unla.travelweb.converters.TipoAlojamientoConverter;
 import com.unla.travelweb.converters.TipoHabitacionConverter;
 import com.unla.travelweb.converters.TipoRegimenConverter;
 import com.unla.travelweb.converters.TipoServicioConverter;
-import com.unla.travelweb.entities.Hotel;
-import com.unla.travelweb.models.HotelModel;
-
-import com.unla.travelweb.repositories.IHotelRepository;
-import com.unla.travelweb.services.IHotelService;
+import com.unla.travelweb.entities.ReservaHotel;
+import com.unla.travelweb.models.ReservaHotelModel;
+import com.unla.travelweb.repositories.IReservaHotelRepository;
+import com.unla.travelweb.services.IReservaHotelService;
 import com.unla.travelweb.services.ITipoAlojamientoService;
 import com.unla.travelweb.services.ITipoHabitacionService;
 import com.unla.travelweb.services.ITipoRegimenService;
@@ -21,16 +20,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("hotelService")
-public class HotelService implements IHotelService {
+@Service("reservaHotelService")
+public class ReservaHotelService implements IReservaHotelService {
 	
 	@Autowired
-	@Qualifier("hotelRepository")
-    private IHotelRepository hotelRepository;
+	@Qualifier("reservaHotelRepository")
+    private IReservaHotelRepository reservahotelRepository;
 	
 	@Autowired
-    @Qualifier("hotelConverter")
-    private HotelConverter hotelConverter;
+    @Qualifier("reservaHotelConverter")
+    private ReservaHotelConverter reservaHotelConverter;
 	
 	@Autowired
 	@Qualifier("tipoAlojamientoService")
@@ -59,36 +58,36 @@ public class HotelService implements IHotelService {
 	private TipoServicioConverter tipoServicioConverter;
 
     @Override
-    public List<Hotel> getAll(){
-        return hotelRepository.findAll();
+    public List<ReservaHotel> getAll(){
+        return reservahotelRepository.findAll();
     }
 
     @Override
-    public HotelModel insert(HotelModel hotelModel) {
-//    	hotelModel.setTipoAlojamiento(tipoAlojamientoService.findById(hotelModel.getTipoAlojamiento().getId()));
+    public ReservaHotelModel insert(ReservaHotelModel reservaHotelModel) {
+//    	reservaHotelModel.setTipoAlojamiento(tipoAlojamientoService.findById(reservaHotelModel.getTipoAlojamiento().getId()));
 //    	hotelModel.setTipoHabitacion(tipoHabitacionService.findById(hotelModel.getTipoHabitacion().getId()));
 //    	hotelModel.setTipoRegimen(tipoRegimenService.findById(hotelModel.getTipoRegimen().getId()));
 
-    	Hotel hotel = hotelRepository.save(hotelConverter.modelToEntity(hotelModel));
-        return hotelConverter.entityToModel(hotel);
+    	ReservaHotel hotel = reservahotelRepository.save(reservaHotelConverter.modelToEntity(reservaHotelModel));
+        return reservaHotelConverter.entityToModel(hotel);
 
     }
 
     @Override
-    public HotelModel update(HotelModel hotelModel) {
+    public ReservaHotelModel update(ReservaHotelModel hotelModel) {
 
     	hotelModel.setTipoAlojamiento(tipoAlojamientoService.findById(hotelModel.getTipoAlojamiento().getId()));
     	hotelModel.setTipoHabitacion(tipoHabitacionService.findById(hotelModel.getTipoHabitacion().getId()));
     	hotelModel.setTipoRegimen(tipoRegimenService.findById(hotelModel.getTipoRegimen().getId()));
     	
-    	Hotel hotel = hotelRepository.save(hotelConverter.modelToEntity(hotelModel));
-        return hotelConverter.entityToModel(hotel);
+    	ReservaHotel hotel = reservahotelRepository.save(reservaHotelConverter.modelToEntity(hotelModel));
+        return reservaHotelConverter.entityToModel(hotel);
     }
 
     @Override
     public boolean remove(long id){
         try{
-            hotelRepository.deleteById(id);
+            reservahotelRepository.deleteById(id);
             return true;
         }
         catch(Exception e){
@@ -97,12 +96,14 @@ public class HotelService implements IHotelService {
     }
 
     @Override
-    public HotelModel findById(long id) {
-        return hotelConverter.entityToModel(hotelRepository.findById(id));
+    public ReservaHotelModel findById(long id) {
+        return reservaHotelConverter.entityToModel(reservahotelRepository.findById(id));
     }
 
 	@Override
-	public HotelModel findByNombre(String nombre) {
-		return hotelConverter.entityToModel(hotelRepository.findByNombre(nombre));
+	public ReservaHotelModel findByNombre(String nombre) {
+		return reservaHotelConverter.entityToModel(reservahotelRepository.findByNombre(nombre));
 	}
+
+	
 }
