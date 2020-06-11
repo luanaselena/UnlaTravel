@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+		<title>UNLa Travel</title>
+		<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+		<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+		<link href="/css/styles.css" rel="stylesheet" />
+	</head>
+	<body id="page-top" style="background-image: url('https://free4kwallpapers.com/uploads/originals/2018/12/29/inverted-blackwhite-mountains.-wallpaper_.jpg');">
+	<!-- Navbar-->
+		<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+			<div class="container">
+				<a class="navbar-brand js-scroll-trigger" href="#page-top">UNLa Travel</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i></button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav text-uppercase ml-auto">
+						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/actividad">Actividades</a></li>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/destino">Destinos</a></li>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/vuelo">Vuelos</a></li>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/hotel">Hoteles</a></li>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/paquete">Paquetes</a></li>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/carrito">Carrito</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+        <div class="container">
+        	<div class="row">
+        		<div class="col-12 text-center" style="margin-top: 160px;color: white;">
+        			<h2>Confirmar Reserva</h2>
+        		</div>
+        		<div class="col-4 mt-3 mb-3">
+	        		<div class="card" style="width: 18rem;">
+	  					<div class="card-body">
+	    					<h5 class="card-title" th:text="${vuelo.id}">Card title</h5>
+	    					
+                        	<p class="card-text" th:text="${vuelo.fechaIda}"></p>
+	    					<p class="card-text" th:if="${vuelo.fechaVuelta}" th:text="${vuelo.fechaVuelta}"></p>
+	    					<p class="card-text" th:text="${vuelo.aerolinea.nombre}"></p>
+	    					<p class="card-text" th:text="${vuelo.escalaIncluida}"></p>
+	    					<p class="card-text" th:text="${vuelo.origen.nombre} +' - '+ ${vuelo.origen.pais}"></p>
+	    					<p class="card-text" th:text="${vuelo.destino.nombre} +' - '+ ${vuelo.destino.pais}"></p>
+	    					<p class="card-text" th:if="${vuelo.escalaIncluida}" th:text="${'ESCALA INCLUIDA: Si'}"></p>
+	    					<p class="card-text" th:if="${not vuelo.escalaIncluida}" th:text="${'ESCALA INCLUIDA: No'}"></p>
+	  					</div>
+					</div>
+				</div>
+				
+				<div class="col-8">
+					<form action="#" th:action="@{/vueloUsuario/create}"
+		                  th:object="${vuelo}" method="post">
+	                  	<input type="hidden" th:field="${vuelo.id}" id="id" name="id" />
+		                <p>Cantidad de Personas: <input type="text" th:field="*{cantPersonas}" /></p>
+		                <p>Clase: 
+			                <select placeholder="Clase" th:field="*{clase.id}"> 
+								<option th:each="c : ${clases}" th:value="${c.id}" th:text="${c.nombre}"> </option>
+							</select>
+						</p>
+						<p><input type="hidden"  th:field="*{aerolinea.id}"></p>
+						<p><input type="hidden"  th:field="*{escalaIncluida}"></p>
+						<p><input type="hidden"  th:field="*{destino.id}"></p>
+						<p><input type="hidden"  th:field="*{origen.id}"></p>
+						<p><input type="hidden"  th:field="*{fechaIda}"></p>
+						<p><input type="hidden"  th:field="*{fechaVuelta}"></p>
+						<p><input type="hidden"  th:field="*{precio}"></p>
+		                <input class="btn btn-primary" style="background-color: #EE7D00;" type="submit" value="Confirmar Reserva" />
+		            </form>
+				</div>
+        	</div>           
+        </div>
+    </body>
+</html>
+

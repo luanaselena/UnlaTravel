@@ -56,6 +56,7 @@ public class CarritoController {
         model.addAttribute("currentUser", user);
         model.addAttribute("hoteles", user.getCarrito().getHoteles());
         model.addAttribute("actividades", user.getCarrito().getActividades());
+        model.addAttribute("vuelos", user.getCarrito().getVuelos());
 
         return mAV;
     }

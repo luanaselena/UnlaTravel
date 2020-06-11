@@ -28,7 +28,7 @@ public class Carrito {
 	private List<ReservaHotel> hoteles = new ArrayList<ReservaHotel>();
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Vuelo> vuelos = new ArrayList<Vuelo>();
+	private List<ReservaVuelo> vuelos = new ArrayList<ReservaVuelo>();
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<ReservaActividad> actividades = new ArrayList<ReservaActividad>();
@@ -64,11 +64,11 @@ public class Carrito {
 		this.hoteles = hoteles;
 	}
 
-	public List<Vuelo> getVuelos() {
+	public List<ReservaVuelo> getVuelos() {
 		return vuelos;
 	}
 
-	public void setVuelos(List<Vuelo> vuelos) {
+	public void setVuelos(List<ReservaVuelo> vuelos) {
 		this.vuelos = vuelos;
 	}
 

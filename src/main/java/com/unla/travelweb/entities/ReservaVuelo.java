@@ -16,8 +16,8 @@ import org.springframework.lang.Nullable;
 
 
 @Entity
-@Table(name="vuelo")
-public class Vuelo {
+@Table(name="reserva_vuelo")
+public class ReservaVuelo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,20 +31,19 @@ public class Vuelo {
     @Column(name="fechaVuelta", nullable=true) 
 	private Date fechaVuelta;
 	
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne
     @JoinColumn(name="origen_id", referencedColumnName = "id")
     private Destino origen;
 	
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne
     @JoinColumn(name="destino_id", referencedColumnName = "id")
     private Destino destino;
 	
-    @OneToOne(cascade = {CascadeType.MERGE/*, CascadeType.PERSIST*/})
+    @OneToOne
     @JoinColumn(name="aerolinea_id", referencedColumnName = "id")
 	private Aerolinea aerolinea;
 	
-    @Nullable
-    @OneToOne(cascade = {CascadeType.MERGE/*, CascadeType.PERSIST*/})
+    @OneToOne
     @JoinColumn(name="clase_id", referencedColumnName = "id")
 	private Clase clase;
 	
@@ -57,8 +56,8 @@ public class Vuelo {
     @Column(name="cantPersonas")
     private int cantPersonas;
     
-    public Vuelo(){}    
-	public Vuelo(long id, Date fechaIda, Date fechaVuelta, Aerolinea aerolinea, Clase clase,
+    public ReservaVuelo(){}    
+	public ReservaVuelo(long id, Date fechaIda, Date fechaVuelta, Aerolinea aerolinea, Clase clase,
 			boolean escalaIncluida, Destino origen, Destino destino, double precio, int cantPersonas) {
 		super();
 		this.id = id;
@@ -73,7 +72,7 @@ public class Vuelo {
 		this.cantPersonas = cantPersonas;
 	}
 
-	public Vuelo(Date fechaIda, Date fechaVuelta, Aerolinea aerolinea, Clase clase, boolean escalaIncluida, Destino origen, Destino destino, double precio, int cantPersonas) {
+	public ReservaVuelo(Date fechaIda, Date fechaVuelta, Aerolinea aerolinea, Clase clase, boolean escalaIncluida, Destino origen, Destino destino, double precio, int cantPersonas) {
 		super();
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;

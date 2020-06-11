@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.travelweb.converters.HotelConverter;
 import com.unla.travelweb.converters.ReservaHotelConverter;
@@ -22,7 +21,6 @@ import com.unla.travelweb.converters.TipoAlojamientoConverter;
 import com.unla.travelweb.converters.TipoHabitacionConverter;
 import com.unla.travelweb.converters.TipoRegimenConverter;
 import com.unla.travelweb.converters.TipoServicioConverter;
-import com.unla.travelweb.entities.ReservaHotel;
 import com.unla.travelweb.entities.TipoServicio;
 import com.unla.travelweb.entities.User;
 import com.unla.travelweb.helpers.ViewRouteHelper;
