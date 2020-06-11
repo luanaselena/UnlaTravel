@@ -110,7 +110,6 @@ public class HotelUsuarioController {
 	//Aca iria la logica para insertar en el carrito al confirmar la reserva
 	@PostMapping("/create")
     public ModelAndView create(@ModelAttribute("hotel") HotelModel hotelModel,@AuthenticationPrincipal UserDetails currentUser) {
-		System.out.println(hotelModel.getFechaFin());
 		TipoHabitacionModel t = tipoHabitacionService.findById(hotelModel.getTipoHabitacion().getId());
 		TipoRegimenModel r = tipoRegimenService.findById(hotelModel.getTipoRegimen().getId());
 		
@@ -123,7 +122,10 @@ public class HotelUsuarioController {
 		double pr = precioTotal*r.getPorcentajeAumento();
 		precioTotal+=ph+pr;
 		precioTotal*=dias;
-		
+
+		if(hotelModel.getCantPersonas()>4) {
+			precioTotal*=Math.round(hotelModel.getCantPersonas()/4)+1;
+		}
 		
 		ReservaHotelModel rh = new ReservaHotelModel(hotelModel.getNombre(), hotelModel.getCantEstrellas(), hotelModel.getTipoAlojamiento(),
 				t,r, hotelModel.isAccesibilidad(), hotelModel.getCantPersonas(),precioTotal, hotelModel.getImgPath(), hotelModel.getFechaInicio(), hotelModel.getFechaFin());
