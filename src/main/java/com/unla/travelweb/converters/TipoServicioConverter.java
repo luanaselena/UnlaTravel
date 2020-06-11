@@ -10,10 +10,10 @@ public class TipoServicioConverter {
 
 	
 	public TipoServicioModel entityToModel (TipoServicio servicio) {
-		return new TipoServicioModel(servicio.getId(), servicio.getPorcentajeAumento(), servicio.getTipo());
+		return new TipoServicioModel(servicio.getId(), servicio.getTipo());
 	}
 	
 	public TipoServicio modelToEntity (TipoServicioModel servicio) {
-		return new TipoServicio(servicio.getId(), servicio.getTipo(), servicio.getPorcentajeAumento());
+		return new TipoServicio(servicio.getId(), servicio.getTipo());
 	}
 }

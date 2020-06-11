@@ -41,8 +41,8 @@
 	  					<div class="card-body">
 	    					<h5 class="card-title" th:text="${hotel.nombre}">Card title</h5>
 	    					<p class="card-text" th:text="${hotel.tipoAlojamiento.tipo}"></p>
-	    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel.cantEstrellas}"></p>
-	    					<p class="card-text" th:text="${'PRECIO: $' + hotel.precio}"></p>
+	    					<p class="card-text" th:text="${hotel.cantEstrellas}+' ESTRELLAS'"></p>
+	    					<p class="card-text" th:text="${'PRECIO POR NOCHE DESDE: $' + hotel.precio}"></p>
 	    					<p>SERVICIOS: | <span class="card-text" th:each="s : ${servicios}" th:text=" ${s.tipo}+' | '"></span></p>
 	    					<p class="card-text" th:if="${hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: Si'}"></p>
 	    					<p class="card-text" th:if="${not hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: No'}"></p>
@@ -56,12 +56,12 @@
 		                <p>Cantidad de Personas: <input type="text" th:field="*{cantPersonas}" /></p>
 		                <p>Tipo de Habitaciones: 
 			                <select placeholder="TipoHabitacion" th:field="*{tipoHabitacion.id}"> 
-								<option th:each="h : ${habitaciones}" th:value="${h.id}" th:text="${h.tipo}"> </option>
+								<option th:each="h : ${habitaciones}" th:value="${h.id}" th:text="${h.tipo}+' ('+${h.porcentajeAumento*100}+'% más)'"> </option>
 							</select>
 						</p>
 						<p>Tipo de Regimen: 
 			                <select placeholder="TipoRegimen" th:field="*{tipoRegimen.id}"> 
-								<option th:each="r : ${regimenes}" th:value="${r.id}" th:text="${r.tipo}"> </option>
+								<option th:each="r : ${regimenes}" th:value="${r.id}" th:text="${r.tipo}+' ('+${r.porcentajeAumento*100}+'% más)'"> </option>
 							</select>
 						</p>
 						<p><input type="hidden"  th:field="*{tipoAlojamiento.tipo}"></p>

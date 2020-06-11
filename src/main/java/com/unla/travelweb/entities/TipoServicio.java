@@ -26,9 +26,6 @@ public class TipoServicio {
     @Column(name="tipo")
 	private String tipo;
 	
-    @Column(name="porcentaje_aumento")
-	private double porcentajeAumento;
-    
 	@ManyToMany(cascade = { CascadeType.ALL})
 	@JoinTable(
 			
@@ -39,17 +36,15 @@ public class TipoServicio {
 	)
     private Set<Hotel> listaHoteles = new HashSet<Hotel>();
 
-	public TipoServicio(long id, String tipo, double porcentajeAumento) {
+	public TipoServicio(long id, String tipo) {
 		super();
 		this.id = id;
 		this.tipo = tipo;
-		this.porcentajeAumento = porcentajeAumento;
 	}
 
-	public TipoServicio(String tipo, double porcentajeAumento) {
+	public TipoServicio(String tipo) {
 		super();
 		this.tipo = tipo;
-		this.porcentajeAumento = porcentajeAumento;
 	}
 
 	public TipoServicio() {}
@@ -68,14 +63,6 @@ public class TipoServicio {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
-	}
-
-	public double getPorcentajeAumento() {
-		return porcentajeAumento;
-	}
-
-	public void setPorcentajeAumento(double porcentajeAumento) {
-		this.porcentajeAumento = porcentajeAumento;
 	}
 
 	public Set<Hotel> getListaHoteles() {
