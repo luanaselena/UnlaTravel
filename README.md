@@ -14,8 +14,6 @@
 
 -paqueteUsuario (todo)
 
--vueloUsuario (todo)
-
 -filtro de busqueda
 
--Logica de agregar al carrito paquete/vuelos ----> Copypastear la solucion de hotel y actividad
+-Logica de agregar al carrito paquete ----> Copypastear la solucion de hotel y actividad
