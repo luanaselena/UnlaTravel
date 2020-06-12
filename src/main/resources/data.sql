@@ -85,3 +85,13 @@ INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destin
 INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (3,"Escalar",false,2000,"/assets/img/actividades/3.jpg",9,3);
 INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (4,"Paracaidismo",false,3500,"/assets/img/actividades/4.jpg",10,4);
 INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (5,"Pasear",false,500,"/assets/img/actividades/5.jpg",10,5);
+
+
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (1,25,7,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (2,24,8,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (3,23,7,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (4,2,8,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (5,4,7,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (6,7,7,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (7,1,7,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (8,19,8,1,1,1,false,1);

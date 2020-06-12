@@ -5,6 +5,7 @@ import java.sql.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,7 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.springframework.lang.Nullable;
+import com.sun.istack.Nullable;
+
 
 
 @Entity
@@ -24,6 +26,7 @@ public class Vuelo {
     @Column(name="id")
 	private long id;
 	
+	@Nullable
     @Column(name="fechaIda")
 	private Date fechaIda;
 
@@ -31,31 +34,35 @@ public class Vuelo {
     @Column(name="fechaVuelta", nullable=true) 
 	private Date fechaVuelta;
 	
-    @OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.PERSIST}, optional=true)
     @JoinColumn(name="origen_id", referencedColumnName = "id")
     private Destino origen;
 	
-    @OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.PERSIST}, optional=true)
     @JoinColumn(name="destino_id", referencedColumnName = "id")
     private Destino destino;
-	
-    @OneToOne(cascade = {CascadeType.MERGE/*, CascadeType.PERSIST*/})
-    @JoinColumn(name="aerolinea_id", referencedColumnName = "id")
+    
+    @Nullable
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.PERSIST}, optional=true)
+    @JoinColumn(name="aerolinea_id", referencedColumnName = "id", nullable=true)
 	private Aerolinea aerolinea;
 	
     @Nullable
-    @OneToOne(cascade = {CascadeType.MERGE/*, CascadeType.PERSIST*/})
-    @JoinColumn(name="clase_id", referencedColumnName = "id")
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.PERSIST}, optional=true)
+    @JoinColumn(name="clase_id", referencedColumnName = "id", nullable=true)
 	private Clase clase;
 	
+    @Nullable
     @Column(name="escalaIncluida") 
-	private boolean escalaIncluida;
+	private Boolean escalaIncluida;
     
-    @Column(name= "precio", nullable=false)
-    private double precio;
+    @Nullable
+    @Column(name= "precio", nullable=true)
+    private Double precio;
     
+    @Nullable
     @Column(name="cantPersonas")
-    private int cantPersonas;
+    private Integer cantPersonas;
     
     public Vuelo(){}    
 	public Vuelo(long id, Date fechaIda, Date fechaVuelta, Aerolinea aerolinea, Clase clase,

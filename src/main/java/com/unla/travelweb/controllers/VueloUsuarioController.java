@@ -1,5 +1,7 @@
 package com.unla.travelweb.controllers;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,6 +18,7 @@ import com.unla.travelweb.converters.ReservaVueloConverter;
 import com.unla.travelweb.converters.DestinoConverter;
 import com.unla.travelweb.converters.ClaseConverter;
 import com.unla.travelweb.converters.AerolineaConverter;
+import com.unla.travelweb.entities.Clase;
 import com.unla.travelweb.entities.User;
 import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.models.AerolineaModel;
@@ -92,27 +95,31 @@ public class VueloUsuarioController {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.VUELO_RESERVA);
         mAV.addObject("vuelo", vueloService.findById(id));
         mAV.addObject("clases", claseService.getAll());
+        mAV.addObject("aerolineas", aerolineaService.getAll());
         return mAV;
     }
 	
 	@PostMapping("/create")
     public ModelAndView create(@ModelAttribute("vuelo") VueloModel vueloModel,@AuthenticationPrincipal UserDetails currentUser) {
 
-		vueloModel.setClase(claseService.findById(vueloModel.getClase().getId()));
-		
-		vueloModel.setAerolinea(aerolineaService.findById(vueloModel.getAerolinea().getId()));
-		
-		vueloModel.setOrigen(destinoService.findById(vueloModel.getOrigen().getId()));
-		
-		vueloModel.setDestino(destinoService.findById(vueloModel.getDestino().getId()));
+		ClaseModel c = claseService.findById(vueloModel.getClase().getId());
+		AerolineaModel a = aerolineaService.findById(vueloModel.getAerolinea().getId());
 		
 		User user = (User) userRepository.findByUsernameAndFetchUserRolesEagerly(currentUser.getUsername());
 		
-		vueloModel.setPrecio(Math.round((vueloService.calcularPrecio(4, vueloModel.getOrigen(), vueloModel.getDestino(), vueloModel.getClase(),vueloModel.getCantPersonas()))));
+		DestinoModel de = destinoService.findById(vueloModel.getDestino().getId());
 		
-		ReservaVueloModel rv = new ReservaVueloModel(vueloModel.getFechaIda(), vueloModel.getFechaVuelta(), vueloModel.getAerolinea(), vueloModel.getClase(),
-				vueloModel.isEscalaIncluida(),vueloModel.getOrigen(), vueloModel.getDestino(), vueloModel.getPrecio(),vueloModel.getCantPersonas());
+		DestinoModel or = destinoService.findById(vueloModel.getOrigen().getId());
+
+		System.out.println(vueloModel.getOrigen().getLatitud());
+		System.out.println(vueloModel.getDestino().getLatitud());
+		double precio = Math.round((vueloService.calcularPrecio(4, or, de, c, vueloModel.getCantPersonas())));
+		if(vueloModel.getFechaVuelta()==null) {
+			precio/=2;
+		}
 		
+		ReservaVueloModel rv = new ReservaVueloModel(vueloModel.getFechaIda(), vueloModel.getFechaVuelta(), a, c,
+				vueloModel.isEscalaIncluida(),vueloModel.getOrigen(), vueloModel.getDestino(), precio,vueloModel.getCantPersonas());
 
 		user.getCarrito().getVuelos().add(reservaVueloConverter.modelToEntity(rv));
         

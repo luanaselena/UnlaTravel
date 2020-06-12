@@ -2,7 +2,8 @@ package com.unla.travelweb.models;
 
 import java.sql.Date;
 
-import org.springframework.lang.Nullable;
+import com.sun.istack.Nullable;
+
 
 
 public class ReservaVueloModel {
@@ -20,7 +21,7 @@ public class ReservaVueloModel {
 	
 	public ReservaVueloModel() {}
 
-	public ReservaVueloModel(long id, Date fechaIda, Date fechaVuelta, AerolineaModel aerolinea, ClaseModel clase,
+	public ReservaVueloModel(long id, Date fechaIda, @Nullable Date fechaVuelta, AerolineaModel aerolinea, ClaseModel clase,
 			boolean escalaIncluida, DestinoModel origen, DestinoModel destino, double precio,int cantPersonas) {
 		super();
 		this.id = id;

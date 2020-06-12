@@ -2,7 +2,8 @@ package com.unla.travelweb.models;
 
 import java.sql.Date;
 
-import org.springframework.lang.Nullable;
+import com.sun.istack.Nullable;
+
 
 
 public class VueloModel {
@@ -12,7 +13,9 @@ public class VueloModel {
 	private Date fechaVuelta;
 	private DestinoModel origen;
 	private DestinoModel destino;
+	@Nullable
 	private AerolineaModel aerolinea;
+	@Nullable
 	private ClaseModel clase;
 	private boolean escalaIncluida;
 	private double precio;
