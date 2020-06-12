@@ -2,12 +2,15 @@ package com.unla.travelweb.models;
 
 import java.sql.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.sun.istack.Nullable;
 
 
 
 public class ReservaVueloModel {
 	private long id;
+
 	private Date fechaIda;
 	@Nullable
 	private Date fechaVuelta;
@@ -39,6 +42,22 @@ public class ReservaVueloModel {
 	public ReservaVueloModel(Date fechaIda, Date fechaVuelta, AerolineaModel aerolinea, ClaseModel clase, boolean escalaIncluida, DestinoModel origen, DestinoModel destino, double precio,
 			int cantPersonas) {
 		super();
+		this.fechaIda = fechaIda;
+		this.fechaVuelta = fechaVuelta;
+		this.aerolinea = aerolinea;
+		this.clase = clase;
+		this.escalaIncluida = escalaIncluida;
+		this.origen = origen;
+		this.destino = destino;
+		this.precio = precio;
+		this.cantPersonas = cantPersonas;
+	}
+	
+	public ReservaVueloModel(long id, Date fechaIda, AerolineaModel aerolinea, ClaseModel clase, boolean escalaIncluida, DestinoModel origen, DestinoModel destino, double precio,
+			int cantPersonas) {
+		super();
+
+		this.id = id;
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;
 		this.aerolinea = aerolinea;

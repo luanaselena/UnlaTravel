@@ -33,22 +33,23 @@ public class Vuelo {
     @Nullable
     @Column(name="fechaVuelta", nullable=true) 
 	private Date fechaVuelta;
+    
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.PERSIST}, optional=true)
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE}, optional=true)
     @JoinColumn(name="origen_id", referencedColumnName = "id")
     private Destino origen;
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.PERSIST}, optional=true)
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE}, optional=true)
     @JoinColumn(name="destino_id", referencedColumnName = "id")
     private Destino destino;
     
     @Nullable
-	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.PERSIST}, optional=true)
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE}, optional=true)
     @JoinColumn(name="aerolinea_id", referencedColumnName = "id", nullable=true)
 	private Aerolinea aerolinea;
 	
     @Nullable
-	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.PERSIST}, optional=true)
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE}, optional=true)
     @JoinColumn(name="clase_id", referencedColumnName = "id", nullable=true)
 	private Clase clase;
 	
@@ -84,6 +85,20 @@ public class Vuelo {
 		super();
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;
+		this.aerolinea = aerolinea;
+		this.clase = clase;
+		this.escalaIncluida = escalaIncluida;
+		this.origen = origen;
+		this.destino = destino;
+		this.precio = precio;
+		this.cantPersonas = cantPersonas;
+	}
+	
+	public Vuelo(long id, Date fechaIda, Aerolinea aerolinea, Clase clase, boolean escalaIncluida, Destino origen, Destino destino, double precio, int cantPersonas) {
+		super();
+
+		this.id = id;
+		this.fechaIda = fechaIda;
 		this.aerolinea = aerolinea;
 		this.clase = clase;
 		this.escalaIncluida = escalaIncluida;
@@ -159,6 +174,12 @@ public class Vuelo {
 	}
 	public void setCantPersonas(int cantPersonas) {
 		this.cantPersonas = cantPersonas;
+	}
+	@Override
+	public String toString() {
+		return "Vuelo [id=" + id + ", fechaIda=" + fechaIda + ", fechaVuelta=" + fechaVuelta + ", origen=" + origen
+				+ ", destino=" + destino + ", aerolinea=" + aerolinea + ", clase=" + clase + ", escalaIncluida="
+				+ escalaIncluida + ", precio=" + precio + ", cantPersonas=" + cantPersonas + "]";
 	}
 	
 	
