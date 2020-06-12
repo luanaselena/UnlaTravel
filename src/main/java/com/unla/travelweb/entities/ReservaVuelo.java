@@ -5,6 +5,7 @@ import java.sql.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,7 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.springframework.lang.Nullable;
+import com.sun.istack.Nullable;
+
 
 
 @Entity
@@ -31,20 +33,22 @@ public class ReservaVuelo {
     @Column(name="fechaVuelta", nullable=true) 
 	private Date fechaVuelta;
 	
-    @OneToOne
+	@OneToOne
     @JoinColumn(name="origen_id", referencedColumnName = "id")
     private Destino origen;
 	
-    @OneToOne
+	@OneToOne
     @JoinColumn(name="destino_id", referencedColumnName = "id")
     private Destino destino;
-	
-    @OneToOne
-    @JoinColumn(name="aerolinea_id", referencedColumnName = "id")
+    
+    @Nullable
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE/*,CascadeType.PERSIST*/}, optional=true)
+    @JoinColumn(name="aerolinea_id", referencedColumnName = "id", nullable=true)
 	private Aerolinea aerolinea;
 	
-    @OneToOne
-    @JoinColumn(name="clase_id", referencedColumnName = "id")
+    @Nullable
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE/*,CascadeType.PERSIST*/}, optional=true)
+    @JoinColumn(name="clase_id", referencedColumnName = "id", nullable=true)
 	private Clase clase;
 	
     @Column(name="escalaIncluida") 
@@ -57,7 +61,7 @@ public class ReservaVuelo {
     private int cantPersonas;
     
     public ReservaVuelo(){}    
-	public ReservaVuelo(long id, Date fechaIda, Date fechaVuelta, Aerolinea aerolinea, Clase clase,
+	public ReservaVuelo(long id, Date fechaIda, @Nullable Date fechaVuelta, Aerolinea aerolinea, Clase clase,
 			boolean escalaIncluida, Destino origen, Destino destino, double precio, int cantPersonas) {
 		super();
 		this.id = id;
@@ -72,7 +76,7 @@ public class ReservaVuelo {
 		this.cantPersonas = cantPersonas;
 	}
 
-	public ReservaVuelo(Date fechaIda, Date fechaVuelta, Aerolinea aerolinea, Clase clase, boolean escalaIncluida, Destino origen, Destino destino, double precio, int cantPersonas) {
+	public ReservaVuelo(Date fechaIda, @Nullable Date fechaVuelta, Aerolinea aerolinea, Clase clase, boolean escalaIncluida, Destino origen, Destino destino, double precio, int cantPersonas) {
 		super();
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;

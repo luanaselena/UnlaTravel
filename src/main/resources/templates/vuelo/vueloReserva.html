@@ -35,19 +35,11 @@
         		<div class="col-12 text-center" style="margin-top: 160px;color: white;">
         			<h2>Confirmar Reserva</h2>
         		</div>
-        		<div class="col-4 mt-3 mb-3">
+        		<div class="col-4 mt-5 mb-3">
 	        		<div class="card" style="width: 18rem;">
 	  					<div class="card-body">
-	    					<h5 class="card-title" th:text="${vuelo.id}">Card title</h5>
-	    					
-                        	<p class="card-text" th:text="${vuelo.fechaIda}"></p>
-	    					<p class="card-text" th:if="${vuelo.fechaVuelta}" th:text="${vuelo.fechaVuelta}"></p>
-	    					<p class="card-text" th:text="${vuelo.aerolinea.nombre}"></p>
-	    					<p class="card-text" th:text="${vuelo.escalaIncluida}"></p>
-	    					<p class="card-text" th:text="${vuelo.origen.nombre} +' - '+ ${vuelo.origen.pais}"></p>
-	    					<p class="card-text" th:text="${vuelo.destino.nombre} +' - '+ ${vuelo.destino.pais}"></p>
-	    					<p class="card-text" th:if="${vuelo.escalaIncluida}" th:text="${'ESCALA INCLUIDA: Si'}"></p>
-	    					<p class="card-text" th:if="${not vuelo.escalaIncluida}" th:text="${'ESCALA INCLUIDA: No'}"></p>
+	    					<h5 class="card-title" th:text="'Vuelos hacia ' + ${vuelo.destino.pais}">Card title</h5>
+	    					<p class="card-text" th:text="'Sale desde ' + ${vuelo.origen.nombre}"></p>
 	  					</div>
 					</div>
 				</div>
@@ -56,19 +48,22 @@
 					<form action="#" th:action="@{/vueloUsuario/create}"
 		                  th:object="${vuelo}" method="post">
 	                  	<input type="hidden" th:field="${vuelo.id}" id="id" name="id" />
-		                <p>Cantidad de Personas: <input type="text" th:field="*{cantPersonas}" /></p>
-		                <p>Clase: 
-			                <select placeholder="Clase" th:field="*{clase.id}"> 
-								<option th:each="c : ${clases}" th:value="${c.id}" th:text="${c.nombre}"> </option>
+	                  	<p>Fecha de ida: <input type="date" th:field="${vuelo.fechaIda}"/></p>
+						<p>Fecha de vuelta: <input type="date" th:field="${vuelo.fechaVuelta}"/></p>
+		                <p>Cantidad de personas: <input type="number" th:field="${vuelo.cantPersonas}" min="1"/></p>
+		                <p>Aerolinea: 
+			                <select placeholder="Aerolinea" th:field="*{aerolinea.id}"> 
+								<option th:each="a : ${aerolineas}" th:value="${a.id}" th:text="${a.nombre}+' - Valoracion: '+ ${a.valoracion}"></option>
 							</select>
 						</p>
-						<p><input type="hidden"  th:field="*{aerolinea.id}"></p>
-						<p><input type="hidden"  th:field="*{escalaIncluida}"></p>
-						<p><input type="hidden"  th:field="*{destino.id}"></p>
-						<p><input type="hidden"  th:field="*{origen.id}"></p>
-						<p><input type="hidden"  th:field="*{fechaIda}"></p>
-						<p><input type="hidden"  th:field="*{fechaVuelta}"></p>
-						<p><input type="hidden"  th:field="*{precio}"></p>
+		                <p>Clase: 
+			                <select placeholder="Clase" th:field="*{clase.id}"> 
+								<option th:each="c : ${clases}" th:value="${c.id}" th:text="${c.nombre}+' ('+${c.porcentajeAumento*100}+'% más)'"></option>
+							</select>
+						</p>
+						<p>Escala Incluida: <input type="checkbox" th:field="${vuelo.escalaIncluida}"/></p>
+	                  	<input type="hidden" th:field="*{origen.id}"/>
+	                  	<input type="hidden" th:field="*{destino.id}"/>						
 		                <input class="btn btn-primary" style="background-color: #EE7D00;" type="submit" value="Confirmar Reserva" />
 		            </form>
 				</div>

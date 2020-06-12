@@ -34,24 +34,28 @@
         	<div class="row">
         		<div class="col-12 text-center mt-5 mb-3">
         			<h2>Hoteles disponibles</h2>
+        			<div class="form-inline my-2 my-lg-0">
+        			</div>
         		</div>
-        		<div th:each="hotel : ${hoteles}" class="col-4 mt-3 mb-3">
-	        		<div class="card" style="width: 18rem;">
-	  					<img th:src="@{ ${hotel.imgPath} }" class="card-img-top" alt="...">
-	  					<div class="card-body">
-	    					<h5 class="card-title" th:text="${hotel.nombre}">Card title</h5>
-	    					<p class="card-text" th:text="${hotel.tipoAlojamiento.tipo}"></p>
-	    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel.cantEstrellas}"></p>
-	    					<p class="card-text" th:text="${'PRECIO POR NOCHE DESDE: $' + hotel.precio}"></p>
-	    					<p>SERVICIOS: | <span class="card-text" th:each="s : ${servicios}" th:text=" ${s.tipo}+' | '"></span></p>
-	    					<p class="card-text" th:if="${hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: Si'}"></p>
-	    					<p class="card-text" th:if="${not hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: No'}"></p>
-	    					<a th:href="@{/hotelUsuario/hotelReserva/{id}(id=${hotel.id})}" target="_blank" class="btn btn-primary">Reservar</a>
-	  					</div>
+	        		<div th:each="hotel : ${hoteles}" class="col-4 mt-3 mb-3"> 
+		        		<div class="card" style="width: 18rem;">
+		  					<img th:src="@{ ${hotel.imgPath} }" class="card-img-top" alt="...">
+		  					<div class="card-body" >
+		    					<h5 class="card-title" th:text="${hotel.nombre}">Card title</h5>
+		    					<p class="card-text" th:text="${hotel.tipoAlojamiento.tipo}"></p>
+		    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel.cantEstrellas}"></p>
+		    					<p class="card-text" th:text="${'PRECIO POR NOCHE DESDE: $' + hotel.precio}"></p>
+		    					<p>SERVICIOS: | <span class="card-text" th:each="s : ${servicios}" th:text=" ${s.tipo}+' | '"></span></p>
+		    					<p class="card-text" th:if="${hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: Si'}"></p>
+		    					<p class="card-text" th:if="${not hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: No'}"></p>
+		    					<div class="dropdown-divider"></div>
+		    					<p class="card-text"><small class="text-muted">Maximo 4 personas por habitacion.</small></p>
+		    					<a th:href="@{/hotelUsuario/hotelReserva/{id}(id=${hotel.id})}" target="_blank" class="btn btn-primary">Reservar</a>
+		  					</div>
+						</div>
 					</div>
-				</div>
-        	</div>           
-        </div>
+	        	</div>           
+	        </div>
     </body>
 </html>
 

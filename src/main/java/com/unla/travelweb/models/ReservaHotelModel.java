@@ -1,5 +1,6 @@
 package com.unla.travelweb.models;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +32,15 @@ public class ReservaHotelModel {
     
     private String imgPath;
     
+    private Date fechaInicio;
+    
+    private Date fechaFin;
+    
     public ReservaHotelModel () {}
 
 	public ReservaHotelModel (long id, String nombre, int cantEstrellas, TipoAlojamientoModel tipoAlojamiento,
 			 TipoHabitacionModel tipoHabitacion, TipoRegimenModel tipoRegimen,
-			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
+			boolean accesibilidad, int cantPersonas, double precio, String imgPath, Date fechaInicio, Date fechaFin) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -47,11 +52,13 @@ public class ReservaHotelModel {
 		this.cantPersonas = cantPersonas;
 		this.precio = precio;
 		this.imgPath = imgPath;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
 	}
 	
 	public ReservaHotelModel (String nombre, int cantEstrellas, TipoAlojamientoModel tipoAlojamiento, 
 			TipoHabitacionModel tipoHabitacion, TipoRegimenModel tipoRegimen,
-			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
+			boolean accesibilidad, int cantPersonas, double precio, String imgPath, Date fechaInicio2, Date fechaFin2) {
 		super();
 		this.nombre = nombre;
 		this.cantEstrellas = cantEstrellas;
@@ -62,6 +69,8 @@ public class ReservaHotelModel {
 		this.cantPersonas = cantPersonas;
 		this.precio = precio;
 		this.imgPath = imgPath;
+		this.fechaInicio = fechaInicio2;
+		this.fechaFin = fechaFin2;
 	}
 
 	public long getId() {
@@ -150,6 +159,22 @@ public class ReservaHotelModel {
 
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
+	}
+
+	public Date getFechaInicio() {
+		return fechaInicio;
+	}
+
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
 	}
 	
 	

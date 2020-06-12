@@ -33,22 +33,13 @@
         <div class="container">
         	<div class="row">
         		<div class="col-12 text-center mt-5 mb-3">
-        			<h2>Vuelos disponibles</h2>
+        			<h2>Nuestras propuestas</h2>
         		</div>
         		<div th:each="vuelo : ${vuelos}" class="col-4 mt-3 mb-3">
 	        		<div class="card" style="width: 18rem;">
 	  					<div class="card-body">
-	    					<h5 class="card-title" th:text="${vuelo.id}">Card title</h5>
-	    					
-                        	<p class="card-text" th:text="${vuelo.fechaIda}"></p>
-	    					<p class="card-text" th:if="${vuelo.fechaVuelta}" th:text="${vuelo.fechaVuelta}"></p>
-	    					<p class="card-text" th:text="${vuelo.aerolinea.nombre}"></p>
-	    					<p class="card-text" th:text="${vuelo.escalaIncluida}"></p>
-	    					<p class="card-text" th:text="${vuelo.origen.nombre} +' - '+ ${vuelo.origen.pais}"></p>
-	    					<p class="card-text" th:text="${vuelo.destino.nombre} +' - '+ ${vuelo.destino.pais}"></p>
-	    					<p class="card-text" th:if="${vuelo.escalaIncluida}" th:text="${'ESCALA INCLUIDA: Si'}"></p>
-	    					<p class="card-text" th:if="${not vuelo.escalaIncluida}" th:text="${'ESCALA INCLUIDA: No'}"></p>
-	  					
+	    					<h5 class="card-title" th:text="'Vuelos hacia ' + ${vuelo.destino.pais}">Card title</h5>
+	    					<p class="card-text" th:text="'Sale desde ' + ${vuelo.origen.nombre}"></p>
 	    					<a th:href="@{/vueloUsuario/vueloReserva/{id}(id=${vuelo.id})}" target="_blank" class="btn btn-primary">Reservar</a>
 	  					</div>
 					</div>

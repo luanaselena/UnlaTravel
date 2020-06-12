@@ -1,5 +1,6 @@
 package com.unla.travelweb.entities;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,10 +58,16 @@ public class ReservaHotel{
     @Column(name = "imgPath", nullable=true)
     private String imgPath;
     
+    @Column(name = "fecha_inicio", nullable=true)
+    private Date fechaInicio;
+    
+    @Column(name = "fecha_fin", nullable=true)
+    private Date fechaFin;
+    
     public ReservaHotel() {}
 
 	public ReservaHotel(long id, String nombre, int cantEstrellas, TipoAlojamiento tipoAlojamiento, TipoHabitacion tipoHabitacion, TipoRegimen tipoRegimen,
-			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
+			boolean accesibilidad, int cantPersonas, double precio, String imgPath, Date fechaInicio, Date fechaFin) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -72,10 +79,12 @@ public class ReservaHotel{
 		this.cantPersonas = cantPersonas;
 		this.precio = precio;
 		this.imgPath = imgPath;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
 	}
 	
 	public ReservaHotel(String nombre, int cantEstrellas, TipoAlojamiento tipoAlojamiento, TipoHabitacion tipoHabitacion, TipoRegimen tipoRegimen,
-			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
+			boolean accesibilidad, int cantPersonas, double precio, String imgPath, Date fechaInicio, Date fechaFin) {
 		super();
 		this.nombre = nombre;
 		this.cantEstrellas = cantEstrellas;
@@ -86,6 +95,8 @@ public class ReservaHotel{
 		this.cantPersonas = cantPersonas;
 		this.precio = precio;
 		this.imgPath = imgPath;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
 	}
 
 	public long getId() {
@@ -175,7 +186,21 @@ public class ReservaHotel{
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
-    
-    
+
+	public Date getFechaInicio() {
+		return fechaInicio;
+	}
+
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
+	}
 	
 }

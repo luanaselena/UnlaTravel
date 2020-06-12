@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.unla.travelweb.converters.ClaseConverter;
+import com.unla.travelweb.converters.DestinoConverter;
 import com.unla.travelweb.entities.Aerolinea;
 import com.unla.travelweb.entities.CalificacionAerolinea;
+import com.unla.travelweb.entities.Vuelo;
 import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.models.AerolineaModel;
 import com.unla.travelweb.models.ClaseModel;
@@ -51,11 +54,20 @@ public class VueloController {
 	@Qualifier("calificacionAerolineaService")
 	private ICalificacionAerolineaService calificacionAerolineaService;
 	
+	@Autowired
+	@Qualifier ("claseConverter")
+	private ClaseConverter claseConverter;
 	
+	@Autowired
+	@Qualifier("destinoConverter")
+	private DestinoConverter destinoConverter;
 	
 	@GetMapping("")
     public ModelAndView index() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.VUELO_INDEX);
+        for(Vuelo v : vueloService.getAll()) {
+        	v.setPrecio((int)vueloService.calcularPrecio(4, destinoConverter.entityToModel(v.getOrigen()), destinoConverter.entityToModel(v.getDestino()), claseConverter.entityToModel(v.getClase()), v.getCantPersonas()));;
+        }
         mAV.addObject("vuelos", vueloService.getAll());
         return mAV;
     }

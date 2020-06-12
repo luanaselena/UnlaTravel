@@ -36,13 +36,15 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Precio por noche</th>
+                        <th>Total</th>
                         <th>Cantidad de estrellas</th>
                         <th>Tipo de alojamiento</th>
 						<th>Tipo de regimen</th>
                         <th>Tipo de habitacion</th>                       
                         <th>Cantidad de personas</th>
                         <th>Accesibilidad para discapacitados</th>
+                        <th>Desde</th>
+                        <th>Hasta</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,7 +59,9 @@
                         <td><span th:switch="${hotel.accesibilidad}">
                         	<p th:case="true">Si</p>
     						<p th:case="false">No</p>
-                        </span></td>                        
+                        </span></td>
+                        <td><span th:text="${hotel.fechaInicio}"></span></td>
+                        <td><span th:text="${hotel.fechaFin}"></span></td>                   
                     </tr>
                 </tbody>
                 </table>   
@@ -114,10 +118,9 @@
 						<td><span th:switch="${vuelo.escalaIncluida}">
                         	<p th:case="true">Si</p>
     						<p th:case="false">No</p>
-                        </span></td>      
+                        </span></td> 
 						<td><span th:text="${vuelo.Origen.nombre} +' - '+ ${vuelo.Origen.pais}"></span></td>
 						<td><span th:text="${vuelo.Destino.nombre} +' - '+ ${vuelo.Destino.pais}"></span></td>
-                        <td><a th:href="@{/vuelo/{id}(id=${vuelo.id})}">Ver</a>
                         </td>
                     </tr>
                 </tbody>
