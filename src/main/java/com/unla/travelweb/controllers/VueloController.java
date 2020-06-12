@@ -99,16 +99,13 @@ public class VueloController {
 
     @PostMapping("/create")
     public RedirectView create(@ModelAttribute("vuelo") VueloModel vueloModel) {
-    	System.out.println("pene");
     	vueloModel.setOrigen(destinoService.findById(vueloModel.getOrigen().getId()));
     	vueloModel.setDestino(destinoService.findById(vueloModel.getDestino().getId()));
     	vueloModel.setAerolinea(aerolineaService.findById(vueloModel.getAerolinea().getId()));
     	vueloModel.setClase(claseService.findById(vueloModel.getClase().getId()));
     	vueloModel.setPrecio(Math.round(vueloService.calcularPrecio(4, vueloModel.getOrigen(), vueloModel.getDestino(), vueloModel.getClase(),vueloModel.getCantPersonas())));
-    	System.out.println(vueloModel);
     	vueloService.insert(vueloModel);
 
-    	System.out.println("pen2sse");
         return new RedirectView(ViewRouteHelper.VUELO_ROOT);
     }
 
