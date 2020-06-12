@@ -75,6 +75,20 @@ public class ReservaVuelo {
 		this.precio = precio;
 		this.cantPersonas = cantPersonas;
 	}
+	
+	public ReservaVuelo(long id, Date fechaIda, Aerolinea aerolinea, Clase clase,
+			boolean escalaIncluida, Destino origen, Destino destino, double precio, int cantPersonas) {
+		super();
+		this.id = id;
+		this.fechaIda = fechaIda;
+		this.aerolinea = aerolinea;
+		this.clase = clase;
+		this.escalaIncluida = escalaIncluida;
+		this.origen = origen;
+		this.destino = destino;
+		this.precio = precio;
+		this.cantPersonas = cantPersonas;
+	}
 
 	public ReservaVuelo(Date fechaIda, @Nullable Date fechaVuelta, Aerolinea aerolinea, Clase clase, boolean escalaIncluida, Destino origen, Destino destino, double precio, int cantPersonas) {
 		super();
@@ -88,6 +102,7 @@ public class ReservaVuelo {
 		this.precio = precio;
 		this.cantPersonas = cantPersonas;
 	}
+	
 
 	public long getId() {
 		return id;
