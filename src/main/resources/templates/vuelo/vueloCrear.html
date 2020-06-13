@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -11,7 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="/css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top" style="background-image: url('https://free4kwallpapers.com/uploads/originals/2018/12/29/inverted-blackwhite-mountains.-wallpaper_.jpg');">
     <!-- Navbar-->
@@ -32,37 +32,34 @@
         </nav>
 
         <div class="divPrincipal">
-            <table border="1px">
-                <thead>
-                    <tr>
-                        <th>Fecha de Ida</th>
-                        <th>Fecha de Vuelta</th>
-                        <th>Cantidad de personas</th>
-						<th>Precio</th>
-                        <th>Aerolinea</th>
-                        <th>Clase</th>
-                        <th>Escala incluida</th>
-                        <th>Origen</th>
-                        <th>Destino</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="vuelo : ${vuelos}">
-                        <td><span th:text="${vuelo.fechaIda}"></span></td>
-                        <td><span th:if="${vuelo.fechaVuelta}" th:text="${vuelo.fechaVuelta}"></span></td>
-                        <td><span th:text="${vuelo.cantPersonas}"></span></td>
-                        <td><p>$<span th:text="${vuelo.precio}"></span></p></td>
-                        <td><span th:text="${vuelo.Aerolinea.nombre}"></span></td>
-                        <td><span th:text="${vuelo.clase.nombre}"></span></td>
-						<td><span th:text="${vuelo.escalaIncluida}"></span></td>
-						<td><span th:text="${vuelo.Origen.nombre} +' - '+ ${vuelo.Origen.pais}"></span></td>
-						<td><span th:text="${vuelo.Destino.nombre} +' - '+ ${vuelo.Destino.pais}"></span></td>
-                        <td><a th:href="@{/vuelo/{id}(id=${vuelo.id})}">Ver</a>
-                        </td>
-                    </tr>
-                </tbody>
-                </table>
-                <br> <a class="btn btn-primary" style="background-color: #EE7D00;margin-left:30%;" href="/vuelo/create">Crear</a>
+            <form action="#" th:action="@{/vueloUsuario/vueloCrearOk}"
+                  th:object="${vuelo}" method="post">
+                <p>Fecha de Ida: <input type="date" th:field="*{fechaIda}" /></p>
+                <p>Fecha de Vuelta: <input type="date" th:field="*{fechaVuelta}" /></p>
+                <p>Cantidad de personas: <input type="number" min="1" th:field="*{cantPersonas}" /></p>
+                <p>Aerolinea: 
+	                <select placeholder="Aerolinea" th:field="*{aerolinea.id}"> 
+						<option th:each="a : ${aerolineas}" th:value="${a.id}" th:text="${a.nombre}+' - Valoracion: '+ ${a.valoracion}"> </option>
+					</select>
+				</p>
+                <p>Clase: 
+                	<select placeholder="Clase" th:field="*{clase.id}"> 
+						<option th:each="c : ${clases}" th:value="${c.id}" th:text="${c.nombre}"> </option>
+					</select>
+				</p>
+                <p>Escala incluida: <input type="checkbox" th:field="*{escalaIncluida}" /></p>
+                <p>Origen:
+				<select placeholder="Destino" th:field="*{origen.id}"> 
+					<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.nombre}"> </option>
+				</select>
+				</p>
+				<p>Destino:
+					<select placeholder="Destino" th:field="*{destino.id}"> 
+						<option th:each="d2 : ${destinos}" th:value="${d2.id}" th:text="${d2.nombre}"> </option>
+					</select>
+				</p>
+                <input class="btn btn-primary" style="background-color: #EE7D00;" type="submit" value="Crear" />
+            </form>
         </div>
     </body>
 </html>

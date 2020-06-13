@@ -21,16 +21,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.travelweb.converters.AerolineaConverter;
 import com.unla.travelweb.converters.ClaseConverter;
 import com.unla.travelweb.converters.DestinoConverter;
 import com.unla.travelweb.converters.ReservaVueloConverter;
+import com.unla.travelweb.entities.Aerolinea;
 import com.unla.travelweb.entities.User;
 import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.models.AerolineaModel;
 import com.unla.travelweb.models.ClaseModel;
 import com.unla.travelweb.models.DestinoModel;
+import com.unla.travelweb.models.Functions;
 import com.unla.travelweb.models.ReservaVueloModel;
 import com.unla.travelweb.models.UsuarioModel;
 import com.unla.travelweb.models.VueloModel;
@@ -169,12 +172,68 @@ public class VueloUsuarioController {
 		return new ModelAndView("redirect:/vueloUsuario");
 	}
 
-	 @InitBinder     
-	    public void initBinder(WebDataBinder binder){
-	         binder.registerCustomEditor(Date.class,     
-	                             new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));   
-	    }
-	
+    @GetMapping("/vueloCrear")
+    public ModelAndView create() {
+    	
+        ModelAndView mAV = new ModelAndView(ViewRouteHelper.VUELO_VUELOCREAR);
+        mAV.addObject("vuelo", new VueloModel());
+        mAV.addObject("destinos", destinoService.getAll());
+        for(Aerolinea a : aerolineaService.getAll()) {
+        	a.setValoracion(Functions.valoracionesXaerolinea(a, calificacionAerolineaService.getAll()));;
+        }
+        mAV.addObject("aerolineas", aerolineaService.getAll());
+        mAV.addObject("clases", claseService.getAll());
 
+        return mAV;
+    }
+
+    @PostMapping("/vueloCrearOk")
+    public ModelAndView createVuelo(@ModelAttribute("vuelo") VueloModel vueloModel,@AuthenticationPrincipal UserDetails currentUser, Model model) {
+    	ClaseModel c = claseService.findById(vueloModel.getClase().getId());
+		AerolineaModel a = aerolineaService.findById(vueloModel.getAerolinea().getId());
+		DestinoModel de = destinoService.findById(vueloModel.getDestino().getId());
+		DestinoModel or = destinoService.findById(vueloModel.getOrigen().getId());
+		
+		User user = (User) userRepository.findByUsernameAndFetchUserRolesEagerly(currentUser.getUsername());
+
+		double precio = Math.round((vueloService.calcularPrecio(4, or, de, c, vueloModel.getCantPersonas())));
+		if(vueloModel.getFechaVuelta()==null) {
+			precio/=2;
+		}
+		
+		ReservaVueloModel rv = new ReservaVueloModel(vueloModel.getFechaIda(), vueloModel.getFechaVuelta(), a, c,
+				vueloModel.isEscalaIncluida(),or, de, precio,vueloModel.getCantPersonas());
+
+		user.getCarrito().getVuelos().add(reservaVueloConverter.modelToEntity(rv));
+        
+		
+        reservaVueloService.insert(rv);
+        
+        if(rv.getCantPersonas()>=1) {
+            ModelAndView mAV2= new ModelAndView(ViewRouteHelper.VUELO_FORMULARIO);
+
+            ReservaVueloModel r = reservaVueloService.findById(reservaVueloService.getAll().get(reservaVueloService.getAll().size() - 1).getId());
+
+            for(int i = 1 ; i <= rv.getCantPersonas(); i++) {
+            	r.getListaU().add(new UsuarioModel());
+            }
+
+            System.out.println(r.getListaU().size());
+            
+            mAV2.addObject("v", r);
+            model.addAttribute("v", r);
+            
+            return mAV2;
+        }
+        else return new ModelAndView("redirect:/vueloUsuario");
+    }
+	
+	
+	
+	@InitBinder     
+    public void initBinder(WebDataBinder binder){
+         binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));   
+    }
+	
 
 }

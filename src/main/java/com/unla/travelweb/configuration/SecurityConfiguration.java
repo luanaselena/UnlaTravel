@@ -35,7 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/destino/*","/aerolinea/*","/actividad/*","/hotel/*","/usuario/*","/vuelo/*","/paquete/*",
 							"/destino","/actividad","/hotel","/usuario","/vuelo","/paquete")
 							.hasRole("ADMIN")
-				.antMatchers("/actividadUsuario/actividadReserva/*","/hotelUsuario/hotelReserva/*","/vueloUsuario/vueloReserva/*","/vueloUsuario/formulariosOk",
+				.antMatchers("/actividadUsuario/actividadReserva/*","/hotelUsuario/hotelReserva/*","/vueloUsuario/vueloReserva/*","/vueloUsuario/vueloCrear",
 							"/calificar/*","/carrito","/carrito/*").authenticated()
 			.and()
 				.formLogin().loginPage("/login").loginProcessingUrl("/loginprocess")
