@@ -14,7 +14,7 @@
 
 -paqueteUsuario (todo)
 
--vueloUsuario: que se pueda crear uno desde 0 en vueloCrear (osea, vista aparte de vueloReserva) y poder pasar la fecha de vuelta en null de cualquier paso
+-vueloUsuario: que se pueda crear uno desde 0 en vueloCrear (osea, vista aparte de vueloReserva) y que se guarden los usuarios dentro del vuelo
 
 -filtro de busqueda
 
