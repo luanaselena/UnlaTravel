@@ -30,30 +30,30 @@
                 </div>
             </div>
         </nav>
-
-        <div class="divPrincipal">
-            <form action="#" th:action="@{/usuario/create}"
-                  th:object="${usuario}" method="post">
-                <p>
-                    Nombre: <input type="text" th:field="*{nombre}" />
-                </p>
-                <p>
-                    Apellido: <input type="text" th:field="*{apellido}" />
-                </p>
-                <p>
-                    Telefono: <input type="text" th:field="*{telefono}" />
-                </p>
-                <p>
-                    Domicilio: <input type="text" th:field="*{domicilio}" />
-                </p>
-                <p>
-                    Mail: <input type="text" th:field="*{mail}" />
-                </p>
-                <p>
-                    Nacionalidad: <input type="text" th:field="*{nacionalidad}" />
-                </p>
-                <input class="btn btn-primary" style="background-color: #f16108;" type="submit" value="Crear" />
-            </form>
+		<div class="col-12 text-center" style="margin-top: 160px;color: white;">
+        			<h2>Ingrese los datos de los pasajeros</h2>
+    	</div>
+        <div class="divPrincipal" style="width: 50%;">
+        	<th:block th:each="usuario,itStat : ${v.listaU}">
+	            <form action="form">
+	                <p>Nombre:<input type="text" th:checked="${usuario.nombre}"/></p>
+   					<td th:field="*{usuario.nombre}" ></td>
+	                <p>Apellido:<input type="text" th:checked="${usuario.apellido}"/></p>
+   					<td th:field="*{usuario.apellido}" ></td>
+	                <p>Telefono:<input type="text" th:checked="${usuario.telefono}"/></p>
+   					<td th:field="*{usuario.telefono}" ></td>
+	                <p>Domicilio:<input type="text" th:checked="${usuario.domicilio}"/></p>
+   					<td th:field="*{usuario.domicilio}" ></td>
+	                <p>Mail:<input type="text" th:checked="${usuario.mail}"/></p>
+   					<td th:field="*{usuario.mail}" ></td>
+	                <p>Nacionalidad:<input type="text" th:checked="${usuario.nacionalidad}"/></p>
+   					<td th:field="*{usuario.nacionalidad}" ></td>
+	            </form>
+            </th:block>
+            <input type="hidden" th:field="*{v.id}"/>
+              <form action="formulariosOk" method="post">
+                <input class="btn btn-danger" type="submit" value="Enviar datos" />
+           	</form>
         </div>
     </body>
 </html>

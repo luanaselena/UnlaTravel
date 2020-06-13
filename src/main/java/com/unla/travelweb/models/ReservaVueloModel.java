@@ -1,8 +1,11 @@
 package com.unla.travelweb.models;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.sun.istack.Nullable;
+import com.unla.travelweb.entities.Usuario;
 
 
 
@@ -18,7 +21,8 @@ public class ReservaVueloModel {
 	private boolean escalaIncluida;
 	private double precio;
 	private int cantPersonas;
-	
+    private List<UsuarioModel> listaU = new ArrayList<UsuarioModel>();    
+
 	public ReservaVueloModel() {}
 
 	public ReservaVueloModel(long id, Date fechaIda, @Nullable Date fechaVuelta, AerolineaModel aerolinea, ClaseModel clase,
@@ -129,7 +133,14 @@ public class ReservaVueloModel {
 	public void setCantPersonas(int cantPersonas) {
 		this.cantPersonas = cantPersonas;
 	}
-	
+
+	public List<UsuarioModel> getListaU() {
+		return listaU;
+	}
+
+	public void setListaU(List<UsuarioModel> listaU) {
+		this.listaU = listaU;
+	}
 	
 	
 }

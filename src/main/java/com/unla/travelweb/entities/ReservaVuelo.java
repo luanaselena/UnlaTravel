@@ -1,6 +1,8 @@
 package com.unla.travelweb.entities;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -59,6 +63,9 @@ public class ReservaVuelo {
     
     @Column(name="cantPersonas")
     private int cantPersonas;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "reservaVuelo")
+    private List<Usuario> listaU = new ArrayList<Usuario>();    
     
     public ReservaVuelo(){}    
 	public ReservaVuelo(long id, Date fechaIda, @Nullable Date fechaVuelta, Aerolinea aerolinea, Clase clase,
@@ -155,6 +162,12 @@ public class ReservaVuelo {
 	}
 	public void setCantPersonas(int cantPersonas) {
 		this.cantPersonas = cantPersonas;
+	}
+	public List<Usuario> getListaU() {
+		return listaU;
+	}
+	public void setListaU(List<Usuario> listaU) {
+		this.listaU = listaU;
 	}
 	
 	

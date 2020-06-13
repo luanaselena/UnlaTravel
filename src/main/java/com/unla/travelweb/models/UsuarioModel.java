@@ -13,13 +13,12 @@ public class UsuarioModel {
     private String domicilio;
     private String mail;
     private String nacionalidad;
-    //private Date fechaDeNacimiento;
     private long dni;
-    private Carrito carrito;
+    private ReservaVueloModel reservaVuelo;
 
     public UsuarioModel(){}
 
-    public UsuarioModel(long id, String nombre, String apellido, String telefono, String domicilio, String mail, String nacionalidad, long dni, Carrito carrito) {
+    public UsuarioModel(long id, String nombre, String apellido, String telefono, String domicilio, String mail, String nacionalidad, long dni) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -27,9 +26,7 @@ public class UsuarioModel {
         this.domicilio = domicilio;
         this.mail = mail;
         this.nacionalidad = nacionalidad;
-        //this.fechaDeNacimiento = fechaDeNacimiento;
         this.dni = dni;
-        this.carrito = carrito;
     }
 
     public long getId() {
@@ -88,13 +85,6 @@ public class UsuarioModel {
         this.nacionalidad = nacionalidad;
     }
 
-    /*public Date getFechaDeNacimiento() {
-        return fechaDeNacimiento;
-    }
-
-    public void setFechaDeNacimiento(Date fechaDeNacimiento) {
-        this.fechaDeNacimiento = fechaDeNacimiento;
-    }*/
 
     public long getDni() {
         return dni;
@@ -103,12 +93,13 @@ public class UsuarioModel {
     public void setDni(long dni) {
         this.dni = dni;
     }
-    
-    public Carrito getCarrito() {
-        return carrito;
-    }
 
-    public void setCarrito(Carrito carrito) {
-        this.carrito = carrito;
-    }
+	public ReservaVueloModel getReservaVuelo() {
+		return reservaVuelo;
+	}
+
+	public void setReservaVuelo(ReservaVueloModel reservaVuelo) {
+		this.reservaVuelo = reservaVuelo;
+	}
+
 }
