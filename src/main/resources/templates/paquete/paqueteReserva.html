@@ -52,7 +52,7 @@
 				<div class="col-8">
 					<form action="#" th:action="@{/paqueteUsuario/create}"
 		                  th:object="${paquete}" method="post">
-	                  	<input type="hidden" th:field="${paquete.hotel.id}" id="id" name="id" />
+	                  	<input type="hidden" th:field="${paquete.id}" id="id" name="id" />
 		                <p>Cantidad de Personas: <input type="text" th:field="*{hotel.cantPersonas}" /></p>
 		                <p>Tipo de Habitaciones: 
 			                <select placeholder="TipoHabitacion" th:field="*{hotel.tipoHabitacion.id}"> 
@@ -72,6 +72,19 @@
 						<p><input type="hidden"  th:field="*{hotel.precio}"></p>
 						<p><input type="hidden"  th:field="*{hotel.accesibilidad}"></p>
 						<p><input type="hidden"  th:field="*{hotel.imgPath}"></p>
+						<p><input type="hidden"  th:field="*{hotel.id}"></p>
+						<p><input type="hidden"  th:field="*{vuelo.id}"></p>
+						<p><input type="hidden"  th:field="*{vuelo.fechaIda}"></p>
+						<p><input type="hidden"  th:field="*{vuelo.fechaVuelta}"></p>
+						
+						<p><input type="hidden"  th:field="*{vuelo.aerolinea.id}"></p>
+						<p><input type="hidden"  th:field="*{vuelo.clase.id}"></p>
+						<p><input type="hidden"  th:field="*{vuelo.origen.id}"></p>
+						<p><input type="hidden"  th:field="*{vuelo.destino.id}"></p>
+						<p><input type="hidden"  th:field="*{vuelo.escalaIncluida}"></p>
+						<p><input type="hidden"  th:field="*{vuelo.precio}"></p>
+						<p><input type="hidden"  th:field="*{vuelo.cantPersonas}"></p>
+						
 		                <input class="btn btn-primary" style="background-color: #EE7D00;" type="submit" value="Confirmar Reserva" />
 		            </form>
 				</div>
