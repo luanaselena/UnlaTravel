@@ -95,3 +95,12 @@ INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,e
 INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (6,7,7,1,1,1,false,1);
 INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (7,1,7,1,1,1,false,1);
 INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (8,19,8,1,1,1,false,1);
+
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,fecha_ida,fecha_vuelta,aerolinea_id,clase_id,escala_incluida,precio) values (9,25,7,1,"2020-10-14","2020-10-30",1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,fecha_ida,fecha_vuelta,aerolinea_id,clase_id,escala_incluida,precio) values (10,24,8,1,"2020-11-14","2020-11-30",1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,fecha_ida,fecha_vuelta,aerolinea_id,clase_id,escala_incluida,precio) values (11,23,7,1,"2020-12-14","2020-12-30",1,1,false,1);
+
+INSERT INTO paquete(id, hotel_id, vuelo_id) VALUES (1, 1, 9);
+INSERT INTO paquete(id, hotel_id, vuelo_id) VALUES (2, 2, 10);
+INSERT INTO paquete(id, hotel_id, vuelo_id) VALUES (3, 3, 11);
+
