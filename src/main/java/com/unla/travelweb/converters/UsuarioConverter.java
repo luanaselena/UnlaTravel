@@ -10,11 +10,11 @@ import java.util.Date;
 public class UsuarioConverter {
     public UsuarioModel entityToModel(Usuario usuario) {
         return new UsuarioModel(usuario.getId(), usuario.getNombre(), usuario.getApellido(), usuario.getTelefono(), usuario.getDomicilio(), usuario.getNacionalidad(), usuario.getMail(),
-                usuario.getDni(), usuario.getCarrito());
+                usuario.getDni());
     }
 
     public Usuario modelToEntity(UsuarioModel usuarioModel) {
         return new Usuario(usuarioModel.getId(), usuarioModel.getNombre(), usuarioModel.getApellido(), usuarioModel.getTelefono(), usuarioModel.getDomicilio(), usuarioModel.getNacionalidad(), usuarioModel.getMail(),
-                usuarioModel.getDni(), usuarioModel.getCarrito());
+                usuarioModel.getDni());
     }
 }

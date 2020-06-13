@@ -26,19 +26,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
 	}
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		
 		http.authorizeRequests()
 				.antMatchers("/css/*", "/imgs/*", "/js/*", "/vendor/bootstrap/css/*", "/vendor/jquery/*", "/vendor/bootstrap/js/*").permitAll()
 				.antMatchers("/destino/*","/aerolinea/*","/actividad/*","/hotel/*","/usuario/*","/vuelo/*","/paquete/*",
 							"/destino","/actividad","/hotel","/usuario","/vuelo","/paquete")
 							.hasRole("ADMIN")
-				.antMatchers("/actividadUsuario/actividadReserva/*","/hotelUsuario/hotelReserva/*","/vueloUsuario/vueloReserva/*","/calificar/*","/carrito","/carrito/*").authenticated()
+				.antMatchers("/actividadUsuario/actividadReserva/*","/hotelUsuario/hotelReserva/*","/vueloUsuario/vueloReserva/*","/vueloUsuario/formulariosOk",
+							"/calificar/*","/carrito","/carrito/*").authenticated()
 			.and()
 				.formLogin().loginPage("/login").loginProcessingUrl("/loginprocess")
 				.usernameParameter("username").passwordParameter("password")
 				.defaultSuccessUrl("/loginsuccess").permitAll()
 			.and()
-				.logout().logoutUrl("/logout").logoutSuccessUrl("/logout").permitAll();
+				.logout().logoutUrl("/logout").logoutSuccessUrl("/logout").permitAll()
+			.and().csrf().disable();
 	}
 }
