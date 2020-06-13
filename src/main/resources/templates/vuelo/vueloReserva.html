@@ -42,8 +42,7 @@
 	    					<p class="card-text" th:text="'Sale desde ' + ${vuelo.origen.nombre}"></p>
 	  					</div>
 					</div>
-				</div>
-				
+				</div>		
 				<div class="col-8">
 					<form action="#" th:action="@{/vueloUsuario/create}"
 		                  th:object="${vuelo}" method="post">
