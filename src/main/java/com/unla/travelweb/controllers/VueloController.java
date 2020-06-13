@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+
+import java.sql.Date;
+
+import org.springframework.web.bind.WebDataBinder;
+
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+
+import java.text.SimpleDateFormat;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.unla.travelweb.converters.ClaseConverter;
 import com.unla.travelweb.converters.DestinoConverter;
@@ -94,6 +105,7 @@ public class VueloController {
     	vueloModel.setClase(claseService.findById(vueloModel.getClase().getId()));
     	vueloModel.setPrecio(Math.round(vueloService.calcularPrecio(4, vueloModel.getOrigen(), vueloModel.getDestino(), vueloModel.getClase(),vueloModel.getCantPersonas())));
     	vueloService.insert(vueloModel);
+
         return new RedirectView(ViewRouteHelper.VUELO_ROOT);
     }
 
@@ -122,8 +134,12 @@ public class VueloController {
     public RedirectView delete(@PathVariable("id") long id) {
     	vueloService.remove(id);
         return new RedirectView(ViewRouteHelper.VUELO_ROOT);
-    }
+    } 
     
-   
+    @InitBinder     
+    public void initBinder(WebDataBinder binder){
+         binder.registerCustomEditor(Date.class,     
+                             new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));   
+    }
     
 }

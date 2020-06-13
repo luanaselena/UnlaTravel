@@ -32,14 +32,14 @@ public class Usuario {
     @Column(name="dni")
     private long dni;
     
-    @OneToOne(cascade = CascadeType.MERGE)
-    private Carrito carrito = new Carrito();
-
-
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="reserva_vuelo_id", nullable=false)
+    private ReservaVuelo reservaVuelo;
+    
     public Usuario(){}
 
     public Usuario(long id, String nombre, String apellido, String telefono, String domicilio, String nacionalidad, String mail,
-                    long dni, Carrito carrito) {
+                    long dni) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -47,22 +47,18 @@ public class Usuario {
         this.domicilio = domicilio;
         this.nacionalidad = nacionalidad;
         this.mail = mail;
-        //this.fechaDeNacimiento = fechaDeNacimiento;
         this.dni = dni;
-        this.carrito = carrito;
     }
 
     public Usuario(String nombre, String apellido, String telefono, String domicilio, String nacionalidad, String mail,
-                   long dni, Carrito carrito) {
+                   long dni) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
         this.domicilio = domicilio;
         this.nacionalidad = nacionalidad;
         this.mail = mail;
-        //this.fechaDeNacimiento = fechaDeNacimiento;
         this.dni = dni;
-        this.carrito = carrito;
     }
 
     public long getId() {
@@ -137,11 +133,4 @@ public class Usuario {
         this.dni = dni;
     }
     
-    public Carrito getCarrito() {
-        return carrito;
-    }
-
-    public void setCarrito(Carrito carrito) {
-        this.carrito = carrito;
-    }
 }
