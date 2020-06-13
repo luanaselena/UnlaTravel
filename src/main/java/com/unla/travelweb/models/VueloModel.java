@@ -2,6 +2,8 @@ package com.unla.travelweb.models;
 
 import java.sql.Date;
 
+
+import org.springframework.format.annotation.DateTimeFormat;
 import com.sun.istack.Nullable;
 
 
@@ -13,7 +15,6 @@ public class VueloModel {
 	private Date fechaVuelta;
 	private DestinoModel origen;
 	private DestinoModel destino;
-	@Nullable
 	private AerolineaModel aerolinea;
 	@Nullable
 	private ClaseModel clase;
@@ -43,6 +44,20 @@ public class VueloModel {
 		super();
 		this.fechaIda = fechaIda;
 		this.fechaVuelta = fechaVuelta;
+		this.aerolinea = aerolinea;
+		this.clase = clase;
+		this.escalaIncluida = escalaIncluida;
+		this.origen = origen;
+		this.destino = destino;
+		this.precio = precio;
+		this.cantPersonas = cantPersonas;
+	}
+	
+	public VueloModel(long id, Date fechaIda, AerolineaModel aerolinea, ClaseModel clase, boolean escalaIncluida, DestinoModel origen, DestinoModel destino, double precio,
+			int cantPersonas) {
+		super();
+		this.id = id;
+		this.fechaIda = fechaIda;
 		this.aerolinea = aerolinea;
 		this.clase = clase;
 		this.escalaIncluida = escalaIncluida;
@@ -130,6 +145,13 @@ public class VueloModel {
 
 	public void setCantPersonas(int cantPersonas) {
 		this.cantPersonas = cantPersonas;
+	}
+
+	@Override
+	public String toString() {
+		return "VueloModel [id=" + id + ", fechaIda=" + fechaIda + ", fechaVuelta=" + fechaVuelta + ", origen=" + origen
+				+ ", destino=" + destino + ", aerolinea=" + aerolinea + ", clase=" + clase + ", escalaIncluida="
+				+ escalaIncluida + ", precio=" + precio + ", cantPersonas=" + cantPersonas + "]";
 	}
 	
 	

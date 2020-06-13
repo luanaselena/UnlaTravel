@@ -1,34 +1,36 @@
 package com.unla.travelweb.controllers;
 
+
 import java.util.ArrayList;
 import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.unla.travelweb.converters.AerolineaConverter;
 import com.unla.travelweb.converters.ClaseConverter;
 import com.unla.travelweb.converters.DestinoConverter;
 import com.unla.travelweb.converters.ReservaVueloConverter;
-import com.unla.travelweb.entities.ReservaVuelo;
 import com.unla.travelweb.entities.User;
-import com.unla.travelweb.entities.Usuario;
 import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.models.AerolineaModel;
 import com.unla.travelweb.models.ClaseModel;
 import com.unla.travelweb.models.DestinoModel;
-import com.unla.travelweb.models.ListaUsuarios;
 import com.unla.travelweb.models.ReservaVueloModel;
 import com.unla.travelweb.models.UsuarioModel;
 import com.unla.travelweb.models.VueloModel;
@@ -153,6 +155,7 @@ public class VueloUsuarioController {
         else return new ModelAndView("redirect:/vueloUsuario");
     }
 	
+
 	@PostMapping("/formulariosOk")
 	public ModelAndView formularios() {
 		
@@ -165,4 +168,13 @@ public class VueloUsuarioController {
 		
 		return new ModelAndView("redirect:/vueloUsuario");
 	}
+
+	 @InitBinder     
+	    public void initBinder(WebDataBinder binder){
+	         binder.registerCustomEditor(Date.class,     
+	                             new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));   
+	    }
+	
+
+
 }
