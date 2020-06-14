@@ -22,11 +22,11 @@ public class Paquete {
 	private long id;
 	
 	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE/*,CascadeType.PERSIST*/}, optional=true)
-	@JoinColumn(name = "vueloId", referencedColumnName = "id")
+	@JoinColumn(name = "vuelo_id", referencedColumnName = "id")
 	private Vuelo vuelo;
 	
 	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE/*,CascadeType.PERSIST*/}, optional=true)
-	@JoinColumn(name = "hotelId", referencedColumnName = "id")
+	@JoinColumn(name = "hotel_id", referencedColumnName = "id")
 	private Hotel hotel;
 	
 	public Paquete() {

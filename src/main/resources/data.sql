@@ -31,6 +31,9 @@ INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (22,"Aeropuerto El 
 INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (23,"Aeropuerto Internacional de Oruro","Bolivia",-17.95,-67.07);
 INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (24,"Aeropuerto Internacional de Cancún","Mexico",21.04,-86.87);
 INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (25,"Aeropuerto Internacional de Carrasco","Uruguay",-34.83,-56.01);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (26,"Aeropuerto Internacional de Katmandú","Nepal",27.69,85.35);
+INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (27,"Aeropuerto Internacional de São Paulo-Guarulhos","Brasil",-23.43,-46.47);
+
 
 INSERT INTO aerolinea (id,nombre,valoracion) VALUES (1,"LATAM",7);
 INSERT INTO aerolinea (id,nombre,valoracion) VALUES (2,"KLM",8);
@@ -73,33 +76,47 @@ INSERT INTO tipo_servicio (id,tipo) values (1,"Wifi");
 INSERT INTO tipo_servicio (id,tipo) values (2,"Limpieza");
 INSERT INTO tipo_servicio (id,tipo) values (3,"Atencion al cliente");
 
-INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (1,"Hotel 1",true,5,1,1,1,1,2000,"/assets/img/hoteles/1.jpg","España");
-INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (2,"Hotel 2",false,5,2,1,1,1,2500,"/assets/img/hoteles/2.jpg","Estados unidos");
-INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (3,"Hotel 3",false,5,3,1,1,1,1000,"/assets/img/hoteles/3.jpg","Colombia");
-INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (4,"Hotel 4",true,5,4,1,1,1,1500,"/assets/img/hoteles/4.jpg","Brasil");
-INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (5,"Hotel 5",true,5,1,1,1,1,3000,"/assets/img/hoteles/5.jpg","Turquia");
-INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (6,"Albergue transitorio",false,1,2,1,1,1,50,"/assets/img/hoteles/6.jpg","Argentina");
+#Montaña
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (1,"Hotel Mystic Mountain",true,4,9,1,1,1,8000,"/assets/img/hoteles/nepal-hotel.jpg","Nepal");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (2,"Hotel Imperiale",true,4,5,1,1,1,15000,"/assets/img/hoteles/roma-hotel.jpg","Italia");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (3,"Centromar Hotel",true,3,2,1,1,1,7500,"/assets/img/hoteles/brasil-hotel.jpg","Brasil");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (4,"The Ritz-Carlton",true,5,4,1,1,1,36000,"/assets/img/hoteles/tokyo-hotel.jpg","Japon");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (5,"Concorde Hotel",false,3,2,1,1,1,2500,"/assets/img/hoteles/2.jpg","Estados unidos");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (6,"Hotel Real Santa Marta",false,5,3,1,1,1,1000,"/assets/img/hoteles/colombia-hotel.jpg","Colombia");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (7,"Hotel San Lucas",true,4,4,1,1,1,1500,"/assets/img/hoteles/3.jpg","Mexico");
+INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (8,"Ayasultan Hotel",true,4,1,1,1,1,3000,"/assets/img/hoteles/1.jpg","Turquia");
 
-INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (1,"Esquiar",false,1500,"/assets/img/actividades/1.jpg",9,1);
-INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (2,"Acampar",false,1000,"/assets/img/actividades/2.jpg",8,2);
-INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (3,"Escalar",false,2000,"/assets/img/actividades/3.jpg",9,3);
-INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (4,"Paracaidismo",false,3500,"/assets/img/actividades/4.jpg",10,4);
-INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (5,"Pasear",false,500,"/assets/img/actividades/1.jpg",10,5);
+INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (1,"Parapente",false,1500,"/assets/img/actividades/nepal-1.jpg",9,26);
+INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (2,"Puentismo (bungee jumping)",false,1500,"/assets/img/actividades/nepal-2.jpg",8,26);
+INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (3,"Visita guiada al coliseo de roma",false,1500,"/assets/img/actividades/roma-1.jpg",8,6);
+INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (4,"Visita a la Bocca della Veritá",false,1500,"/assets/img/actividades/roma-2.jpg",10,6);
+INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (5,"Visita guiada al Cristo Redentor",false,2000,"/assets/img/actividades/brasil-2.jpg",8,27);
+INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (6,"Visita al Pinacoteca do Estado",false,500,"/assets/img/actividades/brasil-1.jpg",10,27);
+INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (7,"Visita guiada al Tokyo-Skytree",false,2000,"/assets/img/actividades/tokyo-1.jpg",10,10);
+INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (8,"Visita al Pinacoteca do Estado",false,500,"/assets/img/actividades/tokyo-2.jpg",10,10);
+INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (9,"Esquiar",false,1500,"/assets/img/actividades/1.jpg",9,9);
+INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (10,"Acampar",true,1000,"/assets/img/actividades/2.jpg",8,5);
+INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (11,"Escalar",false,2000,"/assets/img/actividades/3.jpg",9,1);
+INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (12,"Paracaidismo",false,3500,"/assets/img/actividades/4.jpg",10,14);
 
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (1,26,7,1,1,1,true,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (2,6,8,1,1,1,true,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (3,27,8,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (4,10,7,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (5,25,7,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (6,24,8,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (7,23,7,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (8,2,8,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (9,4,7,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (10,6,7,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (11,1,7,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (12,19,8,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (13,25,7,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (14,24,8,1,1,1,false,1);
+INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (15,23,7,1,1,1,false,1);
 
-INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (1,25,7,1,1,1,false,1);
-INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (2,24,8,1,1,1,false,1);
-INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (3,23,7,1,1,1,false,1);
-INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (4,2,8,1,1,1,false,1);
-INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (5,4,7,1,1,1,false,1);
-INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (6,6,7,1,1,1,false,1);
-INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (7,1,7,1,1,1,false,1);
-INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (8,19,8,1,1,1,false,1);
-INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (9,25,7,1,1,1,false,1);
-INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (10,24,8,1,1,1,false,1);
-INSERT INTO vuelo (id,destino_id,origen_id,cant_personas,aerolinea_id,clase_id,escala_incluida,precio) values (11,23,7,1,1,1,false,1);
-
-INSERT INTO paquete(id, hotel_id, vuelo_id) VALUES (1, 1, 9);
-INSERT INTO paquete(id, hotel_id, vuelo_id) VALUES (2, 2, 10);
-INSERT INTO paquete(id, hotel_id, vuelo_id) VALUES (3, 3, 11);
+INSERT INTO paquete(id,hotel_id,vuelo_id) VALUES (1,1,1);
+INSERT INTO paquete(id,hotel_id,vuelo_id) VALUES (2,2,2);
+INSERT INTO paquete(id,hotel_id,vuelo_id) VALUES (3,3,3);
+INSERT INTO paquete(id,hotel_id,vuelo_id) VALUES (4,4,4);
 
