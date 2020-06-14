@@ -118,3 +118,13 @@ INSERT INTO paquete(id,hotel_id,vuelo_id) VALUES (2,2,2);
 INSERT INTO paquete(id,hotel_id,vuelo_id) VALUES (3,3,3);
 INSERT INTO paquete(id,hotel_id,vuelo_id) VALUES (4,4,4);
 
+INSERT INTO actividadxpaquete(id_actividad, id_paquete) VALUES (1,1);
+INSERT INTO actividadxpaquete(id_actividad, id_paquete) VALUES (2,1);
+INSERT INTO actividadxpaquete(id_actividad, id_paquete) VALUES (3,2);
+INSERT INTO actividadxpaquete(id_actividad, id_paquete) VALUES (4,2);
+INSERT INTO actividadxpaquete(id_actividad, id_paquete) VALUES (5,3);
+INSERT INTO actividadxpaquete(id_actividad, id_paquete) VALUES (6,3);
+INSERT INTO actividadxpaquete(id_actividad, id_paquete) VALUES (7,4);
+INSERT INTO actividadxpaquete(id_actividad, id_paquete) VALUES (8,4);
+
+

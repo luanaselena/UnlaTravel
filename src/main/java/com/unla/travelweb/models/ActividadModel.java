@@ -1,6 +1,11 @@
 package com.unla.travelweb.models;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import com.unla.travelweb.entities.Hotel;
+import com.unla.travelweb.entities.Paquete;
 
 public class ActividadModel {
 	
@@ -19,6 +24,9 @@ public class ActividadModel {
     private double precio;
     
     private String imgPath;
+    
+    private Set<Paquete> listaHoteles = new HashSet<Paquete>();
+
     
     public ActividadModel() {}
     
@@ -107,6 +115,14 @@ public class ActividadModel {
 
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
+	}
+
+	public Set<Paquete> getListaHoteles() {
+		return listaHoteles;
+	}
+
+	public void setListaHoteles(Set<Paquete> listaHoteles) {
+		this.listaHoteles = listaHoteles;
 	}
 	
 	
