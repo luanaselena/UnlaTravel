@@ -1,6 +1,8 @@
 package com.unla.travelweb.entities;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -35,6 +37,16 @@ public class Actividad {
 	
 	@Column(name= "img_path", nullable = true )
 	private String imgPath;
+	
+	@ManyToMany(cascade = { CascadeType.ALL})
+	@JoinTable(
+			
+			name = "actividadxpaquete",
+			joinColumns = { @JoinColumn(name = "id_actividad")},
+			inverseJoinColumns = { @JoinColumn(name = "id_paquete")}
+			
+	)
+    private Set<Paquete> listaPaquetes = new HashSet<Paquete>();
 	
     public Actividad() {}
     
@@ -124,7 +136,13 @@ public class Actividad {
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
-	
-	
+
+	public Set<Paquete> getListaPaquetes() {
+		return listaPaquetes;
+	}
+
+	public void setListaPaquetes(Set<Paquete> listaPaquetes) {
+		this.listaPaquetes = listaPaquetes;
+	}
 	
 }
