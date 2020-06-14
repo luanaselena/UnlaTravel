@@ -41,6 +41,7 @@
 	  					<div class="card-body">
 	    					<h5 class="card-title" th:text="${hotel.nombre}">Card title</h5>
 	    					<p class="card-text" th:text="${hotel.tipoAlojamiento.tipo}"></p>
+	    					<p class="card-text" th:text="${hotel.pais}"></p>
 	    					<p class="card-text" th:text="${hotel.cantEstrellas}+' ESTRELLAS'"></p>
 	    					<p class="card-text" th:text="${'PRECIO POR NOCHE DESDE: $' + hotel.precio}"></p>
 	    					<p>SERVICIOS: | <span class="card-text" th:each="s : ${servicios}" th:text=" ${s.tipo}+' | '"></span></p>

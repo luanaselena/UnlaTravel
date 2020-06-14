@@ -12,6 +12,8 @@ public class HotelModel {
     
     private String nombre;
 
+    private String pais;
+    
 	private int cantEstrellas;
 	
 	private TipoAlojamientoModel tipoAlojamiento;
@@ -40,7 +42,7 @@ public class HotelModel {
 
 	public HotelModel(long id, String nombre, int cantEstrellas, TipoAlojamientoModel tipoAlojamiento,
 			 TipoHabitacionModel tipoHabitacion, TipoRegimenModel tipoRegimen,
-			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
+			boolean accesibilidad, int cantPersonas, double precio, String imgPath, String pais) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -52,11 +54,12 @@ public class HotelModel {
 		this.cantPersonas = cantPersonas;
 		this.precio = precio;
 		this.imgPath = imgPath;
+		this.pais = pais;
 	}
 	
 	public HotelModel(String nombre, int cantEstrellas, TipoAlojamientoModel tipoAlojamiento, 
 			TipoHabitacionModel tipoHabitacion, TipoRegimenModel tipoRegimen,
-			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
+			boolean accesibilidad, int cantPersonas, double precio, String imgPath, String pais) {
 		super();
 		this.nombre = nombre;
 		this.cantEstrellas = cantEstrellas;
@@ -67,6 +70,16 @@ public class HotelModel {
 		this.cantPersonas = cantPersonas;
 		this.precio = precio;
 		this.imgPath = imgPath;
+		this.pais = pais;
+	}
+
+
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
 	}
 
 	public long getId() {

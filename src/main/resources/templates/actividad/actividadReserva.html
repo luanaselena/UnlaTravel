@@ -40,7 +40,7 @@
 	  					<div class="card-body">
 	    					<h5 class="card-title" th:text="${actividad.nombre}">Card title</h5>
 	    					<p class="card-text" th:text="${actividad.destino.pais}"></p>
-	    					<p class="card-text" th:text="${actividad.valoracion}"></p>
+	    					<p class="card-text" th:text="${'VALORACION: '+actividad.valoracion}"></p>
 	    					<p class="card-text" th:text="${'PRECIO: $' + actividad.precio}"></p>
 	    					<p class="card-text" th:if="${actividad.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: Si'}"></p>
 	    					<p class="card-text" th:if="${not actividad.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: No'}"></p>

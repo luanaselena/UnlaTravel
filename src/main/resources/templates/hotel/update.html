@@ -34,6 +34,7 @@
             <form action="#" th:action="@{/hotel/update}" th:object="${hotel}" method="post">
                 <p>Nombre: <input type="text" th:field="*{nombre}" /></p>
                 <p>Precio: <input type="text" th:field="*{precio}" /></p>
+                <p>Pais: <input type="text" th:field="*{pais}" /></p> 
                 <p>Cantidad Estrellas: <input type="number" th:field="*{cantEstrellas}" min="1" max="5"/></p>
                 <p>Tipo de Alojamiento: 
 	                <select placeholder="TipoAlojamiento" th:field="*{tipoAlojamiento.id}"> 

@@ -35,6 +35,7 @@
             <form action="#" th:action="@{/hotel/create}"
                   th:object="${hotel}" method="post">
                 <p>Nombre: <input type="text" th:field="*{nombre}" /></p>
+                <p>Pais: <input type="text" th:field="*{pais}" /></p>  
                 <p>Precio por noche: <input type="text" th:field="*{precio}" /></p>
                 <p>Cantidad Estrellas: <input type="number" th:field="*{cantEstrellas}" min="1" max="5"/></p>
                 <p>Tipo de Alojamiento: 

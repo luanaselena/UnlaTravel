@@ -40,6 +40,7 @@
 	  					<div class="card-body" >
 	    					<h5 class="card-title" th:text="${act.nombre}"></h5>
 	    					<p class="card-text" th:text="${act.destino.pais}"></p>
+	    					<p class="card-text" th:text="${'VALORACION : '+act.valoracion}"></p>
 	    					<p class="card-text" th:text="${'PRECIO: $' + act.precio}"></p>
 	    					<a th:href="@{/actividadUsuario/actividadReserva/{id}(id=${act.id})}" target="_blank" class="btn btn-primary">Reservar</a>
 	  					</div>
