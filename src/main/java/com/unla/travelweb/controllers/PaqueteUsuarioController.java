@@ -227,11 +227,6 @@ public class PaqueteUsuarioController {
 		
 		rh.setTipoServicio(pasarServicios(tipoServicioService.getAll()));
 		
-		
-		
-		
-		
-		
         List<Actividad> lista = new ArrayList<Actividad>();
         
         for(Actividad a : actividadService.getAll()) {
@@ -252,14 +247,7 @@ public class PaqueteUsuarioController {
 
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		user.getCarrito().getHoteles().add(reservaHotelConverter.modelToEntity(rh));
 		user.getCarrito().getVuelos().add(reservaVueloConverter.modelToEntity(rv));
         
@@ -295,7 +283,7 @@ public class PaqueteUsuarioController {
 		
 		Calendar c = Calendar.getInstance();				//Create Calendar objects
 		c.set(year, month, 0);								//Setting Date
-
+		//18-2+1
 		int day = (int)(Math.random()*(endday-startday+1))+startday;	//Random year
 		Date fecha=Date.valueOf(year+"-"+month+"-"+day);	//Generating Date Object by valueOf Method
 		

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -11,7 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="/css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top" style="background-image: url('https://free4kwallpapers.com/uploads/originals/2018/12/29/inverted-blackwhite-mountains.-wallpaper_.jpg');">
     <!-- Navbar-->
@@ -32,28 +32,16 @@
         </nav>
 
         <div class="divPrincipal">
-            <table border="1px">
-                <thead>
-                    <tr>
-                        <th>Hotel</th>
-                        <th>Datos del vuelo</th>
-                        <th>Actividades incluidas</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="paquete : ${paquetes}">
-                    	<td><span th:text="${paquete.hotel.nombre}"></span></td>
-                    	<td><span th:text="${paquete.vuelo.Origen.nombre}+' - '+${paquete.vuelo.Destino.nombre}"></span></td>
-                    	<td><span class="card-text" th:each="a : ${paquete.actividades}" th:text=" ${a.nombre}+' | '"></span></td>
-                        <td><a th:href="@{/paquete/{id}(id=${paquete.id})}">Ver</a>
-                        <td><a th:href="@{/paquete/addActividad/{id}(id=${paquete.id})}">Agregar actividad</a>
-                        </td>
-                    </tr>
-                </tbody>
-                </table>
-                <br> <a class="btn btn-primary" style="background-color: #f16108;margin-left:30%;" href="/paquete/new">Crear Paquete</a>
+            <form action="#" th:action="@{/paquete/addAct}" method="post">
+
+                <p>
+                    Elija una actividad: 
+                    <select th:field="*{actividad.id}">
+                    	<option th:each="a : ${paquete.actividades}" th:value="${a.id}" th:text="${a.nombre}" />
+                    </select>
+                </p>
+                <input class="btn btn-primary" style="background-color: #f16108;" type="submit" value="Agregar actividad" />
+            </form>
         </div>
     </body>
 </html>
