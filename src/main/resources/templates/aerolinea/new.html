@@ -32,24 +32,13 @@
         </nav>
 
         <div class="divPrincipal">
-            <table border="1px">
-                <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Valoracion</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="aerolinea : ${aerolineas}">
-                    <td><span th:text="${aerolinea.nombre}"></span></td>
-                    <td><span th:text="${aerolinea.valoracion}"></span></td>
-                    <td><a th:href="@{/aerolinea/{id}(id=${aerolinea.id})}">Ver</a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <br> <a class="btn btn-primary" style="background-color: #f16108;margin-left:30%;" href="/aerolinea/new">Crear nueva Aerolinea</a>
+            <form action="#" th:action="@{/aerolinea/create}"
+                  th:object="${aerolinea}" method="post">
+ 				<p>Nombre de la aerolinea: <input type="text" th:field="*{nombre}" /></p>
+             	<p>Valoracion predeterminada del 1 al 100: <input type="number" th:field="*{valoracion}" /></p>
+                <input type="hidden" th:field="*{id}" />				
+                <input class="btn btn-primary" style="background-color: #EE7D00" type="submit" value="Crear" />       
+            </form>
         </div>
     </body>
 </html>

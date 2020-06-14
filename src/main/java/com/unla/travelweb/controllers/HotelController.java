@@ -83,6 +83,7 @@ public class HotelController {
 	@PostMapping("/create")
     public RedirectView create(@ModelAttribute("hotel") HotelModel hotelModel) {
 		hotelModel.setTipoServicio(pasarServicios(tipoServicioService.getAll()));
+		hotelModel.setImgPath("/assets/img/hoteles/"+hotelModel.getImgPath());
         hotelService.insert(hotelModel);
         return new RedirectView(ViewRouteHelper.HOTEL_ROOT);
     }

@@ -41,14 +41,13 @@
 		        		<div class="card" style="width: 18rem;">
 		  					<img th:src="@{ ${paquete.hotel.imgPath} }" class="card-img-top" alt="...">
 		  					<div class="card-body" >
-		    					<h5 class="card-title" th:text="${'HOTEL: ' + paquete.hotel.nombre}">Card title</h5>
+		    					<h5 class="card-title" th:text="${'DESTINO: ' + paquete.vuelo.destino.pais}">Card title</h5>
+		    					<p class="card-text" th:text="'Sale desde: ' + ${paquete.vuelo.origen.nombre}"></p>						
+		    					<div class="dropdown-divider"></div>
+		    					<h5 class="card-title" th:text="${paquete.hotel.nombre}">Card title</h5>
 		    					<p class="card-text" th:text="${paquete.hotel.tipoAlojamiento.tipo}"></p>
 		    					<p class="card-text" th:text="${'ESTRELLAS: ' + paquete.hotel.cantEstrellas}"></p>
 		    					<div class="dropdown-divider"></div>
-		    					<p class="card-text"><small class="text-muted">Maximo 4 personas por habitacion.</small></p>
-		    					<h5 class="card-title" th:text="${'DESTINO: ' + paquete.vuelo.destino.pais}">Card title</h5>
-		    					<p class="card-text" th:text="${'Fecha Ida: ' + paquete.vuelo.fechaIda}"></p>
-		    					<p class="card-text" th:text="${'Fecha Vuelta: ' + paquete.vuelo.fechaVuelta}"></p>
 		    					<a th:href="@{/paqueteUsuario/paqueteReserva/{id}(id=${paquete.id})}" target="_blank" class="btn btn-primary">Reservar</a>		    					
 		  					</div>
 						</div>

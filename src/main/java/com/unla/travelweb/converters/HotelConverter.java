@@ -25,7 +25,7 @@ public class HotelConverter
 		return new HotelModel (hotel.getId(), hotel.getNombre(), 
 				hotel.getCantEstrellas(), tipoAlojamientoConverter.entityToModel(hotel.getTipoAlojamiento()),
 				tipoHabitacionConverter.entityToModel(hotel.getTipoHabitacion()),  tipoRegimenConverter.entityToModel(hotel.getTipoRegimen()), 
-				hotel.isAccesibilidad(), hotel.getCantPersonas(), hotel.getPrecio(), hotel.getImgPath());
+				hotel.isAccesibilidad(), hotel.getCantPersonas(), hotel.getPrecio(), hotel.getImgPath(), hotel.getPais());
 
 	}
 	
@@ -33,6 +33,6 @@ public class HotelConverter
 		return new Hotel (hotelModel.getId(), hotelModel.getNombre(), 
 				hotelModel.getCantEstrellas(), tipoAlojamientoConverter.modelToEntity(hotelModel.getTipoAlojamiento()), 
 				tipoHabitacionConverter.modelToEntity(hotelModel.getTipoHabitacion()), tipoRegimenConverter.modelToEntity(hotelModel.getTipoRegimen()), 
-				hotelModel.isAccesibilidad(), hotelModel.getCantPersonas(), hotelModel.getPrecio(), hotelModel.getImgPath());
+				hotelModel.isAccesibilidad(), hotelModel.getCantPersonas(), hotelModel.getPrecio(), hotelModel.getImgPath(), hotelModel.getPais());
 	}
 }

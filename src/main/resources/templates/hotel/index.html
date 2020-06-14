@@ -39,6 +39,7 @@
                         <th>Precio por noche</th>
                         <th>Cantidad de estrellas</th>
                         <th>Tipo de alojamiento</th>
+                        <th>Pais</th>
                         <th>Accesibilidad para discapacitados</th>
                     </tr>
                 </thead>
@@ -48,31 +49,12 @@
                         <td><p>$<span th:text="${hotel.precio}"></span></p></td>
                         <td><span th:text="${hotel.cantEstrellas}"></span></td>
                         <td><span th:text="${hotel.tipoAlojamiento.tipo}"></span></td>
+                        <td><span th:text="${hotel.pais}"></span></td>
                         <td><span th:text="${hotel.accesibilidad}"></span></td>
                     </tr>
                 </tbody>
                 </table>                
                 <br> <a class="btn btn-primary" style="background-color: #EE7D00;margin-left:30%;" href="/hotel/new">Dar de alta un nuevo hotel</a>
         </div>
-        <div class="container">                
-                <div class="row">
-	                <div th:each="hotel : ${hoteles}" class="col-6 mt-4">
-		                <div class="card mx-auto" style="width: 18rem;">
-						  <img th:src="@{${hotel.imgPath} }" class="card-img-top" alt="...">
-						  <div class="card-body">
-						    <span th:text="${hotel.nombre}"></span><br/>
-						    <span th:text="${hotel.cantEstrellas}"></span><br/>
-						    <span th:text="${hotel.tipoAlojamiento.tipo}"></span><br/>
-						    <p>$<span th:text="${hotel.precio}"></span></p>
-						    <p>SERVICIOS: | <span th:each="s : ${servicios}" th:text=" ${s.tipo}+' | '"></span></p>
-						    <span th:if="${hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: Si'}"></span>
-						    <span th:if="${not hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: No'}"></span><br/>
-						    <br/>
-						    <a class="btn btn-primary" style="background-color: #EE7D00" th:href="@{/hotel/{id}(id=${hotel.id})}">Modificar Hotel</a>
-						  </div>
-						</div>
-	                </div>
-                </div>
-         </div>
     </body>
 </html>

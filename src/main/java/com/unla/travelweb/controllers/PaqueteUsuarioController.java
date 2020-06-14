@@ -32,6 +32,9 @@ import com.unla.travelweb.entities.Paquete;
 import com.unla.travelweb.entities.TipoServicio;
 import com.unla.travelweb.entities.User;
 import com.unla.travelweb.helpers.ViewRouteHelper;
+import com.unla.travelweb.models.AerolineaModel;
+import com.unla.travelweb.models.ClaseModel;
+import com.unla.travelweb.models.DestinoModel;
 import com.unla.travelweb.models.HotelModel;
 import com.unla.travelweb.models.PaqueteModel;
 import com.unla.travelweb.models.ReservaHotelModel;
@@ -41,6 +44,8 @@ import com.unla.travelweb.models.TipoRegimenModel;
 import com.unla.travelweb.models.TipoServicioModel;
 import com.unla.travelweb.models.VueloModel;
 import com.unla.travelweb.repositories.IUserRepository;
+import com.unla.travelweb.services.IClaseService;
+import com.unla.travelweb.services.IDestinoService;
 import com.unla.travelweb.services.IHotelService;
 import com.unla.travelweb.services.IPaqueteService;
 import com.unla.travelweb.services.IReservaHotelService;
@@ -49,6 +54,7 @@ import com.unla.travelweb.services.ITipoAlojamientoService;
 import com.unla.travelweb.services.ITipoHabitacionService;
 import com.unla.travelweb.services.ITipoRegimenService;
 import com.unla.travelweb.services.ITipoServicioService;
+import com.unla.travelweb.services.IVueloService;
 
 @Controller
 @RequestMapping("/paqueteUsuario")
@@ -110,6 +116,17 @@ public class PaqueteUsuarioController {
 	@Qualifier("paqueteConverter")
 	private PaqueteConverter paqueteConverter;
 	
+	@Autowired
+	@Qualifier ("destinoService")
+	private IDestinoService destinoService;
+	
+	@Autowired
+	@Qualifier ("vueloService")
+	private IVueloService vueloService;
+	
+	@Autowired
+	@Qualifier ("claseService")
+	private IClaseService claseService;
 	
 	@GetMapping ("")
 	public ModelAndView index() {
@@ -157,7 +174,18 @@ public class PaqueteUsuarioController {
 		ReservaHotelModel rh = new ReservaHotelModel(hotelModel.getNombre(), hotelModel.getCantEstrellas(), hotelModel.getTipoAlojamiento(),
 				t,r, hotelModel.isAccesibilidad(), hotelModel.getCantPersonas(),precioTotal, hotelModel.getImgPath(), hotelModel.getFechaInicio(), hotelModel.getFechaFin());
 		
-		ReservaVueloModel rv = new ReservaVueloModel(vueloModel.getFechaIda(), vueloModel.getFechaVuelta(), vueloModel.getAerolinea(), vueloModel.getClase(), vueloModel.isEscalaIncluida(), vueloModel.getOrigen(), vueloModel.getDestino(), vueloModel.getPrecio(), vueloModel.getCantPersonas());
+		DestinoModel de = destinoService.findById(vueloModel.getDestino().getId());
+		
+		DestinoModel or = destinoService.findById(vueloModel.getOrigen().getId());
+
+		ClaseModel c = claseService.findById(vueloModel.getClase().getId());
+		
+		double precio = Math.round((vueloService.calcularPrecio(4, or, de, c, vueloModel.getCantPersonas())));
+		if(vueloModel.getFechaVuelta()==null) {
+			precio/=2;
+		}
+		
+		ReservaVueloModel rv = new ReservaVueloModel(rh.getFechaInicio(),rh.getFechaFin(),vueloModel.getAerolinea(), vueloModel.getClase(), vueloModel.isEscalaIncluida(), vueloModel.getOrigen(), vueloModel.getDestino(), precio, rh.getCantPersonas());
 		
 		rh.setTipoServicio(pasarServicios(tipoServicioService.getAll()));
 		

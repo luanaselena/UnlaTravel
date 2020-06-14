@@ -41,6 +41,7 @@
 					<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.pais}"> </option>
 				</select>
 				</p>
+				<p>Elija la imagen para la actividad: <input type="file" name="imgPath" accept=".jpg,.png" multiple /></p>
                 
                 <input class="btn btn-primary" style="background-color: #f16108" type="submit" value="Crear" />
             </form>

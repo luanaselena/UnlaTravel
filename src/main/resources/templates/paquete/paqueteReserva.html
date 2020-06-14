@@ -37,23 +37,33 @@
         		</div>
         		<div class="col-4 mt-3 mb-3">
 	        		<div class="card" style="width: 18rem;">
-	  					<img th:src="@{${paquete.hotel.imgPath} }" class="card-img-top">
-	  					<div class="card-body">
-	    					<h5 class="card-title" th:text="${paquete.hotel.nombre}">Card title</h5>
-	    					<p class="card-text" th:text="${paquete.hotel.tipoAlojamiento.tipo}"></p>
-	    					<p class="card-text" th:text="${paquete.hotel.cantEstrellas}+' ESTRELLAS'"></p>
-	    					<p class="card-text" th:text="${'PRECIO POR NOCHE DESDE: $' + paquete.hotel.precio}"></p>
-	    					<p>SERVICIOS: | <span class="card-text" th:each="s : ${servicios}" th:text=" ${s.tipo}+' | '"></span></p>
-	    					<p class="card-text" th:if="${paquete.hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: Si'}"></p>
-	    					<p class="card-text" th:if="${not paquete.hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: No'}"></p>
-	  					</div>
-					</div>
+		  					<img th:src="@{ ${paquete.hotel.imgPath} }" class="card-img-top" alt="...">
+		  					<div class="card-body" >
+		  					
+		    					<h5 class="card-title" th:text="${'DESTINO: ' + paquete.vuelo.destino.pais}">Card title</h5>
+		    					<p class="card-text" th:text="'Sale desde: ' + ${paquete.vuelo.origen.nombre}"></p>	
+		    					<div class="dropdown-divider"></div>
+
+		    					<h5 class="card-title" th:text="${paquete.hotel.nombre}">Card title</h5>
+		    					<p class="card-text" th:text="${paquete.hotel.tipoAlojamiento.tipo}"></p>
+		    					<p class="card-text" th:text="${'ESTRELLAS: ' + paquete.hotel.cantEstrellas}"></p>
+		    					<div class="dropdown-divider"></div>
+		    					<p class="card-text"><small class="text-muted" th:text="'AEROLINEA: '+${paquete.vuelo.aerolinea.nombre}"></small></p>
+		    					<p class="card-text"><small class="text-muted">Maximo 4 personas por habitacion.</small></p>
+		    					<p class="card-text"><small class="text-muted">Los paquetes deben ser con ida y vuelta.</small></p>
+		  					</div>
+						</div>
 				</div>
 				<div class="col-8">
 					<form action="#" th:action="@{/paqueteUsuario/create}"
 		                  th:object="${paquete}" method="post">
+						<h4>Complete el siguiente formulario:</h4>
 	                  	<input type="hidden" th:field="${paquete.id}" id="id" name="id" />
+	                  	<p>Desde: <input type="date"  th:field="*{hotel.fechaInicio}"></p>
+						<p>Hasta: <input type="date"  th:field="*{hotel.fechaFin}"></p>
 		                <p>Cantidad de Personas: <input type="text" th:field="*{hotel.cantPersonas}" /></p>
+		                <br></br>
+		                <h4>Datos del hotel:</h4>
 		                <p>Tipo de Habitaciones: 
 			                <select placeholder="TipoHabitacion" th:field="*{hotel.tipoHabitacion.id}"> 
 								<option th:each="h : ${habitaciones}" th:value="${h.id}" th:text="${h.tipo}+' ('+${h.porcentajeAumento*100}+'% más)'"> </option>
@@ -64,8 +74,6 @@
 								<option th:each="r : ${regimenes}" th:value="${r.id}" th:text="${r.tipo}+' ('+${r.porcentajeAumento*100}+'% más)'"> </option>
 							</select>
 						</p>
-						<p>Desde: <input type="date"  th:field="*{hotel.fechaInicio}"></p>
-						<p>Hasta: <input type="date"  th:field="*{hotel.fechaFin}"></p>
 						<p><input type="hidden"  th:field="*{hotel.tipoAlojamiento.tipo}"></p>
 						<p><input type="hidden"  th:field="*{hotel.nombre}"></p>
 						<p><input type="hidden"  th:field="*{hotel.cantEstrellas}"></p>
@@ -74,8 +82,6 @@
 						<p><input type="hidden"  th:field="*{hotel.imgPath}"></p>
 						<p><input type="hidden"  th:field="*{hotel.id}"></p>
 						<p><input type="hidden"  th:field="*{vuelo.id}"></p>
-						<p><input type="hidden"  th:field="*{vuelo.fechaIda}"></p>
-						<p><input type="hidden"  th:field="*{vuelo.fechaVuelta}"></p>
 						
 						<p><input type="hidden"  th:field="*{vuelo.aerolinea.id}"></p>
 						<p><input type="hidden"  th:field="*{vuelo.clase.id}"></p>

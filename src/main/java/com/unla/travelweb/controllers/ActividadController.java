@@ -62,6 +62,8 @@ public class ActividadController {
 	
 	@PostMapping("/create")
     public RedirectView create(@ModelAttribute("actividad") ActividadModel actividadModel) {
+		
+		actividadModel.setImgPath("/assets/img/actividades/"+actividadModel.getImgPath());
         actividadService.insert(actividadModel);
         return new RedirectView(ViewRouteHelper.ACTIVIDAD_ROOT);
     }

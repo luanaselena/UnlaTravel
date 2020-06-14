@@ -34,11 +34,11 @@ public class ClaseService implements IClaseService{
 		return claseConverter.entityToModel(claseRepository.findById(idClase));
 	}
 
-	/*@Override
+	@Override
 	public ClaseModel insert(ClaseModel claseModel) {
 		Clase clase= claseRepository.save(claseConverter.modelToEntity(claseModel));
         return claseConverter.entityToModel(clase);
-	}*/
+	}
 
 	@Override
 	public ClaseModel update(ClaseModel claseModel) {

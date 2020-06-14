@@ -24,10 +24,13 @@ public class Hotel implements Serializable{
 	@Column(name="nombre", nullable=true, length=30)
 	private String nombre;
 
+	@Column(name="pais", nullable=true, length=30)
+	private String pais;
+	
 	@Column (name= "cantEstrellas", nullable=true)
 	private int cantEstrellas;
 	
-	@OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST}, optional=true)
+	@OneToOne(cascade = {CascadeType.MERGE/*,CascadeType.PERSIST*/}, optional=true)
     @JoinColumn(name="tipo_alojamiento_id_tipo_alojamiento", referencedColumnName = "id", nullable=true)
     private TipoAlojamiento tipoAlojamiento;
 	
@@ -65,7 +68,7 @@ public class Hotel implements Serializable{
     public Hotel() {}
 
 	public Hotel(long id, String nombre, int cantEstrellas, TipoAlojamiento tipoAlojamiento, TipoHabitacion tipoHabitacion, TipoRegimen tipoRegimen,
-			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
+			boolean accesibilidad, int cantPersonas, double precio, String imgPath, String pais) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -77,10 +80,11 @@ public class Hotel implements Serializable{
 		this.cantPersonas = cantPersonas;
 		this.precio = precio;
 		this.imgPath = imgPath;
+		this.pais = pais;
 	}
 	
 	public Hotel(String nombre, int cantEstrellas, TipoAlojamiento tipoAlojamiento, TipoHabitacion tipoHabitacion, TipoRegimen tipoRegimen,
-			boolean accesibilidad, int cantPersonas, double precio, String imgPath) {
+			boolean accesibilidad, int cantPersonas, double precio, String imgPath, String pais) {
 		super();
 		this.nombre = nombre;
 		this.cantEstrellas = cantEstrellas;
@@ -91,6 +95,17 @@ public class Hotel implements Serializable{
 		this.cantPersonas = cantPersonas;
 		this.precio = precio;
 		this.imgPath = imgPath;
+		this.pais = pais;
+	}
+
+	
+	
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
 	}
 
 	public long getId() {

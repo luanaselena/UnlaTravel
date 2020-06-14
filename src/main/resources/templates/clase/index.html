@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -10,7 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-        <link href="/css/styles.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top" style="background-image: url('https://free4kwallpapers.com/uploads/originals/2018/12/29/inverted-blackwhite-mountains.-wallpaper_.jpg');">
     <!-- Navbar-->
@@ -31,27 +32,24 @@
         </nav>
 
         <div class="divPrincipal">
-            <form action="#" th:action="@{/hotel/update}" th:object="${hotel}" method="post">
-                <p>Nombre: <input type="text" th:field="*{nombre}" /></p>
-                <p>Precio: <input type="text" th:field="*{precio}" /></p>
-                <p>Pais: <input type="text" th:field="*{pais}" /></p> 
-                <p>Cantidad Estrellas: <input type="number" th:field="*{cantEstrellas}" min="1" max="5"/></p>
-                <p>Tipo de Alojamiento: 
-	                <select placeholder="TipoAlojamiento" th:field="*{tipoAlojamiento.id}"> 
-						<option th:each="ta : ${tipoAlojamientos}" th:value="${ta.id}" th:text="${ta.tipo}"> </option>
-					</select>
-				</p>
-                <p>Accesibilidad para discapacitados: <input type="checkbox" th:field="*{accesibilidad}" /></p>
-                <input type="hidden" th:field="*{cantPersonas}" />
-                <input type="hidden" th:field="*{id}" />
-                <input type="hidden" th:field="*{imgPath}" />
-                <input class="btn btn-success" style="background-color: #EE7D00;" type="submit" value="Editar"/>
-            </form>
-            <br>
-            <br>
-            <form action="#" th:action="@{/hotel/delete/{id}(id=${hotel.id})}" method="post">
-                <input class="btn btn-danger" type="submit" value="Eliminar hotel" />
-            </form>
+            <table border="1px">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Porcentaje aumento</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="clase : ${clases}">
+                        <td><span th:text="${clase.nombre}"></span></td>
+                        <td><span th:text="${clase.porcentajeAumento}"></span></td>
+                        <td><a th:href="@{/clase/{id}(id=${clase.id})}">Ver</a>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+                <br> <a class="btn btn-primary" style="background-color: #f16108;margin-left:30%;" href="/clase/new">Crear nueva clase</a>
         </div>
     </body>
 </html>

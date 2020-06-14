@@ -44,6 +44,11 @@ public class ViewRouteHelper {
     public final static String AEROLINEA_NEW = "aerolinea/new";
     public final static String AEROLINEA_UPDATE = "aerolinea/update";
     public final static String AEROLINEA_ROOT = "/aerolinea";
+    
+    public final static String CLASE_INDEX = "clase/index";
+    public final static String CLASE_NEW = "clase/new";
+    public final static String CLASE_UPDATE = "clase/update";
+    public final static String CLASE_ROOT = "/clase";
 
     public final static String PAQUETE_INDEX = "paquete/index";
     public final static String PAQUETE_NEW = "paquete/new";

@@ -3,6 +3,7 @@ package com.unla.travelweb.entities;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,12 +21,12 @@ public class Paquete {
 	@Column(name="id")
 	private long id;
 	
-	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "vueloId", referencedColumnName = "id")
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE/*,CascadeType.PERSIST*/}, optional=true)
+	@JoinColumn(name = "vuelo_id", referencedColumnName = "id")
 	private Vuelo vuelo;
 	
-	@ManyToOne
-	@JoinColumn(name = "hotelId", referencedColumnName = "id")
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE/*,CascadeType.PERSIST*/}, optional=true)
+	@JoinColumn(name = "hotel_id", referencedColumnName = "id")
 	private Hotel hotel;
 	
 	public Paquete() {

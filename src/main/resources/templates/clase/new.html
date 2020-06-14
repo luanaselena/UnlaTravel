@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -31,26 +32,15 @@
         </nav>
 
         <div class="divPrincipal">
-            <form action="#" th:action="@{/hotel/update}" th:object="${hotel}" method="post">
-                <p>Nombre: <input type="text" th:field="*{nombre}" /></p>
-                <p>Precio: <input type="text" th:field="*{precio}" /></p>
-                <p>Pais: <input type="text" th:field="*{pais}" /></p> 
-                <p>Cantidad Estrellas: <input type="number" th:field="*{cantEstrellas}" min="1" max="5"/></p>
-                <p>Tipo de Alojamiento: 
-	                <select placeholder="TipoAlojamiento" th:field="*{tipoAlojamiento.id}"> 
-						<option th:each="ta : ${tipoAlojamientos}" th:value="${ta.id}" th:text="${ta.tipo}"> </option>
-					</select>
-				</p>
-                <p>Accesibilidad para discapacitados: <input type="checkbox" th:field="*{accesibilidad}" /></p>
-                <input type="hidden" th:field="*{cantPersonas}" />
-                <input type="hidden" th:field="*{id}" />
-                <input type="hidden" th:field="*{imgPath}" />
-                <input class="btn btn-success" style="background-color: #EE7D00;" type="submit" value="Editar"/>
-            </form>
-            <br>
-            <br>
-            <form action="#" th:action="@{/hotel/delete/{id}(id=${hotel.id})}" method="post">
-                <input class="btn btn-danger" type="submit" value="Eliminar hotel" />
+            <form action="#" th:action="@{/clase/create}"
+                  th:object="${clase}" method="post">
+                <p>
+                    Nombre de la clase: <input type="text" th:field="*{nombre}" />
+                </p>
+                <p>
+                    Porcentaje de aumento al precio del vuelo: <input type="text" th:field="*{porcentajeAumento}" />
+                </p>
+                <input class="btn btn-primary" style="background-color: #f16108" type="submit" value="Crear" />
             </form>
         </div>
     </body>
