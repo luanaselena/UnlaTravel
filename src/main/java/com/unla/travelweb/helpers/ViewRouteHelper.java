@@ -56,8 +56,13 @@ public class ViewRouteHelper {
     public final static String PAQUETE_ROOT = "/paquete";
     public final static String PAQUETE_USUARIO = "paquete/paqueteUsuario";
     public final static String PAQUETE_RESERVA = "paquete/paqueteReserva";
+<<<<<<< HEAD
+    public final static String PAQUETE_RESERVAPERSONALIZADA = "paquete/paqueteReservaPersonalizada";
+
+=======
     public final static String PAQUETE_ACT = "paquete/addactividad";
     
+>>>>>>> faaa84aafe23f6dcff1378a68c8f301d4fb839bc
     public final static String CARRITO_INDEX = "carrito/index";
     public final static String CARRITO_NEW = "carrito/new";
     public final static String CARRITO_UPDATE = "carrito/update";

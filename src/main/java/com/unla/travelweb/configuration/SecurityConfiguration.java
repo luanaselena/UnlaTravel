@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 							"/destino","/actividad","/hotel","/usuario","/vuelo","/paquete")
 							.hasRole("ADMIN")
 				.antMatchers("/actividadUsuario/actividadReserva/*","/hotelUsuario/hotelReserva/*","/vueloUsuario/vueloReserva/*","/vueloUsuario/vueloCrear",
-							"/calificar/*","/carrito","/carrito/*","/paqueteUsuario/paqueteReserva/*").authenticated()
+							"/calificar/*","/carrito","/carrito/*","/paqueteUsuario/paqueteReserva/*","/paqueteUsuario/paqueteReservaPersonalizada").authenticated()
 			.and()
 				.formLogin().loginPage("/login").loginProcessingUrl("/loginprocess")
 				.usernameParameter("username").passwordParameter("password")
