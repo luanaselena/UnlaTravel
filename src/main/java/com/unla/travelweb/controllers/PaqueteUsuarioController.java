@@ -20,13 +20,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-<<<<<<< HEAD
 import com.unla.travelweb.converters.AerolineaConverter;
 import com.unla.travelweb.converters.ClaseConverter;
-=======
 import com.unla.travelweb.converters.ActividadConverter;
->>>>>>> faaa84aafe23f6dcff1378a68c8f301d4fb839bc
 import com.unla.travelweb.converters.DestinoConverter;
 import com.unla.travelweb.converters.HotelConverter;
 import com.unla.travelweb.converters.PaqueteConverter;
@@ -57,12 +53,9 @@ import com.unla.travelweb.models.TipoRegimenModel;
 import com.unla.travelweb.models.TipoServicioModel;
 import com.unla.travelweb.models.VueloModel;
 import com.unla.travelweb.repositories.IUserRepository;
-<<<<<<< HEAD
 import com.unla.travelweb.services.IAerolineaService;
 import com.unla.travelweb.services.ICalificacionAerolineaService;
-=======
 import com.unla.travelweb.services.IActividadService;
->>>>>>> faaa84aafe23f6dcff1378a68c8f301d4fb839bc
 import com.unla.travelweb.services.IClaseService;
 import com.unla.travelweb.services.IDestinoService;
 import com.unla.travelweb.services.IHotelService;
@@ -162,10 +155,6 @@ public class PaqueteUsuarioController {
 	@Autowired
 	@Qualifier ("claseService")
 	private IClaseService claseService;
-	
-	@Autowired
-	@Qualifier("destinoConverter")
-	private DestinoConverter destinoConverter;
 	
 	@Autowired
 	@Qualifier("aerolineaConverter")
