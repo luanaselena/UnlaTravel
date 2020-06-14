@@ -91,7 +91,7 @@ INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destin
 INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (5,"Visita guiada al Cristo Redentor",false,2000,"/assets/img/actividades/brasil-2.jpg",8,27);
 INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (6,"Visita al Pinacoteca do Estado",false,500,"/assets/img/actividades/brasil-1.jpg",10,27);
 INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (7,"Visita guiada al Tokyo-Skytree",false,2000,"/assets/img/actividades/tokyo-1.jpg",10,10);
-INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (8,"Visita al Pinacoteca do Estado",false,500,"/assets/img/actividades/tokyo-2.jpg",10,10);
+INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (8,"Visita al templo Meiji",false,500,"/assets/img/actividades/tokyo-2.jpg",10,10);
 INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (9,"Esquiar",false,1500,"/assets/img/actividades/1.jpg",9,9);
 INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (10,"Acampar",true,1000,"/assets/img/actividades/2.jpg",8,5);
 INSERT INTO actividad (id,nombre,accesibilidad,precio,img_path,valoracion,destino_id) VALUES (11,"Escalar",false,2000,"/assets/img/actividades/3.jpg",9,1);
@@ -117,4 +117,14 @@ INSERT INTO paquete(id,hotel_id,vuelo_id) VALUES (1,1,1);
 INSERT INTO paquete(id,hotel_id,vuelo_id) VALUES (2,2,2);
 INSERT INTO paquete(id,hotel_id,vuelo_id) VALUES (3,3,3);
 INSERT INTO paquete(id,hotel_id,vuelo_id) VALUES (4,4,4);
+
+INSERT INTO actividadxpaquete(id_actividad, id_paquete) VALUES (1,1);
+INSERT INTO actividadxpaquete(id_actividad, id_paquete) VALUES (2,1);
+INSERT INTO actividadxpaquete(id_actividad, id_paquete) VALUES (3,2);
+INSERT INTO actividadxpaquete(id_actividad, id_paquete) VALUES (4,2);
+INSERT INTO actividadxpaquete(id_actividad, id_paquete) VALUES (5,3);
+INSERT INTO actividadxpaquete(id_actividad, id_paquete) VALUES (6,3);
+INSERT INTO actividadxpaquete(id_actividad, id_paquete) VALUES (7,4);
+INSERT INTO actividadxpaquete(id_actividad, id_paquete) VALUES (8,4);
+
 
