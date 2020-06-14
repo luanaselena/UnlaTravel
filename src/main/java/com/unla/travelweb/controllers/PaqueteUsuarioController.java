@@ -1,15 +1,12 @@
 package com.unla.travelweb.controllers;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.sql.Date;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -18,15 +15,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-<<<<<<< HEAD
+import com.unla.travelweb.converters.ActividadConverter;
 import com.unla.travelweb.converters.AerolineaConverter;
 import com.unla.travelweb.converters.ClaseConverter;
-=======
-import com.unla.travelweb.converters.ActividadConverter;
->>>>>>> faaa84aafe23f6dcff1378a68c8f301d4fb839bc
 import com.unla.travelweb.converters.DestinoConverter;
 import com.unla.travelweb.converters.HotelConverter;
 import com.unla.travelweb.converters.PaqueteConverter;
@@ -39,12 +32,9 @@ import com.unla.travelweb.converters.TipoRegimenConverter;
 import com.unla.travelweb.converters.TipoServicioConverter;
 import com.unla.travelweb.entities.Actividad;
 import com.unla.travelweb.entities.Paquete;
-import com.unla.travelweb.entities.ReservaActividad;
 import com.unla.travelweb.entities.TipoServicio;
 import com.unla.travelweb.entities.User;
 import com.unla.travelweb.helpers.ViewRouteHelper;
-import com.unla.travelweb.models.ActividadModel;
-import com.unla.travelweb.models.AerolineaModel;
 import com.unla.travelweb.models.ClaseModel;
 import com.unla.travelweb.models.DestinoModel;
 import com.unla.travelweb.models.HotelModel;
@@ -57,12 +47,9 @@ import com.unla.travelweb.models.TipoRegimenModel;
 import com.unla.travelweb.models.TipoServicioModel;
 import com.unla.travelweb.models.VueloModel;
 import com.unla.travelweb.repositories.IUserRepository;
-<<<<<<< HEAD
+import com.unla.travelweb.services.IActividadService;
 import com.unla.travelweb.services.IAerolineaService;
 import com.unla.travelweb.services.ICalificacionAerolineaService;
-=======
-import com.unla.travelweb.services.IActividadService;
->>>>>>> faaa84aafe23f6dcff1378a68c8f301d4fb839bc
 import com.unla.travelweb.services.IClaseService;
 import com.unla.travelweb.services.IDestinoService;
 import com.unla.travelweb.services.IHotelService;
@@ -142,10 +129,7 @@ public class PaqueteUsuarioController {
 	@Autowired
 	@Qualifier ("destinoService")
 	private IDestinoService destinoService;
-	
-	@Autowired
-	@Qualifier ("destinoConverter")
-	private DestinoConverter destinoConverter;	
+
 	
 	@Autowired
 	@Qualifier ("actividadService")
@@ -231,13 +215,14 @@ public class PaqueteUsuarioController {
 
         return mAV;
     }
-	
-	//Aca iria la logica para insertar en el carrito al confirmar la reserva
+
+
 	@PostMapping("/create")
     public ModelAndView create(@ModelAttribute("paquete") PaqueteModel paqueteModel,@AuthenticationPrincipal UserDetails currentUser) {
 		HotelModel hotelModel = paqueteModel.getHotel();
 		VueloModel vueloModel = paqueteModel.getVuelo();
 		System.out.println(paqueteModel.getActividades().size());
+		
 		TipoHabitacionModel t = tipoHabitacionService.findById(hotelModel.getTipoHabitacion().getId());
 		TipoRegimenModel r = tipoRegimenService.findById(hotelModel.getTipoRegimen().getId());
 		

@@ -64,15 +64,10 @@
 								<option th:each="r : ${regimenes}" th:value="${r.id}" th:text="${r.tipo}+' ('+${r.porcentajeAumento*100}+'% más)'"> </option>
 							</select>
 						</p>
-						<p><input type="hidden"  th:field="*{hotel.tipoAlojamiento.tipo}"></p>
-						<p><input type="hidden"  th:field="*{hotel.nombre}"></p>
-						<p><input type="hidden"  th:field="*{hotel.cantEstrellas}"></p>
-						<p><input type="hidden"  th:field="*{hotel.precio}"></p>
-						<p><input type="hidden"  th:field="*{hotel.accesibilidad}"></p>
-						<p><input type="hidden"  th:field="*{hotel.imgPath}"></p>
+
 						<br>
 						<br>
-						<h5>Datos del VUELO:</h5>
+						<h5>Datos del vuelo:</h5>
 						<p>Vuelo Ida: <input type="date"  th:field="*{vuelo.fechaIda}"></p>
 						<p>Vuelo Vuelta: <input type="date"  th:field="*{vuelo.fechaVuelta}"></p>
 						<p>Origen:
@@ -96,6 +91,13 @@
 								<option th:each="c : ${clases}" th:value="${c.id}" th:text="${c.nombre}+' ('+${c.porcentajeAumento*100}+'% más)'"></option>
 							</select>
 						</p>
+						<p><input type="hidden"  th:field="*{hotel.tipoAlojamiento.tipo}"></p>
+						<p><input type="hidden"  th:field="*{hotel.nombre}"></p>
+						<p><input type="hidden"  th:field="*{hotel.cantEstrellas}"></p>
+						<p><input type="hidden"  th:field="*{hotel.precio}"></p>
+						<p><input type="hidden"  th:field="*{hotel.accesibilidad}"></p>
+						<p><input type="hidden"  th:field="*{hotel.imgPath}"></p>
+						<p><input type="hidden"  th:field="*{hotel.id}"></p>
 						
 						<p><input type="hidden"  th:field="*{vuelo.id}"></p>
 						<p><input type="hidden"  th:field="*{vuelo.escalaIncluida}"></p>
