@@ -48,6 +48,8 @@
 		    					<p class="card-text" th:text="${paquete.hotel.tipoAlojamiento.tipo}"></p>
 		    					<p class="card-text" th:text="${'ESTRELLAS: ' + paquete.hotel.cantEstrellas}"></p>
 		    					<div class="dropdown-divider"></div>
+		    					<p>Actividades incluidas: <span class="card-text" th:each="a : ${paquete.actividades}" th:text=" ${a.nombre}+' | '"></span></p>
+		    					<div class="dropdown-divider"></div>
 		    					<a th:href="@{/paqueteUsuario/paqueteReserva/{id}(id=${paquete.id})}" target="_blank" class="btn btn-primary">Reservar</a>		    					
 		  					</div>
 						</div>

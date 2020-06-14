@@ -34,7 +34,7 @@ public class Paquete {
 	private Hotel hotel;
 	
 	
-	@ManyToMany(mappedBy = "listaPaquetes")
+	@ManyToMany(mappedBy = "listaPaquetes", cascade = CascadeType.MERGE)
 	private List<Actividad> actividades = new ArrayList<Actividad>();
 	
 	public Paquete() {

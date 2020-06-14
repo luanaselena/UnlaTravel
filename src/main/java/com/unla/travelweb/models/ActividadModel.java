@@ -25,7 +25,7 @@ public class ActividadModel {
     
     private String imgPath;
     
-    private Set<Paquete> listaHoteles = new HashSet<Paquete>();
+    private Set<PaqueteModel> listaHoteles = new HashSet<PaqueteModel>();
 
     
     public ActividadModel() {}
@@ -117,11 +117,11 @@ public class ActividadModel {
 		this.imgPath = imgPath;
 	}
 
-	public Set<Paquete> getListaHoteles() {
+	public Set<PaqueteModel> getListaHoteles() {
 		return listaHoteles;
 	}
 
-	public void setListaHoteles(Set<Paquete> listaHoteles) {
+	public void setListaHoteles(Set<PaqueteModel> listaHoteles) {
 		this.listaHoteles = listaHoteles;
 	}
 	
