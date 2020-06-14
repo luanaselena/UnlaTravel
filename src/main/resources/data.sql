@@ -34,7 +34,6 @@ INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (25,"Aeropuerto Int
 INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (26,"Aeropuerto Internacional de Katmandú","Nepal",27.69,85.35);
 INSERT INTO destino (id,nombre,pais,latitud,longitud) VALUES (27,"Aeropuerto Internacional de São Paulo-Guarulhos","Brasil",-23.43,-46.47);
 
-
 INSERT INTO aerolinea (id,nombre,valoracion) VALUES (1,"LATAM",7);
 INSERT INTO aerolinea (id,nombre,valoracion) VALUES (2,"KLM",8);
 INSERT INTO aerolinea (id,nombre,valoracion) VALUES (3,"Avianca Airlines",9);
@@ -76,7 +75,6 @@ INSERT INTO tipo_servicio (id,tipo) values (1,"Wifi");
 INSERT INTO tipo_servicio (id,tipo) values (2,"Limpieza");
 INSERT INTO tipo_servicio (id,tipo) values (3,"Atencion al cliente");
 
-#Montaña
 INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (1,"Hotel Mystic Mountain",true,4,9,1,1,1,8000,"/assets/img/hoteles/nepal-hotel.jpg","Nepal");
 INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (2,"Hotel Imperiale",true,4,5,1,1,1,15000,"/assets/img/hoteles/roma-hotel.jpg","Italia");
 INSERT INTO hotel (id,nombre,accesibilidad,cant_estrellas,tipo_alojamiento_id_tipo_alojamiento,tipo_habitacion_id_tipo_habitacion,tipo_regimen_id_tipo_regimen,cant_personas,precio,img_path,pais) VALUES (3,"Centromar Hotel",true,3,2,1,1,1,7500,"/assets/img/hoteles/brasil-hotel.jpg","Brasil");
