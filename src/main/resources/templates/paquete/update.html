@@ -33,19 +33,17 @@
 
         <div class="divPrincipal">
             <form action="#" th:action="@{/paquete/update}" th:object="${paquete}" method="post">
-               <p>
-                    Hotel: <select placeholder="Hotel" th:field="*{hotel.id}"> 
+               <p>Hotel: <select placeholder="Hotel" th:field="*{hotel.id}"> 
 					<option th:each="h : ${hoteles}" th:value="${h.id}" th:text="${h.nombre}"> </option>
 					</select>
                </p>
                
-               <p>
-                   Vuelo: <select placeholder="Vuelo" th:field="*{vuelo.id}"> 
+               <p>Vuelo: <select placeholder="Vuelo" th:field="*{vuelo.id}"> 
 					<option th:each="v : ${vuelos}" th:value="${v.id}" th:text="${v.Origen.nombre}+'-'+${v.Destino.nombre}" />
 					</select>
                </p>
-               <input type="hidden" th:field="*{id}" />
-                <input class="btn btn-success" style="background-color: #f16108" type="submit" value="Editar"/>
+               <input type="hidden" th:field="*{id}"/>
+               <input class="btn btn-success" style="background-color: #f16108" type="submit" value="Editar"/>
             </form>
             <br>
             <br>

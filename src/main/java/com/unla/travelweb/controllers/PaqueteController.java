@@ -1,5 +1,7 @@
 package com.unla.travelweb.controllers;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -55,6 +57,11 @@ public class PaqueteController {
 	
 	@PostMapping("/create")
     public RedirectView create(@ModelAttribute("paquete") PaqueteModel paqueteModel) {
+		HotelModel h = hotelService.findById(paqueteModel.getHotel().getId());
+	 	VueloModel v = vueloService.findById(paqueteModel.getVuelo().getId());
+
+	 	paqueteModel.setVuelo(v);
+	 	paqueteModel.setHotel(h);
         paqueteService.insert(paqueteModel);
         return new RedirectView(ViewRouteHelper.PAQUETE_ROOT);
     }
