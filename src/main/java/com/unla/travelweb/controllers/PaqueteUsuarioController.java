@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.unla.travelweb.converters.AerolineaConverter;
+import com.unla.travelweb.converters.ClaseConverter;
+import com.unla.travelweb.converters.DestinoConverter;
 import com.unla.travelweb.converters.HotelConverter;
 import com.unla.travelweb.converters.PaqueteConverter;
 import com.unla.travelweb.converters.ReservaHotelConverter;
@@ -44,6 +47,8 @@ import com.unla.travelweb.models.TipoRegimenModel;
 import com.unla.travelweb.models.TipoServicioModel;
 import com.unla.travelweb.models.VueloModel;
 import com.unla.travelweb.repositories.IUserRepository;
+import com.unla.travelweb.services.IAerolineaService;
+import com.unla.travelweb.services.ICalificacionAerolineaService;
 import com.unla.travelweb.services.IClaseService;
 import com.unla.travelweb.services.IDestinoService;
 import com.unla.travelweb.services.IHotelService;
@@ -128,6 +133,26 @@ public class PaqueteUsuarioController {
 	@Qualifier ("claseService")
 	private IClaseService claseService;
 	
+	@Autowired
+	@Qualifier("destinoConverter")
+	private DestinoConverter destinoConverter;
+	
+	@Autowired
+	@Qualifier("aerolineaConverter")
+	private AerolineaConverter aerolineaConverter;
+	
+	@Autowired
+	@Qualifier("claseConverter")
+	private ClaseConverter claseConverter;
+	
+	@Autowired
+	@Qualifier("aerolineaService")
+	private IAerolineaService aerolineaService;
+	
+	@Autowired
+	@Qualifier("calificacionAerolineaService")
+	private ICalificacionAerolineaService calificacionAerolineaService;
+	
 	@GetMapping ("")
 	public ModelAndView index() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.PAQUETE_USUARIO);
@@ -143,6 +168,22 @@ public class PaqueteUsuarioController {
         mAV.addObject("paquete", paqueteService.findById(id));
         mAV.addObject("habitaciones", tipoHabitacionService.getAll());
         mAV.addObject("regimenes", tipoRegimenService.getAll());
+        mAV.addObject("servicios", tipoServicioService.getAll());
+
+        return mAV;
+    }
+	
+	@GetMapping ("/paqueteReservaPersonalizada")
+	public ModelAndView reservaPersonalizada() {
+        ModelAndView mAV = new ModelAndView(ViewRouteHelper.PAQUETE_RESERVAPERSONALIZADA);
+        mAV.addObject("paquete", new PaqueteModel());
+        mAV.addObject("hoteles", hotelService.getAll());
+        mAV.addObject("habitaciones", tipoHabitacionService.getAll());
+        mAV.addObject("regimenes", tipoRegimenService.getAll());
+        mAV.addObject("servicios", tipoServicioService.getAll());
+        mAV.addObject("destinos", destinoService.getAll());
+        mAV.addObject("aerolineas", aerolineaService.getAll());
+        mAV.addObject("clases", claseService.getAll());
         mAV.addObject("servicios", tipoServicioService.getAll());
 
         return mAV;
