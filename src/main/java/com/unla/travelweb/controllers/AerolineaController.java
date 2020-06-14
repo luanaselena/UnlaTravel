@@ -55,9 +55,10 @@ public class AerolineaController {
 	}
 
 	@PostMapping("/create")
-	public RedirectView create(@ModelAttribute("aerolinea") AerolineaModel aerolineaModel) {
+	public ModelAndView create(@ModelAttribute("aerolinea") AerolineaModel aerolineaModel) {
+		aerolineaModel.setValoracion(aerolineaModel.getValoracion()/10);
 		aerolineaService.insert(aerolineaModel);
-		return new RedirectView(ViewRouteHelper.AEROLINEA_ROOT);
+		return new ModelAndView("redirect:/aerolinea");
 	}
 
 	@GetMapping("/{id}")
