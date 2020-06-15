@@ -43,6 +43,7 @@ import com.unla.travelweb.models.PaqueteModel;
 import com.unla.travelweb.models.ReservaActividadModel;
 import com.unla.travelweb.models.ReservaHotelModel;
 import com.unla.travelweb.models.ReservaVueloModel;
+import com.unla.travelweb.models.TipoAlojamientoModel;
 import com.unla.travelweb.models.TipoHabitacionModel;
 import com.unla.travelweb.models.TipoRegimenModel;
 import com.unla.travelweb.models.TipoServicioModel;
@@ -245,6 +246,82 @@ public class PaqueteUsuarioController {
 		
 		ReservaHotelModel rh = new ReservaHotelModel(hotelModel.getNombre(), hotelModel.getCantEstrellas(), hotelModel.getTipoAlojamiento(),
 				t,r, hotelModel.isAccesibilidad(), hotelModel.getCantPersonas(),precioTotal, hotelModel.getImgPath(), hotelModel.getFechaInicio(), hotelModel.getFechaFin());
+		
+		DestinoModel de = destinoService.findById(vueloModel.getDestino().getId());
+		
+		DestinoModel or = destinoService.findById(vueloModel.getOrigen().getId());
+
+		ClaseModel c = claseService.findById(vueloModel.getClase().getId());
+		
+		double precio = Math.round((vueloService.calcularPrecio(4, or, de, c, vueloModel.getCantPersonas())));
+		if(vueloModel.getFechaVuelta()==null) {
+			precio/=2;
+		}
+		
+		ReservaVueloModel rv = new ReservaVueloModel(rh.getFechaInicio(),rh.getFechaFin(),vueloModel.getAerolinea(), vueloModel.getClase(), vueloModel.isEscalaIncluida(), vueloModel.getOrigen(), vueloModel.getDestino(), precio, rh.getCantPersonas());
+		
+		rh.setTipoServicio(pasarServicios(tipoServicioService.getAll()));
+		
+        List<Actividad> lista = new ArrayList<Actividad>();
+        
+        for(Actividad a : actividadService.getAll()) {
+        	for(Paquete pa : a.getListaPaquetes()) {
+        		if(pa.getId()==paqueteModel.getId()) {
+        			lista.add(a);
+        		}
+        	}
+        };
+        
+		for(int i = 0 ; i < lista.size();i++) {
+			
+			ReservaActividadModel ra = new ReservaActividadModel(lista.get(i).getNombre(), 
+					randomDate(rv.getFechaIda(), rv.getFechaVuelta()), lista.get(i).getValoracion(), lista.get(i).isAccesibilidad(), 
+					destinoConverter.entityToModel(lista.get(i).getDestino()), lista.get(i).getPrecio(), lista.get(i).getImgPath());
+			
+			user.getCarrito().getActividades().add(reservaActividadConverter.modelToEntity(ra));
+
+		}
+		
+
+		user.getCarrito().getHoteles().add(reservaHotelConverter.modelToEntity(rh));
+		user.getCarrito().getVuelos().add(reservaVueloConverter.modelToEntity(rv));
+        
+		
+        reservaHotelService.insert(rh);
+        reservaVueloService.insert(rv);
+        return new ModelAndView("redirect:/paqueteUsuario");
+    }
+	
+	@PostMapping("/createPersonalizado")
+    public ModelAndView createPersonalizado(@ModelAttribute("paquete") PaqueteModel paqueteModel,@AuthenticationPrincipal UserDetails currentUser) {
+		HotelModel aux = hotelService.findById(paqueteModel.getHotel().getId());
+		HotelModel hotelModel = paqueteModel.getHotel();
+		VueloModel vueloModel = paqueteModel.getVuelo();
+		System.out.println(paqueteModel.getActividades().size());
+		
+		TipoHabitacionModel t = tipoHabitacionService.findById(hotelModel.getTipoHabitacion().getId());
+		TipoRegimenModel r = tipoRegimenService.findById(hotelModel.getTipoRegimen().getId());
+
+
+		
+		User user = (User) userRepository.findByUsernameAndFetchUserRolesEagerly(currentUser.getUsername());
+		
+	    int dias=(int) ((hotelModel.getFechaFin().getTime()-hotelModel.getFechaInicio().getTime())/86400000);
+
+		double precioTotal = aux.getPrecio();
+		double ph = precioTotal*t.getPorcentajeAumento();
+		double pr = precioTotal*r.getPorcentajeAumento();
+		precioTotal+=ph+pr;
+		precioTotal*=dias;
+
+		if(hotelModel.getCantPersonas()>4) {
+			precioTotal*=Math.round(hotelModel.getCantPersonas()/4)+1;
+		}
+		
+		hotelModel.getTipoAlojamiento().setTipo(aux.getTipoAlojamiento().getTipo());
+		
+		ReservaHotelModel rh = new ReservaHotelModel(aux.getNombre(), aux.getCantEstrellas(), hotelModel.getTipoAlojamiento(),
+				t,r, aux.isAccesibilidad(), aux.getCantPersonas(),precioTotal, hotelModel.getImgPath(), hotelModel.getFechaInicio(), hotelModel.getFechaFin());
 		
 		DestinoModel de = destinoService.findById(vueloModel.getDestino().getId());
 		
