@@ -1,5 +1,8 @@
 package com.unla.travelweb.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -28,6 +32,10 @@ public class Paquete {
 	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE/*,CascadeType.PERSIST*/}, optional=true)
 	@JoinColumn(name = "hotel_id", referencedColumnName = "id")
 	private Hotel hotel;
+	
+	
+	@ManyToMany(mappedBy = "listaPaquetes", cascade = CascadeType.MERGE)
+	private List<Actividad> actividades = new ArrayList<Actividad>();
 	
 	public Paquete() {
 		
@@ -55,6 +63,14 @@ public class Paquete {
 	}
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
+	}
+
+	public List<Actividad> getActividades() {
+		return actividades;
+	}
+
+	public void setActividades(List<Actividad> actividades) {
+		this.actividades = actividades;
 	}
 	
 	

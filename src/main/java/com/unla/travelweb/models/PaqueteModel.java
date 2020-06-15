@@ -1,5 +1,8 @@
 package com.unla.travelweb.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.unla.travelweb.entities.Hotel;
 import com.unla.travelweb.entities.Vuelo;
 
@@ -8,7 +11,7 @@ public class PaqueteModel {
 	private long id;
 	private VueloModel vuelo;
 	private HotelModel hotel;
-	
+	private List<ActividadModel> actividades = new ArrayList<ActividadModel>();
 	public PaqueteModel() {
 		
 	}
@@ -36,6 +39,14 @@ public class PaqueteModel {
 	}
 	public void setHotel(HotelModel hotel) {
 		this.hotel = hotel;
+	}
+
+	public List<ActividadModel> getActividades() {
+		return actividades;
+	}
+
+	public void setActividades(List<ActividadModel> actividades) {
+		this.actividades = actividades;
 	}
 	
 
