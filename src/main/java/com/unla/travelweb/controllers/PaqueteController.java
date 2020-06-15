@@ -96,47 +96,7 @@ public class PaqueteController {
 		ActividadModel a = actividadService.findById(act.getId());
 		System.out.println(a.getNombre());
 		
-		
-//		PaqueteModel paquete = paqueteService.findById(paqueteModel.getId());
-//	 	HotelModel h = hotelService.findById(paqueteModel.getHotel().getId());
-//	 	VueloModel v = vueloService.findById(paqueteModel.getVuelo().getId());
-//	 	paquete.setVuelo(v);
-//	 	paquete.setHotel(h);
-//		
-//
-//		ActividadModel a = actividadService.findById(act.getId());
-//		System.out.println(paquete.getActividades().get(0).getNombre());
-//		paquete.getActividades().add(a);
-		
-		
-//		a.getListaHoteles().add(paqueteModel);
-//		actividadService.insert(a);
-		
-//		List<ActividadModel> lista = new ArrayList<ActividadModel>();
-        
-//		for(PaqueteModel paq : a.getListaHoteles()) {
-//			if(paq.getId()==paqueteModel.getId()) {
-//				System.out.println("entro");
-//				paqueteModel.getActividades().add(a);
-//				System.out.println(paqueteModel.getActividades().size());
-//			}
-//		}
-//		
-//        for(Actividad ac : actividadService.getAll()) {
-//        	
-//        	for(Paquete pa : ac.getListaPaquetes()) {
-//        		System.out.println(ac.getNombre());
-//        		System.out.println(pa.getId());
-//        		if(pa.getId()==paqueteModel.getId()) {
-//        			lista.add(actividadConverter.entityToModel(ac));
-//        		}
-//        	}
-//        }
-//		System.out.println(lista.size());
-//		paqueteModel.setActividades(lista);
-//		
 
-//		paqueteService.update(paqueteModel);
 		return new RedirectView(ViewRouteHelper.PAQUETE_ROOT);
     }
 	
