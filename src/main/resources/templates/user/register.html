@@ -1,37 +1,94 @@
-<!DOCTYPE html>	
-<html lang="en">	
-	<head>	
-		<meta charset="utf-8" />	
-		<title>UNLa</title>	
-		<!-- Bootstrap core CSS -->	
-		<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />	
-		<link rel="stylesheet" th:href="@{/css/style.css}" />	
-	</head>	
-	<body>	
-		<header>	
-			<div class="headerbg">	
-				<h3>Unla Travel</h3>	
-			</div>	
-		</header>	
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>UNLa Travel</title>
+        <link href="/css/user.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="bg-primary">
+        <div class="div-layout" id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+                    <div class="container">
+                        <a class="navbar-brand js-scroll-trigger" href="/index">UNLa Travel</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i></button>
+                        <div class="collapse navbar-collapse" id="navbarResponsive">
+                        </div>
+                    </div>
+                </nav>
+                <main>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Crear una cuenta</h3></div>
+                                    <div class="card-body">
 
-	    <div class="divPrincipal">	
-	        <h1 class="display-5">Register</h1>	
-	        <form th:action="@{/register}" method="post">
-		        <p><input type="text" name="nombre" id="username" placeholder="Nombre" /></p>
-		        <p><input type="text" name="apellido" id="apellido" placeholder="Apellido" /></p>
-		        <p><input type="text" name="nacionalidad" id="nacionalidad" placeholder="Nacionalidad" /></p>
-		        <p><input type="text" name="domicilio" id="domicilio" placeholder="Domicilio" /></p>
-		        <p><input type="text" name="mail" id="mail" placeholder="Mail" /></p>
-		        <p><input type="text" name="telefono" id="telefono" placeholder="Telefono" /></p>	
-		      	<p><input type="text" name="dni" id="dni" placeholder="Dni" /></p>
-		      	<br/>
-		      	<p><input type="text" name="username" id="username" placeholder="Usuario" /></p>
-		      	<p><input type="password" name="password" id="password" placeholder="Contraseña" /></p>	
-				<input class="btn btn-primary" style="background-color: #EE7D00" type="submit" value="Registrarse" />
-	      	</form>		      	
-	    </div>	
-	    <!-- Bootstrap core JavaScript -->	
-	    <script src="/vendor/jquery/jquery.min.js"></script>	
-	    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>	
-	</body>	
+                                        <form th:action="@{/register}" method="post">
+
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group"><label class="small mb-1" for="username">Nombres</label><input class="form-control py-4" type="text" name="nombre" id="username" placeholder="Decinos tu nombre" /></div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group"><label class="small mb-1" for="apellido">Apellidos</label><input class="form-control py-4" type="text" name="apellido" id="apellido" placeholder="Decinos tu apellido" /></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group"><label class="small mb-1" for="dni">DNI</label><input class="form-control py-4" type="text" name="dni" id="dni" placeholder="tu DNI" /></div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group"><label class="small mb-1" for="telefono">Telefono</label><input class="form-control py-4" type="text" name="telefono" id="telefono" placeholder="Tu telefono o celular" /></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group"><label class="small mb-1" for="nacionalidad">Nacionalidad</label><input class="form-control py-4" type="text" name="nacionalidad" id="nacionalidad" placeholder="Cual es tu nacionalidad?" /></div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group"><label class="small mb-1" for="domicilio">Domicilio</label><input class="form-control py-4" type="text" name="domicilio" id="domicilio" placeholder="Donde vivís?" /></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group"><label class="small mb-1" for="mail">Email</label><input class="form-control py-4" type="text" name="mail" id="mail" placeholder="Tu correo electrónico" /></div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group"><label class="small mb-1" for="username">Nombre de usuario</label><input class="form-control py-4" type="text" name="username" id="username" placeholder="Elegí un nombre de usuario" /></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group"><label class="small mb-1" for="password">Contraseña</label><input class="form-control py-4" type="password" name="password" id="password" placeholder="Elegí una contraseña" /></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block" style="background-color: #FF6319;border-color: #FF6319" href="login.html">Crear una cuenta</button></div>
+
+                                        </form>
+
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <div class="small"><a href="login">Ya tenés una cuenta? Entrá!</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+    </body>
 </html>

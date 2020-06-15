@@ -1,34 +1,53 @@
-<!DOCTYPE html>	
-<html lang="en">	
-	<head>	
-		<meta charset="utf-8" />	
-		<title>UNLa</title>	
-		<!-- Bootstrap core CSS -->	
-		<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />	
-		<link rel="stylesheet" th:href="@{/css/style.css}" />	
-	</head>	
-	<body>	
-		<header>	
-			<div class="headerbg">	
-				<h3>Unla Travel</h3>	
-			</div>	
-		</header>	
-
-	    <div class="divPrincipal">	
-	        <h1 class="display-5">Login</h1>	
-	        <form th:action="@{/loginprocess}" method="post">	
-		      	<input type="text" name="username" id="username" placeholder="Usuario" />	
-		      	<input type="password" name="password" id="password" placeholder="Contraseña" />	
-				<input class="btn btn-primary" style="background-color: #EE7D00" type="submit" value="Entrar" />
-				<br> <a href="/register"><u>No tiene cuenta? Registrese aquí<u/></a>
-	      	</form>
-	      	<br></br>		      	
-	      	<div th:if="${error != null}" class="alert alert-danger">	
-		    	Usuario o contraseña invalido.	
-		    </div>	
-	    </div>	
-	    <!-- Bootstrap core JavaScript -->	
-	    <script src="/vendor/jquery/jquery.min.js"></script>	
-	    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>	
-	</body>	
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>UNLa Travel</title>
+        <link href="/css/user.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="bg-primary">
+        <div class="div-layout" id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+                    <div class="container">
+                        <a class="navbar-brand js-scroll-trigger" href="/index">UNLa Travel</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i></button>
+                        <div class="collapse navbar-collapse" id="navbarResponsive">
+                        </div>
+                    </div>
+                </nav>
+                <main>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Entrar</h3></div>
+                                    <div class="card-body">
+                                        <form th:action="@{/loginprocess}" method="post">
+                                            <div class="form-group"><label class="small mb-1" for="username">Email</label><input class="form-control py-4" type="text" name="username" id="username" placeholder="Decinos nombre de usuario" /></div>
+                                            <div class="form-group"><label class="small mb-1" for="password">Contraseña</label><input class="form-control py-4" type="password" name="password" id="password" placeholder="Decinos tu contraseña" /></div>
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox"><input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Recordar contraseña</label></div>
+                                            </div>
+                                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><a class="small" href="password.html">Olvidaste la contraseña?</a><button class="btn btn-primary" style="background-color: #FF6319;border-color: #FF6319" type="submit">Entrar</button></div>
+                                        </form>
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <div class="small"><a href="register">No tenés cuenta? Registrate!</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+    </body>
 </html>
