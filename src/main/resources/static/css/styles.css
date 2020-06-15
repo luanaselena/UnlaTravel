@@ -166,6 +166,14 @@ a:not([href]):hover {
   text-decoration: none;
 }
 
+.links-usuario{
+  color:black;
+}
+.links-usuario:hover{
+  text-decoration:none;
+  color:black;
+}
+
 pre,
 code,
 kbd,
