@@ -46,7 +46,7 @@
 						<br>
 						<h5>Datos del hotel:</h5>
 	                  	<p>
-                    		Hotel: 
+                    		Hotel:
                     		<select th:field="*{hotel.id}">
                     			<option th:each="data : ${hoteles}" th:value="${data.id}" th:text="${data.nombre}" />
                     		</select>
@@ -54,13 +54,13 @@
 	                  	<p>Desde: <input type="date"  th:field="*{hotel.fechaInicio}"></p>
 						<p>Hasta: <input type="date"  th:field="*{hotel.fechaFin}"></p>
 		                <p>Cantidad de Personas: <input type="number" th:field="*{hotel.cantPersonas}" /></p>
-		                <p>Tipo de Habitaciones: 
-			                <select placeholder="TipoHabitacion" th:field="*{hotel.tipoHabitacion.id}"> 
+		                <p>Tipo de Habitaciones:
+			                <select placeholder="TipoHabitacion" th:field="*{hotel.tipoHabitacion.id}">
 								<option th:each="h : ${habitaciones}" th:value="${h.id}" th:text="${h.tipo}+' ('+${h.porcentajeAumento*100}+'% más)'"> </option>
 							</select>
 						</p>
-						<p>Tipo de Regimen: 
-			                <select placeholder="TipoRegimen" th:field="*{hotel.tipoRegimen.id}"> 
+						<p>Tipo de Regimen:
+			                <select placeholder="TipoRegimen" th:field="*{hotel.tipoRegimen.id}">
 								<option th:each="r : ${regimenes}" th:value="${r.id}" th:text="${r.tipo}+' ('+${r.porcentajeAumento*100}+'% más)'"> </option>
 							</select>
 						</p>
@@ -70,23 +70,23 @@
 						<h5>Datos del vuelo:</h5>
 
 						<p>Origen:
-							<select placeholder="Destino" th:field="*{vuelo.origen.id}"> 
+							<select placeholder="Destino" th:field="*{vuelo.origen.id}">
 								<option th:each="d : ${destinos}" th:value="${d.id}" th:text="${d.nombre}+' '+${d.pais}"> </option>
 							</select>
 						</p>
 						<p>Destino:
-							<select placeholder="Destino" th:field="*{vuelo.destino.id}"> 
+							<select placeholder="Destino" th:field="*{vuelo.destino.id}">
 								<option th:each="d2 : ${destinos}" th:value="${d2.id}" th:text="${d2.nombre}+' '+${d2.pais}"> </option>
 							</select>
 						</p>
 						<p>Cantidad de personas: <input type="number" th:field="*{vuelo.cantPersonas}" min="1"/></p>
-		                <p>Aerolinea: 
-			                <select placeholder="Aerolinea" th:field="*{vuelo.aerolinea.id}"> 
+		                <p>Aerolinea:
+			                <select placeholder="Aerolinea" th:field="*{vuelo.aerolinea.id}">
 								<option th:each="a : ${aerolineas}" th:value="${a.id}" th:text="${a.nombre}+' - Valoracion: '+ ${a.valoracion}"></option>
 							</select>
 						</p>
-		                <p>Clase: 
-			                <select placeholder="Clase" th:field="*{vuelo.clase.id}"> 
+		                <p>Clase:
+			                <select placeholder="Clase" th:field="*{vuelo.clase.id}">
 								<option th:each="c : ${clases}" th:value="${c.id}" th:text="${c.nombre}+' ('+${c.porcentajeAumento*100}+'% más)'"></option>
 							</select>
 						</p>
@@ -101,7 +101,7 @@
 
 						<p><input type="hidden"  th:field="*{vuelo.id}"></p>
 						<p><input type="hidden"  th:field="*{vuelo.precio}"></p>
-						
+
 		                <input class="btn btn-primary" style="background-color: #EE7D00;" type="submit" value="Confirmar Reserva" />
 		            </form>
 				</div>
