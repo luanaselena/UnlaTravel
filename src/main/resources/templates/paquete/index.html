@@ -48,11 +48,11 @@
                     	<td><span th:text="${paquete.vuelo.Origen.nombre}+' - '+${paquete.vuelo.Destino.nombre}"></span></td>
                     	<td><span class="card-text" th:each="a : ${paquete.actividades}" th:text=" ${a.nombre}+' | '"></span></td>
                         <td><a th:href="@{/paquete/{id}(id=${paquete.id})}">Ver</a>
-                        <td><a th:href="@{/paquete/addActividad/{id}(id=${paquete.id})}">Agregar actividad</a>
                         </td>
                     </tr>
                 </tbody>
                 </table>
+                <br> <a class="btn btn-primary" style="background-color: #f16108;margin-left:30%;" href="/paquete/addActividad">Agregar una actividad a un paquete</a>
                 <br> <a class="btn btn-primary" style="background-color: #f16108;margin-left:30%;" href="/paquete/new">Crear Paquete</a>
         </div>
     </body>

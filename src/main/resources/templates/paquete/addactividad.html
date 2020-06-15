@@ -33,7 +33,10 @@
 
         <div class="divPrincipal">
             <form action="#" th:action="@{/paquete/addAct}" method="post">
-
+			      
+       			<p> ID del paquete
+       				<input name="id_paquete" class="form-control form-control-sm" type="number" required />
+       			</p>
                 <p>
                     Elija una actividad: 
                     <select th:field="*{actividad.id}">

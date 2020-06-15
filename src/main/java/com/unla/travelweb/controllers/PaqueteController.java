@@ -1,6 +1,5 @@
 package com.unla.travelweb.controllers;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,19 +11,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.travelweb.converters.ActividadConverter;
+import com.unla.travelweb.converters.PaqueteConverter;
 import com.unla.travelweb.entities.Actividad;
 import com.unla.travelweb.entities.Paquete;
-import com.unla.travelweb.entities.TipoServicio;
 import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.models.ActividadModel;
 import com.unla.travelweb.models.HotelModel;
 import com.unla.travelweb.models.PaqueteModel;
-import com.unla.travelweb.models.TipoServicioModel;
 import com.unla.travelweb.models.VueloModel;
+import com.unla.travelweb.repositories.IActividadRepository;
+import com.unla.travelweb.repositories.IPaqueteRepository;
 import com.unla.travelweb.services.IActividadService;
 import com.unla.travelweb.services.IHotelService;
 import com.unla.travelweb.services.IPaqueteService;
@@ -54,6 +56,18 @@ public class PaqueteController {
 	@Qualifier("actividadConverter")
 	private ActividadConverter actividadConverter;
 	
+	@Autowired
+	@Qualifier("paqueteConverter")
+	private PaqueteConverter paqueteConverter;
+	
+	@Autowired
+	@Qualifier("actividadRepository")
+	private IActividadRepository actividadRepository;
+	
+	@Autowired
+	@Qualifier("paqueteRepository")
+	private IPaqueteRepository paqueteRepository;
+	
 	@GetMapping ("")
 	public ModelAndView index() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.PAQUETE_INDEX);
@@ -81,22 +95,29 @@ public class PaqueteController {
         return new RedirectView(ViewRouteHelper.PAQUETE_ROOT);
     }
 	
-	@GetMapping("/addActividad/{id}")
-    public ModelAndView agregarAct(@PathVariable("id") long id) {
+	@GetMapping("/addActividad")
+    public ModelAndView agregarAct() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.PAQUETE_ACT);
-        mAV.addObject("paquete", paqueteService.findById(id));
         mAV.addObject("actividades", actividadService.getAll());
         mAV.addObject("actividad", new ActividadModel());
         return mAV;
     }
 	
-	@PostMapping("/addAct")
-    public RedirectView addAct(@ModelAttribute("paquete") PaqueteModel paqueteModel, @ModelAttribute("actividad") ActividadModel act) {
-
-		ActividadModel a = actividadService.findById(act.getId());
-		System.out.println(a.getNombre());
+	@RequestMapping(value = "/addAct", method = RequestMethod.POST)
+    public RedirectView addAct(@RequestParam("id_paquete") long id_p, @ModelAttribute("actividad") ActividadModel act) {
 		
-
+		PaqueteModel p = paqueteService.findById(id_p);
+		Paquete paqueteFinal = paqueteConverter.modelToEntity(p);
+		
+		ActividadModel a = actividadService.findById(act.getId());
+		Actividad actividadFinal = actividadConverter.modelToEntity(a);
+		
+		paqueteFinal.getActividades().add(actividadFinal);
+		actividadFinal.getListaPaquetes().add(paqueteFinal);
+		
+		paqueteRepository.save(paqueteFinal);
+		actividadRepository.save(actividadFinal);
+		
 		return new RedirectView(ViewRouteHelper.PAQUETE_ROOT);
     }
 	
