@@ -1,131 +1,162 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>UNLa Travel</title>
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body id="page-top" style="background-image: url('https://free4kwallpapers.com/uploads/originals/2018/12/29/inverted-blackwhite-mountains.-wallpaper_.jpg');">
-    <!-- Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="/index">UNLa Travel</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ml-auto">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/actividad">Actividades</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/destino">Destinos</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/vuelo">Vuelos</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/hotel">Hoteles</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/paquete">Paquetes</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/carrito">Carrito</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>UNLa Travel</title>
+<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
+	crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet" type="text/css" />
+<link
+	href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic"
+	rel="stylesheet" type="text/css" />
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
+	rel="stylesheet" type="text/css" />
+<link href="css/styles.css" rel="stylesheet" />
+</head>
+<body id="page-top"
+	style="background-image: url('https://free4kwallpapers.com/uploads/originals/2018/12/29/inverted-blackwhite-mountains.-wallpaper_.jpg');">
+	<!-- Navbar-->
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="/index">UNLa
+				Travel</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button"
+				data-toggle="collapse" data-target="#navbarResponsive"
+				aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+				Menu<i class="fas fa-bars ml-1"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav text-uppercase ml-auto">
+					<li class="nav-item"><a class="nav-link js-scroll-trigger"
+						href="/actividad">Actividades</a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger"
+						href="/destino">Destinos</a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger"
+						href="/vuelo">Vuelos</a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger"
+						href="/hotel">Hoteles</a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger"
+						href="/paquete">Paquetes</a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger"
+						href="/carrito">Carrito</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-        <div class="divPrincipal">
-           <table border="1px">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Total</th>
-                        <th>Cantidad de estrellas</th>
-                        <th>Tipo de alojamiento</th>
-						<th>Tipo de regimen</th>
-                        <th>Tipo de habitacion</th>                       
-                        <th>Cantidad de personas</th>
-                        <th>Accesibilidad para discapacitados</th>
-                        <th>Desde</th>
-                        <th>Hasta</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="hotel : ${hoteles}">
-                        <td><span th:text="${hotel.nombre}"></span></td>
-                        <td><p>$<span th:text="${hotel.precio}"></span></p></td>
-                        <td><span th:text="${hotel.cantEstrellas}"></span></td>
-                        <td><span th:text="${hotel.tipoAlojamiento.tipo}"></span></td>
-                        <td><span th:text="${hotel.tipoRegimen.tipo}"></span></td>
-                        <td><span th:text="${hotel.tipoHabitacion.tipo}"></span></td>
-                        <td><span th:text="${hotel.cantPersonas}"></span></td>
-                        <td><span th:switch="${hotel.accesibilidad}">
-                        	<p th:case="true">Si</p>
-    						<p th:case="false">No</p>
-                        </span></td>
-                        <td><span th:text="${hotel.fechaInicio}"></span></td>
-                        <td><span th:text="${hotel.fechaFin}"></span></td>                   
-                    </tr>
-                </tbody>
-                </table>   
-        </div>
-        <div class="divPrincipal">
-           <table border="1px">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Destino</th>
-                        <th>Fecha reservada</th>
-						<th>Accesibilidad para discapacitados</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="actividad : ${actividades}">
-                        <td><span th:text="${actividad.nombre}"></span></td>
-                        <td><p>$<span th:text="${actividad.precio}"></span></p></td>
-                        <td><span th:text="${actividad.destino.pais}"></span></td>
-                        <td><span th:text="${actividad.fecha}"></span></td>
-						<td><span th:switch="${actividad.accesibilidad}">
-                        	<p th:case="true">Si</p>
-    						<p th:case="false">No</p>
-                        </span></td>       
-                    </tr>
-                </tbody>
-                </table>   
-        </div>
-        
-        <div class="divPrincipal">
-           <table border="1px">
-                <thead>
-                    <tr>
-                        <th>Fecha de Ida</th>
-                        <th>Fecha de Vuelta</th>
-                        <th>Cantidad de personas</th>
-						<th>Precio</th>
-                        <th>Aerolinea</th>
-                        <th>Clase</th>
-                        <th>Escala incluida</th>
-                        <th>Origen</th>
-                        <th>Destino</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="vuelo : ${vuelos}">
-                        <td><span th:text="${vuelo.fechaIda}"></span></td>
-                        <td><span th:if="${vuelo.fechaVuelta}" th:text="${vuelo.fechaVuelta}"></span></td>
-                        <td><span th:text="${vuelo.cantPersonas}"></span></td>
-                        <td><p>$<span th:text="${vuelo.precio}"></span></p></td>
-                        <td><span th:text="${vuelo.Aerolinea.nombre}"></span></td>
-                        <td><span th:text="${vuelo.clase.nombre}"></span></td>
-						<td><span th:switch="${vuelo.escalaIncluida}">
-                        	<p th:case="true">Si</p>
-    						<p th:case="false">No</p>
-                        </span></td> 
-						<td><span th:text="${vuelo.Origen.nombre} +' - '+ ${vuelo.Origen.pais}"></span></td>
-						<td><span th:text="${vuelo.Destino.nombre} +' - '+ ${vuelo.Destino.pais}"></span></td>
-                        </td>
-                    </tr>
-                </tbody>
-                </table>  
-        </div>
-        
-    </body>
+	<div class="divPrincipal">
+		<table border="1px">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Total</th>
+					<th>Cantidad de estrellas</th>
+					<th>Tipo de alojamiento</th>
+					<th>Tipo de regimen</th>
+					<th>Tipo de habitacion</th>
+					<th>Cantidad de personas</th>
+					<th>Accesibilidad para discapacitados</th>
+					<th>Desde</th>
+					<th>Hasta</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="hotel : ${hoteles}">
+					<td><span th:text="${hotel.nombre}"></span></td>
+					<td><p>
+							$<span th:text="${hotel.precio}"></span>
+						</p></td>
+					<td><span th:text="${hotel.cantEstrellas}"></span></td>
+					<td><span th:text="${hotel.tipoAlojamiento.tipo}"></span></td>
+					<td><span th:text="${hotel.tipoRegimen.tipo}"></span></td>
+					<td><span th:text="${hotel.tipoHabitacion.tipo}"></span></td>
+					<td><span th:text="${hotel.cantPersonas}"></span></td>
+					<td><span th:switch="${hotel.accesibilidad}">
+							<p th:case="true">Si</p>
+							<p th:case="false">No</p>
+					</span></td>
+					<td><span th:text="${hotel.fechaInicio}"></span></td>
+					<td><span th:text="${hotel.fechaFin}"></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="divPrincipal">
+		<table border="1px">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Precio</th>
+					<th>Destino</th>
+					<th>Fecha reservada</th>
+					<th>Accesibilidad para discapacitados</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="actividad : ${actividades}">
+					<td><span th:text="${actividad.nombre}"></span></td>
+					<td><p>
+							$<span th:text="${actividad.precio}"></span>
+						</p></td>
+					<td><span th:text="${actividad.destino.pais}"></span></td>
+					<td><span th:text="${actividad.fecha}"></span></td>
+					<td><span th:switch="${actividad.accesibilidad}">
+							<p th:case="true">Si</p>
+							<p th:case="false">No</p>
+					</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="divPrincipal">
+		<table border="1px">
+			<thead>
+				<tr>
+					<th>Fecha de Ida</th>
+					<th>Fecha de Vuelta</th>
+					<th>Cantidad de personas</th>
+					<th>Precio</th>
+					<th>Aerolinea</th>
+					<th>Clase</th>
+					<th>Escala incluida</th>
+					<th>Origen</th>
+					<th>Destino</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="vuelo : ${vuelos}">
+					<td><span th:text="${vuelo.fechaIda}"></span></td>
+					<td><span th:if="${vuelo.fechaVuelta}"
+						th:text="${vuelo.fechaVuelta}"></span></td>
+					<td><span th:text="${vuelo.cantPersonas}"></span></td>
+					<td><p>
+							$<span th:text="${vuelo.precio}"></span>
+						</p></td>
+					<td><span th:text="${vuelo.Aerolinea.nombre}"></span></td>
+					<td><span th:text="${vuelo.clase.nombre}"></span></td>
+					<td><span th:switch="${vuelo.escalaIncluida}">
+							<p th:case="true">Si</p>
+							<p th:case="false">No</p>
+					</span></td>
+					<td><span
+						th:text="${vuelo.Origen.nombre} +' - '+ ${vuelo.Origen.pais}"></span></td>
+					<td><span
+						th:text="${vuelo.Destino.nombre} +' - '+ ${vuelo.Destino.pais}"></span></td>
+					</td>
+					<td><a th:href="@{/carrito/infoVuelo/{id}(id=${vuelo.id})}">Personas Registradas</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
 </html>

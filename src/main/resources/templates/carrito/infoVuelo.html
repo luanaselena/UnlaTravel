@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>UNLa Travel</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <link href="/css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top" style="background-image: url('https://free4kwallpapers.com/uploads/originals/2018/12/29/inverted-blackwhite-mountains.-wallpaper_.jpg');">
+    <!-- Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="/index">UNLa Travel</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ml-auto">
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/actividad">Actividades</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/destino">Destinos</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/vuelo">Vuelos</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/hotel">Hoteles</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/paquete">Paquetes</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/carrito">Carrito</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="divPrincipal">
+		<div style="color:white">
+		    					<p>Personas Registradas en el vuelo</p>
+		  					</div>
+            <table border="1px">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Telefono</th>
+                        <th>Domicilio</th>
+                        <th>Mail</th>
+                        <th>Nacionalidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="usuario : ${usuarios}">
+                        <td><span th:text="${usuario.nombre}"></span></td>
+                        <td><span th:text="${usuario.apellido}"></span></td>
+                        <td><span th:text="${usuario.telefono}"></span></td>
+                        <td><span th:text="${usuario.domicilio}"></span></td>
+                        <td><span th:text="${usuario.mail}"></span></td>
+                        <td><span th:text="${usuario.nacionalidad}"></span></td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+    </body>
+</html>
