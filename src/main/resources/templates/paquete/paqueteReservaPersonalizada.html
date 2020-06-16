@@ -93,7 +93,7 @@
 						<p>Con escalas: <input type="checkbox"  th:field="*{vuelo.escalaIncluida}"></p>
 						<h5>Actividades:</h5>
 						<h7>El maximo de actividades a reservar es de 5.</h7><p/>
-						<h7>El sistema solo reserva aquellas actividades con una fecha valida.</h7><p/> 
+						<h7>El sistema solo reserva aquellas actividades con una fecha valida. En caso de no querer mas actividades, dejar la fecha intacta</h7><p/>
 						<tr th:each="actividad,itStat : *{actividades}">
 			                <p>Elija una actividad: 
 			                    <select th:field="*{actividades[__${itStat.index}__].id}">
