@@ -53,7 +53,7 @@
                 		</p>
 	                  	<p>Desde: <input type="date"  th:field="*{hotel.fechaInicio}"></p>
 						<p>Hasta: <input type="date"  th:field="*{hotel.fechaFin}"></p>
-		                <p>Cantidad de Personas: <input type="number" th:field="*{hotel.cantPersonas}" /></p>
+		                <p>Cantidad de Personas: <input type="number" th:field="*{hotel.cantPersonas}" value=1/></p>
 		                <p>Tipo de Habitaciones:
 			                <select placeholder="TipoHabitacion" th:field="*{hotel.tipoHabitacion.id}">
 								<option th:each="h : ${habitaciones}" th:value="${h.id}" th:text="${h.tipo}+' ('+${h.porcentajeAumento*100}+'% más)'"> </option>
@@ -79,7 +79,7 @@
 								<option th:each="d2 : ${destinos}" th:value="${d2.id}" th:text="${d2.nombre}+' '+${d2.pais}"> </option>
 							</select>
 						</p>
-						<p>Cantidad de personas: <input type="number" th:field="*{vuelo.cantPersonas}" min="1"/></p>
+						<p>Cantidad de personas: <input type="number" th:field="*{vuelo.cantPersonas}" min=1 value=1/></p>
 		                <p>Aerolinea:
 			                <select placeholder="Aerolinea" th:field="*{vuelo.aerolinea.id}">
 								<option th:each="a : ${aerolineas}" th:value="${a.id}" th:text="${a.nombre}+' - Valoracion: '+ ${a.valoracion}"></option>
@@ -90,7 +90,21 @@
 								<option th:each="c : ${clases}" th:value="${c.id}" th:text="${c.nombre}+' ('+${c.porcentajeAumento*100}+'% más)'"></option>
 							</select>
 						</p>
-						<p>Con/Sin escalas: <input type="checkbox"  th:field="*{vuelo.escalaIncluida}"></p>
+						<p>Con escalas: <input type="checkbox"  th:field="*{vuelo.escalaIncluida}"></p>
+						<h5>Actividades:</h5>
+						<h7>El maximo de actividades a reservar es de 5.</h7><p/>
+						<h7>El sistema solo reserva aquellas actividades con una fecha valida.</h7><p/> 
+						<tr th:each="actividad,itStat : *{actividades}">
+			                <p>Elija una actividad: 
+			                    <select th:field="*{actividades[__${itStat.index}__].id}">
+			                    	<option th:each="a : ${actividades1}" th:value="${a.id}" th:text="${a.nombre}"/>
+			                    </select>
+			                </p>
+			                <p>Fecha:
+								<input type="date" th:field="*{actividades[__${itStat.index}__].fecha}">
+							</p>
+							<br/>
+						</tr>
 						<p><input type="hidden"  th:field="*{hotel.tipoAlojamiento.tipo}"></p>
 						<p><input type="hidden"  th:field="*{hotel.nombre}"></p>
 						<p><input type="hidden"  th:field="*{hotel.cantEstrellas}"></p>
@@ -101,8 +115,9 @@
 
 						<p><input type="hidden"  th:field="*{vuelo.id}"></p>
 						<p><input type="hidden"  th:field="*{vuelo.precio}"></p>
-
-		                <input class="btn btn-primary" style="background-color: #EE7D00;" type="submit" value="Confirmar Reserva" />
+						<br>
+						<br>
+		                <input class="btn btn-primary" style="background-color: #EE7D00;" type="submit" value="Confirmar Reserva"/>
 		            </form>
 				</div>
         	</div>           
