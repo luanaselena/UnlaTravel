@@ -39,7 +39,7 @@ public class Usuario {
     public Usuario(){}
 
     public Usuario(long id, String nombre, String apellido, String telefono, String domicilio, String nacionalidad, String mail,
-                    long dni) {
+                    long dni,ReservaVuelo reservaVuelo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -48,10 +48,12 @@ public class Usuario {
         this.nacionalidad = nacionalidad;
         this.mail = mail;
         this.dni = dni;
+        this.reservaVuelo = reservaVuelo;
+
     }
 
     public Usuario(String nombre, String apellido, String telefono, String domicilio, String nacionalidad, String mail,
-                   long dni) {
+                   long dni,ReservaVuelo reservaVuelo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
@@ -59,6 +61,7 @@ public class Usuario {
         this.nacionalidad = nacionalidad;
         this.mail = mail;
         this.dni = dni;
+        this.reservaVuelo = reservaVuelo;
     }
 
     public long getId() {
@@ -132,5 +135,13 @@ public class Usuario {
     public void setDni(long dni) {
         this.dni = dni;
     }
+
+	public ReservaVuelo getReservaVuelo() {
+		return reservaVuelo;
+	}
+
+	public void setReservaVuelo(ReservaVuelo reservaVuelo) {
+		this.reservaVuelo = reservaVuelo;
+	}
     
 }
