@@ -14,14 +14,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import com.unla.travelweb.converters.HotelConverter;
 import com.unla.travelweb.entities.Hotel;
 import com.unla.travelweb.entities.User;
 import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.models.CarritoModel;
+
+import com.unla.travelweb.models.UsuarioModel;
 import com.unla.travelweb.models.HotelModel;
 import com.unla.travelweb.repositories.IUserRepository;
 import com.unla.travelweb.services.ICarritoService;
+import com.unla.travelweb.services.IUsuarioService;
+
+import com.unla.travelweb.services.IReservaVueloService;
 import com.unla.travelweb.services.IHotelService;
 
 @Controller
@@ -40,6 +48,14 @@ public class CarritoController {
 	@Autowired
 	@Qualifier ("hotelConverter")
 	private HotelConverter hotelConverter;
+	
+	@Autowired
+	@Qualifier ("usuarioService")
+	private IUsuarioService usuarioService;
+	
+	@Autowired
+	@Qualifier ("reservaVueloService")
+	private IReservaVueloService reservaVueloService;
 	
 	
 //	@GetMapping ("")
@@ -78,6 +94,31 @@ public class CarritoController {
     public RedirectView delete(@PathVariable("id") long id) {
         carritoService.remove(id);
         return new RedirectView(ViewRouteHelper.CARRITO_ROOT);
+    }
+	
+	@GetMapping ("/infoVuelo/{id}")
+	public ModelAndView infoVuelo(@PathVariable("id") long id) {
+        ModelAndView mAV = new ModelAndView(ViewRouteHelper.CARRITO_VUELO);
+        
+        mAV.addObject("vuelo", reservaVueloService.findById(id));
+        
+        List<UsuarioModel> usuarios = new ArrayList<UsuarioModel>();
+        int i = 1;
+        while ((i <= usuarioService.getAll().size()) || (usuarios.size() != reservaVueloService.findById(id).getCantPersonas())) {
+        	if (usuarioService.findById(i).getReservaVuelo().getId() == id) {
+        		usuarios.add(usuarioService.findById(i));
+        	}
+        i++;
+        }
+        
+        /*for (i=1;i<=usuarioService.getAll().size(); i++) {
+        	if (usuarioService.findById(i).getReservaVuelo().getId() == id) {
+        		usuarios.add(usuarioService.findById(i));
+        	}
+        }*/
+        mAV.addObject("usuarios", usuarios);
+        
+        return mAV;
     }
 
 }
