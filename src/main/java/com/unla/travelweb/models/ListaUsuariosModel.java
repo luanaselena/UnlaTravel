@@ -5,28 +5,36 @@ import java.util.List;
 
 public class ListaUsuariosModel {
 
-	private Long id;
-	private List<UsuarioModel> lista = new ArrayList<UsuarioModel>();
+	private List<UsuarioModel> listaU = new ArrayList<UsuarioModel>();
 
+	private long id;
+	
 	public ListaUsuariosModel(long id) {
-		this.id = id;
+		this.id=id;
 	}
 	
-	public List<UsuarioModel> getLista() {
-		return lista;
+	
+	public ListaUsuariosModel() {
+	}
+	
+	public List<UsuarioModel> getListaU() {
+		return listaU;
 	}
 
-	public void setLista(List<UsuarioModel> lista) {
-		this.lista = lista;
+	public void setListaU(List<UsuarioModel> lista) {
+		this.listaU = lista;
 	}
+
 
 	public long getId() {
 		return id;
 	}
 
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	
 	
 	

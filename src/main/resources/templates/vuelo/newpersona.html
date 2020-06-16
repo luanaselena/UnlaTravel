@@ -34,26 +34,36 @@
         			<h2>Ingrese los datos de los pasajeros</h2>
     	</div>
         <div class="divPrincipal" style="width: 50%;">
-        	<th:block th:each="usuario,itStat : ${v.listaU}">
-	            <form action="form">
-	                <p>Nombre:<input type="text" th:checked="${usuario.nombre}"/></p>
-   					<td th:field="*{usuario.nombre}" ></td>
-	                <p>Apellido:<input type="text" th:checked="${usuario.apellido}"/></p>
-   					<td th:field="*{usuario.apellido}" ></td>
-	                <p>Telefono:<input type="text" th:checked="${usuario.telefono}"/></p>
-   					<td th:field="*{usuario.telefono}" ></td>
-	                <p>Domicilio:<input type="text" th:checked="${usuario.domicilio}"/></p>
-   					<td th:field="*{usuario.domicilio}" ></td>
-	                <p>Mail:<input type="text" th:checked="${usuario.mail}"/></p>
-   					<td th:field="*{usuario.mail}" ></td>
-	                <p>Nacionalidad:<input type="text" th:checked="${usuario.nacionalidad}"/></p>
-   					<td th:field="*{usuario.nacionalidad}" ></td>
-	            </form>
-            </th:block>
-            <input type="hidden" th:field="*{v.id}"/>
-              <form action="formulariosOk" method="post">
-                <input class="btn btn-danger" type="submit" value="Enviar datos" />
-           	</form>
+        <form action="/vueloUsuario/formulariosOk" method="post" th:object="${lista}">
+			<p><input type="hidden" th:field="*{id}"></p>
+			<tr th:each="usuario,itStat : *{listaU}">
+				<p>
+					Nombre:<input type="text" th:field="*{listaU[__${itStat.index}__].nombre}">
+				</p>
+				<p>
+					Apellido:<input type="text" th:field="*{listaU[__${itStat.index}__].apellido}">
+				</p>
+				<p>
+					Nacionalidad:<input type="text" th:field="*{listaU[__${itStat.index}__].nacionalidad}">
+				</p>
+				<p>
+					Telefono:<input type="text" th:field="*{listaU[__${itStat.index}__].telefono}">
+				</p>
+				<p>
+					Mail:<input type="text" th:field="*{listaU[__${itStat.index}__].mail}">
+				</p>
+				<p>
+					Domicilio:<input type="text" th:field="*{listaU[__${itStat.index}__].domicilio}">
+				</p>
+				<p>
+					Dni:<input type="number" th:field="*{listaU[__${itStat.index}__].dni}">
+				</p>
+				<br/>
+				<br/>
+			</tr>
+            <input class="btn btn-danger" type="submit" value="Enviar datos" />
+			
+		</form>
         </div>
     </body>
 </html>

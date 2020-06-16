@@ -18,7 +18,8 @@ public class UsuarioModel {
 
     public UsuarioModel(){}
 
-    public UsuarioModel(long id, String nombre, String apellido, String telefono, String domicilio, String mail, String nacionalidad, long dni) {
+    public UsuarioModel(long id, String nombre, String apellido, String telefono, String domicilio, String mail, String nacionalidad, long dni,
+    		ReservaVueloModel reservaVuelo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -27,6 +28,7 @@ public class UsuarioModel {
         this.mail = mail;
         this.nacionalidad = nacionalidad;
         this.dni = dni;
+        this.reservaVuelo = reservaVuelo;
     }
 
     public long getId() {
