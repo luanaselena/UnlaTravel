@@ -55,7 +55,7 @@
 	<div class="divPrincipal">
 		<table border="1px">
 			<thead>
-				<tr>
+				<tr class="text-center">
 					<th>Nombre</th>
 					<th>Total</th>
 					<th>Cantidad de estrellas</th>
@@ -66,10 +66,11 @@
 					<th>Accesibilidad para discapacitados</th>
 					<th>Desde</th>
 					<th>Hasta</th>
+					<th>Eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="hotel : ${hoteles}">
+				<tr class="text-center" th:each="hotel : ${hoteles}">
 					<td><span th:text="${hotel.nombre}"></span></td>
 					<td><p>
 							$<span th:text="${hotel.precio}"></span>
@@ -85,6 +86,13 @@
 					</span></td>
 					<td><span th:text="${hotel.fechaInicio}"></span></td>
 					<td><span th:text="${hotel.fechaFin}"></span></td>
+					<td>
+						<span>
+							<form class="mt-0 ml-0" action="#" th:action="@{/carrito/deleteHotel/{id}/{index}(id=${hotel.id}, index=${hotelStat.index})}" method="post">
+	                			<input class="btn btn-danger" type="submit" value="Eliminar hotel" />
+	            			</form>
+            			</span>
+            		</td>
 				</tr>
 			</tbody>
 		</table>
@@ -92,16 +100,17 @@
 	<div class="divPrincipal">
 		<table border="1px">
 			<thead>
-				<tr>
+				<tr class="text-center">
 					<th>Nombre</th>
 					<th>Precio</th>
 					<th>Destino</th>
 					<th>Fecha reservada</th>
 					<th>Accesibilidad para discapacitados</th>
+					<th>Eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="actividad : ${actividades}">
+				<tr class="text-center" th:each="actividad : ${actividades}">
 					<td><span th:text="${actividad.nombre}"></span></td>
 					<td><p>
 							$<span th:text="${actividad.precio}"></span>
@@ -112,6 +121,13 @@
 							<p th:case="true">Si</p>
 							<p th:case="false">No</p>
 					</span></td>
+					<td>
+						<span>
+							<form class="mt-0 ml-0" action="#" th:action="@{/carrito/deleteActividad/{id}/{index}(id=${actividad.id}, index=${actividadStat.index})}" method="post">
+	                			<input class="btn btn-danger" type="submit" value="Eliminar actividad" />
+	            			</form>
+            			</span>
+            		</td>
 				</tr>
 			</tbody>
 		</table>
@@ -120,7 +136,7 @@
 	<div class="divPrincipal">
 		<table border="1px">
 			<thead>
-				<tr>
+				<tr class="text-center">
 					<th>Fecha de Ida</th>
 					<th>Fecha de Vuelta</th>
 					<th>Cantidad de personas</th>
@@ -130,10 +146,12 @@
 					<th>Escala incluida</th>
 					<th>Origen</th>
 					<th>Destino</th>
+					<th>Personas Registradas</th>
+					<th>Eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="vuelo : ${vuelos}">
+				<tr class="text-center" th:each="vuelo : ${vuelos}">
 					<td><span th:text="${vuelo.fechaIda}"></span></td>
 					<td><span th:if="${vuelo.fechaVuelta}"
 						th:text="${vuelo.fechaVuelta}"></span></td>
@@ -153,6 +171,13 @@
 						th:text="${vuelo.Destino.nombre} +' - '+ ${vuelo.Destino.pais}"></span></td>
 					</td>
 					<td><a th:href="@{/carrito/infoVuelo/{id}(id=${vuelo.id})}">Personas Registradas</a></td>
+					<td>
+						<span>
+							<form class="mt-0 ml-0" action="#" th:action="@{/carrito/deleteVuelo/{id}/{index}(id=${vuelo.id}, index=${vueloStat.index})}" method="post">
+	                			<input class="btn btn-danger" type="submit" value="Eliminar vuelo" />
+	            			</form>
+            			</span>
+            		</td>
 				</tr>
 			</tbody>
 		</table>
