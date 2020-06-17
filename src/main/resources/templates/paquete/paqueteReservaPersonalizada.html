@@ -80,6 +80,8 @@
 							</select>
 						</p>
 						<p>Cantidad de personas: <input type="number" th:field="*{vuelo.cantPersonas}" min=1 value=1/></p>
+						<p>Ida: <input type="date"  th:field="*{vuelo.fechaIda}"></p>
+						<p>Vuelta: <input type="date"  th:field="*{vuelo.fechaVuelta}"></p>
 		                <p>Aerolinea:
 			                <select placeholder="Aerolinea" th:field="*{vuelo.aerolinea.id}">
 								<option th:each="a : ${aerolineas}" th:value="${a.id}" th:text="${a.nombre}+' - Valoracion: '+ ${a.valoracion}"></option>

@@ -162,7 +162,7 @@ public class VueloUsuarioController {
             for(int i = 1 ; i <= rv.getCantPersonas(); i++) {
             	lista.getListaU().add(new UsuarioModel());
             }
-            System.out.println(lista.getListaU().size());
+            System.out.println("Tamaño de la lista:" + lista.getListaU().size());
             mAV2.addObject("lista", lista);
             
             model.addAttribute("lista", lista);
