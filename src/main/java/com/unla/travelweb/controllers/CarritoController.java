@@ -18,7 +18,9 @@ import java.util.List;
 import java.util.ArrayList;
 
 import com.unla.travelweb.converters.HotelConverter;
+import com.unla.travelweb.converters.ReservaHotelConverter;
 import com.unla.travelweb.entities.Hotel;
+import com.unla.travelweb.entities.ReservaHotel;
 import com.unla.travelweb.entities.User;
 import com.unla.travelweb.helpers.ViewRouteHelper;
 import com.unla.travelweb.models.CarritoModel;
@@ -31,6 +33,8 @@ import com.unla.travelweb.services.IUsuarioService;
 
 import com.unla.travelweb.services.IReservaVueloService;
 import com.unla.travelweb.services.IHotelService;
+import com.unla.travelweb.services.IReservaActividadService;
+import com.unla.travelweb.services.IReservaHotelService;
 
 @Controller
 @RequestMapping("/carrito")
@@ -56,6 +60,19 @@ public class CarritoController {
 	@Autowired
 	@Qualifier ("reservaVueloService")
 	private IReservaVueloService reservaVueloService;
+	
+	@Autowired
+	@Qualifier ("reservaHotelService")
+	private IReservaHotelService reservaHotelService;
+	
+	@Autowired
+	@Qualifier ("reservaActividadService")
+	private IReservaActividadService reservaActividadService;
+	
+	
+	@Autowired
+	@Qualifier ("reservaHotelConverter")
+	private ReservaHotelConverter reservaHotelConverter;
 	
 	
 //	@GetMapping ("")
@@ -93,6 +110,37 @@ public class CarritoController {
 	@PostMapping("/delete/{id}")
     public RedirectView delete(@PathVariable("id") long id) {
         carritoService.remove(id);
+        return new RedirectView(ViewRouteHelper.CARRITO_ROOT);
+    }
+	
+	@PostMapping("/deleteHotel/{id}/{index}")
+    public RedirectView deleteHotel(@PathVariable("id") long id, @PathVariable("index") int index, @AuthenticationPrincipal UserDetails currentUser) {
+		User user = (User) userRepository.findByUsernameAndFetchUserRolesEagerly(currentUser.getUsername());
+        user.getCarrito().getHoteles().remove(index);
+		reservaHotelService.remove(id);
+		reservaHotelService.remove(id-1);
+        return new RedirectView(ViewRouteHelper.CARRITO_ROOT);
+    }
+	
+	@PostMapping("/deleteActividad/{id}/{index}")
+    public RedirectView deleteActividad(@PathVariable("id") long id, @PathVariable("index") int index, @AuthenticationPrincipal UserDetails currentUser) {
+		User user = (User) userRepository.findByUsernameAndFetchUserRolesEagerly(currentUser.getUsername());
+        user.getCarrito().getActividades().remove(index);
+		reservaActividadService.remove(id);
+		reservaActividadService.remove(id-1);
+        return new RedirectView(ViewRouteHelper.CARRITO_ROOT);
+    }
+	
+	@PostMapping("/deleteVuelo/{id}/{index}")
+    public RedirectView deleteVuelo(@PathVariable("id") long id, @PathVariable("index") int index, @AuthenticationPrincipal UserDetails currentUser) {
+		User user = (User) userRepository.findByUsernameAndFetchUserRolesEagerly(currentUser.getUsername());
+		for(int i=0; i<reservaVueloService.findById(id).getListaU().size(); i++) {
+			usuarioService.remove(reservaVueloService.findById(id).getListaU().get(i).getId());
+		}
+		
+		user.getCarrito().getVuelos().remove(index);        
+		reservaVueloService.remove(id);
+		reservaVueloService.remove(id-1);
         return new RedirectView(ViewRouteHelper.CARRITO_ROOT);
     }
 	
