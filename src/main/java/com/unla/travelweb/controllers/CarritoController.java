@@ -134,8 +134,11 @@ public class CarritoController {
 	@PostMapping("/deleteVuelo/{id}/{index}")
     public RedirectView deleteVuelo(@PathVariable("id") long id, @PathVariable("index") int index, @AuthenticationPrincipal UserDetails currentUser) {
 		User user = (User) userRepository.findByUsernameAndFetchUserRolesEagerly(currentUser.getUsername());
-		for(int i=0; i<reservaVueloService.findById(id).getListaU().size(); i++) {
-			usuarioService.remove(reservaVueloService.findById(id).getListaU().get(i).getId());
+		
+		for(int i=usuarioService.getAll().size()-1; i>=0; i--) {
+			if(usuarioService.getAll().get(i).getReservaVuelo().getId() == reservaVueloService.findById(id).getId()) {
+				usuarioService.remove(usuarioService.getAll().get(i).getId());
+			}
 		}
 		
 		user.getCarrito().getVuelos().remove(index);        

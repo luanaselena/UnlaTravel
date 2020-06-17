@@ -375,7 +375,7 @@ public class PaqueteUsuarioController {
 			precio/=2;
 		}
 		
-		ReservaVueloModel rv = new ReservaVueloModel(rh.getFechaInicio(),rh.getFechaFin(),vueloModel.getAerolinea(), vueloModel.getClase(), vueloModel.isEscalaIncluida(), vueloModel.getOrigen(), vueloModel.getDestino(), precio, rh.getCantPersonas());
+		ReservaVueloModel rv = new ReservaVueloModel(vueloModel.getFechaIda(),vueloModel.getFechaVuelta(),vueloModel.getAerolinea(), vueloModel.getClase(), vueloModel.isEscalaIncluida(), vueloModel.getOrigen(), vueloModel.getDestino(), precio, rh.getCantPersonas());
 		
 		rh.setTipoServicio(pasarServicios(tipoServicioService.getAll()));
 
