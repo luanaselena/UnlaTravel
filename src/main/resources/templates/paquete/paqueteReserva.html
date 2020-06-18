@@ -50,7 +50,6 @@
 		    					<div class="dropdown-divider"></div>
 		    					<p>Actividades incluidas: <span class="card-text" th:each="a : ${actividades}" th:text=" ${a.nombre}+' | '"></span></p>
 		    					<div class="dropdown-divider"></div>
-		    					<p class="card-text"><small class="text-muted" th:text="'AEROLINEA: '+${paquete.vuelo.aerolinea.nombre}"></small></p>
 		    					<p class="card-text"><small class="text-muted">Maximo 4 personas por habitacion.</small></p>
 		    					<p class="card-text"><small class="text-muted">Los paquetes deben ser con ida y vuelta.</small></p>
 		  					</div>
@@ -76,6 +75,19 @@
 								<option th:each="r : ${regimenes}" th:value="${r.id}" th:text="${r.tipo}+' ('+${r.porcentajeAumento*100}+'% más)'"> </option>
 							</select>
 						</p>
+						<h4>Datos del vuelo: </h4>
+		                <p>Aerolinea:
+			                <select placeholder="Aerolinea" th:field="*{vuelo.aerolinea.id}">
+								<option th:each="a : ${aerolineas}" th:value="${a.id}" th:text="${a.nombre}+' - Valoracion: '+ ${a.valoracion}"></option>
+							</select>
+						</p>
+		                <p>Clase:
+			                <select placeholder="Clase" th:field="*{vuelo.clase.id}">
+								<option th:each="c : ${clases}" th:value="${c.id}" th:text="${c.nombre}+' ('+${c.porcentajeAumento*100}+'% más)'"></option>
+							</select>
+						</p>
+						<p>Con escalas: <input type="checkbox"  th:field="*{vuelo.escalaIncluida}"></p>
+						
 						
 						<p><input type="hidden"  th:field="*{hotel.tipoAlojamiento.tipo}"></p>
 						<p><input type="hidden"  th:field="*{hotel.nombre}"></p>
@@ -86,8 +98,6 @@
 						<p><input type="hidden"  th:field="*{hotel.id}"></p>
 						<p><input type="hidden"  th:field="*{vuelo.id}"></p>
 						
-						<p><input type="hidden"  th:field="*{vuelo.aerolinea.id}"></p>
-						<p><input type="hidden"  th:field="*{vuelo.clase.id}"></p>
 						<p><input type="hidden"  th:field="*{vuelo.origen.id}"></p>
 						<p><input type="hidden"  th:field="*{vuelo.destino.id}"></p>
 						<p><input type="hidden"  th:field="*{vuelo.escalaIncluida}"></p>
