@@ -150,15 +150,18 @@ public class CarritoController {
 	@GetMapping ("/infoVuelo/{id}")
 	public ModelAndView infoVuelo(@PathVariable("id") long id) {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.CARRITO_VUELO);
-        
+        if(id%2==1) {
+        	id+=1;
+        }
         mAV.addObject("vuelo", reservaVueloService.findById(id));
         
         List<UsuarioModel> usuarios = new ArrayList<UsuarioModel>();
         int i = 1;
         while ((i <= usuarioService.getAll().size()) || (usuarios.size() != reservaVueloService.findById(id).getCantPersonas())) {
-        	if (usuarioService.findById(i).getReservaVuelo().getId() == id) {
-        		usuarios.add(usuarioService.findById(i));
-        	}
+        	
+	        	if (usuarioService.findById(i).getReservaVuelo().getId() == id) {
+	        		usuarios.add(usuarioService.findById(i));
+	        	}
         i++;
         }
         

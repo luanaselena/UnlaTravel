@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>UNLa Travel</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <link href="/css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top" style="background-image: url('https://free4kwallpapers.com/uploads/originals/2018/12/29/inverted-blackwhite-mountains.-wallpaper_.jpg');">
+    <!-- Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="/index">UNLa Travel</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ml-auto">
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/actividad">Actividades</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/destino">Destinos</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/vuelo">Vuelos</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/hotel">Hoteles</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/paquete">Paquetes</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/carrito">Carrito</a></li>
+                    </ul>
+                    <input class="form-control mr-sm-2" id="search" type="search" placeholder="Buscar" aria-label="Search">
+            		<button class="btn btn-dark my-2 my-sm-0 " type="submit">Buscar</button>
+                </div>
+            </div>
+        </nav>
+		<div class="col-12 text-center" style="margin-top: 160px;color: white;">
+        			<h2>Ingrese los datos de los pasajeros</h2>
+    	</div>
+        <div class="divPrincipal" style="width: 50%;">
+        <form action="/paqueteUsuario/formulariosOk" method="post" th:object="${listaUs}">
+			<p><input type="hidden" th:field="*{id}"></p>
+			<tr th:each="usuario,itStat : *{listaU}">
+				<p>
+					Nombre:<input type="text" th:field="*{listaU[__${itStat.index}__].nombre}">
+				</p>
+				<p>
+					Apellido:<input type="text" th:field="*{listaU[__${itStat.index}__].apellido}">
+				</p>
+				<p>
+					Nacionalidad:<input type="text" th:field="*{listaU[__${itStat.index}__].nacionalidad}">
+				</p>
+				<p>
+					Telefono:<input type="text" th:field="*{listaU[__${itStat.index}__].telefono}">
+				</p>
+				<p>
+					Mail:<input type="text" th:field="*{listaU[__${itStat.index}__].mail}">
+				</p>
+				<p>
+					Domicilio:<input type="text" th:field="*{listaU[__${itStat.index}__].domicilio}">
+				</p>
+				<p>
+					Dni:<input type="number" th:field="*{listaU[__${itStat.index}__].dni}">
+				</p>
+				<br/>
+				<br/>
+			</tr>
+            <input class="btn btn-danger" type="submit" value="Enviar datos" />
+			
+		</form>
+        </div>
+    </body>
+</html>

@@ -12,6 +12,7 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -35,6 +36,7 @@ import com.unla.travelweb.converters.TipoAlojamientoConverter;
 import com.unla.travelweb.converters.TipoHabitacionConverter;
 import com.unla.travelweb.converters.TipoRegimenConverter;
 import com.unla.travelweb.converters.TipoServicioConverter;
+import com.unla.travelweb.converters.UsuarioConverter;
 import com.unla.travelweb.entities.Actividad;
 import com.unla.travelweb.entities.Paquete;
 import com.unla.travelweb.entities.TipoServicio;
@@ -44,6 +46,7 @@ import com.unla.travelweb.models.ActividadModel;
 import com.unla.travelweb.models.ClaseModel;
 import com.unla.travelweb.models.DestinoModel;
 import com.unla.travelweb.models.HotelModel;
+import com.unla.travelweb.models.ListaUsuariosModel;
 import com.unla.travelweb.models.PaqueteModel;
 import com.unla.travelweb.models.ReservaActividadModel;
 import com.unla.travelweb.models.ReservaHotelModel;
@@ -51,6 +54,7 @@ import com.unla.travelweb.models.ReservaVueloModel;
 import com.unla.travelweb.models.TipoHabitacionModel;
 import com.unla.travelweb.models.TipoRegimenModel;
 import com.unla.travelweb.models.TipoServicioModel;
+import com.unla.travelweb.models.UsuarioModel;
 import com.unla.travelweb.models.VueloModel;
 import com.unla.travelweb.repositories.IActividadRepository;
 import com.unla.travelweb.repositories.IUserRepository;
@@ -70,6 +74,7 @@ import com.unla.travelweb.services.ITipoAlojamientoService;
 import com.unla.travelweb.services.ITipoHabitacionService;
 import com.unla.travelweb.services.ITipoRegimenService;
 import com.unla.travelweb.services.ITipoServicioService;
+import com.unla.travelweb.services.IUsuarioService;
 import com.unla.travelweb.services.IVueloService;
 
 @Controller
@@ -186,6 +191,14 @@ public class PaqueteUsuarioController {
 	@Qualifier("calificacionAerolineaService")
 	private ICalificacionAerolineaService calificacionAerolineaService;
 	
+	@Autowired
+	@Qualifier("usuarioConverter")
+	private UsuarioConverter usuarioConverter;
+	
+	@Autowired
+	@Qualifier("usuarioService")
+	private IUsuarioService usuarioService;
+	
 	@GetMapping ("")
 	public ModelAndView index() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.PAQUETE_USUARIO);
@@ -202,7 +215,9 @@ public class PaqueteUsuarioController {
         mAV.addObject("habitaciones", tipoHabitacionService.getAll());
         mAV.addObject("regimenes", tipoRegimenService.getAll());
         mAV.addObject("servicios", tipoServicioService.getAll());
-        
+        mAV.addObject("aerolineas", aerolineaService.getAll());
+        mAV.addObject("clases", claseService.getAll());
+
         List<Actividad> lista = new ArrayList<Actividad>();
         
         PaqueteModel p = paqueteService.findById(id);
@@ -241,7 +256,7 @@ public class PaqueteUsuarioController {
 
 
 	@PostMapping("/create")
-    public ModelAndView create(@ModelAttribute("paquete") PaqueteModel paqueteModel,@AuthenticationPrincipal UserDetails currentUser) {
+    public ModelAndView create(@ModelAttribute("paquete") PaqueteModel paqueteModel,@AuthenticationPrincipal UserDetails currentUser, Model model) {
 		HotelModel hotelModel = paqueteModel.getHotel();
 		VueloModel vueloModel = paqueteModel.getVuelo();
 		System.out.println(paqueteModel.getActividades().size());
@@ -308,11 +323,28 @@ public class PaqueteUsuarioController {
 		
         reservaHotelService.insert(rh);
         reservaVueloService.insert(rv);
+        
+        if(rv.getCantPersonas()>=1) {
+            ModelAndView mAV2= new ModelAndView(ViewRouteHelper.PAQUETE_FORMULARIO);
+
+            ListaUsuariosModel listaUs = new ListaUsuariosModel(1);
+
+            for(int i = 1 ; i <= rv.getCantPersonas(); i++) {
+            	listaUs.getListaU().add(new UsuarioModel());
+            }
+            System.out.println("Tamaño de la lista:" + listaUs.getListaU().size());
+            mAV2.addObject("listaUs", listaUs);
+            
+            model.addAttribute("listaUs", listaUs);
+            
+            return mAV2;
+        }
+        
         return new ModelAndView("redirect:/paqueteUsuario");
     }
 	
 	@PostMapping("/createPersonalizado")
-    public ModelAndView createPersonalizado(@ModelAttribute("paquete") PaqueteModel paqueteModel,@AuthenticationPrincipal UserDetails currentUser) {
+    public ModelAndView createPersonalizado(@ModelAttribute("paquete") PaqueteModel paqueteModel,@AuthenticationPrincipal UserDetails currentUser, Model model) {
 		HotelModel aux = hotelService.findById(paqueteModel.getHotel().getId());
 		HotelModel hotelModel = paqueteModel.getHotel();
 		VueloModel vueloModel = paqueteModel.getVuelo();
@@ -385,9 +417,42 @@ public class PaqueteUsuarioController {
 		
         reservaHotelService.insert(rh);
         reservaVueloService.insert(rv);
+        
+        
+        if(rv.getCantPersonas()>=1) {
+            ModelAndView mAV2= new ModelAndView(ViewRouteHelper.PAQUETE_FORMULARIO);
+
+            ListaUsuariosModel listaUs = new ListaUsuariosModel(1);
+
+            for(int i = 1 ; i <= rv.getCantPersonas(); i++) {
+            	listaUs.getListaU().add(new UsuarioModel());
+            }
+            System.out.println("Tamaño de la lista:" + listaUs.getListaU().size());
+            mAV2.addObject("listaUs", listaUs);
+            
+            model.addAttribute("listaUs", listaUs);
+            
+            return mAV2;
+        }
         return new ModelAndView("redirect:/paqueteUsuario");
     }
 	
+	@PostMapping("/formulariosOk")
+	public ModelAndView formularios(@ModelAttribute("lista") ListaUsuariosModel lista) {
+		
+		ReservaVueloModel rv = reservaVueloService.findById(reservaVueloService.getAll().get(reservaVueloService.getAll().size() - 1).getId());
+
+		//agregar usuarios con save/insert y setear lista
+		for(int i = 0 ; i < lista.getListaU().size(); i++) {
+			//Usuario u = usuarioConverter.modelToEntity(lista.getLista().get(i));
+			UsuarioModel us = lista.getListaU().get(i);
+			us.setReservaVuelo(reservaVueloService.findById(reservaVueloService.getAll().get(reservaVueloService.getAll().size() - 1).getId()));
+			usuarioService.insert(us);
+		}
+		rv.setListaU(lista.getListaU());
+		
+		return new ModelAndView("redirect:/paqueteUsuario");
+	}
 	
 	public List<TipoServicioModel> pasarServicios(List<TipoServicio> set){
 		
@@ -408,15 +473,15 @@ public class PaqueteUsuarioController {
 		int startday = inicio.toLocalDate().getDayOfMonth(); 
 		int endday = fin.toLocalDate().getDayOfMonth();
 		
-		int year = (int)(Math.random()*(endyear-startyear+1))+startyear;	//Random year
+		int year = (int)(Math.random()*(endyear-startyear+1))+startyear;	
 		
 		int month= (int)(Math.random()*(endmonth-startmonth+1))+startmonth;
 		
-		Calendar c = Calendar.getInstance();				//Create Calendar objects
-		c.set(year, month, 0);								//Setting Date
+		Calendar c = Calendar.getInstance();				
+		c.set(year, month, 0);								
 		//18-2+1
-		int day = (int)(Math.random()*(endday-startday+1))+startday;	//Random year
-		Date fecha=Date.valueOf(year+"-"+month+"-"+day);	//Generating Date Object by valueOf Method
+		int day = (int)(Math.random()*(endday-startday+1))+startday;	
+		Date fecha=Date.valueOf(year+"-"+month+"-"+day);	
 		
 		return fecha;
 	}
