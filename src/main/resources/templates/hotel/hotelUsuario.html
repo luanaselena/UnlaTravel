@@ -11,6 +11,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
 		<link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
 		<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link href="/css/styles.css" rel="stylesheet" />
 	</head>
 	<body id="page-top" style="background-image: url('https://free4kwallpapers.com/uploads/originals/2018/12/29/inverted-blackwhite-mountains.-wallpaper_.jpg');">
@@ -46,7 +47,11 @@
 		    					<h5 class="card-title" th:text="${hotel.nombre}">Card title</h5>
 		    					<p class="card-text" th:text="${hotel.tipoAlojamiento.tipo}"></p>
 		    					<p class="card-text" th:text="${hotel.pais}"></p>
-		    					<p class="card-text" th:text="${'ESTRELLAS: ' + hotel.cantEstrellas}"></p>
+		    					<p class="card-text" th:text="${hotel.cantEstrellas == 1} ? '★ ☆ ☆ ☆ ☆':'' "></p>
+		    					<p class="card-text" th:text="${hotel.cantEstrellas == 2} ? '★ ★ ☆ ☆ ☆':'' "></p>
+		    					<p class="card-text" th:text="${hotel.cantEstrellas == 3} ? '★ ★ ★ ☆ ☆':'' "></p>
+		    					<p class="card-text" th:text="${hotel.cantEstrellas == 4} ? '★ ★ ★ ★ ☆':'' "></p>
+		    					<p class="card-text" th:text="${hotel.cantEstrellas == 5} ? '★ ★ ★ ★ ★':'' "></p>
 		    					<p class="card-text" th:text="${'PRECIO POR NOCHE DESDE: $' + hotel.precio}"></p>
 		    					<p>SERVICIOS: | <span class="card-text" th:each="s : ${servicios}" th:text=" ${s.tipo}+' | '"></span></p>
 		    					<p class="card-text" th:if="${hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: Si'}"></p>
