@@ -58,7 +58,7 @@
 		    					<p class="card-text" th:if="${not hotel.accesibilidad}" th:text="${'ACCESIBILIDAD PARA DISCAPACITADOS: No'}"></p>
 		    					<div class="dropdown-divider"></div>
 		    					<p class="card-text"><small class="text-muted">Maximo 4 personas por habitacion.</small></p>
-		    					<a th:href="@{/hotelUsuario/hotelReserva/{id}(id=${hotel.id})}" target="_blank" class="btn btn-primary">Reservar</a>
+		    					<a th:href="@{/hotelUsuario/hotelReserva/{id}(id=${hotel.id})}" class="btn btn-primary">Reservar</a>
 		  					</div>
 						</div>
 					</div>
