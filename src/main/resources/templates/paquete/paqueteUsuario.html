@@ -52,11 +52,15 @@
 		    					<div class="dropdown-divider"></div>
 		    					<h5 class="card-title" th:text="${paquete.hotel.nombre}">Card title</h5>
 		    					<p class="card-text" th:text="${paquete.hotel.tipoAlojamiento.tipo}"></p>
-		    					<p class="card-text" th:text="${'ESTRELLAS: ' + paquete.hotel.cantEstrellas}"></p>
+		    					<p class="card-text" th:text="${paquete.hotel.cantEstrellas == 1} ? '★ ☆ ☆ ☆ ☆':'' "></p>
+		    					<p class="card-text" th:text="${paquete.hotel.cantEstrellas == 2} ? '★ ★ ☆ ☆ ☆':'' "></p>
+		    					<p class="card-text" th:text="${paquete.hotel.cantEstrellas == 3} ? '★ ★ ★ ☆ ☆':'' "></p>
+		    					<p class="card-text" th:text="${paquete.hotel.cantEstrellas == 4} ? '★ ★ ★ ★ ☆':'' "></p>
+		    					<p class="card-text" th:text="${paquete.hotel.cantEstrellas == 5} ? '★ ★ ★ ★ ★':'' "></p>
 		    					<div class="dropdown-divider"></div>
 		    					<p>Actividades incluidas: <span class="card-text" th:each="a : ${paquete.actividades}" th:text=" ${a.nombre}+' | '"></span></p>
 		    					<div class="dropdown-divider"></div>
-		    					<a th:href="@{/paqueteUsuario/paqueteReserva/{id}(id=${paquete.id})}" target="_blank" class="btn btn-primary">Reservar</a>		    					
+		    					<a th:href="@{/paqueteUsuario/paqueteReserva/{id}(id=${paquete.id})}" class="btn btn-primary">Reservar</a>		    					
 		  					</div>
 						</div>
 					</div>
